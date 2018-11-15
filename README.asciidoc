@@ -1,0 +1,3 @@
+= devon4ng
+
+The devonfw Platform provides a solution to building applications which combine best-in class-frameworks and libraries as well as industry proven practices and code conventions. devon4ng is the JavaScript/TypeScript variant of the devonfw focusing on front-end applications.

@@ -1,3 +1,10 @@
 = devon4ng
 
 The devonfw Platform provides a solution to building applications which combine best-in class-frameworks and libraries as well as industry proven practices and code conventions. devon4ng is the JavaScript/TypeScript variant of the devonfw focusing on front-end applications.
+
+== Contents
+
+This repository contains the following assets:
+
+- **devon4ng-application-template:** It is the Angular application template used by the CobiGen code generation tool.
+- **devon4ng-ionic-application-template:** It is the Ionic mobile application template used by the CobiGen code generation tool.

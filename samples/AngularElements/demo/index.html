@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <dish-form id="plate" platename="test" platedescription="test"></dish-form>
+        <div id="container2">
+            </div>
+        <!--Use of the element non dynamically-->
+        <!--<dish-form platename="test" platedescription="test"></dish-form>-->
+        <script src="./devon4ngAngularElements.js"> </script>
+        <script>
+                var elContainer = document.getElementById('container2');
+                var el = document.getElementById('plate');
+                //var el= document.createElement('dish-form');
+                //el.setAttribute('platename','test');
+                //el.setAttribute('platedescription','test');
+                el.addEventListener('submitDishEvent',(ev)=>{
+                    var elView= document.createElement('dish-view');
+                    elContainer.innerHTML = '';
+                    elContainer.appendChild(elView);
+                });
+                //elContainer.appendChild(el);
+        </script>
+    </body>
+</html>

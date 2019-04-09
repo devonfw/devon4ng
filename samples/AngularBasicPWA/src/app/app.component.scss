@@ -1,0 +1,22 @@
+.app-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  padding-bottom: 25%;
+  padding-top: 5%;
+  background-image: url('/assets/img/background-dish.fe9678cd8802fa639336.png'),
+    url('/assets/img/star.5cbbb1d4fad2e640a5bb.png'),
+    url('/assets/img/Wood2.7b3782e7fd543cc9cdc4.jpg');
+  background-position: bottom, top, center;
+  background-size: cover, 15%, cover;
+  background-repeat: no-repeat, no-repeat, repeat;
+}
+
+.dish-container {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(224, 224, 224, 0.75);
+  color: black;
+}

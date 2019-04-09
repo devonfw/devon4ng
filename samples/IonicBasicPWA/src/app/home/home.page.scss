@@ -1,0 +1,29 @@
+.toolbar {
+  --background: #0070ad;
+  --color: white;
+}
+
+.title {
+  text-align: center;
+}
+
+.logo {
+  display: block;
+}
+
+.main-text {
+  width: 90%;
+  text-align: justify;
+}
+
+.logo,
+.main-text {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.take-photo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

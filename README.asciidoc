@@ -9,10 +9,12 @@ This repository contains the following assets:
 * **devon4ng-application-template:** It is the Angular application template used by the CobiGen code generation tool.
 * **devon4ng-ionic-application-template:** It is the Ionic mobile application template used by the CobiGen code generation tool.
 * **samples:** Folder containing different samples for the devon4ng guides.
+** **AngularBasicPWA:** Project sample that contains an Angular progressive web app
 ** **AngularElements:** Project sample that builds into an `Angular Element`
 ** **AngularElementsTest:** Project sample created to use the `Angular Element`
 ** **AppInitializer:** Project sample of `App Initializer`
 ** **ElectronTest:** Project sample of `Electron`
 ** **ErrorHandler:** Project sample of `Error Handler`
+** **IonicBasicPWA:** Project sample that contains an Ionic 4 progressive web app
 ** **MyLibrary:** Project sample that build into a `Library`
 ** **MyLibraryTest:**  Project sample created to use the `Library`

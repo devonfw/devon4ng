@@ -1,0 +1,14 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center" class="app-main">
+  <span *ngIf="update"> There is an update </span>
+  <h1>
+    My Thai Star
+  </h1>
+  <h2 style="text-align: center">Dish recommendation today:</h2>
+  <div class="dish-container">
+    <h4>{{ dish.name }}</h4>
+    <h4>{{ dish.description }}</h4>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

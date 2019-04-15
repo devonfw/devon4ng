@@ -1,20 +1,20 @@
 .menu {
-    margin-right: auto;
+  margin-right: auto;
 }
 
 mat-sidenav-container {
-    position: absolute;
-    top: 64px;
-    left: 0;
-    right: 0;
-    bottom: 0;
+  position: absolute;
+  top: 64px;
+  left: 0;
+  right: 0;
+  bottom: 0;
 
-    a.active {
-        background: #8e8d8d;
-        color: #fff;
+  a.active {
+    background: #8e8d8d;
+    color: #fff;
 
-        p {
-            color: #4a4a4a;
-        }
+    p {
+      color: #4a4a4a;
     }
+  }
 }

@@ -10,11 +10,11 @@ const routes: Routes = [
     component: FirstComponent
   },
   {
-    path: 'second-left',
+    path: 'first/second-left',
     component: ContentLeft
   },
   {
-    path: 'second-right',
+    path: 'first/second-right',
     component: ContentRight
   }
 ];

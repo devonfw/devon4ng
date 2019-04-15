@@ -5,11 +5,11 @@ import { DataComponent } from './pages/data/data.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'data', component: DataComponent }
+  { path: 'data', component: DataComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

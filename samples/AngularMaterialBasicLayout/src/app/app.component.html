@@ -1,5 +1,10 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button aria-label="menu" class="menu" (click)="sidenav.toggle()">
+  <button
+    mat-icon-button
+    aria-label="menu"
+    class="menu"
+    (click)="sidenav.toggle()"
+  >
     <mat-icon>menu</mat-icon>
   </button>
   <button mat-button [matMenuTriggerFor]="submenu">Menu 1</button>
@@ -27,7 +32,7 @@
         [routerLink]="['./']"
         (click)="sidenav.close()"
         routerLinkActive="active"
-        [routerLinkActiveOptions]="{exact: true}"
+        [routerLinkActiveOptions]="{ exact: true }"
       >
         <mat-icon matListAvatar>home</mat-icon>
         <h3 matLine>Home</h3>

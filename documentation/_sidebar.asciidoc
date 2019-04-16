@@ -30,7 +30,7 @@
 === Ionic
 ** link:guide-ionic-getting-started[Ionic 4 Getting started]
 ** link:guide-ionic-from-code-to-android[Ionic 4 to Android]
-** link:guide-angular-pwa[Ionic Progressive Web Apps]
+** link:guide-ionic-pwa[Ionic Progressive Web Apps]
 
 === Layouts
 ** link:guide-layout-with-angular-material[Angular Material Layout]

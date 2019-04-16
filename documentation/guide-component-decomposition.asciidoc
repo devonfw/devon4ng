@@ -1,0 +1,169 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+= Component Decomposition
+
+When implementing a new requirement there are a few design decisions, which need to be considered.
+A decomposition in _Smart_ and _Dumb Components_ should be done first.
+This includes the definition of state and responsibilities.
+Implementing a new dialog will most likely be done by defining a new _Smart Component_ with multiple _Dumb Component_ children.
+
+In the component tree this would translate to the definition of a new subtree.
+
+.Component Tree with highlighted subtree
+image::images/component-tree-highlighted-subtree.svg["Component Tree With Highlighted Sub Tree", width="450", link="images/component-tree-highlighted-subtree.svg"]
+
+== Defining Components
+
+The following gives an example for component decomposition.
+Shown is a screenshot from a styleguide to be implemented.
+It is a widget called `Listpicker`.
+
+The basic function is an `input` field accepting direct input.
+So typing `otto` puts `otto` inside the `FormControl`.
+With arrow down key or by clicking the icon displayed in the inputs right edge a dropdown is opened.
+Inside possible values can be selected and filtered beforehand.
+After pressing arrow down key the focus should move into the filter input field.
+Up and down arrow keys can be used to select an element from the list.
+Typing into the filter input field filters the list from which the elements can be selected.
+The current selected element is highlighted with green background color. 
+
+.Component decomposition example before 
+image::images/component-decomposition-example-1.svg["Component Decomposition Example 1v2", link="images/component-decomposition-example-1.svg", width="450"]
+
+What should be done, is to define small reusable _Dumb Components_.
+This way the complexity becomes manageable.
+In the example every colored box describes a component with the purple box being a _Smart Component_.
+
+.Component decomposition example after
+image::images/component-decomposition-example-2.svg["Component Decomposition Example 2v2", link="images/component-decomposition-example-2.svg", width="450"]
+
+This leads to the following component tree.
+
+.Component decomposition example component tree
+image::images/component-decomposition-example-component-tree.svg["Component Decomposition Example component tree", link="images/component-decomposition-example-component-tree.svg", width="450"]
+
+Note the uppermost component is a _Dumb Component_.
+It is a wrapper for the label and the component to be displayed inside a form.
+The _Smart Component_ is `Listpicker`.
+This way the widget can be reused without a form needed.
+
+A widgets is a typical _Smart Component_ to be shared across feature modules.
+So the `SharedModule` is the place for it to be defined.  
+
+== Defining state
+
+Every UI has state.
+There are different kinds of state, for example
+
+* View State: e.g. is a panel open, a css transition pending, etc.
+* Application State: e.g. is a payment pending, current URL, user info, etc.
+* Business Data: e.g. products loaded from backend
+
+It is good practice to base the component decomposition on the state handled by a component and to define a simplified state model beforehand.
+Starting with the parent - the _Smart Component_:
+
+* What overall state does the dialog have: e.g. loading, error, valid data loaded, valid input, invalid input, etc.
+Every defined value should correspond to an overall appearance of the whole dialog.
+* What events can occur to the dialog: e.g. submitting a form, changing a filter, pressing buttons, pressing keys, etc.
+
+For every _Dumb Component_:
+
+* What data does a component display: e.g. a header text, user information to be displayed, a loading flag, etc. +
+This will be a slice of the overall state of the parent _Smart Component_.
+In general a _Dumb Component_ presents a slice of its parent _Smart Components_ state to the user.
+* What events can occur: keyboard events, mouse events, etc. +
+These events are all handled by its parent _Smart Component_ - every event is passed up the tree to be handled by a _Smart Component_.
+
+These information should be reflected inside the modeled state.
+The implementation is a TypeScript type - an interface or a class describing the model.
+
+So there should be a type describing all state relevant for a _Smart Component_.
+An instance of that type is send down the component tree at runtime.
+Not every _Dumb Component_ will need the whole state.
+For instance a single _Dumb Component_ could only need a single string.
+
+The state model for the previous `Listpicker` example is shown in the following listing.
+
+.Listpicker state model
+[source,ts]
+----
+export class ListpickerState {
+
+  items: {}[]|undefined;
+  columns = ['key', 'value'];
+  keyColumn = 'key';
+  displayValueColumn = 'value';
+  filteredItems: {}[]|undefined;
+  filter = '';
+  placeholder = '';
+  caseSensitive = true;
+  isDisabled = false;
+  isDropdownOpen = false;
+  selectedItem: {}|undefined;
+  displayValue = '';
+
+}
+----
+
+`Listpicker` holds an instance of `ListpickerState` which is passed down the component tree via `@Input()` bindings in the _Dumb Components_.
+Events emitted by children - _Dumb Components_ - create a new instance of `ListpickerState` based on the current instance and the event and its data.
+So a state transition is just setting a new instance of `ListpickerState`.
+Angular Bindings propagate the value down the tree after exchanging the state.
+
+.Listpicker State transition
+[source,ts]
+----
+export class ListpickerComponent {
+
+  // initial default values are set
+  state = new ListpickerState();
+
+  /** User changes filter */
+  onFilterChange(filter: string): void {
+    // apply filter ...
+    const filteredList = this.filterService.filter(...);
+
+    // important: A new instance is created, instead of altering the existing one.
+    //            This makes change detection easier and prevents hard to find bugs.
+    this.state = Object.assing({}, this.state, {
+      filteredItems: filteredList,    
+      filter: filter
+    });
+  }
+
+}
+----
+
+.Note:
+It is not always necessary to define the model as independent type.
+So there would be no state property and just properties for every state defined directly in the component class.
+When complexity grows and state becomes larger this is usually a good idea.
+If the state should be shared between _Smart Components_ a store is to be used.
+
+== When are Dumb Components needed
+
+Sometimes it is not necessary to perform a full decomposition. The architecture does not enforce it generally. What you should keep in mind is, that there is always a point when it becomes recommendable.
+
+For example a template with 800 loc is:
+
+* not understandable
+* not maintanable
+* not testable
+* not reusable
+
+So when implementing a template with more than 50 loc you should think about decomposition.

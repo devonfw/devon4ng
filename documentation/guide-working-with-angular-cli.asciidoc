@@ -1,0 +1,177 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+= Working with Angular CLI
+
+Angular CLI provides a facade for building, testing, linting, debugging and generating code.
+Under the hood Angular CLI uses specific tools to achieve these tasks.
+The user does no need to maintain them and can rely on Angular to keep them up to date and maybe switch to other tools which come up in the future.
+
+The Angular CLI provides a wiki with common tasks you encounter when working on applications with the Angular CLI.
+https://github.com/angular/angular-cli/wiki[The Angular CLI Wiki can be found here.]
+
+In this guide we will go through the most important tasks.
+To go into more details, please visit the Angular CLI wiki.
+
+== Installing Angular CLI
+
+Angular CLI should be added as global and local dependency.
+The following commands add Angular CLI as global Dependency.
+
+yarn command
+
+```bash
+yarn global add @angular/cli
+```
+
+npm command
+
+```bash
+npm install -g @angular/cli
+```
+
+You can check a successful installtion with `ng --version`.
+This should print out the version installed.
+
+.Printing Angular CLI Version
+image::images/install-cli-success.png["Printing Angular CLI Version", width="450", link="images/install-cli-success.png"]
+
+== Running a live development server
+
+The Angular CLI can be used to start a live development server.
+First your application will be compiled and then the server will be started.
+If you change the code of a file, the server will reload the displayed page.
+Run your application with the following command:
+
+```bash
+ng serve -o
+```
+
+== Running Unit Tests
+
+All unit tests can be executed with the command:
+
+```bash
+ng test
+```
+
+To make a single run and create a code coverage file use the following command:
+
+```bash
+ng test -sr -cc
+```
+
+TIP: You can configure the output format for code coverage files to match your requirements in the file `karma.conf.js` which can be found on toplevel of your project folder.
+For instance, this can be useful for exporting the results to a SonarQube.
+
+== Linting the code quality
+
+You can lint your files with the command
+
+```bash
+ng lint --type-check
+```
+
+TIP: You can adjust the linting rules in the file tslint.json which can be found on toplevel of your project folder.
+
+== Generating Code
+
+=== Creating a new Angular CLI project
+
+For creating a new Angular CLI project the command `ng new` is used.
+
+The following command creates a new application named my-app. 
+
+```bash
+ng create my-app
+```
+
+=== Creating a new feature module
+
+A new feature module can be created via `ng generate module`` command.
+
+The following command generates a new feature module named todo.
+
+```bash
+ng generate module todo
+```
+
+.Generate a module with Angular CLI
+image::images/generate-module.png["Generate a module with Angular CLI", width="450", link="images/generate-module.png"]
+
+TIP: The created feature module needs to be added to the AppModule by hand.
+Other option would be to define a lazy route in AppRoutingModule to make this a lazy loaded module.
+
+=== Creating a new component
+
+To create components the command `ng generate component` can be used.
+
+The following command will generate the component todo-details inside the components layer of todo module.
+It will generate a class, a html file, a css file and a test file.
+Also, it will register this component as declaration inside the nearest module - this ist TodoModule.
+
+```bash
+ng generate component todo/components/todo-details
+```
+
+.Generate a component with Angular CLI
+image::images/generate-component.png["Generate a component with Angular CLI", width="450", link="images/generate-component.png"]
+
+TIP: If you want to export the component, you have to add the component to exports array of the module.
+This would be the case if you generate a component inside shared module.
+
+== Configuring an Angular CLI project
+
+Inside an Angular CLI project the file `.angular-cli.json` can be used to configure the Angular CLI.
+
+The following options are very important to understand.
+
+* The property `defaults`` can be used to change the default style extension.
+The following settings will make the Angular CLI generate `.less` files, when a new component is generated.
+```json
+"defaults": {
+  "styleExt": "less",
+  "component": {}
+}
+```
+
+* The property `apps` contains all applications maintained with Angular CLI.
+Most of the time you will have only one.
+** `assets` configures all the static files, that the application needs - this can be images, fonts, json files, etc.
+When you add them to assets the Angular CLI will put these files to the build target and serve them while debugging.
+The following will put all files in `/i18n` to the output folder `/i18n` 
+```json
+"assets": [
+  { "glob": "**/*.json", "input": "./i18n", "output": "./i18n" }
+]
+```
+** `styles` property contains all style files that will be globally available.
+The Angular CLI will create a styles bundle that goes directly into index.html with it.
+The following will make all styles in `styles.less` globally available.
+```json
+"styles": [
+  "styles.less"
+]
+```
+** `environmentSource` and `environments` are used to configure configuration with the Angular CLI.
+Inside the code always the file specified in `environmentSource` will be referenced.
+You can define different environments - eg. production, staging, etc. - which you list in `enviroments`.
+At compile time the Angular CLI will override all values in `environmentSource` with the values from the matching environment target.
+The following code will build the application for the environment staging.
+```bash
+ng build --environment=staging
+```

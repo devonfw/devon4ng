@@ -1,0 +1,391 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+= Angular Material Layout
+
+The purpose of this guide is to get a basic understanding of creating layouts using https://material.angular.io[Angular Material] in a devon4ng application. We will create an application with a header containing some menu links and a sidenav with some navigation links.
+
+.This is what the finished application will look like
+image::images/layout-angular-material/1-finished-application.png["Finished application", width="700", link="images/layout-angular-material/1-finished-application.png", align="center"]
+
+= Let's begin
+
+We start with opening the console(running console.bat in the Devon distribution folder) and running the following command to start a project named devon4ng-mat-layout
+
+** `ng new devon4ng-mat-layout`
+
+Select `y` when it asks whether it would like to add Angular routing and select `SCSS` when it asks for the stylesheet format.
+You can also use the Devcon to create a new devon4ng application.
+
+Once the creation process is complete, open your newly created application in Visual Studio Code. Try running the empty application by running the following command in the integrated terminal:
+
+** `ng serve`
+
+Angular will spin up a server and you can check your application by visiting http://localhost:4200/ in your browser.
+
+.Blank application
+image::images/layout-angular-material/2-blank-application.png["Blank application", width="700", link="images/layout-angular-material/2-blank-application.png", align="center"]
+
+= Adding Angular Material library to the project
+
+Next we will add Angular Material to our application. In the integrated terminal, press `Ctrl + C` to terminate the running application and run the following command:
+
+** `npm install --save @angular/material @angular/cdk @angular/animations`
+
+You can also use Yarn to install the dependencies if you prefer that:
+
+** `yarn add @angular/material @angular/cdk @angular/animations`
+
+Once the dependencies are installed, we need to import the `BrowserAnimationsModule` in our AppModule for animations support.
+
+.Importing BrowserAnimationsModule in AppModule
+[source,ts]
+----
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+@NgModule({
+  ...
+  imports: [BrowserAnimationsModule],
+  ...
+})
+export class AppModule { }
+----
+
+Angular Material provides a host of components for designing our application. All the components are well structured into NgModules. For each component from the Angular Material library that we want to use, we have to import the respective NgModule.
+
+.We will be using the following components in our application:
+[source,ts]
+----
+import { MatIconModule, MatButtonModule, MatMenuModule, MatListModule, MatToolbarModule, MatSidenavModule } from '@angular/material';
+
+@NgModule({
+  ...
+  imports: [
+	...
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatListModule,
+    MatToolbarModule,
+    MatSidenavModule,
+	...
+	],
+  ...
+})
+export class AppModule { }
+----
+
+A better approach is to import and then export all the required components in a shared  module. But for the sake of simplicity, we are importing all the required components in the AppModule itself.
+
+Next, we include a theme in our application. Angular Material comes with four inbuilt themes: indigo-pink, deeppurple-amber, pink-bluegrey and purple-green. It is also possible to create our own custom theme, but that is beyond the scope of this guide. Including a theme is required to apply all of the core and theme styles to your application.
+We will include the indigo-pink theme in our application by importing the `indigo-pink.css` file in our `src/styles.scss`:
+
+.In src/styles.scss:
+[source,css]
+----
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+----
+
+Some Angular Material components depend on HammerJs for gestures. So it is a good idea to install HammerJs as a dependency in our application. To do so, run the following command in the terminal:
+
+** `npm install --save hammerjs`
+
+Then import it in the `src/main.ts` file
+
+** `import 'hammerjs';`
+
+To use https://material.io/icons/[Material Design Icons] along with the `mat-icon` component, we will load the Material Icons library in our `src/index.html` file
+
+.In src/index.html:
+[source,html]
+----
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+----
+
+= Development
+
+Now that we have all the Angular Material related dependencies set up in our project, we can start coding. Let's begin by adding a suitable `margin` and `font` to the `body` element of our single page application. We will add it in the `src/styles.scss` file to apply it globally:
+
+.In src/styles.scss:
+[source,css]
+----
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+----
+
+At this point, if we run our application with `ng serve`, this is how it will look like:
+
+.Application with Angular Material set up
+image::images/layout-angular-material/3-material-added.png["Angular Material added to the application", width="700", link="images/layout-angular-material/3-material-added.png", align="center"]
+
+We will clear the `app.component.html` file and setup a header with a menu button and some navigational links. We will use `mat-toolbar`, `mat-button`, `mat-menu`, `mat-icon` and `mat-icon-button` for this:
+
+.app.component.html:
+[source,html]
+----
+<mat-toolbar color="primary">
+  <button mat-icon-button aria-label="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <button mat-button [matMenuTriggerFor]="submenu">Menu 1</button>
+  <button mat-button>Menu 2</button>
+  <button mat-button>Menu 3</button>
+  
+  <mat-menu #submenu="matMenu">
+    <button mat-menu-item>Sub-menu 1</button>
+    <button mat-menu-item [matMenuTriggerFor]="submenu2">Sub-menu 2</button>
+  </mat-menu>
+
+  <mat-menu #submenu2="matMenu">
+    <button mat-menu-item>Menu Item 1</button>
+    <button mat-menu-item>Menu Item 2</button>
+    <button mat-menu-item>Menu Item 3</button>
+  </mat-menu>
+
+</mat-toolbar>
+----
+
+The color attribute on the `mat-toolbar` element will give it the primary (indigo) color as defined by our theme. The color attribute works with most Angular Material components; the possible values are 'primary', 'accent' and 'warn'.
+The mat-toolbar is a suitable component to represent a header. It serves as a placeholder for elements we want in our header.
+Inside the mat-toolbar, we start with a button having mat-icon-button attribute, which itself contains a mat-icon element having the value `menu`. This will serve as a menu button which we can use to toggle the sidenav.
+We follow it with some sample buttons having the mat-button attribute. Notice the first button has a property `matMenuTriggerFor` binded to a local reference `submenu`. As the property name suggests, the click of this button will display the `mat-menu` element with the specified local reference as a drop-down menu. The rest of the code is self explanatory.
+
+.This is how our application looks with the first menu button (Menu 1) clicked.
+image::images/layout-angular-material/4-header.png["Header added to the application", width="700", link="images/layout-angular-material/4-header.png", align="center"]
+
+We want to keep the sidenav toggling menu button on the left and move the rest to the right to make it look better. To do this we add a class to the menu icon button:
+
+.app.component.html:
+[source,html]
+----
+...
+  <button mat-icon-button aria-label="menu" class="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+...
+----
+
+And in the `app.component.scss` file, we add the following style:
+
+.app.component.scss:
+[source,css]
+----
+.menu {
+    margin-right: auto;
+}
+----
+
+The mat-toolbar element already has it's display property set to `flex`. Setting the menu icon button's `margin-right` property to `auto` keeps itself on the left and pushes the other elements to the right.
+
+.Final look of the header.
+image::images/layout-angular-material/5-header-layout-final.png["Final look of the header", width="700", link="images/layout-angular-material/5-header-layout-final.png", align="center"]
+
+Next, we will create a sidenav. But before that lets create a couple of components to navgate between, the links of which we will add to the sidenav.
+We will use the `ng generate component` (or `ng g c` command for short) to create _Home_ and _Data_ components. We nest them in the `pages` sub-directory since they represent our pages.
+
+** `ng g c pages/home`
+
+** `ng g c pages/data';`
+
+Let us set up the routing such that when we visit `http://localhost:4200/` root url we see the `HomeComponent` and when we visit `http://localhost:4200/data` url we see the `DataComponent`.
+We had opted for routing while creating the application, so we have the routing module `app-routing.module.ts` setup for us. In this file, we have the empty `routes` array where we set up our routes.
+
+.app-routing.module.ts:
+[source,ts]
+----
+...
+import { HomeComponent } from './pages/home/home.component';
+import { DataComponent } from './pages/data/data.component';
+
+	const routes: Routes = [
+	  { path: '', component: HomeComponent },
+	  { path: 'data', component: DataComponent }
+	];
+...
+----
+
+We need to provide a hook where the components will be loaded when their respective URLs are loaded. We do that by using the `router-outlet` directive in the `app.component.html`.
+
+.app.component.html:
+[source,html]
+----
+...
+	</mat-toolbar>
+	<router-outlet></router-outlet>
+----
+
+Now when we visit the defined URLs we see the appropriate components rendered on screen.
+
+Lets change the contents of the components to have something better.
+
+.home.component.html:
+[source,html]
+----
+<h2>Home Page</h2>
+----
+
+.home.component.scss:
+[source,css]
+----
+h2 {
+    text-align: center;
+    margin-top: 50px;
+}
+----
+
+.data.component.html:
+[source,html]
+----
+<h2>Data Page</h2>
+----
+
+.data.component.scss:
+[source,css]
+----
+h2 {
+    text-align: center;
+    margin-top: 50px;
+}
+----
+
+The pages look somewhat better now:
+
+.Home page
+image::images/layout-angular-material/6-home-page.png["Home page", width="700", link="images/layout-angular-material/6-home-page.png", align="center"]
+
+.Data page
+image::images/layout-angular-material/7-data-page.png["Data page", width="700", link="images/layout-angular-material/7-data-page.png", align="center"]
+
+Let us finally create the sidenav. To implement the sidenav we need to use 3 Angular Material components: `mat-sidenav-container`, `mat-sidenav` and `mat-sidenav-content`.
+The `mat-sidenav-container`, as the name suggests, acts as a container for the sidenav and the associated content. So it is the parent element, and `mat-sidenav` and `mat-sidenav-content` are the children sibling elements. `mat-sidenav` represents the sidenav. We can put any content we want, though it is usually used to conatain a list of navigational links. The `mat-sidenav-content` element is for conataining our main page content. Since we need the sidenav application-wide, we will put it in the `app.component.html`.
+
+.app.component.html:
+[source,html]
+----
+...
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav mode="over" [disableClose]="false" #sidenav>
+    Sidenav
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+----
+
+The `mat-sidenav` has a `mode` property, which accepts one of the 3 values: `over`, `push` and `side`. It decides the behavior of the sidenav. `mat-sidenav` also has a `disableClose` property which accents a boolean value. It toggles the behavior where we click on the backdrop or press the `Esc` key to close the sidenav. There are other properties which we can use to customize the appearance, behavior and position of the sidenav. You can find the properties documented online at https://material.angular.io/components/sidenav/api 
+We moved the `router-outlet` directive inside the `mat-sidenav-content` where it will render the routed component.
+But if you check the running application in the browser, we don't see the sidenav yet. That is because it is closed. We want to have the sidenav opened/closed at the click of the menu icon button on the left side of the header we implemented earlier. Notice we have set a local reference `#sidenav` on the `mat-sidenav` element. We can access this element and call its `toggle()` function to toggle open or close the sidenav.
+
+.app.component.html:
+[source,html]
+----
+...
+  <button mat-icon-button aria-label="menu" class="menu" (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+...
+----
+
+.Sidenav is implemented
+image::images/layout-angular-material/8-sidenav-started.png["Sidenav works", width="700", link="images/layout-angular-material/8-sidenav-started.png", align="center"]
+
+We can now open the sidenav by clicking the menu icon button. But it does not look right. The sidenav is only as wide as its content. Also the page does not stretch the entire viewport due to lack of content.
+Let's add the following styles to make the page fill the viewport:
+
+.app.component.scss:
+[source,css]
+----
+...
+mat-sidenav-container {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+----
+
+The sidenav's width will be corrected when we add the navigational links to it. That is the only thing remaining to be done. Lets implement it now:
+
+.app.component.html:
+[source,html]
+----
+...
+  <mat-sidenav [disableClose]="false" mode="over" #sidenav>
+	<mat-nav-list>
+      <a
+        id="home"
+        mat-list-item
+        [routerLink]="['./']"
+        (click)="sidenav.close()"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"
+      >
+        <mat-icon matListAvatar>home</mat-icon>
+        <h3 matLine>Home</h3>
+        <p matLine>sample home page</p>
+      </a>
+      <a
+        id="sampleData"
+        mat-list-item
+        [routerLink]="['./data']"
+        (click)="sidenav.close()"
+        routerLinkActive="active"
+      >
+        <mat-icon matListAvatar>grid_on</mat-icon>
+        <h3 matLine>Data</h3>
+        <p matLine>sample data page</p>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+...
+----
+
+We use the `mat-nav-list` element to set a list of navigational links. We use the `a` tags with `mat-list-item` directive. We implement a `click` listener on each link to close the sidenav when it is clicked. The `routerLink` directive is used to provide the URLs to navigate to. The `routerLinkActive` directive is used to provide the class name which will be added to the link when it's URL is visited. Here we name the class`active`. To stye it, let' modify the `app.component.scss` file:
+
+.app.component.scss:
+[source,css]
+----
+...
+mat-sidenav-container {
+...
+	a.active {
+        background: #8e8d8d;
+        color: #fff;
+
+        p {
+            color: #4a4a4a;
+        }
+    }
+}
+----
+
+Now we have a working application with a basic layout: a header with some menu and a sidenav with some navigational links.
+
+.Finished application
+image::images/layout-angular-material/9-finished.png["Finished application", width="700", link="images/layout-angular-material/9-finished.png", align="center"]
+
+
+= Conclusion
+
+The purpose of this guide was to provide a basic understanding of creating layouts with Angular Material. The Angular Material library has a huge collection of ready to use components which can be found at https://material.angular.io/components/categories
+It has provided documentation and example usage for each of its components.  Going through the documentation will give a better understanding of using Angular Material components in our devon4ng applications.

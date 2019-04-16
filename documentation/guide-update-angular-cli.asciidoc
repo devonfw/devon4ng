@@ -1,0 +1,64 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+== Angular CLI common issues
+
+There are constant updates for the official Angular framework dependencies. These dependencies are directly related with the Angular CLI package. Since this package comes installed by default inside the devonfw distribution folder for Windows OS and the distribution is updated every few months it needs to be updated in order to avoid known issues. 
+
+== Angular CLI update guide
+
+For **Linux users** is as easy as updating the global package:
+
+[source, bash] 
+----
+$ npm unistall -g @angular/cli
+$ npm install -g @angular/cli
+----
+
+For **Windows users** the process is only a bit harder. Open the **devonfw bundled console** and do as follows:
+
+[source, bash]
+----
+$ cd [devonfw_dist_folder]
+$ cd software/nodejs
+$ npm uninstall @angular/cli --no-save
+$ npm install @angular/cli --no-save
+----
+
+After following these steps you should have the latest Angular CLI version installed in your system. In order to check it run in the distribution console:
+
+NOTE: At the time of this writing, the Angular CLI is at 1.7.4 version.
+
+[source, bash]
+----
+λ ng version
+
+     _                      _                 ____ _     ___
+    / \   _ __   __ _ _   _| | __ _ _ __     / ___| |   |_ _|
+   / △ \ | '_ \ / _` | | | | |/ _` | '__|   | |   | |    | |
+  / ___ \| | | | (_| | |_| | | (_| | |      | |___| |___ | |
+ /_/   \_\_| |_|\__, |\__,_|_|\__,_|_|       \____|_____|___|
+                |___/
+
+
+Angular CLI: 7.2.3
+Node: 10.13.0
+OS: win32 x64
+Angular:
+...
+----
+

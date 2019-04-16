@@ -1,0 +1,105 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+= Consuming REST services
+
+A good introduction to working with Angular HttpClient can be found in https://angular.io/guide/http[Angular Docs]
+
+This guide will cover, how to embed Angular HttpClient in the application architecture.
+For backend request a special service with the suffix `Adapter` needs to be defined.
+
+== Defining Adapters
+
+It is a good practice to have a Angular service whose single responsibility is to call the backend and parse the received value to a transfer data model (e.g. Swagger generated TOs).
+Those services need to have the suffix `Adapter` to make them easy to recognize.
+
+.Adapters handle backend communication
+image::images/rest-adapter.svg["Adapters handle backend communication", width="450", link="images/rest-adapter.svg"]
+
+As illustrated in the figure a Use Case service does not use Angular HttpClient directly but uses an adapter.
+A basic adapter could look like this:
+
+[source,ts]
+.Example adapter
+----
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+
+import { FlightTo } from './flight-to';
+
+@Injectable()
+export class FlightsAdapter {
+
+  constructor(
+    private httpClient: HttpClient
+  ) {}
+
+  getFlights(): Observable<FlightTo> {
+    return this.httpClient.get<FlightTo>('/relative/url/to/flights');
+  }
+
+}
+----
+
+The adapters should use a well-defined transfer data model.
+This could be generated from server endpoints with CobiGen, Swagger, typescript-maven-plugin, etc.
+If inside the application there is a business model defined, the adapter has to parse to the transfer model.
+This is illustrated in the following listing.
+
+[source,ts]
+.Example adapter mapping from business model to transfer model
+----
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
+
+import { FlightTo } from './flight-to';
+import { Flight } from '../../../model/flight';
+
+@Injectable()
+export class FlightsAdapter {
+
+  constructor(
+    private httpClient: HttpClient
+  ) {}
+
+  updateFlight(flight: Flight): Observable<Flight> {
+    const to = this.mapFlight(flight);
+
+    return this.httpClient.post<FlightTo>('/relative/url/to/flights', to).pipe(
+      map(to => this.mapFlightTo(to))
+    );
+  }
+
+  private mapFlight(flight: Flight): FlightTo {
+    // mapping logic
+  }
+
+  private mapFlightTo(flightTo: FlightTo): Flight {
+    // mapping logic
+  }
+
+}
+----
+
+== Token management
+
+// TODO
+
+// Either middleware or by hand - if more than one backend

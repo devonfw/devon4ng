@@ -1,0 +1,143 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+= Package Managers
+
+There are two major package managers currently used for JavaScript / TypeScript projects which leverage node.js as a build platform.
+
+1. https://www.npmjs.com/[npm]
+2. https://yarnpkg.com[yarn]
+
+Our recommendation is to use yarn but both package managers are fine.
+
+IMPORTANT: When using npm it is important to use a version greater 5.0 as npm 3 has major drawbacks compared to yarn.
+The following guide assumes that you are using npm >= 5 or yarn.
+
+Before you start reading further, please take a look at the docs:
+
+* https://yarnpkg.com/en/docs/getting-started[yarn getting started]
+* https://docs.npmjs.com/getting-started/what-is-npm[npm getting started]
+
+The following guide will describe best practices for working with yarn / npm.
+
+== Semantic Versioning
+
+When working with package managers it is very important to understand the concept of https://semver.org/[semantic versioning].
+
+[cols=">,^,^,^", options="header"]
+.Version example 1.2.3
+|=======
+|Version                        |1.             |2.             |3
+|Version name when incrementing |Major (2.0.0)  |Minor (1.3.0)  |Patch (1.2.4)
+|Has breaking changes           |yes            |no             |no
+|Has features                   |yes            |yes            |no
+|Has bugfixes                   |yes            |yes            |yes
+|=======
+
+The table gives an overview of the most important parts of semantic versioning.
+In the header version 1.2.3 is displayed.
+The first row shows the name and the resulting version when incrementing a part of the version.
+The next rows show specifics of the resulting version - e.g. a major version can have breaking changes, features and bugfixes.
+
+Packages from npm and yarn leverage semantic versioning and instead of selecting a fixed version one can specify a selector.
+The most common selectors are:
+
+* *^1.2.3*
+At least 1.2.3 - 1.2.4 or 1.3.0 can be used, 2.0.0 can not be used
+* *~1.2.3*
+At lease 1.2.3 - 1.2.4 can be used, 2.0.0 and 1.3.0 can not be used
+* *>=1.2.3*
+At least 1.2.3 - every version greater can also be used
+
+This achieves a lower number of duplicates.
+To give an example:
+
+If package A needs version 1.3.0 of package C and package B needs version 1.4.0 of package C one would end up with 4 packages.
+
+If package A needs version ^1.3.0 of package C and package B needs version 1.4.0 of package C one would end up with 3 packages.
+A would use the same version of C as B - 1.4.0.
+
+== Do not modify package.json and lock files by hand
+
+Dependencies are always added using a yarn or npm command.
+Altering the package.json, package-json.lock or yarn.lock file by hand is not recommended. 
+
+Always use a yarn or npm command to add a new dependency.
+
+Adding the package `express` with yarn to dependencies.
+
+```bash
+yarn add express
+```
+
+Adding the package `express` with npm to dependencies.
+
+```bash
+npm install express
+```
+
+== What does the lock file do
+
+The purpose of files `yarn.lock` and `package-json.lock` is to freeze versions for a short time.
+
+The following problem is solved:
+
+* Developer A upgrades the dependency `express` to fixed version `4.16.3`.
+* `express` has sub-dependency `accepts` with version selector `~1.3.5`
+* His local `node_modules` folder receives `accepts` in version `1.3.5`
+* On his machine everything is working fine
+* Afterward version `1.3.6` of `accepts` is published - it contains a major bug
+* Developer B now clones the repo and loads the dependencies.
+* He receives version `1.3.6` of `accepts` and blames developer A for upgrading to a broken version.
+
+Both `yarn.lock` and `package-json.lock` freeze all the dependencies.
+For example in yarn lock you will find.
+
+.yarn.lock example (excerp)
+```
+accepts@~1.3.5:
+  version "1.3.5"
+  resolved "[...URL to registry]"
+  dependencies:
+    mime-types "~2.1.18"
+    negotiator "0.6.1"
+
+mime-db@~1.33.0:
+  version "1.33.0"
+  resolved "[...URL to registry]"
+
+mime-types@~2.1.18:
+  version "2.1.18"
+  resolved "[...URL to registry]"
+  dependencies:
+    mime-db "~1.33.0"
+
+negotiator@0.6.1:
+  version "0.6.1"
+  resolved "[...URL to registry]"
+```
+
+The described problem is solved by the example yarn.lock file.
+
+* `accepts` is frozen at version `~1.3.5`
+* All of its sub-dependencies are also frozen.
+It needs `mime-types` at version `~2.1.18` which is frozen at `2.1.18`.
+`mime-types` needs `mime-db` at `~1.33.0` which is frozen at `1.33.0`
+
+Every developer will receive the same versions of every dependency.
+
+IMPORTANT: You have to make sure all your developers are using the same npm/yarn version - this includes the CI build.

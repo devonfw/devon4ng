@@ -1,0 +1,134 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+= Abstract Class Store
+
+The following solution presents a base class for implementing stores which handle state and its transitions.
+Working with the base class achieves:
+
+* common API across all stores
+* logging (when activated in the constructor)
+* state transitions are asynchronous by design - sequential order problems are avoided
+
+[source,ts]
+.Usage Example
+----
+@Injectable()
+export class ModalStore extends Store<ModalState> {
+
+  constructor() {
+    super({ isOpen: false }, !environment.production);
+  }
+
+  closeDialog() {
+    this.dispatchAction('Close Dialog', (currentState) => ({...currentState, isOpen: false}));
+  }
+
+  openDialog() {
+    this.dispatchAction('Open Dialog', (currentState) => ({...currentState, isOpen: true}));
+  }
+
+}
+----
+
+[source,ts]
+.Abstract Base Class Store
+----
+import { OnDestroy } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import { intersection, difference } from 'lodash';
+import { map, distinctUntilChanged, observeOn } from 'rxjs/operators';
+import { Subject } from 'rxjs/Subject';
+import { queue } from 'rxjs/scheduler/queue';
+import { Subscription } from 'rxjs/Subscription';
+
+interface Action<T> {
+  name: string;
+  actionFn: (state: T) => T;
+}
+
+/** Base class for implementing stores. */
+export abstract class Store<T> implements OnDestroy {
+
+  private actionSubscription: Subscription;
+  private actionSource: Subject<Action<T>>;
+  private stateSource: BehaviorSubject<T>;
+  state$: Observable<T>;
+
+  /**
+   * Initializes a store with initial state and logging.
+   * @param initialState Initial state
+   * @param logChanges When true state transitions are logged to the console.
+   */
+  constructor(initialState: T, public logChanges = false) {
+    this.stateSource = new BehaviorSubject<T>(initialState);
+    this.state$ = this.stateSource.asObservable();
+    this.actionSource = new Subject<Action<T>>();
+
+    this.actionSubscription = this.actionSource.pipe(observeOn(queue)).subscribe(action => {
+      const currentState = this.stateSource.getValue();
+      const nextState = action.actionFn(currentState);
+
+      if (this.logChanges) {
+        this.log(action.name, currentState, nextState);
+      }
+
+      this.stateSource.next(nextState);
+    });
+  }
+
+  /**
+   * Selects a property from the stores state.
+   * Will do distinctUntilChanged() and map() with the given selector.
+   * @param selector Selector function which selects the needed property from the state.
+   * @returns Observable of return type from selector function.
+   */
+  select<TX>(selector: (state: T) => TX): Observable<TX> {
+    return this.state$.pipe(
+      map(selector),
+      distinctUntilChanged()
+    );
+  }
+
+  protected dispatchAction(name: string, action: (state: T) => T) {
+    this.actionSource.next({ name, actionFn: action });
+  }
+
+  private log(actionName: string, before: T, after: T) {
+    const result: { [key: string]: { from: any, to: any} } = {};
+    const sameProbs = intersection(Object.keys(after), Object.keys(before));
+    const newProbs = difference(Object.keys(after), Object.keys(before));
+    for (const prop of newProbs) {
+      result[prop] = { from: undefined, to: (<any>after)[prop] };
+    }
+
+    for (const prop of sameProbs) {
+      if ((<any>before)[prop] !== (<any>after)[prop]) {
+        result[prop] = { from: (<any>before)[prop], to: (<any>after)[prop] };
+      }
+    }
+
+    console.log(this.constructor.name, actionName, result);
+  }
+
+  ngOnDestroy() {
+    this.actionSubscription.unsubscribe();
+  }
+
+}
+----

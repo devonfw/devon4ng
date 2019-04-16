@@ -1,0 +1,141 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+= File Structure
+
+== Toplevel
+
+The toplevel file structure is defined by Angular CLI. You might put this "toplevel file structure" into a subdirectory to facilitate your build, but this is not relevant for this guide. So the applications file structure relevant to this guide is the folder `/src/app` inside the part managed by Angular CLI.
+
+.Toplevel file structure shows feature modules
+[source]
+----
+    /src
+    └── /app                        
+        ├── /account-management          
+        ├── /billing
+        ├── /booking
+        ├── /core
+        ├── /shared
+        ├── /status
+        |
+        ├── app.module.ts
+        ├── app.component.spec.ts
+        ├── app.component.ts
+        └── app.routing-module.ts
+----
+
+Besides the definition of app module the `app` folder has feature modules on toplevel.
+The special modules _shared_ and _core_ are present as well.
+
+== Feature Modules
+
+A feature module contains the modules definition and two folders representing both layers.
+
+.Feature module file structure has both layers
+[source]
+----
+    /src
+    └── /app                        
+        └── /account-management          
+            ├── /components
+            ├── /services
+            |
+            ├── account-management.module.ts
+            ├── account-management.component.spec.ts
+            ├── account-management.component.ts
+            └── account-management.routing-module.ts
+----
+
+Additionally an entry component is possible. This would be the case in lazy loading scenarios.
+So `account-management.component.ts` would be only present if `account-management` is lazy loaded.
+Otherwise, the module's routes would be defined _Component-less_
+(see http://vsavkin.tumblr.com/post/146722301646/angular-router-empty-paths-componentless-routes[vsavkin blog post]).
+
+== Components Layer
+
+The component layer reflects the distinction between _Smart Components_ and _Dumb Components_.
+
+.Components layer file structure shows Smart Components on toplevel
+[source]
+----
+    /src
+    └── /app                        
+        └── /account-management          
+            └── /components
+                ├── /account-overview
+                ├── /confirm-modal
+                ├── /create-account
+                ├── /forgot-password
+                └── /shared
+----
+
+Every folder inside the `/components` folder represents a smart component. The only exception is `/shared`.
+`/shared` contains _Dumb Components_ shared across _Smart Components_ inside the components layer.
+
+.Smart components contain Dumb components
+[source]
+----
+    /src
+    └── /app               
+        └── /account-management          
+            └── /components
+                └── /account-overview
+                    ├── /user-info-panel
+                    |   ├── /address-tab
+                    |   ├── /last-activities-tab
+                    |   |
+                    |   ├── user-info-panel.component.html
+                    |   ├── user-info-panel.component.scss
+                    |   ├── user-info-panel.component.spec.ts
+                    |   └── user-info-panel.component.ts
+                    |
+                    ├── /user-header
+                    ├── /user-toolbar
+                    |
+                    ├── account-overview.component.html
+                    ├── account-overview.component.scss
+                    ├── account-overview.component.spec.ts
+                    └── account-overview.component.ts
+----
+
+Inside the folder of a _Smart Component_ the component is defined.
+Besides that are folders containing the _Dumb Components_ the _Smart Component_ consists of.
+This can be recursive - a _Dumb Component_ can consist of other _Dumb Components_.
+This is reflected by the file structure as well. This way the structure of a view becomes very readable.
+As mentioned before, if a _Dumb Component_ is used by multiple _Smart Components_ inside the components layer
+it is put inside the `/shared` folder inside the components layer.
+
+With this way of thinking the _shared_ module makes a lot of sense. If a _Dumb Component_ is used by multiple _Smart Components_
+from different feature modules, the _Dumb Component_ is placed into the _shared_ module.
+
+.The shared module contains Dumb Components shared across Smart Components from different feature modules
+[source]
+----
+    /src
+    └── /app               
+        └── /shared
+            └── /user-panel
+                |
+                ├── user-panel.component.html
+                ├── user-panel.component.scss
+                ├── user-panel.component.spec.ts
+                └── user-panel.component.ts
+----
+
+The layer folder `/components` is not necessary inside the _shared_ module.
+The _shared_ module only contains components!

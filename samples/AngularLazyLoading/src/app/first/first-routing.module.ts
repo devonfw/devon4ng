@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ContentComponent as ContentLeft} from './second-left/content/content.component';
 import { ContentComponent as ContentRight} from './second-right/content/content.component';
 import { FirstComponent } from './first/first.component';
 
@@ -10,11 +9,11 @@ const routes: Routes = [
     component: FirstComponent
   },
   {
-    path: 'first/second-left',
-    component: ContentLeft
+    path: 'second-left',
+    loadChildren: './second-left/second-left.module#SecondLeftModule'
   },
   {
-    path: 'first/second-right',
+    path: 'second-right',
     component: ContentRight
   }
 ];

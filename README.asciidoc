@@ -12,6 +12,7 @@ This repository contains the following assets:
 ** **AngularBasicPWA:** Project sample that contains an Angular progressive web app
 ** **AngularElements:** Project sample that builds into an `Angular Element`
 ** **AngularElementsTest:** Project sample created to use the `Angular Element`
+** **AngularLazyLoading:** Project sample using Lazy Loading
 ** **AppInitializer:** Project sample of `App Initializer`
 ** **ElectronTest:** Project sample of `Electron`
 ** **ErrorHandler:** Project sample of `Error Handler`

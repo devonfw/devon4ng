@@ -1,0 +1,147 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+= Routing
+
+A basic introduction to the Angular Router can be found in https://angular.io/guide/router[Angular Docs].
+
+This guide will show common tasks and best practices.
+
+== Defining Routes
+
+For each feature module and the app module all routes should be defined in a seperate module with the suffix `RoutingModule`.
+This way the routing modules are the only place where routes are defined.
+This pattern achieves a clear seperation of concernes.
+The following figure illustrates this.
+
+.Routing module declaration
+image::images/module-declaration.svg["Routing module declaration", width="450", link="images/module-declaration.svg"]
+
+It is important to define routes inside app routing module with `.forRoot()` and in feature routing modules with `.forChild()`.
+
+=== Example 1 - No Lazy Loading
+
+In this example two modules need to be configured with routes - AppModule and FlightModule.
+
+The following routes will be configured
+
+* `/` will redirect to `/search`
+* `/search` displays FlightSearchComponent (FlightModule)
+* `/search/print/:flightId/:date` displays FlightPrintComponent (FlightModule)
+* `/search/details/:flightId/:date` displays FlightDetailsComponent (FlightModule)
+* All other routes will display ErrorPage404 (AppModule)
+
+[source,ts]
+.app-routing.module.ts
+----
+const routes: Routes = [
+  { path: '', redirectTo: 'search', pathMatch: 'full' },
+  { path: '**', component: ErrorPage404 }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+----
+
+[source,ts]
+.flight-search-routing.module.ts
+----
+const routes: Routes = [
+  {
+    path: 'search', children: [
+      { path: '', component: FlightSearchComponent },
+      { path: 'print/:flightId/:date', component: FlightPrintComponent },
+      { path: 'details/:flightId/:date', component: FlightDetailsComponent }    
+    ]
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
+})
+export class FlightSearchRoutingModule { }
+----
+
+TIP: The import order inside AppModule is important.
+AppRoutingModule needs to be imported *after* FlightModule.
+
+=== Example 2 - Lazy Loading
+
+Lazy Loading is a good practice when the application has multiple feature areas and a user might not visit every dialog.
+Or at least he might not need every dialog up front.
+
+The following example will configure the same routes as example 1 but will lazy load FlightModule.
+
+[source,ts]
+.app-routing.module.ts
+----
+const routes: Routes = [
+  { path: '/search', loadChildren: 'app/flight-search/flight-search.module#FlightSearchModule' },
+  { path: '**', component: ErrorPage404 }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+----
+
+[source,ts]
+.flight-search-routing.module.ts
+----
+const routes: Routes = [
+  {
+    path: '', children: [
+      { path: '', component: FlightSearchComponent },
+      { path: 'print/:flightId/:date', component: FlightPrintComponent },
+      { path: 'details/:flightId/:date', component: FlightDetailsComponent }    
+    ]
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
+})
+export class FlightSearchRoutingModule { }
+----
+
+== Triggering Route Changes
+
+With Angular you have two ways of triggering route changes.
+
+1. Declarative with bindings in component HTML templates
+2. Programmatic with Angular `Router` service inside component classes
+
+On the one hand, architecture-wise it is a much cleaner solution to trigger route changes in _Smart Components_.
+This way you have every UI event that should trigger a navigation handled in one place - in a _Smart Component_. 
+It becomes very easy to look inside the code for every navigation, that can occure.
+Refactoring is also much easier, as there are no navigation events "hidden" in the HTML templates
+
+On the other hand, in terms of accessibility and SEO it is a better solution to rely on bindings in the view - e.g. by using Angulars router-link directive.
+This way screen readers and the Google crawler can move through the page easily.
+
+TIP: If you do not have to support accessibility (screen readers, etc.) and to care about SEO (Google rank, etc.),
+then you should aim for triggering navigations only in _Smart Components_.
+
+.Triggering navigation
+image::images/triggering-navigation.svg["Triggering navigation", link="images/triggering-navigation.svg", width=350,height=200]

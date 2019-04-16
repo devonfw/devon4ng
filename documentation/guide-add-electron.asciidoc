@@ -1,0 +1,536 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+== Add Electron to an Angular application
+This cookbook recipe explains how to integrate Electron in an Angular 6+ application. https://electronjs.org/[Electron] is a framework for creating native applications with web technologies like JavaScript, HTML, and CSS. As an example, very well known applications as Visual Studio Code, Atom, Slack or Skype (and many more) are using Electron too. 
+
+NOTE: At the moment of this writing Angular 7.2.3 and Electron 4.0.2 were the versions available. 
+
+Here are the steps to achieve this goal. Follow them in order. 
+
+=== Add Electron and other relevant dependencies
+There are two different approaches to add the dependencies in the `package.json` file: 
+
+* Writing the dependencies directly in that file.
+* Installing using `npm install` or `yarn add`. 
+
+IMPORTANT: Please remember if the project has a `package-lock.json` or `yarn.lock` file use `npm` or `yarn` respectively.
+
+In order to add the dependencies directly in the `package.json` file, include the following lines in the `devDependencies` section:
+
+[source, json]
+----
+"devDependencies": {
+...
+    "electron": "^4.0.2",
+    "electron-builder": "^20.38.5",
+    "electron-reload": "^1.4.0",
+    "npm-run-all": "^4.1.5",
+    "npx": "^10.2.0",
+    "wait-on": "^3.2.0",
+    "webdriver-manager": "^12.1.1"
+...
+},
+----
+
+As indicated above, instead of this `npm install` can be used:
+
+[source, bash]
+----
+$ npm install -D electron electron-builder electron-reload npm-run-all npx wait-on webdriver-manager 
+----
+
+Or with `yarn`:
+
+[source, bash]
+----
+$ yarn add -D electron electron-builder electron-reload npm-run-all npx wait-on webdriver-manager
+----
+
+=== Add Electron build configuration
+
+In order to configure electron builds properly a `electron-builder.json` must be included in the root folder of the application. For more information and fine tuning please refer to the https://www.electron.build/configuration/configuration[Electron Builder official documentation].
+
+The contents of the file will be something similar to the following:
+
+[source, json]
+----
+{
+  "productName": "app-name",
+  "directories": {
+    "output": "release/"
+  },
+  "files": [
+    "**/*",
+    "!**/*.ts",
+    "!*.code-workspace",
+    "!LICENSE.md",
+    "!package.json",
+    "!package-lock.json",
+    "!src/",
+    "!e2e/",
+    "!hooks/",
+    "!angular.json",
+    "!_config.yml",
+    "!karma.conf.js",
+    "!tsconfig.json",
+    "!tslint.json"
+  ],
+  "win": {
+    "icon": "dist/assets/icons",
+    "target": ["portable"]
+  },
+  "mac": {
+    "icon": "dist/assets/icons",
+    "target": ["dmg"]
+  },
+  "linux": {
+    "icon": "dist/assets/icons",
+    "target": ["AppImage"]
+  }
+}
+----
+
+Theres two important things in this file:
+  
+  1. "output": this is where electron builder is going to build our application
+
+  2. "icon": in every OS possible theres an icon parameter, the route to the icon folder that will be created after building with angular needs to be used here. This will make it so the electron builder can find the icons and build.
+
+=== Include postinstall and PostCSS configuration scripts 
+It is mandatory to include some _postinstall_ scripts at the root folder in order to allow Angular using Electron module (native node modules). In order to make easier this process any project can use the files from our https://github.com/devonfw/my-thai-star[My Thai Star reference application].
+
+==== postinstall.js
+[source, JavaScript]
+----
+const fs = require('fs');
+const f_angular = 'node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/webpack-configs/browser.js';
+
+fs.readFile(f_angular, 'utf8', function (err, data) {
+  if (err) {
+    return console.log(err);
+  }
+  var result = data.replace(/target: "electron-renderer",/g, '');
+  var result = result.replace(/target: "web",/g, '');
+  var result = result.replace(/return \{/g, 'return {target: "electron-renderer",');
+
+  fs.writeFile(f_angular, result, 'utf8', function (err) {
+    if (err) return console.log(err);
+  });
+});
+----
+
+==== postinstall-web.js
+[source, JavaScript]
+----
+const fs = require('fs');
+const f_angular = 'node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/webpack-configs/browser.js';
+
+fs.readFile(f_angular, 'utf8', function (err, data) {
+  if (err) {
+    return console.log(err);
+  }
+  var result = data.replace(/target: "electron-renderer",/g, '');
+  var result = result.replace(/target: "web",/g, '');
+  var result = result.replace(/return \{/g, 'return {target: "web",');
+
+  fs.writeFile(f_angular, result, 'utf8', function (err) {
+    if (err) return console.log(err);
+  });
+});
+----
+
+==== postcss.config.js
+In case a custom _PostCSS_ configuration is required, an optional `postcss.config.js` could be included. This is only intended to change the _PostCSS_ behaviour of the previous `postinstall` scripts, but in most cases will not be necessary. For that reason in My thai Star there is a minimum file configuration that indeed does nothing:
+
+[source, JavaScript]
+----
+module.exports = {};
+----
+
+=== Create the necessary typescript configurations and typings
+
+In order to initiate electron in an angular app we need to modify the `tsconfig.json` and create `tsconfig-serve.json` in the root. After that, in order to use the method `require` of window it is necessary to create a typings file.
+
+==== tsconfig.json
+
+This file needs to be modified to add the `main.ts` and `src/\**/*` folders excluding the `node_modules`:
+
+[source,json]
+----
+{
+....
+  },
+  "include": [
+    "main.ts",
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+....
+}
+----
+
+==== tsconfig-serve.json
+
+In the root the file `tsconfig-serve` needs to be created. This typescript config file is going to be used when we serve electron:
+
+[source, json]
+----
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "es2016",
+      "es2015",
+      "dom"
+    ]
+  },
+  "include": [
+    "main.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+} 
+----
+
+=== Modify angular.json
+
+The file `angular.json` needs to be modified so the project is build inside dist without a folder.
+
+[source,TypeScript]
+----
+{
+....
+  "architect": {
+    ....
+    "build": {
+      outputPath": "dist",
+      ....
+}
+----
+
+==== typings.d.ts
+Finally, a typings file is necessary to be able to use some methods from Window later in the electron service, this file is going to be created inside `src/`:
+
+[source,TypeScript]
+----
+/* SystemJS module definition */
+declare var nodeModule: NodeModule;
+interface NodeModule {
+  id: string;
+}
+
+declare var window: Window;
+interface Window {
+  process: any;
+  require: any;
+}
+----
+
+=== Add Angular Electron services and directives
+In order to use Electron's webview tag and its methods inside Angular application our project needs two Angular specific files: the directive `webview.directive.ts` and the service `electron.service.ts`. We recommend to create this files inside a **shared** module folder, although they have to be declared inside the main module `app.module.ts`.
+
+==== webview.directive.ts
+
+[source,TypeScript]
+----
+import { Directive } from '@angular/core';
+
+@Directive({
+  selector: '[webview]',
+})
+export class WebviewDirective {}
+
+----
+
+==== electron.service.ts
+[source,TypeScript]
+----
+import { Injectable } from '@angular/core';
+
+// If you import a module but never use any of the imported values other than as TypeScript types,
+// the resulting javascript file will look as if you never imported the module at all.
+import { ipcRenderer, webFrame, remote } from 'electron';
+import * as childProcess from 'child_process';
+import * as fs from 'fs';
+
+@Injectable()
+export class ElectronService {
+
+  ipcRenderer: typeof ipcRenderer;
+  webFrame: typeof webFrame;
+  remote: typeof remote;
+  childProcess: typeof childProcess;
+  fs: typeof fs;
+
+  constructor() {
+    // Conditional imports
+    if (this.isElectron()) {
+      this.ipcRenderer = window.require('electron').ipcRenderer;
+      this.webFrame = window.require('electron').webFrame;
+      this.remote = window.require('electron').remote;
+
+      this.childProcess = window.require('child_process');
+      this.fs = window.require('fs');
+    }
+  }
+
+  isElectron = () => {
+    return window && window.process && window.process.type;
+  }
+}
+
+----
+
+==== Update `app.module.ts` and `app-routing.module.ts`
+
+As an example, the `electron.service.ts` and `webview.directive.ts` files are located inside a `shared` module:
+
+[source,TypeScript]
+----
+// imports
+import { ElectronService } from './shared/electron/electron.service';
+import { WebviewDirective } from './shared/directives/webview.directive';
+
+@NgModule({
+  declarations: [AppComponent, WebviewDirective],
+  imports: [...],
+  providers: [ElectronService],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+----
+
+After that is done, the use of hash needs to be allowed so electron can reload content properly. On the `app-routing.module.ts`:
+
+[source,TypeScript]
+----
+....
+  imports: [RouterModule.forRoot(routes,
+    {
+      ....
+      useHash: true
+    },
+  )],
+----
+
+==== Usage
+In order to use Electron in any component class the `electron.service.ts` must be injected:
+
+[source,TypeScript]
+----
+constructor(
+  // other injected services
+  public electronService: ElectronService,
+) {
+  // previous code...
+
+  if (electronService.isElectron()) {
+    // Do electron stuff
+  } else {
+    // Do other web stuff
+  }
+
+}
+----
+
+NOTE: In case more Electron actions are needed in Angular components or services the `electron.service.ts` must be updated accordingly.
+
+=== Create the electron window in `main.ts`
+
+In order to use electron, a file needs to be created at the root of the application (`main.ts`). This file will create a window with different settings checking if we are using `--serve` as an argument:
+
+[source, typescript]
+----
+import { app, BrowserWindow, screen } from 'electron';
+import * as path from 'path';
+import * as url from 'url';
+
+let win: any;
+let serve: any;
+const args: any = process.argv.slice(1);
+serve = args.some((val) => val === '--serve');
+
+ function createWindow(): void {
+  const electronScreen: any = screen;
+  const size: any = electronScreen.getPrimaryDisplay().workAreaSize;
+
+   // Create the browser window.
+  win = new BrowserWindow({
+    x: 0,
+    y: 0,
+    width: size.width,
+    height: size.height,
+  });
+
+   if (serve) {
+    // tslint:disable-next-line:no-require-imports
+    require('electron-reload')(__dirname, {
+      electron: require(`${__dirname}/node_modules/electron`),
+    });
+    win.loadURL('http://localhost:4200');
+  } else {
+    win.loadURL(
+      url.format({
+        pathname: path.join(__dirname, 'dist/index.html'),
+        protocol: 'file:',
+        slashes: true,
+      }),
+    );
+  }
+
+   // Uncoment the following line if you want to open the DevTools by default
+  // win.webContents.openDevTools();
+
+   // Emitted when the window is closed.
+  win.on('closed', () => {
+    // Dereference the window object, usually you would store window
+    // in an array if your app supports multi windows, this is the time
+    // when you should delete the corresponding element.
+    // tslint:disable-next-line:no-null-keyword
+    win = null;
+  });
+}
+
+ try {
+  // This method will be called when Electron has finished
+  // initialization and is ready to create browser windows.
+  // Some APIs can only be used after this event occurs.
+  app.on('ready', createWindow);
+
+   // Quit when all windows are closed.
+  app.on('window-all-closed', () => {
+    // On OS X it is common for applications and their menu bar
+    // to stay active until the user quits explicitly with Cmd + Q
+    if (process.platform !== 'darwin') {
+      app.quit();
+    }
+  });
+
+   app.on('activate', () => {
+    // On OS X it's common to re-create a window in the app when the
+    // dock icon is clicked and there are no other windows open.
+    if (win === null) {
+      createWindow();
+    }
+  });
+} catch (e) {
+  // Catch Error
+  // throw e;
+}
+----
+
+
+=== Add the electron window and improve the `package.json` scripts
+
+Inside `package.json` the electron window that will be transformed to `main.js` when building needs to be added.
+
+[source,json]
+----
+{
+  ....
+  "main": "main.js",
+  "scripts": {
+  ....
+}
+----
+
+The `scripts` section in the `package.json` can be improved to avoid running too verbose commands. As a very complete example we can take a look to the My Thai Star's `scripts` section and copy the lines useful in your project.
+
+[source,json]
+----
+  "scripts": {
+    "postinstall": "npm run postinstall:electron && npx electron-builder install-app-deps",
+    "postinstall:web": "node postinstall-web",
+    "postinstall:electron": "node postinstall",
+    ".": "sh .angular-gui/.runner.sh",
+    "ng": "ng",
+    "start": "npm run postinstall:web && ng serve --proxy-config proxy.conf.json -o",
+    "start:electron": "npm run postinstall:electron && npm-run-all -p serve electron:serve",
+    "compodoc": "compodoc -p src/tsconfig.app.json -s",
+    "test": "ng test --browsers Chrome",
+    "test:ci": "npm run postinstall:web && ng test --browsers ChromeHeadless --watch=false",
+    "test:firefox": "ng test --browsers Firefox",
+    "test:ci:firefox": "ng test --browsers FirefoxHeadless --watch=false",
+    "test:firefox-dev": "ng test --browsers FirefoxDeveloper",
+    "test:ci:firefox-dev": "ng test --browsers FirefoxDeveloperHeadless --watch=false",
+    "test:electron": "npm run postinstall:web && ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "e2e:electron": "npm run postinstall:web && ng e2e",
+    "ngsw-config": "npx ngsw-config dist ngsw-config.json",
+    "ngsw-copy": "cp node_modules/@angular/service-worker/ngsw-worker.js dist/",
+    "serve": "ng serve",
+    "serve:open": "npm run start",
+    "serve:pwa": "npm run build:pwa && http-server dist -p 8080",
+    "serve:prod": "npm run postinstall:web && ng serve --open --prod",
+    "serve:prodcompose": "npm run postinstall:web && ng serve --open --configuration=prodcompose",
+    "serve:node": "npm run postinstall:web && ng serve --open --configuration=node",
+    "build": "ng build",
+    "build:pwa": "npm run postinstall:web && ng build --configuration=pwa --prod --build-optimizer && npm run ngsw-config && npm run ngsw-copy",
+    "build:prod": "npm run postinstall:web && ng build --prod --build-optimizer",
+    "build:prodcompose": "npm run postinstall:web && ng build --configuration=prodcompose ",
+    "build:electron": "npm run postinstall:electron && npm run electron:serve-tsc && ng build --base-href \"\" ",
+    "build:electron:dev": "npm run build:electron -- -c dev",
+    "build:electron:prod": "npm run build:electron -- -c production",
+    "electron:start": "npm run postinstall:electron && npm-run-all -p serve electron:serve",
+    "electron:serve-tsc": "tsc -p tsconfig-serve.json",
+    "electron:serve": "wait-on http-get://localhost:4200/ && npm run electron:serve-tsc && electron . --serve",
+    "electron:local": "npm run build:electron:prod && electron .",
+    "electron:linux": "npm run build:electron:prod && npx electron-builder build --linux",
+    "electron:windows": "npm run build:electron:prod && npx electron-builder build --windows",
+    "electron:mac": "npm run build:electron:prod && npx electron-builder build --mac"
+  },
+----
+
+Here the important thing to look out for is that the base href when building electron can be changed as needed. In our case:
+
+[source, json]
+----
+    "build:electron": "npm run postinstall:electron && npm run electron:serve-tsc && ng build --base-href \"\" ",
+----
+
+NOTE: Some of these lines are intended to be shortcuts used in other scripts. Do not hesitate to modify them depending on your needs.
+
+Some usage examples:
+
+[source,bash]
+----
+$ npm run electron:start                # Serve Angular app and run it inside electron
+$ npm run electron:local                # Serve Angular app for production and run it inside electron
+$ npm run electron:windows              # Build Angular app for production and package it for Windows OS
+----
+
+[source,bash]
+----
+$ yarn run electron:start                # Serve Angular app and run it inside electron
+$ yarn run electron:local                # Serve Angular app for production and run it inside electron
+$ yarn run electron:windows              # Build Angular app for production and package it for Windows OS
+----

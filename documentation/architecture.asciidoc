@@ -1,0 +1,78 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+= Architecture
+
+The following principles and guidelines are based on Angular Styleguide - especially Angular modules (see https://angular.io/guide/ngmodule[Angular Docs]).
+It extends those where additional guidance is needed to define an architecture which is
+
+* maintainable across applications and teams
+* easy to understand, especially when coming from a classic Java/.Net perspective - so whenever possible the same principles apply both to the server and the client  
+* pattern based to solve common problems
+* based on best of breed solutions coming from open source and Capgemini project experiences
+* gives as much guidance as necessary and as little as possible
+
+== Overview
+
+When using Angular the web client architecture is driven by the framework in a certain way Google and the Angular community think about web client architecture.
+Angular gives an opinion on how to look at architecture.
+It is component based like devon4j but uses different terms which are common language in web application development.
+The important term is _module_ which is used instead of _component_. The primary reason is the naming collision with the _Web Components_ standard (see https://www.w3.org/standards/techs/components[Web Components]). +
+To clarify this:
+
+* A _component_ describes an UI element containing HTML, CSS and JavaScript - structure, design and logic encapsulated inside a reusable container called component. 
+* A _module_ describes an applications feature area. The application flight-app may have a module called booking.
+
+An application developed using Angular consists of multiple modules.
+There are feature modules and special modules described by the Angular Styleguide - https://angular.io/guide/ngmodule#the-core-module[_core_] and https://angular.io/guide/ngmodule#shared-module[_shared_].
+Angular or Angular Styleguide give no guidance on how to structure a module internally.
+This is where this architecture comes in.
+
+=== Layers
+
+The architecture describes two layers. The terminology is based on common language in web development.
+
+.Layers
+image::images/architecture-layers.svg["Architecture - Layers", width="450", link="images/architecture-layers.svg"]
+
+* link:components-layer[*Components Layer*] encapsulates components which present the current application state.
+Components are separated into link:components-layer[_Smart_ and _Dumb Components_].
+The only logic present is view logic inside _Smart Components_.
+
+* link:services-layer[*Services Layer*] is more or less what we call 'business logic layer' on the server side.
+The layer defines the applications state, the transitions between state and classic business logic.
+Stores contain application state over time to which _Smart Components_ subscribe to.
+Adapters are used to perform XHRs, WebSocket connections, etc.
+The business model is described inside the module.
+Use case services perform business logic needed for use cases.
+A use case services interacts with the store and adapters.
+Methods of use case services are the API for _Smart Components_.
+Those methods are _Actions_ in reactive terminology.
+
+=== Modules
+
+Angular requires a module called _app_ which is the main entrance to an application at runtime - this module gets bootstrapped.
+Angular Styleguide defines feature modules and two special modules - https://angular.io/guide/ngmodule#the-core-module[_core_] and https://angular.io/guide/ngmodule#shared-module[_shared_]. 
+
+.Modules
+image::images/architecture-modules.svg["Architecture - Modules", width="450", link="images/architecture-modules.svg"]
+
+A feature module is basically a vertical cut through both layers.
+The _shared_ module consists of components shared across feature modules.
+The _core_ module holds services shared across modules.
+So _core_ module is a module only having a services layer
+and _shared_ module is a module only having a components layer.

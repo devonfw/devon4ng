@@ -1,0 +1,167 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+== Angular Library
+
+`Angular CLI` provides us with methods that allow the creation of a library. After that, using either packet manager (`npm` or `yarn`) the library can be build and packed which will allow later to install/publish it.
+
+== Whats a library?
+
+From link:https://en.wikipedia.org/wiki/Library_(computing)[wikipedia]: a library is a collection of non-volatile resources used by computer programs, often for software development. These may include configuration data, documentation, help data, message templates, pre-written code and subroutines, classes, values or type specifications.
+
+== How to build a library
+
+In this section, a library is going to be build step by step. 
+
+=== Creating an empty application
+
+First, using `Angular CLI` we are going to generate a empty application which will be later filled with the generated library. In order to do so, `Angular CLI` allows us to add to `ng new "application-name"` an option (`--create-application`). This option is going to tell `Angular CLI` not to create the initial `app` project. This is convenient since a library is going to be generated in later steps. Using this command `ng new "application-name" --create-application=false` an empty project with the name wanted is created.
+
+
+[source]
+----
+ng new "application-name" --create-application=false
+----
+
+=== Generating a library
+
+After generating an empty application, a library is going to be generated. Inside the folder of the project, the `Angular CLI` command `ng generate library "library-name"` is going to generate the library as a project (`projects/"library-name"`). As an addition, the option `--prefix="library-prefix-wanted"` allows us to switch the default prefix that Angular generated with (`lib`). Using the option to change the prefix the command will look like this `ng generate library "library-name" --prefix="library-prefix-wanted"`.
+
+[source]
+----
+ng generate library "library-name" --prefix="library-prefix-wanted"
+----
+
+=== Generating/Modifying in our library
+
+In the last step we generated a library. This generates automaticly a `module`,`service` and `component` inside (`projects/"library-name"`) that we can modify adding new methods, components etc that we want to use in other projects. We can generate other elements, using the usual `Angular CLI` generate commands adding the option `--project="library-name"` is going to allow to generate elements within our project . An example of this is: `ng generate service "name" --project="library-name"`.
+
+[source]
+----
+ng generate "element" "name" --project="library-name"
+----
+
+=== Exporting the generated things
+
+Inside the library (`projects/"library-name`) theres a `public_api.ts` which is the file that exports the elements inside the library. In case we generated other things, that file needs to be modified adding the extra exports with the generated elements. In addition, changing the library version is possible in the file `package.json`.
+
+=== Building our library
+
+Once we added the necessary exports, in order to use the library in other applications, we need to build the library. The command `ng build "library-name"` is going to build the library, generating in `"project-name"/dist/"library-name"` the necessary files.
+
+[source]
+----
+ng build "library-name"
+----
+
+=== Packing and installing our library in other projects
+
+In this step we are going to pack the build library and install/add it on other projects. In order to do so, we need to travel inside the `dist/"library-name"` before using npm or yarn.
+
+==== npm 
+
+In order to use the library in other applications, there are two steps needed:
+
+    1. From inside the library dist folder, the library is going to get packed using `npm pack`. This is going to generate a `.tgz` file with the library name and the version.
+
+    2. (optional).- At this point  the generated `.tgz` can be published, this step is not going to be explained in this guide. In this case, in the next step you would install the publicated version instead of the `.tgz`.
+
+    3. From inside the application where the library is going to get used, using the command `npm install "path-to-tgz"/"library-name-version.tgz"` allows us to install the `.tgz` that got generated in the first step.
+
+==== yarn
+
+In order to use the library in other applications, there are two steps needed:
+
+    1. From inside the library dist folder, the library is going to get packed using `yarn pack`. This is going to generate a `.tgz` file with the library name and the version.
+
+    2. (optional).- At this point  the generated `.tgz` can be published, this step is not going to be explained in this guide. In this case, in the next step you would install the publicated version instead of the `.tgz`.
+
+    3. From inside the application where the library is going to get used, using the command `yarn add "path-to-tgz"/"library-name-version.tgz"` allows us to install the `.tgz` that got generated in the first step.
+
+=== Using the library
+
+Finally, once the library was installed with either packet manager, you can start using the elements from inside like they would be used in a normal element inside the application. Example `app.component.ts`:
+
+[source, TypeScript]
+----
+import { Component, OnInit } from '@angular/core';
+import { MyLibraryService } from 'my-library';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent implements OnInit {
+
+  toUpper: string;
+
+  constructor(private myLibraryService: MyLibraryService) {}
+  title = 'devon4ng library test';
+  ngOnInit(): void {
+    this.toUpper = this.myLibraryService.firstLetterToUpper('test');
+  }
+}
+----
+
+Example `app.component.html`:
+
+[source, TypeScript]
+----
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+</div>
+<h2>Here is my library service being used: {{toUpper}}</h2>
+<lib-my-library></lib-my-library>
+----
+
+Example `app.module.ts`:
+
+[source, TypeScript]
+----
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
+import { MyLibraryModule } from 'my-library';
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MyLibraryModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+----
+
+The result from using the library:
+
+image::images/angular-library/result.png[, link="images/angular-library/result.png"]
+
+
+

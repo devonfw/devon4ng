@@ -1,0 +1,147 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+= Components Layer
+
+The components layer encapsulates all components presenting the current application view state, which means data to be shown to the user.
+The term component refers to a component described by the standard https://www.w3.org/standards/techs/components[Web Components].
+So this layer has all Angular components, directives and pipes defined for an application.
+The main challenges are:
+
+* how to structure the components layer (see link:guide-file-structure[File Structure Guide])
+* decompose components into maintainable chunks (see link:guide-component-decomposition[Component Decomposition Guide])
+* handle component interaction
+* manage calls to the services layer
+* apply a maintainable data and eventflow throughout the component tree
+
+== Smart and Dumb Components
+
+The architecture applies the concept of _Smart_ and _Dumb Components_ (syn. _Containers_ and _Presenters_).
+The concept means that components are devided into _Smart_ and _Dumb Components_.
+
+A _Smart Component_ typically is a toplevel dialog inside the component tree.
+
+* a component, that can be routed to
+* a modal dialog
+* a component, which is placed inside `AppComponent`
+
+A _Dumb Component_ can be used by one to many _Smart Components_.
+Inside the component tree a _Dumb Component_ is a child of a _Smart Component_.
+
+.Component tree example
+image::images/component-tree.svg["Component Tree", width="450", link="images/component-tree.svg", align="center"]
+
+As shown the topmost component is always the `AppComponent` in Angular applications.
+The component tree describes the hierarchy of components starting from `AppComponent`.
+The figure shows _Smart Components_ in blue and _Dumb Components_ in green.
+`AppComponent` is a _Smart Component_ by definition.
+Inside the template of `AppComponent` placed components are static components inside the component tree.
+So they are always displayed.
+In the example `OverviewComponent` and `DetailsComponent` are rendered by Angular compiler depending on current URL the application displays.
+So `OverviewComponents` subtree is displayed if the URL is `/overview` and `DetailsComponents` subtree is displayed if the URL is `/details`.
+To clarify this distinction further the following table shows the main differences.
+
+.Smart vs Dumb Components
+|===
+|_Smart Components_ |_Dumb Components_
+
+|contain the current view state
+|show data via binding (`@Input`) and contain no view state
+
+|handle events emited by _Dumb Components_
+|pass events up the component tree to be handled by _Smart Components_ (`@Output`)
+
+|call the services layer
+|never call the services layer
+
+|use services
+|do not use services
+
+|consists of n _Dumb Components_
+|is independent of _Smart Components_
+|===
+
+== Interaction of Smart and Dumb Components
+
+With the usage of the _Smart_ and _Dumb Components_ pattern one of the most important part is component interaction.
+Angular comes with built in support for component interaction with `@Input()` and `@Output()` Decorators.
+The following figure illustrates an unidirectional data flow.
+
+* Data always goes down the component tree - from a _Smart Component_ down its children.
+* Events bubble up, to be handled by a _Smart Component_.
+
+.Smart and Dumb Component Interaction
+image::images/smart-dumb-components-interaction.svg["Smart and Dumb Components Interaction", width="450", link="images/smart-dumb-components-interaction.svg", align="center"]
+
+As shown a _Dumb Components_ role is to define a signature by declaring Input and Output Bindings.
+
+* `@Input()` defines what data is necessary for that component to work
+* `@Output()` defines which events can be listened on by the parent component
+
+.Dumb Components define a signature
+[source,ts]
+----
+export class ValuePickerComponent {
+
+  @Input() columns: string[];
+  @Input() items: {}[];
+  @Input() selected: {};
+  @Input() filter: string;
+  @Input() isChunked = false;
+  @Input() showInput = true;
+  @Input() showDropdownHeader = true;
+
+  @Output() elementSelected = new EventEmitter<{}>();
+  @Output() filterChanged = new EventEmitter<string>();
+  @Output() loadNextChunk = new EventEmitter();
+  @Output() escapeKeyPressed = new EventEmitter();
+
+}
+----
+
+The example shows the _Dumb Component_ `ValuePickerComponent`.
+It describes seven input bindings with `isChunked`, `showHeader` and `showDropdownHeader` being non mandatory as they have a default value.
+Four output bindings are present. Typically, a _Dumb Component_ has very little code to no code inside the TypeScript class.  
+
+.Smart Components use the Dumb Components signature inside the template 
+[source,html]
+----
+<div>
+
+  <value-input
+    ...>
+  </value-input>
+
+  <value-picker
+    *ngIf="isValuePickerOpen"
+    [columns]="columns"
+    [items]="filteredItems"
+    [isChunked]="isChunked"
+    [filter]="filter"
+    [selected]="selectedItem"
+    [showDropdownHeader]="showDropdownHeader"
+    (loadNextChunk)="onLoadNextChunk()"
+    (elementSelected)="onElementSelected($event)"
+    (filterChanged)="onFilterChanged($event)"
+    (escapeKeyPressed)="onEscapePressedInsideChildTable()">
+  </value-picker>
+
+</div>
+----
+
+Inside the _Smart Components_ template the events emitted by _Dumb Components_ are handled.
+It is a good practice to name the handlers with the prefix `on*` (e.g. `onInputChanged()`).

@@ -1,0 +1,306 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+= Angular Progressive Web App
+
+Progresive web applications (PWAs) are web application that offer better user experience than the traditional ones. In general, they solve problems related with reliability and speed:
+
+* _Reliability_:  PWAs are stable. In this context stability means than even with slow connections or even with no network at all, the application still works. To achieve this, some basic resources like styles, fonts, requests, ... are stored; due to this caching, it is not possible to assure that the content is always up-to-date.
+* _Speed_: When an users opens an application, he or she will expect it to load almost inmediately (almost 53% of users abandon sites that take longer that 3 seconds, source: https://developers.google.com/web/progressive-web-apps/#fast).
+
+PWAs uses a script called https://developers.google.com/web/fundamentals/primers/service-workers/[service worker], which runs in background and essentially act as proxy between web app and network, intercepting requests and acting depending on the network conditions.
+
+= Assumptions
+
+This guide assumes that you already have installed:
+
+* Node.js
+* npm package manager
+* Angular CLI
+
+= Sample Application
+
+.Basic angular PWA.
+image::images/angular/angular-pwa/mts-pwa-rec.png["My thai star recommendation", width=800 link="images/angular/angular-pwa/mts-pwa-rec.png"]
+
+To explain how to build PWAs using angular, a basic application is going to be built. This app will be able to ask for resources and save in the cache in order to work even offline.
+
+== Step 1: Create a new project
+
+This step can be completed with one simple command: `ng new <name>`, where <names> is the name for the app. In this case, the app is going to be named *basic-ng-pwa*.
+
+== Step 2: Create a service
+
+Web applications usually uses external resources, making necessary the addition of services which can get those resources. This application gets a dish from My Thai Star's back-end and shows it. To do so, a new service is going to be created.
+
+* go to project folder: `cd basic-ng-pwa`
+* run `ng generate service data`
+* Modify *data.service.ts*, *environment.ts*, *environment.prod.ts*
+
+To retrieve data with this service, you have to import the module HttpClient and add it to the service's contructor. Once added, use it to create a function *getDishes()* that sends http request to My Thai Start's back-end. The URL of the back-end can be stored as an environment variable *MY_THAI_STAR_DISH*.
+
+*data.service.ts*
+
+[source,ts]
+----
+  ...
+  import { HttpClient } from '@angular/common/http';
+  import { MY_THAI_STAR_DISH } from '../environments/environment';
+  ...
+
+  export class DataService {
+    constructor(private http: HttpClient) {}
+
+    /* Get data from Back-end */
+    getDishes() {
+      return this.http.get(MY_THAI_STAR_DISH);
+    }
+    ...
+  }
+----
+
+*environments.ts*
+
+[source,ts]
+  ...
+  export const MY_THAI_STAR_DISH =
+  'http://de-mucdevondepl01:8090/api/services/rest/dishmanagement/v1/dish/1';
+  ...
+
+*environments.prod.ts*
+
+[source,ts]
+  ...
+  export const MY_THAI_STAR_DISH =
+  'http://de-mucdevondepl01:8090/api/services/rest/dishmanagement/v1/dish/1';
+  ...
+
+== Step 3: Use the service
+
+The component AppComponent implements the interface OnInit and inside its method ngOnInit() the suscription to the services is done. When a dish arrives, it is saved and shown (app.component.html).
+
+[source,ts]
+----
+  ...
+  import { DataService } from './data.service';
+  export class AppComponent implements OnInit {
+  dish: { name: string; description: string } = { name: '', description: ''};
+
+  ...
+  ngOnInit() {
+    this.data
+      .getDishes()
+      .subscribe(
+        (dishToday: { dish: { name: string; description: string } }) => {
+          this.dish = {
+            name: dishToday.dish.name,
+            description: dishToday.dish.description,
+          };
+        },
+      );
+  }
+}
+----
+
+== Step 4: Structures, styles and updates
+This step shows code interesting inside the sample app. The complete content can be found in https://github.com/devonfw/devon4ng/tree/master/samples/AngularBasicPWA[devon4ng samples].
+
+*index.html*
+
+To use the Montserrat font add the following link inside the tag header.
+
+[source,html]
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+*styles.scss* 
+
+[source,css]
+  body {
+    ...
+    font-family: 'Montserrat', sans-serif;
+  }
+
+*app.component.ts*
+
+This file is also used to reload the app if there are any changes.
+
+* _SwUpdate_: This object comes inside the @angular/pwa package and it is used to detect changes and reload the page if needed.
+
+[source,ts]
+----
+  ...
+  import { SwUpdate } from '@angular/service-worker';
+
+  export class AppComponent implements OnInit {
+
+  ...
+    constructor(updates: SwUpdate, private data: DataService) {
+      updates.available.subscribe((event) => {
+        updates.activateUpdate().then(() => document.location.reload());
+      });
+    }
+    ...
+  }
+----
+
+== Step 5: Make it Progressive.
+
+Turining an angular app into a PWA is pretty easy, just one module has to be added. To do so, run: `ng add @angular/pwa`. This command also adds two important files, explained below.
+
+{nbsp} +
+{nbsp} +
+
+* manifest.json
+
+manifest.json is a file that allows to control how the app is displayed in places where native apps are displayed.
+
+*Fields*
+
+_name_: Name of the web application.
+
+_short_name_: Short version of name.
+
+_theme_color_: Default theme color for an application context.
+
+_background_color_: Expected background color of the web application.
+
+_display_: Preferred display mode.
+
+_scope_: Navigation scope of tghis web application's application context.
+
+_start_url_: URL loaded when the user launches the web application.
+
+_icons_: Array of icons that serve as representations of the web app.
+
+Additional information can be found https://developers.google.com/web/fundamentals/web-app-manifest/[here].
+
+{nbsp} +
+{nbsp} +
+
+* ngsw-config.json
+
+nsgw-config.json specifies which files and data URLs have to be cached and updated by the Angular service worker.
+
+*Fields*
+
+** _index_: File that serves as index page to satisfy navigation requests.
+** _assetGroups_: Resources that are part of the app version that update along with the app.
+*** _name_: Identifies the group.
+*** _installMode_: How the resources are cached (prefetch or lazy).
+*** _updateMode_: Caching behaviour when a new version of the app is found (prefetch or lazy).
+*** _resources_: Resources to cache. There are three groups.
+**** _files_: Lists patterns that match files in the distribution directory.
+**** _urls_:  URL patterns matched at runtime.
+** _dataGroups_: UsefulIdentifies the group. for API requests.
+*** _name_: Identifies the group.
+*** _urls_: URL patterns matched at runtime.
+*** _version_:  Indicates that the resources being cached have been updated in a backwards-incompatible way.
+*** _cacheConfig_: Policy by which matching requests will be cached
+**** _maxSize_: The maximum number of entries, or responses, in the cache.
+**** _maxAge_: How long responses are allowed to remain in the cache.
+
+***** d: days. (5d = 5 days).
+***** h: hours
+***** m: minutes
+***** s: seconds. (5m20s = 5 minutes and 20 seconds).
+***** u: milliseconds
+
+**** _timeout_: How long the Angular service worker will wait for the network to respond before using a cached response. Same dataformat as maxAge.
+**** _strategy_: Caching strategies (performance or freshness).
+** _navigationUrls_: List of URLs that will be redirected to the index file.
+
+Additional information can be found https://angular.io/guide/service-worker-config[here].
+
+== Step 6: Configure the app
+
+*manifest.json*
+
+Default configuration.
+
+{nbsp} +
+{nbsp} +
+*ngsw-config.json*
+
+At _assetGroups -> resources -> urls_: In this field the google fonts api is added in order to use Montserrat font even without network.
+
+[source]
+  "urls": [
+          "https://fonts.googleapis.com/**"
+        ]
+
+
+At the root of the json: A data group to cache API calls.
+
+[source]
+  {
+    ...
+    "dataGroups": [{
+      "name": "mythaistar-dishes",
+      "urls": [
+        "http://de-mucdevondepl01:8090/api/services/rest/dishmanagement/v1/dish/1"
+      ],
+      "cacheConfig": {
+        "maxSize": 100,
+        "maxAge": "1h",
+        "timeout": "10s",
+        "strategy": "freshness"
+      }
+    }]
+  }
+
+== Step 7: Check that your app is a PWA
+
+To check if an app is a PWA lets compare its normal behaviour against itself but built for production. Run in the project's root folder the commands below:
+
+`ng build --prod` to build the app using production settings.
+
+`npm install http-server` to install an npm module that can serve your built application. Documentation https://www.npmjs.com/package/http-server[here].
+
+Go to the dist/basic-ng-pwa/ folder running `cd dist/basic-ng-pwa`.
+
+`http-server -o` to serve your built app.
+
+.Http server running on localhost:8081.
+image::images/angular/angular-pwa/http-serve.png["Http server running", width=600 link="images/angular/angular-pwa/http-serve.png"]
+
+{nbsp}
+
+In another console instance run `ng serve` to open the common app (not built).
+
+.Angular server running on localhost:4200.
+image::images/angular/angular-pwa/ng-serve.png[".Angular server running", width=600 link="images/angular/angular-pwa/ng-serve.png"]
+
+{nbsp} 
+
+The first difference can be found on _Developer tools -> application_, here it is seen that the PWA application (left) has a service worker and the common (right) one does not.
+
+.Application service worker comparison.
+image::images/angular/angular-pwa/pwa-nopwa-app-ng.png["Application comparison", width=800 link="images/angular/angular-pwa/pwa-nopwa-app-ng.png"]
+
+{nbsp}
+
+If the "offline" box is checked, it will force a disconnection from network. In situations where users do not have connectivity or have a slow, one the PWA can still be accesed and used. 
+
+.Offline application.
+image::images/angular/angular-pwa/online-offline-ng.png["Online offline apps", width=800 link="images/angular/angular-pwa/online-offline-ng.png"]
+
+{nbsp}
+
+Finally, browser extensions like https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk[Lighthouse] can be used to test whether an application is progressive or not.
+
+.Lighthouse report.
+image::images/angular/angular-pwa/lighthouse-ng.png["Lighthouse report", width=800 link="images/angular/angular-pwa/lighthouse-ng.png"]

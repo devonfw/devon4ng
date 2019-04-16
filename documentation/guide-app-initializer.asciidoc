@@ -1,0 +1,434 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+= APP_INITIALIZER
+
+== What is the APP_INITIALIZER pattern
+
+The APP_INITIALIZER pattern allows an aplication to choose which configuration is going to be used in the start of the application, this is useful because it allows to setup different configurations, for example, for docker or a remote configuration. This provides benefits since this is done on `runtime`, so theres no need to recompile the whole application to switch from configuration.
+
+== What is APP_INITIALIZER
+
+APP_INITIALIZER allows to provide a service in the initialization of the application in a `@NgModule`. It also allows to use a factory, allowing to create a singleton in the same service. An example can be found in MyThaiStar `/core/config/config.module.ts`:
+
+[NOTE]
+====
+The provider expects the return of a `Promise`, if it is using Observables, a change with the method `toPromise()` will allow a switch from `Observable` to `Promise`
+====
+
+[source, TypeScript]
+----
+import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+
+import { ConfigService } from './config.service';
+
+@NgModule({
+  imports: [HttpClientModule],
+  providers: [
+    ConfigService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: ConfigService.factory,
+      deps: [ConfigService],
+      multi: true,
+    },
+  ],
+})
+export class ConfigModule {}
+----
+
+This is going to allow the creation of a `ConfigService` where, using a singleton, the service is going to load an external config depending on a route. This dependence with a route, allows to setup diferent configuration for docker etc. This is seen in the `ConfigService` of MyThaiStar:
+
+[source, TypeScript]
+----
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Config, config } from './config';
+
+@Injectable()
+export class ConfigService {
+  constructor(private httpClient: HttpClient) {}
+
+  static factory(appLoadService: ConfigService) {
+    return () => appLoadService.loadExternalConfig();
+  }
+
+  // this method gets external configuration calling /config endpoint 
+  //and merges into config object
+  loadExternalConfig(): Promise<any> {
+    if (!environment.loadExternalConfig) {
+      return Promise.resolve({});
+    }
+
+    const promise = this.httpClient
+      .get('/config')
+      .toPromise()
+      .then((settings) => {
+        Object.keys(settings || {}).forEach((k) => {
+          config[k] = settings[k];
+        });
+        return settings;
+      })
+      .catch((error) => {
+        return 'ok, no external configuration';
+      });
+
+    return promise;
+  }
+
+  getValues(): Config {
+    return config;
+  }
+}
+----
+
+As it is mentioned earlier, you can see the use of a factory to create a singleton at the start. After that, `loadExternalConfig` is going to look for a boolean inside the corresponding environment file inside the path `src/environments/`, this boolean `loadExternalConfig` is going to easily allow to switch to a external config. If it is true, it generates a promise that overwrites the parameters of the local config, allowing to load the external config. Finally, the last method `getValues()` is going to allow to return the file config with the values (overwritten or not). The local `config` file from MyThaiStar can be seen here:
+
+[source, TypeScript]
+----
+export enum BackendType {
+  IN_MEMORY,
+  REST,
+  GRAPHQL,
+}
+
+interface Role {
+  name: string;
+  permission: number;
+}
+
+interface Lang {
+  label: string;
+  value: string;
+}
+
+export interface Config {
+  version: string;
+  backendType: BackendType;
+  restPathRoot: string;
+  restServiceRoot: string;
+  pageSizes: number[];
+  pageSizesDialog: number[];
+  roles: Role[];
+  langs: Lang[];
+}
+
+export const config: Config = {
+  version: 'dev',
+  backendType: BackendType.REST,
+  restPathRoot: 'http://localhost:8081/mythaistar/',
+  restServiceRoot: 'http://localhost:8081/mythaistar/services/rest/',
+  pageSizes: [8, 16, 24],
+  pageSizesDialog: [4, 8, 12],
+  roles: [
+    { name: 'CUSTOMER', permission: 0 },
+    { name: 'WAITER', permission: 1 },
+  ],
+  langs: [
+    { label: 'English', value: 'en' },
+    { label: 'Deutsch', value: 'de' },
+    { label: 'Español', value: 'es' },
+    { label: 'Català', value: 'ca' },
+    { label: 'Français', value: 'fr' },
+    { label: 'Nederlands', value: 'nl' },
+    { label: 'हिन्दी', value: 'hi' },
+    { label: 'Polski', value: 'pl' },
+    { label: 'Русский', value: 'ru' },
+    { label: 'български', value: 'bg' },
+  ],
+};
+----
+
+Finally, inside a environment file `src/environments/environment.ts` the use of the boolean `loadExternalConfig` is seen:
+
+[source, TypeScript]
+----
+// The file contents for the current environment will overwrite these during build.
+// The build system defaults to the dev environment which uses `environment.ts`, but if you do
+// `ng build --env=prod` then `environment.prod.ts` will be used instead.
+// The list of which env maps to which file can be found in `.angular-cli.json`.
+
+export const environment: {
+  production: boolean;
+  loadExternalConfig: boolean;
+} = { production: false, loadExternalConfig: false };
+----
+
+
+== Creating a APP_INITIALIZER configuration
+
+This section is going to be used to create a new `APP_INITIALIZER` basic example. For this, a basic app with angular is going to be generated using `ng new "appname"` substituting `appname` for the name of the app choosed.
+
+== Setting up the config files
+
+=== Docker external configuration (Optional)
+
+This section is only done if theres a docker configuration in the app you are setting up this type of configuration.
+
+1.- Create in the root folder `/docker-external-config.json`. This external config is going to be used when the application is loaded with docker (if the boolean to load the external configuration is set to true). Here you need to add all the config parameter you want to load with docker:
+
+[source, json]
+----
+{
+    "version": "docker-version"
+}
+----
+
+2.- In the root, in the file `/Dockerfile` angular is going to copy the `docker-external-config.json` that was created before into the nginx html route:
+
+[source, ]
+----
+....
+COPY docker-external-config.json /usr/share/nginx/html/docker-external-config.json
+....
+----
+
+=== External json configuration 
+
+1.- Create a json file in the route `/src/external-config.json`. This external config is going to be used when the application is loaded with the start script (if the boolean to load the external configuration is set to true). Here you need to add all the config parameter you want to load:
+
+[source, json]
+----
+{
+    "version": "external-config"
+}
+----
+
+2.- The file named `/angular.json` located at the root is going to be modified to add the file `external-config.json` that was just created to both `"assets"` inside `Build` and `Test`:
+
+[source, json]
+----
+	....
+	"build": {
+          ....
+            "assets": [
+              "src/assets",
+              "src/data",
+              "src/favicon.ico",
+              "src/manifest.json",
+              "src/external-config.json"
+            ]	
+	        ....
+        "test": {
+	  ....
+	   "assets": [
+              "src/assets",
+              "src/data",
+              "src/favicon.ico",
+              "src/manifest.json",
+              "src/external-config.json"
+            ]
+	  ....
+----
+
+== Setting up the proxies
+
+This step is going to setup two proxies. This is going to allow to load the config desired by the context, in case that it is using docker to load the app or in case it loads the app with angular. Loading diferent files is made posible by the fact that the `ConfigService` method `loadExternalConfig()` looks for the path `/config`.
+
+=== Docker (Optional)
+
+1.- This step is going to be for docker. Add `docker-external-config.json` to nginx configuration (`/nginx.conf`) that is in the root of the application:
+
+[source,]
+----
+....
+  location  ~ ^/config {
+        alias /usr/share/nginx/html/docker-external-config.json;
+  }
+....
+----
+
+=== External Configuration
+
+1.- Now the file `/proxy.conf.json`, needs to be created/modified this file can be found in the root of the application. In this file you can add the route of the external configuration in `target` and the name of the file in `^/config:`:
+
+[source, json]
+----
+....
+  "/config": {
+    "target": "http://localhost:4200",
+    "secure": false,
+    "pathRewrite": {
+      "^/config": "/external-config.json"
+    }
+  }
+....
+----
+
+2.- The file `package.json` found in the root of the application is gonna use the start script to load the proxy config that was just created:
+
+[source, json]
+----
+  "scripts": {
+....
+    "start": "ng serve --proxy-config proxy.conf.json -o",
+....
+----
+
+== Adding the loadExternalConfig boolean to the environments
+
+In order to load an external config we need to add the loadExternalConfig boolean to the environments. To do so, inside the folder `environments/` the files are going to get modified adding this boolean to each environment that is going to be used. In this case, only two environments are going to be modified (`environment.ts` and `environment.prod.ts`). Down below theres an example of the modification being done in the `environment.prod.ts`:
+
+[source, TypeScript]
+----
+export const environment: {
+  production: boolean;
+  loadExternalConfig: boolean;
+} = { production: false, loadExternalConfig: false };
+----
+
+In the file in first instance theres the declaration of the types of the variables. After that, theres the definition of those variables. This variable `loadExternalConfig` is going to be used by the service, allowing to setup a external config just by switching the `loadExternalConfig` to true. 
+
+== Creating core configuration service
+
+In order to create the whole configuration module three are going to be created:
+
+1.- Create in the core `app/core/config/` a `config.ts`
+
+[source, TypeScript]
+----
+  export interface Config {
+    version: string;
+  }
+
+  export const config: Config = {
+    version: 'dev'
+  };
+----
+
+Taking a look to this file, it creates a interface (`Config`) that is going to be used by the variable that exports (`export const config: Config`). This variable `config` is going to be used by the service that is going to be created.
+
+2.- Create in the core `app/core/config/` a `config.service.ts`:
+
+[source, TypeScript]
+----
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Config, config } from './config';
+
+@Injectable()
+export class ConfigService {
+  constructor(private httpClient: HttpClient) {}
+
+  static factory(appLoadService: ConfigService) {
+    return () => appLoadService.loadExternalConfig();
+  }
+
+  // this method gets external configuration calling /config endpoint 
+  // and merges into config object
+  loadExternalConfig(): Promise<any> {
+    if (!environment.loadExternalConfig) {
+      return Promise.resolve({});
+    }
+
+    const promise = this.httpClient
+      .get('/config')
+      .toPromise()
+      .then((settings) => {
+        Object.keys(settings || {}).forEach((k) => {
+          config[k] = settings[k];
+        });
+        return settings;
+      })
+      .catch((error) => {
+        return 'ok, no external configuration';
+      });
+
+    return promise;
+  }
+
+  getValues(): Config {
+    return config;
+  }
+}
+----
+
+As it was explained in previous steps, at first, there is a factory that uses the method `loadExternalConfig()`, this factory is going to be used in later steps in the module. After that, the `loadExternalConfig()` method checks if the boolean in the environment is false. If it is false it will return the promise resolved with the normal config. Else, it is going to load the external config in the path (`/config`), and overwrite the values from the external config to the config thats going to be used by the app, this is all returned in a promise.
+
+3.- Create in the core a module for the config `app/core/config/` a `config.module.ts`:
+
+[source, TypeScript]
+----
+import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+
+import { ConfigService } from './config.service';
+
+@NgModule({
+  imports: [HttpClientModule],
+  providers: [
+    ConfigService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: ConfigService.factory,
+      deps: [ConfigService],
+      multi: true,
+    },
+  ],
+})
+export class ConfigModule {}
+----
+
+As seen earlier, the `ConfigService` is added to the module. In this addition, the app is initialized(`provide`) and it uses the factory that was created in the `ConfigService` loading the config with or without the external values depending on the boolean in the `config`.
+
+=== Using the Config Service
+
+As a first step, in the file `/app/app.module.ts` the `ConfigModule` created earlier in the other step is going to be imported:
+
+[source, TypeScript]
+----
+
+  imports: [
+    ....
+    ConfigModule,
+    ....
+  ]
+----
+
+After that, the `ConfigService` is going to be injected into the `app.component.ts`
+
+[source, TypeScript]
+----
+....
+import { ConfigService } from './core/config/config.service';
+....
+export class AppComponent {
+....
+  constructor(public configService: ConfigService) { }
+....
+----
+
+Finally, for this demonstration app, the component `app/app.component.html` is going to show the version of the config it is using at that moment.
+
+[source, html]
+----
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+<h2>Here is the configuration version that is using angular right now: {{configService.getValues().version}}</h2>
+----
+
+=== Final steps
+
+The script `start` that was created earlier in the `package.json` (`npm start`) is going to be used to start the application. After that, modifying the boolean `loadExternalConfig` inside the corresponding environment file inside `/app/environments/` should show the different config versions.
+
+image::images/app-initializer/loadExternalConfigFalse.png[, link="images/loadExternalConfigFalse.png"]
+
+image::images/app-initializer/loadExternalConfigTrue.png[, link="images/loadExternalConfigTrue.png"]

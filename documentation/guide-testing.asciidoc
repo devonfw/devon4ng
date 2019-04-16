@@ -1,0 +1,344 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+= Testing
+
+This guide will cover the basics of testing logic inside your code with UnitTests.
+The guide assumes that you are familiar with Angular CLI (link:guide-working-with-angular-cli[see the guide])
+
+For testing your Angular application with UnitTests there are two main strategies:
+
+1. Isolated UnitTests +
+Isolated unit tests examine an instance of a class all by itself without any dependence on Angular or any injected values.
+The amount of code and effort needed to create such tests in minimal.
+
+2. Angular Testing Utilities +
+Let you test components including their interaction with Angular.
+The amount of code and effort needed to create such tests is a little higher.
+
+== Testing Concept
+
+The following figure shows you an overview of the application architecture devided in testing areas.
+
+.Testing Areas
+image::images/testing-areas.svg["Testing Areas", width="450", link="images/testing-areas.svg"]
+
+There are three areas, which need to be covered by different testing strategies.
+
+1. Components: +
+Smart Components need to be tested because they contain view logic.
+Also the interaction with 3rd party components needs to be tested.
+When a 3rd party component changes with an upgrade a test will be failing and warn you, that there is something wrong with the new version.
+Most of the time Dumb Components do not need to be teste because they mainly display data and do not contain any logic.
+Smart Components are alway tested with *Angular Testing Utilities*.
+For example selectors, which select data from the store and transform it further, need to be tested.
+
+2. Stores: +
+A store contains methods representing state transitions.
+If these methods contain logic, they need to be tested.
+Stores are always testet using *Isolated UnitTests*.
+
+3. Services: +
+Services contain Business Logic, which needs to be tested.
+UseCase Services represent a whole business use case.
+For instance this could be initializing a store with all the data that is needed for a dialog - loading, transforming, storing.
+Often *Angular Testing Utilities* are the optimal solution for testing UseCase Services, because they allow for an easy stubbing of the backend.
+All other services should be tested with *Isolated UnitTests* as they are much easier to write and maintain.
+
+== Testing Smart Components
+
+Testing Smart Components should assure the following.
+
+1. Bindings are correct.
+2. Selectors which load data from the store are correct.
+3. Asynchronous behavior is correct (loading state, error state, "normal" state).
+4. Oftentimes through testing one realizes, that important edge cases are forgotten.
+5. Do these test become very complex, it is often an indicator for poor code quality in the component.
+Then the implementation is to be adjusted / refactored.
+6. When testing values received from the native DOM, you will test also that 3rd party libraries did not change with a version upgrade.
+A failing test will show you what part of a 3rd party library has changed.
+This is much better than the users doing this for you.
+For example a binding might fail because the property name was changed with a newer version of a 3rd party library.
+
+In the function `beforeEach()` the TestBed imported from *Angular Testing Utilities* needs to be initialized.
+The goal should be to define a minimal test-module with TestBed.
+The following code gives you an example.
+
+.Example test setup for Smart Components
+[source,ts]
+----
+describe('PrintFlightComponent', () => {
+
+  let fixture: ComponentFixture<PrintCPrintFlightComponentomponent>;
+  let store: FlightStore;
+  let printServiceSpy: jasmine.SpyObj<FlightPrintService>;
+
+  beforeEach(() => {
+    const urlParam = '1337';
+    const activatedRouteStub = { params: of({ id: urlParam }) };
+    printServiceSpy = jasmine.createSpyObj('FlightPrintService', ['initializePrintDialog']);
+    TestBed.configureTestingModule({
+      imports: [
+        TranslateModule.forRoot(),
+        RouterTestingModule
+      ],
+      declarations: [
+        PrintFlightComponent,
+        PrintContentComponent,
+        GeneralInformationPrintPanelComponent,
+        PassengersPrintPanelComponent
+      ],
+      providers: [
+        FlightStore,
+        {provide: FlightPrintService, useValue: printServiceSpy},
+        {provide: ActivatedRoute, useValue: activatedRouteStub}
+      ]
+    });
+    fixture = TestBed.createComponent(PrintFlightComponent);
+    store = fixture.debugElement.injector.get(FlightStore);
+    fixture.detectChanges();
+  });
+
+  // ... test cases
+})
+----
+
+It is important:
+
+* Use `RouterTestingModule`` instead of `RouterModule`
+* Use `TranslateModule.forRoot()` without translations
+This way you can test language-neutral without translation marks.
+* Do not add a whole module from your application - in declarations add the tested Smart Component with all its Dumb Components
+* The store should never be stubbed.
+If you need a complex test setup, just use the regular methods defined on the store.
+* Stub all services used by the Smart Component.
+These are mostly UseCase services.
+They should not be tested by these tests.
+Only the correct call to their functions should be assured.
+The logic inside the UseCase services is tested with seperate tests.
+* `detectChanges()` performance an Angular Change Detection cycle (Angular refreshes all the bindings present in the view)
+* `tick()` performance a virtual marco task, `tick(1000)` is equal to the virtual passing of 1s.
+
+The following test cases show the testing strategy in action.
+
+.Example
+[source,ts]
+----
+it('calls initializePrintDialog for url parameter 1337', fakeAsync(() => {
+  expect(printServiceSpy.initializePrintDialog).toHaveBeenCalledWith(1337);
+}));
+
+it('creates correct loading subtitle', fakeAsync(() => {
+  store.setPrintStateLoading(123);
+  tick();
+  fixture.detectChanges();
+
+  const subtitle = fixture.debugElement.query(By.css('app-header-element .print-header-container span:last-child'));
+  expect(subtitle.nativeElement.textContent).toBe('PRINT_HEADER.FLIGHT STATE.IS_LOADING');
+}));
+
+it('creates correct subtitle for loaded flight', fakeAsync(() => {
+  store.setPrintStateLoadedSuccess({
+    id: 123,
+    description: 'Description',
+    iata: 'FRA',
+    name: 'Frankfurt',
+    // ...
+  });
+  tick();
+  fixture.detectChanges();
+
+  const subtitle = fixture.debugElement.query(By.css('app-header-element .print-header-container span:last-child'));
+  expect(subtitle.nativeElement.textContent).toBe('PRINT_HEADER.FLIGHT "FRA (Frankfurt)" (ID: 123)');
+}));
+----
+
+The examples show the basic testing method
+
+* Set the store to a well-defined state
+* check if the component displays the correct values
+* ... via checking values inside the native DOM.
+
+== Testing state transitions performed by stores
+
+Stores are always tested with *Isolated UnitTests*.
+
+Actions triggered by `dispatchAction()` calls are asynchronously performed to alter the state.
+A good solution to test such a state transition is to use the done callback from Jasmine.
+
+.Example for testing a store
+[source,ts]
+----
+let sut: FlightStore;
+
+beforeEach(() => {
+  sut = new FlightStore();
+});
+
+it('setPrintStateLoading sets print state to loading', (done: Function) => {
+  sut.setPrintStateLoading(4711);
+
+  sut.state$.pipe(first()).subscribe(result => {
+    expect(result.print.isLoading).toBe(true);
+    expect(result.print.loadingId).toBe(4711);
+    done();
+  });
+});
+
+it('toggleRowChecked adds flight with given id to selectedValues Property', (done: Function) => {
+  const flight: FlightTO = {
+    id: 12
+    // dummy data
+  };
+  sut.setRegisterabgleichListe([flight]);
+  sut.toggleRowChecked(12);
+
+  sut.state$.pipe(first()).subscribe(result => {
+    expect(result.selectedValues).toContain(flight);
+    done();
+  });
+});
+----
+
+== Testing services
+
+When testing services both strategies - *Isolated UnitTests* and *Angular Testing Utilities* - are valid options.
+
+The goal of such tests are
+
+* assuring the behavior for valid data.
+* assuring the behavior for invalid data.
+* documenting functionality
+* savely performing refactorings
+* thinking about edge case behavior while testing
+
+For simple services *Isolated UnitTests* can be written.
+Writing these tests takes lesser effort and they can be written very fast.
+
+The following listing gives an example of such tests.
+
+.Testing a simple services with *Isolated UnitTests*
+[source,ts]
+----
+let sut: IsyDatePipe;
+
+beforeEach(() => {
+  sut = new IsyDatePipe();
+});
+
+it('transform should return empty string if input value is empty', () => {
+  expect(sut.transform('')).toBe('');
+});
+
+it('transform should return empty string if input value is null', () => {
+  expect(sut.transform(undefined)).toBe('');
+});
+
+// ...more tests
+----
+
+For testing Use Case services the Angular Testing Utilities should be used. 
+The following listing gives an example.
+
+.Test setup for testing use case services with Angular Testing Utilities
+[source,ts]
+----
+let sut: FlightPrintService;
+let store: FlightStore;
+let httpController: HttpTestingController;
+let flightCalculationServiceStub: jasmine.SpyObj<FlightCalculationService>;
+const flight: FlightTo = {
+  // ... valid dummy data
+};
+
+beforeEach(() => {
+  flightCalculationServiceStub = jasmine.createSpyObj('FlightCalculationService', ['getFlightType']);
+  flightCalculationServiceStub.getFlightType.and.callFake((catalog: string, type: string, key: string) => of(`${key}_long`));
+  TestBed.configureTestingModule({
+    imports: [
+      HttpClientTestingModule,
+      RouterTestingModule,
+    ],
+    providers: [
+      FlightPrintService,
+      FlightStore,
+      FlightAdapter,
+      {provide: FlightCalculationService, useValue: flightCalculationServiceStub}
+    ]
+  });
+
+  sut = TestBed.get(FlightPrintService);
+  store = TestBed.get(FlightStore);
+  httpController = TestBed.get(HttpTestingController);
+});
+----
+
+When using TestBed, it is important
+
+* to import HttpClientTestingModule for stubbing the backend
+* to import RouterTestingModule for stubbing the Angular router
+* not to stub stores, adapters and business services
+* to stub services from libraries like FlightCalculationService - the correct implementation of libraries should not be tested by these tests. 
+
+Testing backend communication looks like this:
+
+.Testing backend communication with Angular HttpTestingController
+[source,ts]
+----
+it('loads flight if not present in store', fakeAsync(() => {
+  sut.initializePrintDialog(1337);
+  const processRequest = httpController.expectOne('/path/to/flight');
+  processRequest.flush(flight);
+
+  httpController.verify();
+}));
+
+it('does not load flight if present in store', fakeAsync(() => {
+  const flight = {...flight, id: 4711};
+  store.setRegisterabgleich(flight);
+
+  sut.initializePrintDialog(4711);
+  httpController.expectNone('/path/to/flight');
+
+  httpController.verify();
+}));
+----
+
+The first test assures a correct XHR request is performed if `initializePrintDialog()` is called and no data is in the store.
+The second test assures no XHR request ist performed if the needed data is already in the store. 
+
+The next steps are checks for the correct implementation of logic.
+
+.Example testing a Use Case service
+[source,ts]
+----
+it('creates flight destination for valid key in svz', fakeAsync(() => {
+  const flightTo: FlightTo = {
+    ...flight,
+    id: 4712,
+    profile: '77'
+  };
+  store.setFlight(flightTo);
+  let result: FlightPrintContent|undefined;
+
+  sut.initializePrintDialog(4712);
+  store.select(s => s.print.content).subscribe(content => result = content);
+  tick();
+
+  expect(result!.destination).toBe('77_long (ID: 77)');
+}));
+----

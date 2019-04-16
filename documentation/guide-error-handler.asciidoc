@@ -1,0 +1,191 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+== Global Error Handler in angular
+
+Angular allows us to set up a custom error handler that can be used to control the different errors and them in a correct way. Using a global error handler will avoid mistakes and provide a use friendly interface allowing us to indicate the user what problem is happening.
+
+== What is ErrorHandler
+
+`ErrorHandler` is the class that `Angular` uses by default to control the errors. This means that, even if the application doesnt have a `ErrorHandler` it is going to use the one setup by default in `Angular`. This can be tested by trying to find a page not existing in any app, instantly `Angular` will print the error in the console.
+
+== Creating your custom ErrorHandler step by step
+
+In order to create a custom `ErrorHandler` three steps are going to be needed:
+
+=== Creating the custom ErrorHandler class
+
+In this first step the custom `ErrorHandler` class is going to be created inside the folder `/app/core/errors/errors-handler.ts`:
+
+[source, TypeScript]
+----
+import { ErrorHandler, Injectable, Injector } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+
+@Injectable()
+export class ErrorsHandler implements ErrorHandler {
+
+    constructor(private injector: Injector) {}
+
+    handleError(error: Error | HttpErrorResponse) {
+      //  To do: Use injector to get the necessary services to redirect or
+      // show a message to the user
+      const classname  = error.constructor.name;
+      switch ( classname )  {
+        case 'HttpErrorResponse':
+          console.error('HttpError:' + error.message);
+          if (!navigator.onLine) {
+            console.error('Theres no internet connection');
+            // To do: control here in internet what you wanna do if user has no internet
+          } else {
+            console.error('Server Error:' + error.message);
+            // To do: control here if the server gave an error
+          }
+          break;
+        default:
+          console.error('Error:' + error.message);
+          // To do: control here if the client/other things gave an error
+      }
+    }
+}
+----
+
+This class can be used to control the different type of errors. If wanted, the `classname` variable could be used to add more switch cases. This would allow control of more specific situations.
+
+=== Creating a ErrorInterceptor
+
+Inside the same folder created in the last step we are going to create the `ErrorInterceptor`(`errors-handler-interceptor.ts`). This `ErrorInterceptor` is going to retry any failed calls to the server to make sure it is not being found before showing the error:
+
+[source, TypeScript]
+----
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { retry } from 'rxjs/operators';
+
+@Injectable()
+export class ErrorsHandlerInterceptor implements HttpInterceptor {
+
+    constructor() {}
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        return next.handle(req).pipe(
+            retryWhen((errors: Observable<any>) => errors.pipe(
+                delay(500),
+                take(5),
+                concatMap((error: any, retryIndex: number) => {
+                    if (++retryIndex === 5) {
+                        throw error;
+                    }
+                    return of(error);
+                })
+            ))
+        );
+    }
+}
+----
+
+This custom made interceptor is implementing the `HttpInterceptor` and inside the method `intercept` using the method `pipe`,`retryWhen`,`delay`,`take` and `concatMap` from https://rxjs-dev.firebaseapp.com/api[RxJs] it is going to do the next things if there is errors:
+
+  1. With `delay(500)` do a delay to allow some time in between requests 
+  2. With `take(5)` retry five times.
+  3. With `concatMap` if the index that `take()` gives is not 5 it returns the error, else, it throws the error.
+
+=== Creating a Error Module
+
+Finally, creating a module(`errors-handler.module.ts`) is necessary to include the `interceptor` and the custom error handler. In this case, the module is going to be created in the same folder as the last two: 
+
+[source, TypeScript]
+----
+import { NgModule, ErrorHandler } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ErrorsHandler } from './errors-handler';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorsHandlerInterceptor } from './errors-handler-interceptor';
+
+@NgModule({
+  declarations: [], // Declare here component if you want to use routing to error component
+  imports: [
+    CommonModule
+  ],
+  providers: [
+    {
+      provide: ErrorHandler,
+      useClass: ErrorsHandler,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorsHandlerInterceptor,
+      multi: true,
+    }
+  ]
+})
+export class ErrorsHandlerModule { }
+----
+
+This module simply is providing the services that are implemented by our custom classes and then telling angular to use our custom made classes instead of the default ones. After doing this, the module has to be included in the app module `app.module.ts` in order to be used.
+
+[source, TypeScript]
+----
+....
+  imports: [
+    ErrorsHandlerModule,
+    ....
+----
+
+== Handling Errors
+
+As a final step, handling these errors is necessary. Theres different ways that can be used to control the errors, here are a few:
+
+    - Creating a custom page and using with `Router` to redirect to a page showing an error.
+    - Creating a service in the server side or `Backend` to create a log with the error and calling it with `HttpClient`.
+    - Showing a custom made `SnackBar` with the error message.
+
+==== Using `SnackBarService` and `NgZone` 
+
+If the https://material.angular.io/components/snack-bar/overview[SnackBar] is used directly, some errors can ocurr, this is due to `SnackBar` being out of the `Angular` zone. In order to use this service properly, https://angular.io/api/core/NgZone[NgZone] is necessary. The method `run()` from `NgZone` will allow the service to be inside the `Angular Zone`. An example on how to use it: 
+
+[source, TypeScript]
+----
+import { ErrorHandler, Injectable, Injector, NgZone } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material';
+
+@Injectable()
+export class ErrorsHandler implements ErrorHandler {
+
+    constructor(private injector: Injector, private zone: NgZone) {}
+
+    handleError(error: Error | HttpErrorResponse) {
+      // Use injector to get the necessary services to redirect or
+      const snackBar: MatSnackBar = this.injector.get(MatSnackBar);
+      const classname  = error.constructor.name;
+      let message: string;
+      switch ( classname )  {
+        case 'HttpErrorResponse':
+          message = !(navigator.onLine) ? 'There is no internet connection' : error.message;
+          break;
+        default:
+          message = error.message;
+      }
+      this.zone.run(
+        () => snackBar.open(message, 'danger', { duration : 4000})
+      );
+    }
+}
+----
+
+Using `Injector` the `MatSnackBar` is obtained, then the correct message is obtained inside the switch. Finally, using `NgZone` and `run()`, we open the `SnackBar` passing the message, and the paremeters wanted.

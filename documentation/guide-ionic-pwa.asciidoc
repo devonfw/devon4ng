@@ -1,0 +1,160 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+= Ionic Progressive Web App
+
+This guide is a continuation of the guide link:guide-angular-pwa[Angular PWAs], therefore, valid concepts explained there are still valid in this page but focused on Ionic.
+
+
+= Assumptions
+
+This guide assumes that you already have installed:
+
+* Node.js
+* npm package manager
+* Angular CLI
+* Ionic 4 CLI
+* Capacitor
+
+Also, it is a good idea to read the document about PWA using Angular.
+
+= Sample Application
+
+.Basic ionic PWA.
+image::images/ionic/ionic-pwa/base.png["Ionic 4 PWA Base", width=250 link="images/ionic/ionic-pwa/base.png"]
+
+To explain how to build progressive web apps (PWA) using Ionic 4, a basic application is going to be built. This app will be able to take photos even without network using PWA elements.
+
+== Step 1: Create a new project
+
+This step can be completed with one simple command: `ionic start <name> <template>`, where <name> is the name and <template> a model for the app. In this case, the app is going to be named *basic-ion-pwa*.
+
+== Step 2: Structures and styles
+
+The styles (scss) and structures (html) do not have anything specially relevant, just colors and ionic web components. The code can be found in https://github.com/devonfw/devon4ng/tree/master/samples/IonicBasicPWA[devon4ng samples].
+
+== Step 3: Add functionality
+
+After this step, the app will allow users take photos and display them in the main screen. 
+First we have to import three important elements:
+
+* DomSanitizer: Sanitizes values to be safe to use.
+
+* SafeResourceUrl: Interface for values that are safe to use as URL.
+
+* Plugins: Capacitor constant value used to access to the device's camera and toast dialogs.
+
+[source,ts]
+  import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+  import { Plugins, CameraResultType } from '@capacitor/core';
+  const { Camera, Toast } = Plugins;
+
+The process of taking a picture is enclosed in a *takePicture* method. takePicture calls the Camera's _getPhoto_ function which returs an URL or an exception. If a photo is taken then the image displayed in the main page will be changed for the new picture, else, if the app is closed without changing it, a toast message will be displayed.
+
+[source,ts]
+----
+  export class HomePage {
+    image: SafeResourceUrl;
+    ...
+
+    async takePicture() {
+      try {
+        const image = await Camera.getPhoto({
+          quality: 90,
+          allowEditing: true,
+          resultType: CameraResultType.Uri,
+        });
+
+        // Change last picture shown
+        const imageUrl = image.webPath;
+        this.image = this.sanitizer.bypassSecurityTrustResourceUrl(image.webPath);
+        this.image = imageUrl;
+      } catch (e) {
+        this.show('Closing camera');
+      }
+    }
+
+    async show(message: string) {
+      await Toast.show({
+        text: message,
+      });
+    }
+  }
+----
+
+== Step 4: PWA Elements
+
+When Ionic apps are not running natively, some resources like Camera do not work by default but can be enabled using PWA Elements. To use Capacitor's PWA elements add the following script inside the tag header at *index.html*.
+
+[source,html]
+  <script src='https://unpkg.com/@ionic/pwa-elements@1.0.2/dist/ionicpwaelements.js'></script>
+
+== Step 5: Make it Progressive.
+
+Turining an ionic 4 app into a PWA is pretty easy, the same module used to turn Angular apps into PWAs has to be added, to do so, run: `ng add @angular/pwa`. This command also creates an *icons* folder inside *src/assets* and contains angular icons for multiple resolutions. If you want use other images, be sure that they have the same resolution, the names can be different but the file *manifest.json* has to be changed accordingly. 
+
+== Step 6: Configure the app
+
+*manifest.json*
+
+Default configuration.
+
+*ngsw-config.json*
+
+At _assetGroups -> resources_ add a urls field and a pattern to match PWA Elements scripts and other resources (images, styles, ...):
+
+[source]
+  "urls": ["https://unpkg.com/@ionic/pwa-elements@1.0.2/dist/**"]
+
+== Step 7: Check that your app is a PWA
+
+To check if an app is a PWA lets compare its normal behaviour against itself but built for production. Run in the project's root folder the commands below:
+
+`ionic build --prod` to build the app using production settings.
+
+`npm install http-server` to install an npm module that can serve your built application. Documentation https://www.npmjs.com/package/http-server[here].
+
+Go to the *www* folder running `cd www`.
+
+`http-server -o` to serve your built app.
+
+.Http server running on localhost:8081.
+image::images/ionic/ionic-pwa/http-server.png["Http server running", width=600 link="images/ionic/ionic-pwa/http-server.png"]
+
+{nbsp} +
+In another console instance run `ionic serve` to open the common app (not built).
+
+.Ionic server running on localhost:8100.
+image::images/ionic/ionic-pwa/ionic-serve.png["Ionic serve on Visual Studio Code console", width=600 link="images/ionic/ionic-pwa/ionic-serve.png"]
+
+{nbsp} +
+The first difference can be found on _Developer tools -> application_, here it is seen that the PWA application (left) has a service worker and the common one does not.
+
+.Application service worker comparison.
+image::images/ionic/ionic-pwa/pwa-nopwa-app.png["Application comparison", width=800 link="images/ionic/ionic-pwa/pwa-nopwa-app.png"]
+
+{nbsp} +
+If the "offline" box is checked, it will force a disconnection from network. In situations where users do not have connectivity or have a slow, one the PWA can still be accesed and used. 
+
+.Offline application.
+image::images/ionic/ionic-pwa/online-offline.png["Online offline apps", width=800 link="images/ionic/ionic-pwa/online-offline.png"]
+
+{nbsp} +
+Finally, plugins like https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk[Lighthouse] can be used to test whether an application is progressive or not.
+
+.Lighthouse report.
+image::images/ionic/ionic-pwa/lighthouse.png["Lighthouse report", width=800 link="images/ionic/ionic-pwa/lighthouse.png"]

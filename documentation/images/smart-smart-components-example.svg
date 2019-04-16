@@ -1,0 +1,1456 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="268.56265mm"
+   height="103.505mm"
+   viewBox="0 0 268.56265 103.505"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="smart-smart-components-example.svg">
+  <defs
+     id="defs2">
+    <clipPath
+       id="clipPath26"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path24"
+         d="M 0,1.2207e-4 H 780 V 540.00012 H 0 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath38"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path36"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath50"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path48"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath62"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path60"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath74"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path72"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath86"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path84"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath98"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path96"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath110"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path108"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath122"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path120"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath134"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path132"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath146"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path144"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath158"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path156"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath170"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path168"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath182"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path180"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath194"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path192"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath206"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path204"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath220"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path218"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath234"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path232"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath246"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path244"
+         d="M -2.8636e-5,540 H 780 V 1.2207e-4 H -2.8636e-5" />
+    </clipPath>
+    <clipPath
+       id="clipPath256"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path254"
+         d="M 1.8565e-5,540 H 780 V 1.2207e-4 H -2.0805e-5" />
+    </clipPath>
+    <clipPath
+       id="clipPath266"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path264"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath280"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path278"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath292"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path290"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath304"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path302"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath316"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path314"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath332"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path330"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath344"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path342"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath356"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path354"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath368"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path366"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath380"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path378"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath392"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path390"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath404"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path402"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath416"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path414"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath428"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path426"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath440"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path438"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath452"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path450"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath470"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path468"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath482"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path480"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath496"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path494"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath508"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path506"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath520"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path518"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath532"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path530"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath544"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path542"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath560"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path558"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath572"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path570"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath584"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path582"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath596"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path594"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath608"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path606"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath622"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path620"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath636"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path634"
+         d="M 1.1623e-5,0 H 780.00001 V 540 H 1.1623e-5 Z" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="529.41712"
+     inkscape:cy="248.91438"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1015"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(34.241613,-111.18693)">
+    <path
+       d="m 60.034718,150.30293 c 0,-2.89983 2.3495,-5.24933 5.249333,-5.24933 h 73.405999 c 2.89983,0 5.24933,2.3495 5.24933,5.24933 v 20.99734 c 0,2.89983 -2.3495,5.24933 -5.24933,5.24933 H 65.284051 c -2.899833,0 -5.249333,-2.3495 -5.249333,-5.24933 z"
+       style="fill:#e47e1a;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.35277778"
+       id="path30"
+       inkscape:connector-curvature="0" />
+    <g
+       id="g32"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g34"
+         clip-path="url(#clipPath38)">
+        <text
+           transform="matrix(1,0,0,-1,288.86,276.94)"
+           style="font-variant:normal;font-weight:normal;font-size:15.47999954px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text42">
+          <tspan
+             x="0 9.4582796 12.94128 16.37784 25.04664 33.653519 37.987919 48.18924 56.79612 65.44944 70.495918 78.282356 86.889236 97.121521 101.42496 110.0628 115.10928"
+             y="0"
+             sodipodi:role="line"
+             id="tspan40">FlightSearchStore</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g44"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g46"
+         clip-path="url(#clipPath50)">
+        <text
+           transform="matrix(1,0,0,-1,288.86,262.66)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text54">
+          <tspan
+             x="0 6.2399998 12.48 18.719999 24.959999 31.200001 37.439999 43.68 49.919998 56.16 62.400002 68.639999 74.879997 81.120003 87.360001 93.599998 99.839996 106.08 112.434 118.788 125.028 131.26801 137.508 143.748 149.98801 156.228 162.468"
+             y="0"
+             sodipodi:role="line"
+             id="tspan52">+ state$: Observable&lt;State&gt;</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g56"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g58"
+         clip-path="url(#clipPath62)">
+        <text
+           transform="matrix(1,0,0,-1,288.86,248.98)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text66">
+          <tspan
+             x="0 6.2399998"
+             y="0"
+             sodipodi:role="line"
+             id="tspan64">+</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g68"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g70"
+         clip-path="url(#clipPath74)">
+        <text
+           transform="matrix(1,0,0,-1,301.34,248.98)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text78">
+          <tspan
+             x="0 6.2399998 12.48 18.719999 24.959999 31.200001 37.439999 43.68 49.919998 56.16"
+             y="0"
+             sodipodi:role="line"
+             id="tspan76">setFlights</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g80"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g82"
+         clip-path="url(#clipPath86)">
+        <text
+           transform="matrix(1,0,0,-1,363.77,248.98)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text90">
+          <tspan
+             x="0"
+             y="0"
+             id="tspan88">(</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g92"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g94"
+         clip-path="url(#clipPath98)">
+        <text
+           transform="matrix(1,0,0,-1,370.01,248.98)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text102">
+          <tspan
+             x="0 6.2399998 12.48 18.719999"
+             y="0"
+             sodipodi:role="line"
+             id="tspan100">Flug</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g104"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g106"
+         clip-path="url(#clipPath110)">
+        <text
+           transform="matrix(1,0,0,-1,394.97,248.98)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text114">
+          <tspan
+             x="0 6.3498001 12.6996 18.969601 25.1826 31.4526 37.6656 43.9356 50.148602"
+             y="0"
+             sodipodi:role="line"
+             id="tspan112">[]): void</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g116"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g118"
+         clip-path="url(#clipPath122)">
+        <text
+           transform="matrix(1,0,0,-1,288.86,235.42)"
+           style="font-variant:normal;font-weight:normal;font-size:11.42399979px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text126">
+          <tspan
+             x="0 6.2399998"
+             y="0"
+             sodipodi:role="line"
+             id="tspan124">+</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g128"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g130"
+         clip-path="url(#clipPath134)">
+        <text
+           transform="matrix(1,0,0,-1,301.34,235.42)"
+           style="font-variant:normal;font-weight:normal;font-size:11.42399979px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text138">
+          <tspan
+             x="0 6.2399998 12.48 18.719999 24.959999 31.200001 37.439999 43.68 49.919998 56.16 62.400002 68.639999"
+             y="0"
+             sodipodi:role="line"
+             id="tspan136">clearFlights</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g140"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g142"
+         clip-path="url(#clipPath146)">
+        <text
+           transform="matrix(1,0,0,-1,376.25,235.42)"
+           style="font-variant:normal;font-weight:normal;font-size:11.42399979px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text150">
+          <tspan
+             x="0 6.237504 12.475008 18.712511 25.064257 31.416 37.653503 43.891006"
+             y="0"
+             sodipodi:role="line"
+             id="tspan148">(): void</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g152"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g154"
+         clip-path="url(#clipPath158)">
+        <text
+           transform="matrix(1,0,0,-1,288.86,221.71)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text162">
+          <tspan
+             x="0 6.2399998"
+             y="0"
+             sodipodi:role="line"
+             id="tspan160">+</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g164"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g166"
+         clip-path="url(#clipPath170)">
+        <text
+           transform="matrix(1,0,0,-1,301.34,221.71)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text174">
+          <tspan
+             x="0 6.2399998 12.48 18.719999 24.959999 31.200001 37.439999 43.68 49.919998 56.16 62.400002 68.639999 74.879997 81.120003 87.360001 93.599998 99.954002"
+             y="0"
+             sodipodi:role="line"
+             id="tspan172">setLoadingFlights</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g176"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g178"
+         clip-path="url(#clipPath182)">
+        <text
+           transform="matrix(1,0,0,-1,407.69,221.71)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text186">
+          <tspan
+             x="0"
+             y="0"
+             id="tspan184">(</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g188"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g190"
+         clip-path="url(#clipPath194)">
+        <text
+           transform="matrix(1,0,0,-1,413.93,221.71)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text198">
+          <tspan
+             x="0 6.2399998 12.48 18.719999 24.959999 31.200001 37.439999"
+             y="0"
+             sodipodi:role="line"
+             id="tspan196">boolean</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g200"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g202"
+         clip-path="url(#clipPath206)">
+        <text
+           transform="matrix(1,0,0,-1,457.61,221.71)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text210">
+          <tspan
+             x="0 6.2399998 12.48 18.719999 24.959999 31.200001 37.439999"
+             y="0"
+             sodipodi:role="line"
+             id="tspan208">): void</tspan>
+        </text>
+      </g>
+    </g>
+    <path
+       d="m 31.798385,204.46138 c 0,-1.12889 0.917223,-2.04612 2.046112,-2.04612 h 62.752109 c 1.128889,0 2.046111,0.91723 2.046111,2.04612 v 8.18444 c 0,1.12889 -0.917222,2.04611 -2.046111,2.04611 H 33.844497 c -1.128889,0 -2.046112,-0.91722 -2.046112,-2.04611 z"
+       style="fill:#5b9bd5;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.35277778"
+       id="path212"
+       inkscape:connector-curvature="0" />
+    <g
+       id="g214"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g216"
+         clip-path="url(#clipPath220)">
+        <text
+           transform="matrix(1,0,0,-1,208.44,114.12)"
+           style="font-variant:normal;font-weight:normal;font-size:15.47999954px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text224">
+          <tspan
+             x="0 9.4582796 12.94128 16.37784 25.04664 33.653519 37.987919 48.18924 56.79612 65.44944 70.495918 78.282356 86.889236 98.065804 106.59528 119.4282 128.03508 136.6884 145.29527 153.94859 162.55548"
+             y="0"
+             sodipodi:role="line"
+             id="tspan222">FlightSearchComponent</tspan>
+        </text>
+      </g>
+    </g>
+    <path
+       d="m 111.00405,204.46138 c 0,-1.12889 0.91722,-2.04612 2.04611,-2.04612 h 60.67778 c 1.12889,0 2.04611,0.91723 2.04611,2.04612 v 8.18444 c 0,1.12889 -0.91722,2.04611 -2.04611,2.04611 h -60.67778 c -1.12889,0 -2.04611,-0.91722 -2.04611,-2.04611 z"
+       style="fill:#5b9bd5;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.35277778"
+       id="path226"
+       inkscape:connector-curvature="0" />
+    <g
+       id="g228"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g230"
+         clip-path="url(#clipPath234)">
+        <text
+           transform="matrix(1,0,0,-1,431.09,114.12)"
+           style="font-variant:normal;font-weight:normal;font-size:15.47999954px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text238">
+          <tspan
+             x="0 9.4582796 12.94128 16.37784 25.04664 33.653519 37.987919 49.025162 57.632038 61.966438 70.480438 73.917 77.353561 85.000679 96.177238 104.78412 117.67896 126.28584 134.89272 143.54604 152.15292 160.80624"
+             y="0"
+             sodipodi:role="line"
+             id="tspan236">FlightDetailsComponent</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g240"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g242"
+         clip-path="url(#clipPath246)">
+        <path
+           d="M 397.01,205.66 V 174 c 0,-0.43 -0.35,-0.78 -0.78,-0.78 H 292.02 l 0.78,0.78 v -36.66 h -1.56 V 174 c 0,0.43 0.35,0.78 0.78,0.78 H 396.23 L 395.45,174 v 31.66 z m -3.78,-1 3,6 3,-6 z"
+           style="fill:#5b9bd5;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path248"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+    <g
+       id="g250"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g252"
+         clip-path="url(#clipPath256)">
+        <path
+           d="M 395.52,205.66 V 174 c 0,-0.43 0.35,-0.78 0.78,-0.78 h 117.44 l -0.78,0.78 v -36.66 h 1.56 V 174 c 0,0.43 -0.35,0.78 -0.78,0.78 H 396.3 l 0.78,-0.78 v 31.66 z m 3.78,-1 -3,6 -3,-6 z"
+           style="fill:#5b9bd5;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path258"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+    <g
+       id="g260"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g262"
+         clip-path="url(#clipPath266)">
+        <text
+           transform="matrix(1,0,0,-1,416.57,177.14)"
+           style="font-variant:normal;font-weight:normal;font-size:15.47999954px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text270">
+          <tspan
+             x="0 7.7864399 16.39332 25.04664 32.83308 40.619518 45.774361 49.241879 57.848759 66.502083 71.656921"
+             y="0"
+             sodipodi:role="line"
+             id="tspan268">subscribe()</tspan>
+        </text>
+      </g>
+    </g>
+    <path
+       d="m -34.241613,155.15715 c 0,-1.55927 1.26365,-2.82222 2.822222,-2.82222 h 81.81622 c 1.559278,0 2.822223,1.26295 2.822223,2.82222 v 11.28889 c 0,1.55928 -1.262945,2.82223 -2.822223,2.82223 h -81.81622 c -1.558572,0 -2.822222,-1.26295 -2.822222,-2.82223 z"
+       style="fill:#e47e1a;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.35277778"
+       id="path272"
+       inkscape:connector-curvature="0" />
+    <g
+       id="g274"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g276"
+         clip-path="url(#clipPath280)">
+        <text
+           transform="matrix(1,0,0,-1,19.656,258.31)"
+           style="font-variant:normal;font-weight:normal;font-size:15.47999954px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text284">
+          <tspan
+             x="0 9.4582796 12.94128 16.37784 25.04664 33.653519 37.987919 48.18924 56.79612 65.44944 70.495918 78.282356 86.889236 97.121521 105.7284 110.88324 118.62324 122.0598 129.7998"
+             y="0"
+             sodipodi:role="line"
+             id="tspan282">FlightSearchService</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g286"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g288"
+         clip-path="url(#clipPath292)">
+        <text
+           transform="matrix(1,0,0,-1,19.656,244.03)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text296">
+          <tspan
+             x="0 6.2399998"
+             y="0"
+             sodipodi:role="line"
+             id="tspan294">+</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g298"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g300"
+         clip-path="url(#clipPath304)">
+        <text
+           transform="matrix(1,0,0,-1,32.136,244.03)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text308">
+          <tspan
+             x="0 6.2399998 12.48 18.719999 24.959999 31.200001 37.439999 43.68 49.919998 56.16 62.400002"
+             y="0"
+             sodipodi:role="line"
+             id="tspan306">loadFlights</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g310"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g312"
+         clip-path="url(#clipPath316)">
+        <text
+           transform="matrix(1,0,0,-1,100.8,244.03)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text320">
+          <tspan
+             x="0 6.27 12.483 18.753 24.966 31.3158 37.6656 43.9356"
+             y="0"
+             sodipodi:role="line"
+             id="tspan318">(): void</tspan>
+        </text>
+      </g>
+    </g>
+    <path
+       d="m 53.240218,160.5476 h 5.012972 v 0.55033 h -5.012972 z m 4.660195,-0.78317 2.116666,1.05834 -2.116666,1.05833 z"
+       style="fill:#e47e1a;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
+       id="path322"
+       inkscape:connector-curvature="0" />
+    <path
+       d="m 153.80305,150.30293 c 0,-2.89983 2.3495,-5.24933 5.24933,-5.24933 h 70.01933 c 2.89984,0 5.24934,2.3495 5.24934,5.24933 v 20.99734 c 0,2.89983 -2.3495,5.24933 -5.24934,5.24933 h -70.01933 c -2.89983,0 -5.24933,-2.3495 -5.24933,-5.24933 z"
+       style="fill:#a6a6a6;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.35277778"
+       id="path324"
+       inkscape:connector-curvature="0" />
+    <g
+       id="g326"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g328"
+         clip-path="url(#clipPath332)">
+        <text
+           transform="matrix(1,0,0,-1,554.74,276.94)"
+           style="font-variant:normal;font-weight:normal;font-size:15.47999954px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text336">
+          <tspan
+             x="0 9.4582796 12.94128 16.37784 25.04664 33.653519 37.987919 48.18924 56.79612 65.44944 70.495918 78.282356 86.889236 97.121521 101.42496 110.0628 114.25788"
+             y="0"
+             sodipodi:role="line"
+             id="tspan334">FlightSearchState</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g338"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g340"
+         clip-path="url(#clipPath344)">
+        <text
+           transform="matrix(1,0,0,-1,554.74,262.66)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text348">
+          <tspan
+             x="0 6.2399998"
+             y="0"
+             sodipodi:role="line"
+             id="tspan346">+</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g350"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g352"
+         clip-path="url(#clipPath356)">
+        <text
+           transform="matrix(1,0,0,-1,567.22,262.66)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text360">
+          <tspan
+             x="0 6.2399998 12.48 18.719999 24.959999 31.200001 37.439999 43.68 49.919998 56.16 62.400002 68.639999 74.879997 81.120003 87.360001 93.599998"
+             y="0"
+             sodipodi:role="line"
+             id="tspan358">isLoadingFlights</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g362"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g364"
+         clip-path="url(#clipPath368)">
+        <text
+           transform="matrix(1,0,0,-1,667.2,262.66)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text372">
+          <tspan
+             x="0 6.3600001"
+             y="0"
+             sodipodi:role="line"
+             id="tspan370">:</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g374"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g376"
+         clip-path="url(#clipPath380)">
+        <text
+           transform="matrix(1,0,0,-1,679.8,262.66)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text384">
+          <tspan
+             x="0 6.2399998 12.48 18.719999 24.959999 31.200001 37.439999"
+             y="0"
+             sodipodi:role="line"
+             id="tspan382">boolean</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g386"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g388"
+         clip-path="url(#clipPath392)">
+        <text
+           transform="matrix(1,0,0,-1,554.74,248.98)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text396">
+          <tspan
+             x="0 6.2399998 12.48 18.719999 24.959999 31.200001 37.439999 43.68 49.919998 56.16 62.400002"
+             y="0"
+             sodipodi:role="line"
+             id="tspan394">+ flights:</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g398"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g400"
+         clip-path="url(#clipPath404)">
+        <text
+           transform="matrix(1,0,0,-1,623.38,248.98)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text408">
+          <tspan
+             x="0 6.2399998 12.48 18.719999"
+             y="0"
+             sodipodi:role="line"
+             id="tspan406">Flug</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g410"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g412"
+         clip-path="url(#clipPath416)">
+        <text
+           transform="matrix(1,0,0,-1,648.36,248.98)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text420">
+          <tspan
+             x="0 6.2399998"
+             y="0"
+             sodipodi:role="line"
+             id="tspan418">[]</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g422"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g424"
+         clip-path="url(#clipPath428)">
+        <text
+           transform="matrix(1,0,0,-1,554.74,235.42)"
+           style="font-variant:normal;font-weight:normal;font-size:11.42399979px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text432">
+          <tspan
+             x="0 6.2399998 12.48"
+             y="0"
+             sodipodi:role="line"
+             id="tspan430">+ c</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g434"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g436"
+         clip-path="url(#clipPath440)">
+        <text
+           transform="matrix(1,0,0,-1,573.46,235.42)"
+           style="font-variant:normal;font-weight:normal;font-size:11.42399979px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text444">
+          <tspan
+             x="0 6.2399998 12.48 18.719999 24.959999 31.200001 37.439999 43.68 49.919998"
+             y="0"
+             sodipodi:role="line"
+             id="tspan442">riteria:</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g446"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g448"
+         clip-path="url(#clipPath452)">
+        <text
+           transform="matrix(1,0,0,-1,629.64,235.42)"
+           style="font-variant:normal;font-weight:normal;font-size:11.42399979px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text456">
+          <tspan
+             x="0 6.237504 12.475008 18.712511 24.950016 31.187519 37.539265 43.891006 50.128513 56.366016 62.603519 68.841026 75.078529 81.316032 87.553535 93.791039 100.02854 106.26604 112.50356 118.74106"
+             y="0"
+             sodipodi:role="line"
+             id="tspan454">FlightSearchCriteria</tspan>
+        </text>
+      </g>
+    </g>
+    <path
+       d="M 31.784274,208.84993 H 9.509886 c -0.1516945,0 -0.2751667,-0.12347 -0.2751667,-0.27517 v -37.52144 h 0.5503333 v 37.52144 L 9.509886,208.2996 H 31.784274 Z M 8.4515526,171.4061 l 1.0583334,-2.11667 1.058333,2.11667 z"
+       style="fill:#5b9bd5;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
+       id="path458"
+       inkscape:connector-curvature="0" />
+    <g
+       id="g460"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <path
+         d="m 515.22,255.3 h 27.94"
+         style="fill:none;stroke:#a6a6a6;stroke-width:1.55999994;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:6.24, 4.68;stroke-dashoffset:0;stroke-opacity:1"
+         id="path462"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g464"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g466"
+         clip-path="url(#clipPath470)">
+        <text
+           transform="matrix(1,0,0,-1,115.25,163.08)"
+           style="font-variant:normal;font-weight:normal;font-size:15.50399971px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text474">
+          <tspan
+             x="0 3.4418881 12.108624 20.728848 29.349072 38.853024 42.29491 45.736801 54.357025 62.977249 67.178833"
+             y="0"
+             sodipodi:role="line"
+             id="tspan472">loadFlights</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g476"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g478"
+         clip-path="url(#clipPath482)">
+        <text
+           transform="matrix(1,0,0,-1,190.25,163.08)"
+           style="font-variant:normal;font-weight:normal;font-size:15.50399971px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text486">
+          <tspan
+             x="0 5.1600022"
+             y="0"
+             sodipodi:role="line"
+             id="tspan484">()</tspan>
+        </text>
+      </g>
+    </g>
+    <path
+       d="m -34.241613,134.20921 c 0,-1.46756 1.190978,-2.65994 2.659944,-2.65994 h 82.140776 c 1.467556,0 2.659945,1.19238 2.659945,2.65994 v 10.63978 c 0,1.46755 -1.192389,2.65994 -2.659945,2.65994 h -82.140776 c -1.468966,0 -2.659944,-1.19239 -2.659944,-2.65994 z"
+       style="fill:#e47e1a;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.35277778"
+       id="path488"
+       inkscape:connector-curvature="0" />
+    <g
+       id="g490"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g492"
+         clip-path="url(#clipPath496)">
+        <text
+           transform="matrix(1,0,0,-1,19.536,317.45)"
+           style="font-variant:normal;font-weight:normal;font-size:15.47999954px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text500">
+          <tspan
+             x="0 9.4582796 12.94128 16.37784 25.04664 33.653519 37.987919 48.18924 56.79612 65.44944 70.495918 78.282356 86.889236 97.121521 105.7284 114.38172 122.9886 127.21464 135.82152"
+             y="0"
+             sodipodi:role="line"
+             id="tspan498">FlightSearchAdapter</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g502"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g504"
+         clip-path="url(#clipPath508)">
+        <text
+           transform="matrix(1,0,0,-1,19.536,303.17)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text512">
+          <tspan
+             x="0 6.2399998"
+             y="0"
+             sodipodi:role="line"
+             id="tspan510">+</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g514"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g516"
+         clip-path="url(#clipPath520)">
+        <text
+           transform="matrix(1,0,0,-1,32.016,303.17)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text524">
+          <tspan
+             x="0 6.2399998 12.48 18.719999 24.959999 31.200001 37.439999 43.68 49.919998 56.16"
+             y="0"
+             sodipodi:role="line"
+             id="tspan522">getFlights</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g526"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g528"
+         clip-path="url(#clipPath532)">
+        <text
+           transform="matrix(1,0,0,-1,94.416,303.17)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text536">
+          <tspan
+             x="0 6.2399998 12.48 18.719999"
+             y="0"
+             sodipodi:role="line"
+             id="tspan534">():</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g538"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g540"
+         clip-path="url(#clipPath544)">
+        <text
+           transform="matrix(1,0,0,-1,119.38,303.17)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text548">
+          <tspan
+             x="0 6.27 12.5856 18.9354 25.2054 31.4184 37.6884 43.901402 50.171398 56.384399 62.6544 68.867401 75.137398 81.350403 87.620399 93.833397 100.1034 106.3164 112.5864 118.7994"
+             y="0"
+             sodipodi:role="line"
+             id="tspan546">Observable&lt;Flight[]&gt;</tspan>
+        </text>
+      </g>
+    </g>
+    <path
+       d="m 9.7850526,152.36315 v -3.06916 H 9.2347193 v 3.06916 z m 0.7831664,-2.71638 -1.058333,-2.11667 -1.0583334,2.11667 z"
+       style="fill:#e47e1a;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
+       id="path550"
+       inkscape:connector-curvature="0" />
+    <path
+       d="m -34.241613,113.79749 c 0,-1.44286 1.168753,-2.61056 2.610555,-2.61056 h 82.239554 c 1.442861,0 2.610556,1.1677 2.610556,2.61056 v 10.44222 c 0,1.44286 -1.167695,2.61056 -2.610556,2.61056 h -82.239554 c -1.441802,0 -2.610555,-1.1677 -2.610555,-2.61056 z"
+       style="fill:#e47e1a;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.35277778"
+       id="path552"
+       inkscape:connector-curvature="0" />
+    <g
+       id="g554"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g556"
+         clip-path="url(#clipPath560)">
+        <text
+           transform="matrix(1,0,0,-1,19.488,375.19)"
+           style="font-variant:normal;font-weight:normal;font-size:15.47999954px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text564">
+          <tspan
+             x="0 11.17656 15.48 19.78344 28.42128 39.597839 43.034401 46.424519 55.031399 63.684719"
+             y="0"
+             sodipodi:role="line"
+             id="tspan562">HttpClient</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g566"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g568"
+         clip-path="url(#clipPath572)">
+        <text
+           transform="matrix(1,0,0,-1,19.488,360.91)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text576">
+          <tspan
+             x="0 6.2399998"
+             y="0"
+             sodipodi:role="line"
+             id="tspan574">+</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g578"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g580"
+         clip-path="url(#clipPath584)">
+        <text
+           transform="matrix(1,0,0,-1,31.968,360.91)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text588">
+          <tspan
+             x="0 6.2399998 12.48"
+             y="0"
+             sodipodi:role="line"
+             id="tspan586">get</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g590"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g592"
+         clip-path="url(#clipPath596)">
+        <text
+           transform="matrix(1,0,0,-1,50.688,360.91)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text600">
+          <tspan
+             x="0 6.2399998 12.48"
+             y="0"
+             sodipodi:role="line"
+             id="tspan598">&lt;T&gt;</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g602"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g604"
+         clip-path="url(#clipPath608)">
+        <text
+           transform="matrix(1,0,0,-1,69.408,360.91)"
+           style="font-variant:normal;font-weight:normal;font-size:11.39999962px;font-family:Consolas;-inkscape-font-specification:Consolas;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text612">
+          <tspan
+             x="0 6.2399998 12.48 18.719999 24.959999 31.200001 37.439999 43.68 49.919998 56.16 62.514 68.867996 75.108002 81.348 87.587997 93.828003 100.068"
+             y="0"
+             sodipodi:role="line"
+             id="tspan610">(): Observable&lt;T&gt;</tspan>
+        </text>
+      </g>
+    </g>
+    <path
+       d="m 9.7850526,131.55632 v -2.921 H 9.2347193 v 2.921 z m 0.7831664,-2.56822 -1.058333,-2.11667 -1.0583334,2.11667 z"
+       style="fill:#e47e1a;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
+       id="path614"
+       inkscape:connector-curvature="0" />
+    <g
+       id="g616"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g618"
+         clip-path="url(#clipPath622)">
+        <text
+           transform="matrix(1,0,0,-1,316.8,177.14)"
+           style="font-variant:normal;font-weight:normal;font-size:15.47999954px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text626">
+          <tspan
+             x="0 7.7864399 16.39332 25.04664 32.83308 40.619518 45.774361 49.241879 57.848759 66.502083 71.656921"
+             y="0"
+             sodipodi:role="line"
+             id="tspan624">subscribe()</tspan>
+        </text>
+      </g>
+    </g>
+    <path
+       d="m 166.50305,185.29143 c 0,-0.92428 0.74789,-1.67217 1.67217,-1.67217 h 51.73133 c 0.92428,0 1.67216,0.74789 1.67216,1.67217 v 6.68867 c 0,0.92428 -0.74788,1.67216 -1.67216,1.67216 h -51.73133 c -0.92428,0 -1.67217,-0.74788 -1.67217,-1.67216 z"
+       style="fill:#a6a6a6;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.35277778"
+       id="path628"
+       inkscape:connector-curvature="0" />
+    <g
+       id="g630"
+       transform="matrix(0.35277777,0,0,-0.35277777,-37.797613,250.88693)">
+      <g
+         id="g632"
+         clip-path="url(#clipPath636)">
+        <text
+           transform="matrix(1,0,0,-1,587.83,170.59)"
+           style="font-variant:normal;font-weight:normal;font-size:15.47999954px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text640">
+          <tspan
+             x="0 9.4582796 12.94128 16.37784 25.04664 33.653519 37.987919 48.18924 56.79612 65.44944 70.495918 78.282356 86.889236 98.065804 103.12776 106.48692 110.79036 119.4282 124.47468 127.91124"
+             y="0"
+             sodipodi:role="line"
+             id="tspan638">FlightSearchCriteria</tspan>
+        </text>
+      </g>
+    </g>
+    <path
+       d="m 194.35838,176.57076 v 5.30225 h -0.55033 v -5.30225 z m 0.78317,4.94948 -1.05833,2.11666 -1.05834,-2.11666 z"
+       style="fill:#a6a6a6;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
+       id="path642"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>

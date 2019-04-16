@@ -7,10 +7,6 @@ import { SecondRightModule } from './second-right/second-right.module';
 
 @NgModule({
   declarations: [FirstComponent],
-  imports: [
-    CommonModule,
-    FirstRoutingModule,
-    SecondRightModule,
-  ]
+  imports: [CommonModule, FirstRoutingModule, SecondRightModule],
 })
-export class FirstModule { }
+export class FirstModule {}

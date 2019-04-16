@@ -5,12 +5,12 @@ import { ContentComponent } from './content/content.component';
 const routes: Routes = [
   {
     path: '',
-    component: ContentComponent
-  }
+    component: ContentComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class SecondLeftRoutingModule { }
+export class SecondLeftRoutingModule {}

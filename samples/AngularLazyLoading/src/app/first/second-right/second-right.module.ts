@@ -6,9 +6,6 @@ import { ContentComponent } from './content/content.component';
 
 @NgModule({
   declarations: [ContentComponent],
-  imports: [
-    CommonModule,
-    SecondRightRoutingModule
-  ]
+  imports: [CommonModule, SecondRightRoutingModule],
 })
-export class SecondRightModule { }
+export class SecondRightModule {}

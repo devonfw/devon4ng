@@ -112,7 +112,7 @@ Theres two important things in this file:
   2. "icon": in every OS possible theres an icon parameter, the route to the icon folder that will be created after building with angular needs to be used here. This will make it so the electron builder can find the icons and build.
 
 === Include postinstall and PostCSS configuration scripts 
-It is mandatory to include some _postinstall_ scripts at the root folder in order to allow Angular using Electron module (native node modules). In order to make easier this process any project can use the files from our https://github.com/devonfw/my-thai-star[My Thai Star reference application].
+It is mandatory to include some _postinstall_ scripts at the root folder to allow Angular using Electron module (native node modules). In order to make easier this process any project can use the files from our https://github.com/devonfw/my-thai-star[My Thai Star reference application].
 
 ==== postinstall.js
 [source, JavaScript]
@@ -162,9 +162,9 @@ In case a custom _PostCSS_ configuration is required, an optional `postcss.confi
 module.exports = {};
 ----
 
-=== Create the necessary typescript configurations and typings
+=== Create the necessary typescript configurations
 
-In order to initiate electron in an angular app we need to modify the `tsconfig.json` and create `tsconfig-serve.json` in the root. After that, in order to use the method `require` of window it is necessary to create a typings file.
+In order to initiate electron in an angular app we need to modify the `tsconfig.json` file and create a new one named `tsconfig-serve.json` in the root folder.
 
 ==== tsconfig.json
 
@@ -188,7 +188,7 @@ This file needs to be modified to add the `main.ts` and `src/\**/*` folders excl
 
 ==== tsconfig-serve.json
 
-In the root the file `tsconfig-serve` needs to be created. This typescript config file is going to be used when we serve electron:
+In the root, `tsconfig-serve.json` needs to be created. This typescript config file is going to be used when we serve electron:
 
 [source, json]
 ----
@@ -222,7 +222,7 @@ In the root the file `tsconfig-serve` needs to be created. This typescript confi
 
 === Modify angular.json
 
-The file `angular.json` needs to be modified so the project is build inside dist without a folder.
+`angular.json` has to to be modified so the project is build inside _/dist_ without an intermediate folder.
 
 [source,TypeScript]
 ----
@@ -237,10 +237,9 @@ The file `angular.json` needs to be modified so the project is build inside dist
 ----
 
 === Add Angular Electron directives
-In order to use Electron's webview tag and its methods inside Angular application our project needs two Angular specific files: the directive `webview.directive.ts` and the service `electron.service.ts`. We recommend to create this files inside a **shared** module folder, although they have to be declared inside the main module `app.module.ts`.
+In order to use Electron's webview tag and its methods inside an Angular application our project needs the directive `webview.directive.ts` file. We recommend to create this file inside a **shared** module folder, although it has to be declared inside the main module `app.module.ts`.
 
-==== webview.directive.ts
-
+.File webview.directive.ts
 [source,TypeScript]
 ----
 import { Directive } from '@angular/core';
@@ -298,7 +297,7 @@ export class AppModule {}
 
 Here NgxElectronModule is also added so ElectronService can be injected wherever is needed.
 
-After that is done, the use of hash needs to be allowed so electron can reload content properly. On the `app-routing.module.ts`:
+After that is done, the use of hash has to be allowed so electron can reload content properly. On the `app-routing.module.ts`:
 
 [source,TypeScript]
 ----

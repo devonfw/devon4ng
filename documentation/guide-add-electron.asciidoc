@@ -236,25 +236,7 @@ The file `angular.json` needs to be modified so the project is build inside dist
 }
 ----
 
-==== typings.d.ts
-Finally, a typings file is necessary to be able to use some methods from Window later in the electron service, this file is going to be created inside `src/`:
-
-[source,TypeScript]
-----
-/* SystemJS module definition */
-declare var nodeModule: NodeModule;
-interface NodeModule {
-  id: string;
-}
-
-declare var window: Window;
-interface Window {
-  process: any;
-  require: any;
-}
-----
-
-=== Add Angular Electron services and directives
+=== Add Angular Electron directives
 In order to use Electron's webview tag and its methods inside Angular application our project needs two Angular specific files: the directive `webview.directive.ts` and the service `electron.service.ts`. We recommend to create this files inside a **shared** module folder, although they have to be declared inside the main module `app.module.ts`.
 
 ==== webview.directive.ts
@@ -270,63 +252,51 @@ export class WebviewDirective {}
 
 ----
 
-==== electron.service.ts
-[source,TypeScript]
+=== Add access Electron APIs
+
+To call Electron APIs from the Renderer process, install ngx-electron module.
+
+With `npm`:
+[source, bash]
 ----
-import { Injectable } from '@angular/core';
-
-// If you import a module but never use any of the imported values other than as TypeScript types,
-// the resulting javascript file will look as if you never imported the module at all.
-import { ipcRenderer, webFrame, remote } from 'electron';
-import * as childProcess from 'child_process';
-import * as fs from 'fs';
-
-@Injectable()
-export class ElectronService {
-
-  ipcRenderer: typeof ipcRenderer;
-  webFrame: typeof webFrame;
-  remote: typeof remote;
-  childProcess: typeof childProcess;
-  fs: typeof fs;
-
-  constructor() {
-    // Conditional imports
-    if (this.isElectron()) {
-      this.ipcRenderer = window.require('electron').ipcRenderer;
-      this.webFrame = window.require('electron').webFrame;
-      this.remote = window.require('electron').remote;
-
-      this.childProcess = window.require('child_process');
-      this.fs = window.require('fs');
-    }
-  }
-
-  isElectron = () => {
-    return window && window.process && window.process.type;
-  }
-}
-
+$ npm install ngx-electron --save
 ----
+
+Or with `yarn`:
+
+[source, bash]
+----
+$ yarn add ngx-electron --save
+----
+
+This package contains a module named *NgxElectronModule* which exposes Electron APIs through a service called *ElectronService* 
+
 
 ==== Update `app.module.ts` and `app-routing.module.ts`
 
-As an example, the `electron.service.ts` and `webview.directive.ts` files are located inside a `shared` module:
+As an example, the `webview.directive.ts` file is located inside a `shared` module:
 
+.File app.module.ts
 [source,TypeScript]
 ----
 // imports
-import { ElectronService } from './shared/electron/electron.service';
+import { NgxElectronModule } from 'ngx-electron';
 import { WebviewDirective } from './shared/directives/webview.directive';
 
 @NgModule({
   declarations: [AppComponent, WebviewDirective],
-  imports: [...],
-  providers: [ElectronService],
+  imports: [
+    ...
+    NgxElectronModule
+    ...
+    ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
 ----
+
+Here NgxElectronModule is also added so ElectronService can be injected wherever is needed.
 
 After that is done, the use of hash needs to be allowed so electron can reload content properly. On the `app-routing.module.ts`:
 
@@ -336,23 +306,27 @@ After that is done, the use of hash needs to be allowed so electron can reload c
   imports: [RouterModule.forRoot(routes,
     {
       ....
-      useHash: true
+      useHash: true,
     },
   )],
 ----
 
 ==== Usage
-In order to use Electron in any component class the `electron.service.ts` must be injected:
+In order to use Electron in any component class the ElectronService must be injected:
 
 [source,TypeScript]
 ----
+import { ElectronService } from 'ngx-electron';
+
+...
+
 constructor(
   // other injected services
   public electronService: ElectronService,
 ) {
   // previous code...
 
-  if (electronService.isElectron()) {
+  if (electronService.isElectronApp) {
     // Do electron stuff
   } else {
     // Do other web stuff
@@ -361,13 +335,13 @@ constructor(
 }
 ----
 
-NOTE: In case more Electron actions are needed in Angular components or services the `electron.service.ts` must be updated accordingly.
+TIP: A list of all accesible APIs can be found at https://github.com/ThorstenHans/ngx-electron[Thorsten Hans' ngx-electron repository].
 
 === Create the electron window in `main.ts`
 
 In order to use electron, a file needs to be created at the root of the application (`main.ts`). This file will create a window with different settings checking if we are using `--serve` as an argument:
 
-[source, typescript]
+[source, typescript, linenums]
 ----
 import { app, BrowserWindow, screen } from 'electron';
 import * as path from 'path';
@@ -388,6 +362,12 @@ serve = args.some((val) => val === '--serve');
     y: 0,
     width: size.width,
     height: size.height,
+
+    // Important if you are using service workers
+    webPreferences: {
+      nodeIntegration: true,
+      nodeIntegrationInWorker: true,
+    }
   });
 
    if (serve) {
@@ -400,7 +380,7 @@ serve = args.some((val) => val === '--serve');
     win.loadURL(
       url.format({
         pathname: path.join(__dirname, 'dist/index.html'),
-        protocol: 'file:',
+        protocol: 'file',
         slashes: true,
       }),
     );

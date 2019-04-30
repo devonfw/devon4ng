@@ -111,57 +111,6 @@ Theres two important things in this file:
 
   2. "icon": in every OS possible theres an icon parameter, the route to the icon folder that will be created after building with angular needs to be used here. This will make it so the electron builder can find the icons and build.
 
-=== Include postinstall and PostCSS configuration scripts 
-It is mandatory to include some _postinstall_ scripts at the root folder to allow Angular using Electron module (native node modules). In order to make easier this process any project can use the files from our https://github.com/devonfw/my-thai-star[My Thai Star reference application].
-
-==== postinstall.js
-[source, JavaScript]
-----
-const fs = require('fs');
-const f_angular = 'node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/webpack-configs/browser.js';
-
-fs.readFile(f_angular, 'utf8', function (err, data) {
-  if (err) {
-    return console.log(err);
-  }
-  var result = data.replace(/target: "electron-renderer",/g, '');
-  var result = result.replace(/target: "web",/g, '');
-  var result = result.replace(/return \{/g, 'return {target: "electron-renderer",');
-
-  fs.writeFile(f_angular, result, 'utf8', function (err) {
-    if (err) return console.log(err);
-  });
-});
-----
-
-==== postinstall-web.js
-[source, JavaScript]
-----
-const fs = require('fs');
-const f_angular = 'node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/webpack-configs/browser.js';
-
-fs.readFile(f_angular, 'utf8', function (err, data) {
-  if (err) {
-    return console.log(err);
-  }
-  var result = data.replace(/target: "electron-renderer",/g, '');
-  var result = result.replace(/target: "web",/g, '');
-  var result = result.replace(/return \{/g, 'return {target: "web",');
-
-  fs.writeFile(f_angular, result, 'utf8', function (err) {
-    if (err) return console.log(err);
-  });
-});
-----
-
-==== postcss.config.js
-In case a custom _PostCSS_ configuration is required, an optional `postcss.config.js` could be included. This is only intended to change the _PostCSS_ behaviour of the previous `postinstall` scripts, but in most cases will not be necessary. For that reason in My thai Star there is a minimum file configuration that indeed does nothing:
-
-[source, JavaScript]
-----
-module.exports = {};
-----
-
 === Create the necessary typescript configurations
 
 In order to initiate electron in an angular app we need to modify the `tsconfig.json` file and create a new one named `tsconfig-serve.json` in the root folder.

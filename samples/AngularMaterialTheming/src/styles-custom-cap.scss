@@ -35,7 +35,8 @@ $my-cap-theme-foreground: (
   slider-off-active: rgba(white, 0.3),
 );
 
-// instead of creating a theme with mat-light-theme like a sane person, we will create our own theme-creating function that lets us apply our own foreground and background palettes.
+// instead of creating a theme with mat-light-theme or mat-dark-theme, 
+// we will create our own theme-creating function that lets us apply our own foreground and background palettes.
 @function create-my-cap-theme($primary, $accent, $warn: mat-palette($mat-red)) {
   @return (
     primary: $primary,
@@ -47,7 +48,7 @@ $my-cap-theme-foreground: (
   );
 }
 
-// The rest of this is like a normal theme.scss file. The only difference being that we use create-my-new-theme instead of mat-light-theme
+// We use create-my-new-theme instead of mat-light-theme or mat-dark-theme
 $custom-cap-theme-primary: mat-palette($mat-green);
 $custom-cap-theme-accent: mat-palette($mat-blue);
 $custom-cap-theme-warn: mat-palette($mat-red);

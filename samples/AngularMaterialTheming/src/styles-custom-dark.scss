@@ -1,7 +1,41 @@
 @import '~@angular/material/theming';
 
+$my-pink: (
+    50 : #fcf3f3,
+    100 : #f9e0e0,
+    200 : #f5cccc,
+    300 : #f0b8b8,
+    400 : #eda8a8,
+    500 : #ea9999,
+    600 : #e79191,
+    700 : #e48686,
+    800 : #e17c7c,
+    900 : #db6b6b,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffeaea,
+    A700 : #ffd0d0,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
 // custom primary palettes
-$custom-dark-theme-primary: mat-palette($mat-pink);
+$custom-dark-theme-primary: mat-palette($my-pink);
 $custom-dark-theme-accent: mat-palette($mat-blue);
 $custom-dark-theme-warn: mat-palette($mat-red);
 

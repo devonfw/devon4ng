@@ -32,7 +32,7 @@ In Angular Material, a theme is created mixing multiple colors. Colors and its l
 
 [[id_palette_variants]]
 .Palettes and variants.
-image::images/angular/angular-theming/palette.png["deeppurple-amber theme", width=600 link="images/angular/angular-theming/palette.png"]
+image::images/angular/angular-theming/palette.PNG["Theme palette", width=600 link="images/angular/angular-theming/palette.PNG"]
 
 In angular material, a palette is represented as a scss map.
 

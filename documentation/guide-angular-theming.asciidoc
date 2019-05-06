@@ -198,7 +198,7 @@ If we have multiple themes it is necessary to add the include statement inside a
 ----
 
 .File src/index.html.
-[source, scss]
+[source, html]
 ----
 ...
 <app-root class="custom-dark-theme"></app-root>

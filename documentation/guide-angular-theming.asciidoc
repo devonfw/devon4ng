@@ -333,7 +333,7 @@ After defining our new theme, we can import it from styles.scss.
 Certain components (e.g. menu, select, dialog, etc.) that are inside of a global overlay container,require an additional step to be affected by the theme's css class selector.
 
 .File app.module.ts
-[source, scss]
+[source, ts]
 ----
 import {OverlayContainer} from '@angular/cdk/overlay';
 

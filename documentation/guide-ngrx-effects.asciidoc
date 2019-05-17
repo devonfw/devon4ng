@@ -1,0 +1,161 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+== NgRx Effects
+
+Reducers are pure functions, meaning they are side-effect free and deterministic. Many actions however have side effects like sending messages or displaying a toast notification. NgRx encapsulates these actions in effects.
+
+Let's build a recommended movies list so the user can add movies to their watchlist.
+
+=== Obtaining the recommendation list from the server
+
+Create a module for recommendations and add stores and states as in the previous chapter. Add `EffectsModule.forRoot([])` to the imports in `AppModule` below `StoreModule.forRoot()`. Add effects to the feature module:
+
+ ng generate effect recommendation/Recommendation -m recommendation/recommendation.module.ts
+
+We need actions for loading the movie list, success and failure cases:
+
+*recommendation/actions/index.ts*
+[source, typescript]
+----
+import { createAction, props, union } from '@ngrx/store';
+import { Movie } from 'src/app/watchlist/models/movies';
+
+export const loadRecommendedMovies = createAction('[Recommendation List] Load movies');
+export const loadRecommendedMoviesSuccess = createAction('[Recommendation API] Load movies success', props<{movies: Movie[]}>());
+export const loadRecommendedMoviesFailure = createAction('[Recommendation API] Load movies failure', props<{error: any}>());
+
+const actions = union({
+    loadRecommendedMovies,
+    loadRecommendedMoviesSuccess,
+    loadRecommendedMoviesFailure
+});
+
+export type ActionsUnion = typeof actions;
+----
+
+In the reducer, we use a loading flag so the UI can show a loading spinner. The store is updated with arriving data.
+
+*recommendation/actions/index.ts*
+[source, typescript]
+----
+export interface State {
+  items: Movie[];
+  loading: boolean;
+}
+
+export const initialState: State = {
+  items: [],
+  loading: false
+};
+
+export function reducer(state = initialState, action: recommendationActions.ActionsUnion): State {
+  switch (action.type) {
+    case '[Recommendation List] Load movies':
+      return {
+        ...state,
+        items: [],
+        loading: true
+      };
+
+    case '[Recommendation API] Load movies failure':
+      return {
+        ...state,
+          loading: false
+      };
+
+    case '[Recommendation API] Load movies success':
+      return {
+        ...state,
+        items: action.movies,
+        loading: false
+      };
+
+    default:
+      return state;
+  }
+}
+
+export const getAll = (state: State) => state.items;
+export const isLoading = (state: State) => state.loading;
+----
+
+We need an API service to talk to the server. For demonstration purposes, we simulate an answer delayed by one second:
+
+*recommendation/services/recommendation-api.service.ts*
+[source, typescript]
+----
+@Injectable({
+  providedIn: 'root'
+})
+export class RecommendationApiService {
+
+  private readonly recommendedMovies: Movie[] = [
+    {
+      id: 2,
+      title: 'The Hunger Games',
+      genre: 'sci-fi',
+      releaseYear: 2012,
+      runtimeMinutes: 144
+    },
+    {
+      id: 4,
+      title: 'Avengers: Endgame',
+      genre: 'fantasy',
+      releaseYear: 2019,
+      runtimeMinutes: 181
+    }
+  ];
+
+  loadRecommendedMovies(): Observable<Movie[]> {
+    return of(this.recommendedMovies).pipe(delay(1000));
+  }
+}
+----
+
+Here are the effects:
+
+*recommendation/services/recommendation-api.service.ts*
+[source, typescript]
+----
+@Injectable()
+export class RecommendationEffects {
+
+  constructor(
+    private actions$: Actions,
+    private recommendationApi: RecommendationApiService,
+  ) { }
+
+  @Effect()
+  loadBooks$ = this.actions$.pipe(
+    ofType(recommendationActions.loadRecommendedMovies.type),
+    switchMap(() => this.recommendationApi.loadRecommendedMovies().pipe(
+      map(movies => recommendationActions.loadRecommendedMoviesSuccess({ movies })),
+      catchError(error => of(recommendationActions.loadRecommendedMoviesFailure({ error })))
+    ))
+  );
+}
+----
+
+Effects are always observables and return actions. In this example, we consume the actions observable provided by NgRx and listen only for the `loadRecommendedMovies` actions by using the `ofType` operator. Using `switchMap`, we map to a new observable, one that loads movies and maps the successful result to a new `loadRecommendedMoviesSuccess` action or a failure to `loadRecommendedMoviesFailure`. In a real application we would show a notification in the error case.
+
+[NOTE]
+====
+If an effect should not dispatch another action, return an empty observable.
+====
+
+link:guide-ngrx-entity[Continue reading how to simplify CRUD (Create Read Update Delete) operations using @ngrx/entity].

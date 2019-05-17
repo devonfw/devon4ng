@@ -35,4 +35,4 @@ while remaining free of a dependency to a concrete framework like https://github
 The main driver is, to make it easy to adapt the architecture and get going very fast.
 So, it is not necessary to learn about reducers, actions and middleware (e.g. action-creators, thunks, effects, etc.) and still have the benefits of reactive style programming.
 
-TIP: *If you have a team that is experienced with ngrx or angular-redux, just go for it.*
+That being said, we provide a link:guide-ngrx-getting-started[tutorial for using NgRx as a state management framework].

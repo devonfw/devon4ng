@@ -36,6 +36,12 @@
 === Layouts
 ** link:guide-layout-with-angular-material[Angular Material Layout]
 
+=== NgRx
+** link:guide-ngrx-getting-started[Introduction]
+** link:guide-ngrx-simple-store[State, Selection and Reducers]
+** link:guide-ngrx-effects[Side effects with NgRx/Effects]
+** link:guide-ngrx-entity[Simplifying CRUD with NgRx/Entity]
+
 === Cookbook
 ** link:cookbook-abstract-class-store[Abstract Class Store]
 ** link:guide-add-electron[Angular Electron]

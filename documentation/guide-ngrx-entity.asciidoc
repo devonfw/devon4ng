@@ -1,0 +1,83 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+== NgRx Entity
+
+Most of the time when manipulating entries in the store, we like to create, add, update, or delete entries (CRUD). NgRx/Entity provides convenience functions if each item of a collection has an id property. Luckily all our entities already have this property.
+
+Let's add functionality to add a movie to the watchlist. First, create the required action:
+
+*recommendation/actions/index.ts*
+[source, typescript]
+----
+export const addToWatchlist = createAction('[Recommendation List] Add to watchlist',
+    props<{ watchlistItemId: number, movie: Movie, addedAt: Date }>());
+----
+
+[NOTE]
+====
+You may wonder why the Date object is not created inside the reducer instead, since it should always be the current time. However, remember that reducers should be deterministic state machines -- State A + Action B should always result in the same State C. This makes reducers easily testable.
+====
+
+Then, rewrite the watchlistData reducer to make use of NgRx/Entity:
+
+*recommendation/actions/index.ts*
+[source, typescript]
+----
+export interface State extends EntityState<WatchlistItem> { <1>
+}
+
+export const entityAdapter = createEntityAdapter<WatchlistItem>(); <2>
+
+export const initialState: State = entityAdapter.getInitialState(); <3>
+
+const entitySelectors = entityAdapter.getSelectors();
+
+export function reducer(state = initialState, action: playbackActions.ActionsUnion | recommendationActions.ActionsUnion): State {
+  switch (action.type) {
+    case playbackActions.playbackFinished.type:
+      const itemToUpdate = entitySelectors
+      .selectAll(state) <4>
+      .find(item => item.movie.id === action.movieId);
+      if (itemToUpdate) {
+        return entityAdapter.updateOne({ <5>
+          id: itemToUpdate.id,
+          changes: { playbackMinutes: action.stoppedAtMinute } <6>
+        }, state);
+      } else {
+        return state;
+      }
+
+    case recommendationActions.addToWatchlist.type:
+      return entityAdapter.addOne({id: action.watchlistItemId, movie: action.movie, added: action.addedAt, playbackMinutes: 0}, state);
+
+    default:
+      return state;
+  }
+}
+
+
+export const getAllItems = entitySelectors.selectAll;
+----
+<1> NgRx/Entity requires state to extend EntityState. It provides a list of ids and a dictionary of id => entity entries
+<2> The entity adapter provides data manipulation operations and selectors
+<3> The state can be initialized with `getInitialState()`, which accepts an optional object to define any additional state beyond EntityState
+<4> `selectAll` returns an array of all entities
+<5> All adapter operations consume the state object as the last argument and produce a new state
+<6> Update methods accept a partial change definition; you don't have to clone the object
+
+This concludes the tutorial on NgRx. If you want to learn about advanced topics such as selectors with arguments, testing, or router state, head over to the https://ngrx.io/docs[official NgRx documentation].

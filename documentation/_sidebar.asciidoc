@@ -15,6 +15,7 @@
 ** link:guide-angular-elements[Angular Elements]
 ** link:guide-angular-lazy-loading[Angular Lazy Loading]
 ** link:guide-angular-library[Angular Library]
+** likn:guide-angular-theming[Angular Material Theming]
 ** link:guide-angular-pwa[Angular Progressive Web Apps]
 ** link:guide-app-initializer[App Initializer]
 ** link:guide-component-decomposition[Component Decomposition]

@@ -14,6 +14,7 @@ This repository contains the following assets:
 ** **AngularElementsTest:** Project sample created to use the `Angular Element`
 ** **AngularLazyLoading:** Project sample using Lazy Loading
 ** **AngularMaterialBasicLayout:** Basic layout using angular material
+** **AngularMaterialTheming:** App theming using angular material
 ** **AppInitializer:** Project sample of `App Initializer`
 ** **ElectronTest:** Project sample of `Electron`
 ** **ErrorHandler:** Project sample of `Error Handler`

@@ -68,29 +68,53 @@ Once we added the necessary exports, in order to use the library in other applic
 ng build "library-name"
 ----
 
-=== Packing and installing our library in other projects
+[[id-packing-library]]
+=== Packing the library
 
-In this step we are going to pack the build library and install/add it on other projects. In order to do so, we need to travel inside the `dist/"library-name"` before using npm or yarn.
+In this step we are going to pack the build library. In order to do so, we need to go inside `dist/"library-name"` and then run either `npm pack` or `yarn pack` to generate a `"library-name-version.tgz"` file.
+
+.Packing using npm
+[source]
+----
+npm pack
+----
+
+.Packing using yarn
+[source]
+----
+yarn pack
+----
+
+=== Publishing to npm repository (optional)
+
+* Add a _README.md_ and _LICENSE_ file. The text inside _README.md_ will be used in you npm package web page as documentation.
+
+* run `npm adduser` if you do not have a npm account to create it, otherwise run `npm login` and introduce your credentials.
+
+* run `npm publish` inside `dist/"library-name"` folder.
+
+* Check that the library is published: https://npmjs.com/package/<library-name>
+
+
+=== Installing our library in other projects
+
+In this step we are going to install/add the library on other projects.
 
 ==== npm 
 
-In order to use the library in other applications, there are two steps needed:
+In order to add the library in other applications, there are two ways:
 
-    1. From inside the library dist folder, the library is going to get packed using `npm pack`. This is going to generate a `.tgz` file with the library name and the version.
+    * *Option 1*: From inside the application where the library is going to get used, using the command `npm install "path-to-tgz"/"library-name-version.tgz"` allows us to install the `.tgz` generated in <<id-packing-library>>.
 
-    2. (optional).- At this point  the generated `.tgz` can be published, this step is not going to be explained in this guide. In this case, in the next step you would install the publicated version instead of the `.tgz`.
-
-    3. From inside the application where the library is going to get used, using the command `npm install "path-to-tgz"/"library-name-version.tgz"` allows us to install the `.tgz` that got generated in the first step.
+    * *Option 2*: run `npm install "library-name"` to install it from npm repository.
 
 ==== yarn
 
-In order to use the library in other applications, there are two steps needed:
+To add the package using yarn:
 
-    1. From inside the library dist folder, the library is going to get packed using `yarn pack`. This is going to generate a `.tgz` file with the library name and the version.
+    * *Option 1*: From inside the application where the library is going to get used, using the command `yarn add "path-to-tgz"/"library-name-version.tgz"` allows us to install the `.tgz`  generated in <<id-packing-library>>.
 
-    2. (optional).- At this point  the generated `.tgz` can be published, this step is not going to be explained in this guide. In this case, in the next step you would install the publicated version instead of the `.tgz`.
-
-    3. From inside the application where the library is going to get used, using the command `yarn add "path-to-tgz"/"library-name-version.tgz"` allows us to install the `.tgz` that got generated in the first step.
+    * *Option 2*: run `yarn add "library-name"` to install it from npm repository.
 
 === Using the library
 
@@ -165,3 +189,10 @@ image::images/angular-library/result.png[, link="images/angular-library/result.p
 
 
 
+=== devon4ng libraries
+
+In https://github.com/devonfw/devon4ng-library[devonfw/devon4ng-library] you can find some useful libraries:
+
+* *Authorization module*: This devon4ng Angular module adds rights-based authorization to your Angular app.
+
+* *Cache module*: Use this devon4ng Angular module when you want to cache requests to server. You may configure it to store in cache only the requests you need and to set the duration you want.

@@ -4,3 +4,6 @@
 [submodule "devon4ng-ionic-application-template"]
 	path = devon4ng-ionic-application-template
 	url = https://github.com/devonfw/devon4ng-ionic-application-template
+[submodule "devon4ng-ngrx-template"]
+	path = devon4ng-ngrx-template
+	url = https://github.com/devonfw/devon4ng-ngrx-template

@@ -145,3 +145,136 @@ then you should aim for triggering navigations only in _Smart Components_.
 
 .Triggering navigation
 image::images/triggering-navigation.svg["Triggering navigation", link="images/triggering-navigation.svg", width=350,height=200]
+
+== Guards
+
+Guards are Angular services implemented on routes which determines whether a user can naviagate to/from the route. There are examples below which will explain things better. We have the following types of Guards:
+
+* *CanActivate*: It is used to determine whether a user can visit a route. The most common scenario for this guard is to check if the user is authenticated. For example, if we want only logged in users to be able to go to a particular route, we will implement the `CanActivate` guard on this route.
+* *CanActivateChild*: Same as above, only implemented on child routes.
+* *CanDeactivate*: It is used to determine if a user can naviagate away from a route. Most common example is when a user tries to go to a different page after filling up a form and does not save/submit the changes, we can use this guard to confirm whether the user really wants to leave the page without saving/submiting.
+* *Resolve*: For resolving dynamic data.
+* *CanLoad*: It is used to determine whether an _Angular module_ can be loaded lazily. Example below will be helpful to understand it.
+
+Let's have a look at some examples.
+
+=== Example 1 - CanActivate and CanActivateChild guards
+
+==== CanActivate guard
+
+As mentioned earlier, a guard is an Angular service and services are simply TypeScript classes. So we begin by creating a class. This class has to implement the `CanActivate` interface (imported from `angular/router`), and therefore, must have a `canActivate` function. The logic of this function determines whether the requested route can be navigated to or not. It returns either a `boolean` value or an `Observable` or a `Promise` which resolves to a `boolean` value. If it is true, the route is loaded, else not.
+
+.CanActivate example
+[source,ts]
+----
+...
+import {CanActivate} from "@angular/router";
+
+@Injectable()
+class ExampleAuthGuard implements CanActivate {
+  constructor(private authService: AuthService) {}
+  
+  canActivate(route: ActivatedRouterSnapshot, state: RouterStateSnapshot) {
+	if (this.authService.isLoggedIn()) {
+      return true;
+    } else {
+	  window.alert('Please log in first');
+      return false;
+    }
+  }
+}
+----
+
+In the above example, let's assume we have a `AuthService` which has a `isLoggedIn()` method which returns a boolean value depending on whether the user is logged in. We use it to return `true` or `false` from the `canActivate` function.
+The `canActivate` function accepts two parameters (provided by Angular). The first parameter of type `ActivatedRouterSnapshot` is the snapshot of the route the user is trying to naviagate to (where the guard is implemented); we can extract the route parameters from this instance. The second parameter of type `RouterStateSnapshot` is a snapshot of the router state the user is trying to naviagate to; we can fetch the URL from it's `url` property.
+
+TIP: We can also redirect the user to another page (maybe a login page) if the `authService` returns false. To do that, inject `Router` and use it's `naviagate` function to redirect to the appropriate page.
+
+Since it is a service, it needs to be provided in our module:
+
+.provide the guard in a module
+[source,ts]
+----
+@NgModule({
+  ...
+  providers: [
+    ...
+    ExampleAuthGuard
+  ]
+})
+----
+
+Now this guard is ready to use on our routes. We implement it where we define our array of routes in the application:
+
+.Implementing the guard
+[source,ts]
+----
+...
+const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'page1', component: Page1Component, canActivate: [ExampleAuthGuard] }
+];
+----
+
+As you can see, the `canActivate` property accepts an array of guards. So we can implement more than one guard on a route.
+
+==== CanActivateChild guard
+
+To use the guard on nested (children) routes, we add it to the `canActivateChild` property like so:
+
+.Implementing the guard on child routes
+[source,ts]
+----
+...
+const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'page1', component: Page1Component, canActivateChild: [ExampleAuthGuard], children: [
+	{path: 'sub-page1', component: SubPageComponent},
+    {path: 'sub-page2', component: SubPageComponent}
+  ] }
+];
+----
+
+=== Example 2 - CanLoad guard
+
+Similar to `CanActivate`, to use this guard we implement the `CanLoad` interface and overwrite it's `canLoad` function. Again, this function returns either a boolean value or an `Observable` or a `Promise` which resolves to a boolean value. The fundamental difference between `CanActivate` and `CanLoad` is that `CanLoad` is used to determine whether an entire module can be lazily loaded or not. If the guard returns `false` for a module protected by `CanLoad`, the entire module is not loaded.
+
+
+.CanLoad example
+[source,ts]
+----
+...
+import {CanLoad, Route} from "@angular/router";
+
+@Injectable()
+class ExampleCanLoadGuard implements CanLoad {
+  constructor(private authService: AuthService) {}
+  
+  canLoad(route: Route) {
+	if (this.authService.isLoggedIn()) {
+      return true;
+    } else {
+	  window.alert('Please log in first');
+      return false;
+    }
+  }
+}
+----
+
+Again, let's assume we have a `AuthService` which has a `isLoggedIn()` method which returns a boolean value depending on whether the user is logged in. The `canLoad` function accepts a parameter of type Route which we can use to fetch the path a user is trying to navigate to (using the `path` property of `Route`). 
+
+This guard needs to be provided in our module like any other service.
+
+To implement the guard, we use the `canLoad` property:
+
+.Implementing the guard
+[source,ts]
+----
+...
+const routes: Routes = [
+  { path: 'home', component: HomeComponent },
+  { path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule', canLoad: [ExampleCanLoadGuard] }
+];
+----

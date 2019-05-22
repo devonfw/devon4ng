@@ -1,0 +1,26 @@
+language: generic
+env:
+  global:
+  - ORG="devonfw"
+  - USER="devonfw-core"
+  - EMAIL="icsddevonfwsupport.apps2@capgemini.com"
+  - REPO_SOURCE="devon4ng"
+  - REPO_DEST="devon4ng.wiki"
+  - GH_REPO_SOURCE="github.com/${ORG}/${REPO_SOURCE}.git"
+  - GH_REPO_DEST="github.com/${ORG}/${REPO_DEST}.git"
+  - secure: e0xyPvV+67AFTaMa5mIUbTa/6gjDJjXYpXlwb+sIv9T5hYXOWdeDKZ8erqbTjLG+uISuleUy0++hbgKPsp/IFGgZFXXWTqqM1aiwHS2e922zRUnAo67ezXs6KhowsqvTpTWwMnyEXfk/0bRRfsart5dvK4T+GzGSP2tTAyZXKfdsLYLwKEZfTmzLlKKIYQoIyUfZqc5nsWOSlI9QGKnEgV1c7sBsHm377t8hO2WuuWXmQpzOiZdm6wXpj3gRZlZC1+YyB9eyXMkjRJwpHUQVbEYefuBni+c2lpK5M4i6zhngs8D7ZQXO84t5P2H3y9cF5OVeB/Bv2WUdQW9iezudBF0Zq7qwSZO1L1rINFsgS1i/KzaZMA5buZ4Ycd67ygzgLHDsyBRDDMQ9L+I5U8XzWq3fq8V0BOxvghQ8s9pnwDq10lNN4XTMmCMOnCmaWptC2Qd1CgK8rbWgIUZx0mRjyfQCIl+9PGGJeRZcsrwH9+mZLHz0fRZttKirUzeGaiif/T0UKqsewktr8KcG2IavzkCzeRq2baWjmHdTcUJF3Sns4CTLROTpksL/nPjRp/zh9YFAEGSUYKJnH9uKbe1KBjFI5+wit9xfTiURjMeAojI4zPu88nXtnCQwluR+hOdj+t+eYNjaw8TeyMEB7dL3e508QP9GigAyZ9rl6CgYew4=
+script:
+- MESSAGE=$(git log --format=%B -n 1 $TRAVIS_COMMIT)
+- git clone https://${GH_REPO_SOURCE}
+- git clone https://${GH_REPO_DEST}
+- yes | cp -rf ${REPO_SOURCE}/documentation/* ${REPO_DEST}/
+- cd ${REPO_DEST}
+- pwd
+- git remote
+- git config user.email ${EMAIL}
+- git config user.name ${USER}
+- git add .
+- git status
+- git commit -m "${MESSAGE}"
+- git remote add origin-wiki "https://${USER}:${GITHUB_TOKEN}@${GH_REPO_DEST}"
+- git push origin-wiki master

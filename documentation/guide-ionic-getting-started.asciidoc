@@ -32,8 +32,6 @@ Although the devonfw distribution comes with and already installed Ionic CLI, he
 
 `npm install -g ionic`
 
-
-
 == Update Ionic CLI
 
 To update the installed version of the CLI run:

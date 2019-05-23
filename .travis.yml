@@ -2,7 +2,6 @@ language: generic
 env:
   global:
   - ORG="devonfw"
-  - USER="devonfw-core"
   - EMAIL="icsddevonfwsupport.apps2@capgemini.com"
   - REPO_SOURCE="devon4ng"
   - REPO_DEST="devon4ng.wiki"

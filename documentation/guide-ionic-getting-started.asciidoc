@@ -19,7 +19,6 @@ toc::[]
 
 Ionic is a front-end focused framework which offers different tools for developing hybrid mobile applications. The web technologies used for this purpose are CSS, Sass, HTML5 and Typescript.
 
-
 = Why Ionic?
 
 Ionic is used for developing hybrid applications, which means not having to rely on a specifyc IDE such as Android Studio or Xcode. Furthermore, development of native apps require learning different languages (Java/Kotlin for Android and Objective-C/Swift for Apple), with Ionic, a developer does not have to code the same functionality for multiple platforms, just use the adecuate libraries and components.

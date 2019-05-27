@@ -1,42 +1,48 @@
 language: generic
 env:
   global:
-  - ORG="devonfw"
-  - EMAIL="icsddevonfwsupport.apps2@capgemini.com"
-  - REPO_SOURCE="devon4ng"
-  - REPO_DEST="devon4ng.wiki"
-  - REPO_CONSOLIDATE="devonfw-guide"
-  - GH_REPO_SOURCE="github.com/${ORG}/${REPO_SOURCE}.git"
-  - GH_REPO_DEST="github.com/${ORG}/${REPO_DEST}.git"
-  - GH_REPO_CONSOLIDATE="github.com/${ORG}/${REPO_CONSOLIDATE}.git"
-  - secure: D56NqnFnAPm/IZz/HCtlAYSIV8sGS9Rxv0quzyv2u2w22SLj32pj/WmHt69+xPr8E28l7M7Ju3KTNScFxDFH9ciMOydf6iGbe7jJppITbMaD2JllSH1UNfaJFOT+l3pxv4kt1JJove6OJt/Pv9Wj2syDnggpHI8Zai28pEWDzwgRvBO6OpgD+ewyr+WcJZ6GvhqD/+ubwr8Uopmv0FE/Ccx1px03Fs5D1kVkfvm0bfgDAhynFJ8VUY7IDAQhdoaxDUusEfMIVN6FBxhCzzGn/FPEe8nJxcGcT9zprxlL9EiVQ1f2EWCdXtM2OUTN1clbraqlkJZ7YAvgroX1qrMYdyEyLHd48CjboL1gew1Qieqbv/cqoLnnGRga0cC6VTBOY/2waMYvmglOSEs3ejl69zL8/FS4ZcDK3lJpMQMhGw6TP6Zm1uaKtqN9oi2Nc1eHcf2NGks8xS+eYQ4lLDHojkuy9C55LbeOeDJ8uJ4A3NXLHBiuia/+g8PqBnP4GhNxD/pqY5FiyyKEFIrgJm2Es5YtyO+L1HZS1Ryw7KY8SUt6XjgCHS+EiKEZLMjfJN4C/c3r9RVDgJgxH1gPYS/GZ5ie0xZspKBnfprwXMtuNHL6RiQYuhBEKepW+5B7PEhHpaXzC1L0Gdyr9DPyofnCsfY4K3yZnTjpjaNGI/lcwyY=
-script:
-# Create message commit and clone repositories
-- MESSAGE=$(git log --format=%B -n 1 $TRAVIS_COMMIT)
-- git clone https://${GH_REPO_SOURCE}
-- git clone https://${GH_REPO_DEST}
-- git clone https://${GH_REPO_CONSOLIDATE}
-# Update wiki repository
-- yes | cp -rf ${REPO_SOURCE}/documentation/* ${REPO_DEST}/
-- cd ${REPO_DEST}
-- pwd
-- git remote
-- git config user.email ${EMAIL}
-- git config user.name ${USER}
-- git add .
-- git status
-- git commit -m "${MESSAGE}"
-- git remote add origin-wiki "https://${USER}:${GITHUB_TOKEN}@${GH_REPO_DEST}"
-- git push origin-wiki master
-# Update consolidated repo
-- cd ../${REPO_CONSOLIDATE}
-- git submodule add https://${GH_REPO_DEST}
-- git submodule init
-- git submodule update
-- cd ${REPO_DEST}
-- git checkout master
-- git pull
-- cd ..
-- git commit -m "${MESSAGE}"
-- git remote add origin-wiki "https://${USER}:${GITHUB_TOKEN}@${GH_REPO_CONSOLIDATE}"
-- git push origin-wiki master
+    - ORG="devonfw"
+    - EMAIL="icsddevonfwsupport.apps2@capgemini.com"
+    - REPO_SOURCE="devon4ng"
+    - REPO_DEST="devon4ng.wiki"
+    - REPO_CONSOLIDATE="devonfw-guide"
+    - GH_REPO_SOURCE="github.com/${ORG}/${REPO_SOURCE}.git"
+    - GH_REPO_DEST="github.com/${ORG}/${REPO_DEST}.git"
+    - GH_REPO_CONSOLIDATE="github.com/${ORG}/${REPO_CONSOLIDATE}.git"
+    - secure: D56NqnFnAPm/IZz/HCtlAYSIV8sGS9Rxv0quzyv2u2w22SLj32pj/WmHt69+xPr8E28l7M7Ju3KTNScFxDFH9ciMOydf6iGbe7jJppITbMaD2JllSH1UNfaJFOT+l3pxv4kt1JJove6OJt/Pv9Wj2syDnggpHI8Zai28pEWDzwgRvBO6OpgD+ewyr+WcJZ6GvhqD/+ubwr8Uopmv0FE/Ccx1px03Fs5D1kVkfvm0bfgDAhynFJ8VUY7IDAQhdoaxDUusEfMIVN6FBxhCzzGn/FPEe8nJxcGcT9zprxlL9EiVQ1f2EWCdXtM2OUTN1clbraqlkJZ7YAvgroX1qrMYdyEyLHd48CjboL1gew1Qieqbv/cqoLnnGRga0cC6VTBOY/2waMYvmglOSEs3ejl69zL8/FS4ZcDK3lJpMQMhGw6TP6Zm1uaKtqN9oi2Nc1eHcf2NGks8xS+eYQ4lLDHojkuy9C55LbeOeDJ8uJ4A3NXLHBiuia/+g8PqBnP4GhNxD/pqY5FiyyKEFIrgJm2Es5YtyO+L1HZS1Ryw7KY8SUt6XjgCHS+EiKEZLMjfJN4C/c3r9RVDgJgxH1gPYS/GZ5ie0xZspKBnfprwXMtuNHL6RiQYuhBEKepW+5B7PEhHpaXzC1L0Gdyr9DPyofnCsfY4K3yZnTjpjaNGI/lcwyY=
+stages:
+  - name: Documentation
+    if: type = push
+jobs:
+  include:
+    - stage: Documentation
+      script:
+        # Create message commit and clone repositories
+        - MESSAGE=$(git log --format=%B -n 1 $TRAVIS_COMMIT)
+        - git clone https://${GH_REPO_SOURCE}
+        - git clone https://${GH_REPO_DEST}
+        - git clone https://${GH_REPO_CONSOLIDATE}
+        # Update wiki repository
+        - yes | cp -rf ${REPO_SOURCE}/documentation/* ${REPO_DEST}/
+        - cd ${REPO_DEST}
+        - pwd
+        - git remote
+        - git config user.email ${EMAIL}
+        - git config user.name ${USER}
+        - git add .
+        - git status
+        - git commit -m "${MESSAGE}"
+        - git remote add origin-wiki "https://${USER}:${GITHUB_TOKEN}@${GH_REPO_DEST}"
+        - git push origin-wiki master
+        # Update consolidated repo
+        - cd ../${REPO_CONSOLIDATE}
+        - git submodule add https://${GH_REPO_DEST}
+        - git submodule init
+        - git submodule update
+        - cd ${REPO_DEST}
+        - git checkout master
+        - git pull
+        - cd ..
+        - git commit -m "${MESSAGE}"
+        - git remote add origin-wiki "https://${USER}:${GITHUB_TOKEN}@${GH_REPO_CONSOLIDATE}"
+        - git push origin-wiki master

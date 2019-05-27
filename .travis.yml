@@ -36,7 +36,7 @@ jobs:
         - git push origin-wiki master
         # Update consolidated repo
         - cd ../${REPO_CONSOLIDATE}
-        - ! ls ${REPO_DEST} && git submodule add https://${GH_REPO_DEST} ; return 0
+        - if [ ! -d ${REPO_DEST} ]; then git submodule add https://${GH_REPO_DEST}; else return 0; fi;
         - git submodule init
         - git submodule update
         - cd ${REPO_DEST}

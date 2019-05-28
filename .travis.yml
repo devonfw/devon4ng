@@ -30,7 +30,7 @@ jobs:
         - git config user.name ${USER}
         - git add .
         - git status
-        - git commit -m ${TRAVIS_COMMIT_MESSAGE}
+        - git commit -m "${REPO_SOURCE} documentation | Travis CI build number $TRAVIS_BUILD_NUMBER"
         - git remote add origin-wiki "https://${USER}:${GITHUB_TOKEN}@${GH_REPO_DEST}"
         - git push origin-wiki master
         # Update consolidated repo
@@ -43,6 +43,6 @@ jobs:
         - git pull
         - cd ..
         - git add .
-        - git commit -m ${TRAVIS_COMMIT_MESSAGE}
+        - git commit -m "${REPO_SOURCE} documentation | Travis CI build number $TRAVIS_BUILD_NUMBER"
         - git remote add origin-wiki "https://${USER}:${GITHUB_TOKEN}@${GH_REPO_CONSOLIDATE}"
         - git push origin-wiki master

@@ -18,7 +18,7 @@ jobs:
     - stage: Documentation
       script:
         # Create message commit and clone repositories
-        - MESSAGE=$(git log --format=%B -n 1 $TRAVIS_COMMIT)
+        - MESSAGE=$(git log --format=%B -n 1 $TRAVIS_COMMIT_MESSAGE)
         - git clone https://${GH_REPO_SOURCE}
         - git clone https://${GH_REPO_DEST}
         - git clone https://${GH_REPO_CONSOLIDATE}

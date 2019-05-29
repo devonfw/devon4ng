@@ -80,9 +80,7 @@ The process of taking a picture is enclosed in a *takePicture* method. takePictu
         });
 
         // Change last picture shown
-        const imageUrl = image.webPath;
         this.image = this.sanitizer.bypassSecurityTrustResourceUrl(image.webPath);
-        this.image = imageUrl;
       } catch (e) {
         this.show('Closing camera');
       }
@@ -98,10 +96,25 @@ The process of taking a picture is enclosed in a *takePicture* method. takePictu
 
 == Step 4: PWA Elements
 
-When Ionic apps are not running natively, some resources like Camera do not work by default but can be enabled using PWA Elements. To use Capacitor's PWA elements add the following script inside the tag header at *index.html*.
+When Ionic apps are not running natively, some resources like Camera do not work by default but can be enabled using PWA Elements. To use Capacitor's PWA elements run `npm install @ionic/pwa-elements` and modify src/main.ts as shown below.
 
-[source,html]
-  <script src='https://unpkg.com/@ionic/pwa-elements@1.0.2/dist/ionicpwaelements.js'></script>
+[source,ts]
+----
+...
+
+// Import for PWA elements
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
+
+if (environment.production) {
+  enableProdMode();
+}
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.log(err));
+
+// Call the element loader after the platform has been bootstrapped
+defineCustomElements(window);
+----
 
 == Step 5: Make it Progressive.
 

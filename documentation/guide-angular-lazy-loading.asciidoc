@@ -189,7 +189,7 @@ Modifying an angular application to load its modules lazily is easy, you have to
 const routes: Routes = [
   {
     path: 'first',
-    loadChildren: './first/first.module#FirstModule',
+    loadChildren: () => import('./first/first.module').then(m => m.FirstModule),
   },
   {
     path: '',
@@ -205,7 +205,7 @@ const routes: Routes = [
 export class AppRoutingModule {}
 ----
 
-Notice that instead of loading a component, you reference the module containing it in a _loadChildren_ attribute because modules acts as gates to access components "inside" them. Updating the app to load lazily has four consecuences:
+Notice that instead of loading a component, you dynamically import it in a _loadChildren_ attribute because modules acts as gates to access components "inside" them. Updating the app to load lazily has four consecuences:
 
 1. No component attribute.
 2. No import of FirstComponent.
@@ -262,7 +262,7 @@ const routes: Routes = [
   },
   {
     path: 'second-left',
-    loadChildren: './second-left/second-left.module#SecondLeftModule'
+    loadChildren: () => import('./second-left/second-left.module').then(m => m.SecondLeftModule),
   },
   {
     path: 'second-right',

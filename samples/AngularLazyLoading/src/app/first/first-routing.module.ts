@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'second-left',
-    loadChildren: './second-left/second-left.module#SecondLeftModule',
+    loadChildren: () => import('./second-left/second-left.module').then(m => m.SecondLeftModule),
   },
   {
     path: 'second-right',

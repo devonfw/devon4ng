@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "~8.0.0",
     "@angular/router": "~8.0.0",
     "core-js": "^2.5.4",
+    "my-library": "./my-library-v0.0.1.tgz",
     "rxjs": "~6.5.2",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"

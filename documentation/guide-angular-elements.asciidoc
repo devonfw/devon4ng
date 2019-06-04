@@ -212,7 +212,7 @@ First, before building the `Angular Element`, every element inside that app comp
 
 [source]
 ----
-ng build "projectName" --prod --output-hashing=none && cat dist/"projectName"/runtime.js dist/"projectName"/polyfills.js dist/"projectName"/script.js dist/"projectName"/main.js > ./dist/"projectName"/"nameWantedAngularElement".js
+ng build "projectName" --prod --output-hashing=none && cat dist/"projectName"/runtime.js dist/"projectName"/polyfills.js dist/"projectName"/scripts.js dist/"projectName"/main.js > ./dist/"projectName"/"nameWantedAngularElement".js
 ----
 
 After executing the bash script, it will generate inside the path `dist/"projectName"` a js file named `"nameWantedAngularElement".js` and a css file.
@@ -291,6 +291,7 @@ module.exports = {
 
 The `Angular Element` that got generated in the last step can be used in almost every framework. In this case, the `Angular Element` is going to be used in html:
 
+.Sample index.html version without ngx-build-plus
 [source, HTML]
 ----
 <html>
@@ -304,6 +305,39 @@ The `Angular Element` that got generated in the last step can be used in almost 
         <!--Use of the element non dynamically-->
         <!--<plate-form platename="test" platedescription="test"></plate-form>-->
         <script src="./devon4ngAngularElements.js"> </script>
+        <script>
+                var elContainer = document.getElementById('container');
+                var el= document.createElement('dish-form');
+                el.setAttribute('platename','test');
+                el.setAttribute('platedescription','test');
+                el.addEventListener('submitDishEvent',(ev)=>{
+                    var elView= document.createElement('dish-view');
+                    elContainer.innerHTML = '';
+                    elContainer.appendChild(elView);
+                });
+                elContainer.appendChild(el);
+        </script>
+    </body>
+</html>
+----
+
+
+.Sample index.html version with ngx-build-plus
+[source, HTML]
+----
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div id="container">
+
+        </div>
+        <!--Use of the element non dynamically-->
+        <!--<plate-form platename="test" platedescription="test"></plate-form>-->
+         <script src="./polyfills.js"> </script> <!-- Created using --keep-polyfills options -->
+        <script src="./scripts.js"> </script>
+         <script src="./main.js"> </script>
         <script>
                 var elContainer = document.getElementById('container');
                 var el= document.createElement('dish-form');

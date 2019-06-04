@@ -123,17 +123,17 @@
     "@angular-devkit/core" "8.0.1"
     rxjs "6.4.0"
 
-"@angular/animations@^8.0.0":
+"@angular/animations@~8.0.0":
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-8.0.0.tgz#6286094babdb3879f7aefcd73aa31772469e50b4"
   integrity sha512-hggSRi83rmocLwzrKZtmFcqPdivKSJqp2yiYaiNmJ2yQWJ1JW/Lurypv9H347RWxmwCCwC2kV8embTGbOXIFDQ==
   dependencies:
     tslib "^1.9.0"
 
-"@angular/cdk@^7.3.2":
-  version "7.3.2"
-  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-7.3.2.tgz#33f525051d71e2525d29b2aa798c817334973a7b"
-  integrity sha512-jnthvY1Kt+DpJTrkgyKTiVuYgBdp4iG7QDeZJPBQm0e8mL2K0Pi9AqFbo01E4CGPqZpvtEggvqM0OJpR8J+amw==
+"@angular/cdk@~8.0.0":
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-8.0.0.tgz#34ca95e71d71780b29b5ba07318c88c4577bdc25"
+  integrity sha512-2vsRWEHNARe0iRmqgzvM67gwfRy+aKvdef4Qu9L+ndSsTrrZT3tSgG8SMn1v9SfBHnx5G8mo4d1AMquXG69AuQ==
   dependencies:
     tslib "^1.7.1"
   optionalDependencies:
@@ -200,7 +200,7 @@
   dependencies:
     tslib "^1.9.0"
 
-"@angular/elements@^8.0.0":
+"@angular/elements@~8.0.0":
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/@angular/elements/-/elements-8.0.0.tgz#7d25f95ba6854adb7361f106701cb1280394867f"
   integrity sha512-vDs/O/9RNpmXaGJjmtFZ6MNFr2rqfB2qgq8tDcYkY7bAF11ulfwI2OXsI2vFnf4/qBlstdwXTmI5zar+ZU6MGA==
@@ -219,10 +219,10 @@
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-8.0.0.tgz#1ee4ce5003897cad53597da28f4c94fe30519bfb"
   integrity sha512-vGk14oWroEo6ycO4cooznx57nn2sASmCQ/sdE8UVwySUKl940TsVzijgaGqapTepFof9sMqN77y2G15eRKQeAQ==
 
-"@angular/material@^7.3.2":
-  version "7.3.2"
-  resolved "https://registry.yarnpkg.com/@angular/material/-/material-7.3.2.tgz#9d1647689cf4a0892f099e021f97f5e8ab1332fa"
-  integrity sha512-x3it941KE8zuzDH1VLP4yfgmC3hwrqa1a2GHiekztF2KrbWPzEEGNvlyYOUV7nwiuwFw5twON73rW0HUKndwEA==
+"@angular/material@~8.0.0":
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/@angular/material/-/material-8.0.0.tgz#21dd15c318d1e29eb4d1a2dd888ddb027897eb49"
+  integrity sha512-c7O7GhZd46xF2WB6T/YPam5lJkTgQLdIS53IqwZIFhL427+SEfPvejVzRnVfZCI3NdrKiWt/5VsvtQZwWzlGvw==
   dependencies:
     tslib "^1.7.1"
 

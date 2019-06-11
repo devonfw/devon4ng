@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
     this.httpClient.get('non existing url').subscribe();
   }
   clientError() {
-    return varNotDeclared;
+    // First, serve the application and then uncomment the next line to test the Client Error interceptor
+    // return varNotDeclared;
   }
 }

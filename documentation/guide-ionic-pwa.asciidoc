@@ -19,7 +19,6 @@ toc::[]
 
 This guide is a continuation of the guide link:guide-angular-pwa[Angular PWAs], therefore, valid concepts explained there are still valid in this page but focused on Ionic.
 
-
 = Assumptions
 
 This guide assumes that you already have installed:

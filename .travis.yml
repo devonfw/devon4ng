@@ -17,13 +17,14 @@ jobs:
   include:
     - stage: Documentation
       script:
-        # Create message commit and clone repositories
+        # Clone repositories
         - git clone -b develop --single-branch https://${GH_REPO_SOURCE}
         - git clone https://${GH_REPO_DEST}
         - git clone https://${GH_REPO_CONSOLIDATE}
-        # Update wiki repository
+        # Update wiki repository with documentation folder contents
         - yes | cp -rf ${REPO_SOURCE}/documentation/* ${REPO_DEST}/
         - cd ${REPO_DEST}
+        # Terminate Travis CI build when no changes detected
         - if git diff-index --quiet HEAD && [ ! -n "$(git status -s)" ]; then set +e; pkill -9 -P $$ &> /dev/null || true; exit 0; fi;
         - git config user.email ${EMAIL}
         - git config user.name ${USER}

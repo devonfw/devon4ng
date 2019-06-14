@@ -24,13 +24,11 @@ jobs:
         # Update wiki repository
         - yes | cp -rf ${REPO_SOURCE}/documentation/* ${REPO_DEST}/
         - cd ${REPO_DEST}
-        - pwd
-        - git remote
         - if git diff-index --quiet HEAD && [ ! -n "$(git status -s)" ]; then set +e; pkill -9 -P $$ &> /dev/null || true; exit 0; fi;
         - git config user.email ${EMAIL}
         - git config user.name ${USER}
-        - git add .
         - git status
+        - git add .
         - git commit -m "${REPO_SOURCE} documentation | Travis CI build number $TRAVIS_BUILD_NUMBER"
         - git remote add origin-wiki "https://${USER}:${GITHUB_TOKEN}@${GH_REPO_DEST}"
         - git push origin-wiki master

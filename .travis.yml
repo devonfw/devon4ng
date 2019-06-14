@@ -12,7 +12,7 @@ env:
     - secure: D56NqnFnAPm/IZz/HCtlAYSIV8sGS9Rxv0quzyv2u2w22SLj32pj/WmHt69+xPr8E28l7M7Ju3KTNScFxDFH9ciMOydf6iGbe7jJppITbMaD2JllSH1UNfaJFOT+l3pxv4kt1JJove6OJt/Pv9Wj2syDnggpHI8Zai28pEWDzwgRvBO6OpgD+ewyr+WcJZ6GvhqD/+ubwr8Uopmv0FE/Ccx1px03Fs5D1kVkfvm0bfgDAhynFJ8VUY7IDAQhdoaxDUusEfMIVN6FBxhCzzGn/FPEe8nJxcGcT9zprxlL9EiVQ1f2EWCdXtM2OUTN1clbraqlkJZ7YAvgroX1qrMYdyEyLHd48CjboL1gew1Qieqbv/cqoLnnGRga0cC6VTBOY/2waMYvmglOSEs3ejl69zL8/FS4ZcDK3lJpMQMhGw6TP6Zm1uaKtqN9oi2Nc1eHcf2NGks8xS+eYQ4lLDHojkuy9C55LbeOeDJ8uJ4A3NXLHBiuia/+g8PqBnP4GhNxD/pqY5FiyyKEFIrgJm2Es5YtyO+L1HZS1Ryw7KY8SUt6XjgCHS+EiKEZLMjfJN4C/c3r9RVDgJgxH1gPYS/GZ5ie0xZspKBnfprwXMtuNHL6RiQYuhBEKepW+5B7PEhHpaXzC1L0Gdyr9DPyofnCsfY4K3yZnTjpjaNGI/lcwyY=
 stages:
   - name: Documentation
-    if: type = push
+    if: (branch = develop) AND (type = push)
 jobs:
   include:
     - stage: Documentation
@@ -36,7 +36,7 @@ jobs:
         - git push origin-wiki master
         # Update consolidated repo
         - cd ../${REPO_CONSOLIDATE}
-        - if [ ! -d ${REPO_DEST} ]; then git submodule add https://${GH_REPO_DEST}; else return 0; fi;
+        - if [ ! -d ${REPO_DEST} ]; then git submodule add https://${GH_REPO_DEST}; else set +e; pkill -9 -P $$ &> /dev/null || true; exit 0; fi;
         - git submodule init
         - git submodule update
         - cd ${REPO_DEST}

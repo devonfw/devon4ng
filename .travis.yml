@@ -26,7 +26,7 @@ jobs:
         - cd ${REPO_DEST}
         - pwd
         - git remote
-        - if git diff-index --quiet HEAD && [ ! -n "$(git status -s)" ]; then exit 0; fi;
+        - if git diff-index --quiet HEAD && [ ! -n "$(git status -s)" ]; then set +e; pkill -9 -P $$ &> /dev/null || true; exit 0; fi;
         - git config user.email ${EMAIL}
         - git config user.name ${USER}
         - git add .
@@ -36,7 +36,7 @@ jobs:
         - git push origin-wiki master
         # Update consolidated repo
         - cd ../${REPO_CONSOLIDATE}
-        - if [ ! -d ${REPO_DEST} ]; then git submodule add https://${GH_REPO_DEST}; else set +e; pkill -9 -P $$ &> /dev/null || true; exit 0; fi;
+        - if [ ! -d ${REPO_DEST} ]; then git submodule add https://${GH_REPO_DEST}; else return 0; fi;
         - git submodule init
         - git submodule update
         - cd ${REPO_DEST}

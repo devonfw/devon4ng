@@ -22,8 +22,7 @@ jobs:
         - git clone https://${GH_REPO_CONSOLIDATE}
         - yes | cp -rf ${REPO_SOURCE}/documentation/* ${REPO_DEST}/
         - cd ${REPO_DEST}
-        - if git diff-index --quiet HEAD && [ ! -n "$(git status -s)" ]; then set +e;
-          pkill -9 -P $$ &> /dev/null || true; exit 0; fi;
+        - if git diff-index --quiet HEAD && [ ! -n "$(git status -s)" ]; then set +e; pkill -9 -P $$ &> /dev/null || true; exit 0; fi;
         - git config user.email ${EMAIL}
         - git config user.name ${USER}
         - git status

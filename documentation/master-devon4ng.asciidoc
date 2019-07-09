@@ -1,0 +1,79 @@
+=== include::architecture[]
+
+=== include::meta-architecture[]
+
+=== Layers
+
+** include::components-layer[]
+
+** include::services-layer[]
+
+=== Guides
+
+** include::guide-package-managers[]
+
+** include::guide-npm-yarn-workflow[]
+
+
+=== Angular
+
+** include::guide-accessibility[]
+
+** include::guide-angular-elements[]
+
+** include::guide-angular-lazy-loading[]
+
+** include::guide-angular-library[]
+
+** include::guide-angular-theming[]
+
+** include::guide-angular-pwa[]
+
+** include::guide-app-initializer[]
+
+** include::guide-component-decomposition[]
+
+** include::guide-consuming-rest-services[]
+
+** include::guide-error-handler[]
+
+** include::guide-file-structure[]
+
+** include::guide-internationalization[]
+
+** include::guide-routing[]
+
+** include::guide-testing[]
+
+** include::guide-update-angular-cli[]
+
+** include::guide-working-with-angular-cli[]
+
+
+=== Ionic
+
+** include::guide-ionic-getting-started[]
+
+** include::guide-ionic-from-code-to-android[]
+
+** include::guide-ionic-pwa[]
+
+=== Layouts
+
+** include::guide-layout-with-angular-material[]
+
+=== NgRx
+
+** include::guide-ngrx-getting-started[]
+
+** include::guide-ngrx-simple-store[]
+
+** include::guide-ngrx-effects[]
+
+** include::guide-ngrx-entity[]
+
+=== Cookbook
+
+** include::cookbook-abstract-class-store[]
+
+** include::guide-add-electron[]

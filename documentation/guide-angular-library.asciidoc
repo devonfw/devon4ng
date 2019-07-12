@@ -104,7 +104,7 @@ In this step we are going to install/add the library on other projects.
 
 In order to add the library in other applications, there are two ways:
 
-    * *Option 1*: From inside the application where the library is going to get used, using the command `npm install "path-to-tgz"/"library-name-version.tgz"` allows us to install the `.tgz` generated in <<id-packing-library>>.
+    * *Option 1*: From inside the application where the library is going to get used, using the command `npm install "path-to-tgz"/"library-name-version.tgz"` allows us to install the `.tgz` generated in xref:id-packing-library[Packing the library].
 
     * *Option 2*: run `npm install "library-name"` to install it from npm repository.
 
@@ -112,7 +112,7 @@ In order to add the library in other applications, there are two ways:
 
 To add the package using yarn:
 
-    * *Option 1*: From inside the application where the library is going to get used, using the command `yarn add "path-to-tgz"/"library-name-version.tgz"` allows us to install the `.tgz`  generated in <<id-packing-library>>.
+    * *Option 1*: From inside the application where the library is going to get used, using the command `yarn add "path-to-tgz"/"library-name-version.tgz"` allows us to install the `.tgz`  generated in xref:id-packing-library[Packing the library].
 
     * *Option 2*: run `yarn add "library-name"` to install it from npm repository.
 

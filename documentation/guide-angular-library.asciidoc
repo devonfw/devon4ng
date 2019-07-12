@@ -93,7 +93,7 @@ yarn pack
 
 * run `npm publish` inside `dist/"library-name"` folder.
 
-* Check that the library is published: https://npmjs.com/package/<library-name>
+* Check that the library is published: https://npmjs.com/package/library-name
 
 
 === Installing our library in other projects

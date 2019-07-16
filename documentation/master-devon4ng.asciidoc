@@ -1,83 +1,80 @@
-===  Arquitecture
+= devon4ng
 
-include::architecture[]
+include::architecture[leveloffset=1]
 
-=== Meta arquitecture
+include::meta-architecture[leveloffset=1]
 
-include::meta-architecture[]
+== Layers
 
-=== Layers
+include::components-layer[leveloffset=2]
 
-include::components-layer[]
+include::services-layer[leveloffset=2]
 
-include::services-layer[]
+== Guides
 
-=== Guides
+include::guide-package-managers[leveloffset=2]
 
-include::guide-package-managers[]
+include::guide-npm-yarn-workflow[leveloffset=2]
 
-include::guide-npm-yarn-workflow[]
+== Angular
 
+include::guide-accessibility[leveloffset=2]
 
-=== Angular
+include::guide-angular-elements[leveloffset=2]
 
-include::guide-accessibility[]
+include::guide-angular-lazy-loading[leveloffset=2]
 
-include::guide-angular-elements[]
+include::guide-angular-library[leveloffset=2]
 
-include::guide-angular-lazy-loading[]
+include::guide-angular-theming[leveloffset=2]
 
-include::guide-angular-library[]
+include::guide-angular-pwa[leveloffset=2]
 
-include::guide-angular-theming[]
+include::guide-app-initializer[leveloffset=2]
 
-include::guide-angular-pwa[]
+include::guide-component-decomposition[leveloffset=2]
 
-include::guide-app-initializer[]
+include::guide-consuming-rest-services[leveloffset=2]
 
-include::guide-component-decomposition[]
+include::guide-error-handler[leveloffset=2]
 
-include::guide-consuming-rest-services[]
+include::guide-file-structure[leveloffset=2]
 
-include::guide-error-handler[]
+include::guide-internationalization[leveloffset=2]
 
-include::guide-file-structure[]
+include::guide-routing[leveloffset=2]
 
-include::guide-internationalization[]
+include::guide-testing[leveloffset=2]
 
-include::guide-routing[]
+include::guide-update-angular-cli[leveloffset=2]
 
-include::guide-testing[]
-
-include::guide-update-angular-cli[]
-
-include::guide-working-with-angular-cli[]
+include::guide-working-with-angular-cli[leveloffset=2]
 
 
-=== Ionic
+== Ionic
 
-include::guide-ionic-getting-started[]
+include::guide-ionic-getting-started[leveloffset=2]
 
-include::guide-ionic-from-code-to-android[]
+include::guide-ionic-from-code-to-android[leveloffset=2]
 
-include::guide-ionic-pwa[]
+include::guide-ionic-pwa[leveloffset=2]
 
-=== Layouts
+== Layouts
 
-include::guide-layout-with-angular-material[]
+include::guide-layout-with-angular-material[leveloffset=2]
 
-=== NgRx
+== NgRx
 
-include::guide-ngrx-getting-started[]
+include::guide-ngrx-getting-started[leveloffset=2]
 
-include::guide-ngrx-simple-store[]
+include::guide-ngrx-simple-store[leveloffset=2]
 
-include::guide-ngrx-effects[]
+include::guide-ngrx-effects[leveloffset=2]
 
-include::guide-ngrx-entity[]
+include::guide-ngrx-entity[leveloffset=2]
 
-=== Cookbook
+== Cookbook
 
-include::cookbook-abstract-class-store[]
+include::cookbook-abstract-class-store[leveloffset=2]
 
-include::guide-add-electron[]
+include::guide-add-electron[leveloffset=2]

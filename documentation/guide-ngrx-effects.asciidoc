@@ -15,13 +15,13 @@ toc::[]
 :source-highlighter: rouge
 :listing-caption: Listing
 
-== NgRx Effects
+= Side effects with NgRx/Effects
 
 Reducers are pure functions, meaning they are side-effect free and deterministic. Many actions however have side effects like sending messages or displaying a toast notification. NgRx encapsulates these actions in effects.
 
 Let's build a recommended movies list so the user can add movies to their watchlist.
 
-=== Obtaining the recommendation list from the server
+== Obtaining the recommendation list from the server
 
 Create a module for recommendations and add stores and states as in the previous chapter. Add `EffectsModule.forRoot([])` to the imports in `AppModule` below `StoreModule.forRoot()`. Add effects to the feature module:
 

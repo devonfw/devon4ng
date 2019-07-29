@@ -20,7 +20,7 @@ toc::[]
 Angular Material library offers UI components for developers, those components follows Google Material desing baselines but characteristics like colors can be modified in order to adapt them to the needs of the client: corporative colors, corporative identity, dark themes, ...
 
 
-= Theming basics
+== Theming basics
 
 In Angular Material, a theme is created mixing multiple colors. Colors and its light and dark variants conform a *palette*. In general, a theme consists of the following palettes:
 
@@ -42,7 +42,7 @@ image::images/angular/angular-theming/scss-map.png["Scss map", width=600 link="i
 
 TIP: Some components can be forced to use primary, accent or warn palettes using the attribute *color*, for example: <mat-toolbar color="primary">.
 
-= Prebuilt themes
+== Prebuilt themes
 
 Available prebuilt themes:
 
@@ -73,14 +73,14 @@ The prebuilt themes can be added using *@import*.
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 ----
 
-= Custom themes
+== Custom themes
 
 Somethimes prebuild themes do not meet the needs of a project, because color schemas are too specific or do not incorporate branding colors, in those situations custom themes can be built to offer a better solution to the client.
 
 For this topic, we are going to use a basic layout project that can be found in https://github.com/devonfw/devon4ng/tree/master/samples/AngularMaterialBasicLayout[devon4ng repository].
 
 
-== Basics
+=== Basics
 
 Before starting writing custom themes, there are some necessary things that have to be mentioned:
 
@@ -93,7 +93,7 @@ Before starting writing custom themes, there are some necessary things that have
 .Theme files structure.
 image::images/angular/angular-theming/theme-files-structure.png["Theme files structure", width=600 link="images/angular/angular-theming/theme-files-structure.png"]
 
-== Basic custom theme
+=== Basic custom theme
 
 To create a new custom theme, the .scss file containing it has to have imported the angular _theming.scss file (angular/material/theming) file and mat-core included. _theming.scss includes multiple color palettes and some functions that we are going to see below. The file for this basic theme is going to be named *styles-custom-dark.scss*.
 
@@ -207,7 +207,7 @@ If we have multiple themes it is necessary to add the include statement inside a
 
 This will apply *$custom-dark-theme* theme for the entire application.
 
-== Full custom theme
+=== Full custom theme
 
 Sometimes it is needed to custom different elementsw from background and foreground, in those situations we have to create a new function similar to _mat-light-theme_ and _mat-dark-theme_. Let's focus con mat-light-theme:
 
@@ -328,7 +328,7 @@ After defining our new theme, we can import it from styles.scss.
 }
 ----
 
-== Multiple themes and overlay-based components
+=== Multiple themes and overlay-based components
 
 Certain components (e.g. menu, select, dialog, etc.) that are inside of a global overlay container,require an additional step to be affected by the theme's css class selector.
 
@@ -348,7 +348,7 @@ export class AppModule {
 ----
 
 
-= Useful resources
+== Useful resources
 
 * https://material.angular.io/guide/theming[Angular Material's oficial theming guide]
 

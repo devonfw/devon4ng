@@ -15,7 +15,7 @@ toc::[]
 :source-highlighter: rouge
 :listing-caption: Listing
 
-== NgRx Entity
+= Simplifying CRUD with NgRx/Entity
 
 Most of the time when manipulating entries in the store, we like to create, add, update, or delete entries (CRUD). NgRx/Entity provides convenience functions if each item of a collection has an id property. Luckily all our entities already have this property.
 

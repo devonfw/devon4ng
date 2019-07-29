@@ -15,7 +15,7 @@ toc::[]
 :source-highlighter: rouge
 :listing-caption: Listing
 
-== Angular Library
+= Angular Library
 
 `Angular CLI` provides us with methods that allow the creation of a library. After that, using either packet manager (`npm` or `yarn`) the library can be build and packed which will allow later to install/publish it.
 

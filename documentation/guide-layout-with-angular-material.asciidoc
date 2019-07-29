@@ -22,7 +22,7 @@ The purpose of this guide is to get a basic understanding of creating layouts us
 .This is what the finished application will look like
 image::images/layout-angular-material/1-finished-application.png["Finished application", width="700", link="images/layout-angular-material/1-finished-application.png", align="center"]
 
-= Let's begin
+== Let's begin
 
 We start with opening the console(running console.bat in the Devon distribution folder) and running the following command to start a project named devon4ng-mat-layout
 
@@ -40,7 +40,7 @@ Angular will spin up a server and you can check your application by visiting htt
 .Blank application
 image::images/layout-angular-material/2-blank-application.png["Blank application", width="700", link="images/layout-angular-material/2-blank-application.png", align="center"]
 
-= Adding Angular Material library to the project
+== Adding Angular Material library to the project
 
 Next we will add Angular Material to our application. In the integrated terminal, press `Ctrl + C` to terminate the running application and run the following command:
 
@@ -116,7 +116,7 @@ To use https://material.io/icons/[Material Design Icons] along with the `mat-ico
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 ----
 
-= Development
+== Development
 
 Now that we have all the Angular Material related dependencies set up in our project, we can start coding. Let's begin by adding a suitable `margin` and `font` to the `body` element of our single page application. We will add it in the `src/styles.scss` file to apply it globally:
 
@@ -385,7 +385,7 @@ Now we have a working application with a basic layout: a header with some menu a
 image::images/layout-angular-material/9-finished.png["Finished application", width="700", link="images/layout-angular-material/9-finished.png", align="center"]
 
 
-= Conclusion
+== Conclusion
 
 The purpose of this guide was to provide a basic understanding of creating layouts with Angular Material. The Angular Material library has a huge collection of ready to use components which can be found at https://material.angular.io/components/categories
 It has provided documentation and example usage for each of its components.  Going through the documentation will give a better understanding of using Angular Material components in our devon4ng applications.

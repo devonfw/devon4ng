@@ -20,7 +20,7 @@ It is mandatory to follow the <<Contributor Covenant Code of Conduct,code of con
 
 Git is a version control system used for a coordinated and versioned collaboration of computer files. It enables a project to be easily worked on by multiple developers and contributors.
 
-GitHub is an online repository used by deonvfw and OASP in order to host the corresponding files. Using the command line tool or any GUI Tool as "GitHub Desktop", "Fork" or "Atlassian SourceTree" a user can easily manage project files. There are private and public repositories. Public ones can be accessed by everyone, private repositories require access permissions.
+GitHub is an online repository used by devonfw and OASP in order to host the corresponding files. Using the command line tool or any GUI Tool as "GitHub Desktop", "Fork" or "Atlassian SourceTree" a user can easily manage project files. There are private and public repositories. Public ones can be accessed by everyone, private repositories require access permissions.
 
 ==== Creating a new user account
 

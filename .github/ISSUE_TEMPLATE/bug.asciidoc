@@ -1,6 +1,6 @@
 ---
 name: 'Bug Report'
-about: "If something isn't working as expected"
+about: "If something is not working as expected"
 title: ''
 labels: 'type: bug'
 assignees: ''
@@ -18,4 +18,4 @@ Steps to reproduce
 
 Description of issue / Comments
 
-Your environment - Windows/Linux, Devonfw version, Component
+Your environment - Windows/Linux, devonfw version, Component

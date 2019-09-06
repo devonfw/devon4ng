@@ -1,5 +1,9 @@
-Issue Number
+Fixes Issue #
 
-Implementation description
+Implementation description / Changes proposed in this PR:
+
+- 
+- 
+- 
 
 @devonfw

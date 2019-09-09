@@ -1,0 +1,18 @@
+<div class="favorite-elements-list">
+
+    <mat-card *ngFor="let element of elements" class="favorite-elements-float">
+        <mat-card-content>
+            <div class="example-element-diagram">
+                <div class="example-element-position"> {{element.position}} </div>
+                <div class="example-element-symbol"> {{element.symbol}} </div>
+                <div class="example-element-name"> {{element.name}} </div>
+                <div class="example-element-weight"> {{element.weight}} </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button color="primary" routerLink="/details/{{element.position}}">
+               Details
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>

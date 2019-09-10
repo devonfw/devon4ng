@@ -1,0 +1,84 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+= Angular Mock Service
+We've all been there: A new idea comes, let's quickly prototype it. But wait, there's no backend. What can we do? 
+
+Well... we can write a simple mock service that helps us by feeding data into our components. Below, I will elaborate on the idea.
+
+== The app we start with
+Let's say you have a simple boilerplate code, with your favorite styling library hooked up and you're ready to go. I chose the https://github.com/devonfw/devon4ng/tree/develop/samples/AngularMaterialBasicLayout[Angular Material] sample to start with. 
+
+== The Components
+Components - are the building blocks of our application. Their main role is to enable fragments of user interfaces. They will eaither display data (a list , a table, a chart, etc.), or 'collect' user interaction (e.g: a form, a menu, etc.)
+Components stay at the forefront of the application. They should also be reusable (as much as possible). Reusability is key for what we are trying to achieve - a stable, maintainable frontend where multiple people can contribute and collaborate. 
+
+In our project, we are at the beginning. That means we may have more ideas than plans. We are exploring possibilites. In order to code eficiently: +
+1) We will not store mock data in the components. +
+2) We will not fetch or save data directly in the components.  
+
+https://angular.io/start#components[Learn more about Angular Components]
+
+== The Service
+So, how do we get data in our app? How do we propagate the data to the components and how can we send user interaction from the components to the our data "manager" logic. 
+
+The answer to all these qustions is an Angular Service (that we will just call a service from now on). 
+
+A service is an injectable logic that can be consumed by all the components that need it. It can carry manipulation functions and ,in our case, fetch data from a provider. 
+[[id_service_architecture]]
+.Angular Components & Services architecture.
+image::images/architecture.PNG["Service Architecture", width=600 link="images/architecture.PNG"]
+
+Inside the Angular App, an Injector gives access to each component to their required services. It's good coding practice to user a distinct service to each data type you want to manipulate. The type is describet in a intreface. 
+
+Still, our ideas drive in diferent ways, so we have to stay flexible. We cannot use a database at the moment, but we want a way to represent data on screen, which can grow organically. 
+
+https://angular.io/tutorial/toh-pt4[Learn more about Angular Services]
+
+== The Model
+
+[[id_data_box]]
+.Data box in relation to services and components.
+image::images/data-box.jpg["Data Box", width=600 link="images/data-box.jpg"]
+
+Let's consider a 'box of data' represented in JSON. Phisicly this means some a folder with some JSON/TS files. I placed them in the *app/mock* folder. The example uses only one mock data file. The file is typed according to our data model. 
+
+Pro tip: separate your files based on purpose. In your source code, put the *mock files* in the *mock folder*, *components* in the *components folder*, *services* in the *services folder* and *data models* in the *models folder*. 
+
+[[id_project_structure]]
+.Project structure.
+image::images/project-structure.png["Project Structure", width=auto, link="images/data-box.png"]
+
+Aligned with the Angular way of development, we are implementing a model-view-controler pattern. 
+
+The *model* is represented by the interfaces we make. These interfaces describe the data structures we will use in our application. In my example, there is one data model, coresponding with the 'type' of data I mocked. In the models folder you will find the .ts script file that describes chemical elements. The corresponding mock file defines a set is chemical emlements objects, in accordance to our interface definition. 
+
+== Use case
+Enough with the theory, let's see what we have here. The app presents 3 pages as follows:
+
+* A leader bord with the top 3 elements
+* A data table with all the elements
+* A details page that reads a rout paramenter and displays the details of the element. 
+
+There are a lot of business cases which have these requirements: 
+
+ * A leader board can be understood as "the most popular items in a set", "the latest updated items", "you favorite items" erc.
+ * A data table with CRUD operations is very useful (in our case we only have details and delete, but they ilustrate two inportant things: details shows how to navigate and consume a parametric rout, delete shows how to invoke service operations over the loaded data - this means that the component is reusable and when the data comes with and API, only the service will need it's implementation changed)
+
+Check out the Angular Mock Service sample from the samples folder and easily get started with fast data roundtrips between your mock data and your components. 
+
+

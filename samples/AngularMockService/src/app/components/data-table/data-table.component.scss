@@ -1,0 +1,16 @@
+table {
+    margin-left: 10%;
+    width: 80%;
+  }
+
+  .mat-column-actions {
+      
+        white-space: unset !important;
+        flex: 0 0 10% !important;
+        width: 15% !important;
+      
+        -ms-hyphens: auto;
+        -moz-hyphens: auto;
+        -webkit-hyphens: auto;
+        hyphens: auto;
+  }

@@ -56,7 +56,7 @@ https://github.com/devonfw/devon4ng/wiki/services-layer[Learn more about Angular
 .Data box in relation to services and components.
 image::images/data-box.jpg["Data Box", width=600 link="images/data-box.jpg"]
 
-Let's consider a 'box of data' represented in JSON. Phisicly this means a folder with some JSON/TS files in it. I placed them in the *app/mock* folder. The example uses only one mock data file. The file is typed according to our data model. 
+Let's consider a 'box of data' represented in JSON. Phisicly this means a folder with some JSON/TS files in it. They are located in the *app/mock* folder. The example uses only one mock data file. The file is typed according to our data model. 
 
 Pro tip: separate your files based on purpose. In your source code, put the *mock files* in the *mock folder*, *components* in the *components folder*, *services* in the *services folder* and *data models* in the *models folder*. 
 
@@ -66,7 +66,7 @@ image::images/project-structure.png["Project Structure", width=auto, link="image
 
 Aligned with the Angular way of development, we are implementing a model-view-controler pattern. 
 
-The *model* is represented by the interfaces we make. These interfaces describe the data structures we will use in our application. In my example, there is one data model, coresponding with the 'type' of data I mocked. In the models folder you will find the .ts script file that describes chemical elements. The corresponding mock file defines a set is chemical emlements objects, in accordance to our interface definition. 
+The *model* is represented by the interfaces we make. These interfaces describe the data structures we will use in our application. In this example, there is one data model, coresponding with the 'type' of data that was mocked. In the models folder you will find the .ts script file that describes chemical elements. The corresponding mock file defines a set is chemical emlements objects, in accordance to our interface definition. 
 
 == Use case
 Enough with the theory, let's see what we have here. The app presents 3 pages as follows:
@@ -77,8 +77,8 @@ Enough with the theory, let's see what we have here. The app presents 3 pages as
 
 There are a lot of business cases which have these requirements: 
 
- * A leader board can be understood as "the most popular items in a set", "the latest updated items", "you favorite items" erc.
- * A data table with CRUD operations is very useful (in our case we only have details and delete, but they ilustrate two inportant things: details shows how to navigate and consume a parametric route, delete shows how to invoke service operations over the loaded data - this means that the component is reusable and when the data comes with and API, only the service will need it's implementation changed)
+ * A leader board can be understood as "the most popular items in a set", "the latest updated items", "you favorite items" etc.
+ * A data table with CRUD operations is very useful (in our case we only view details or delete an item, but they illustrate two important things: the details view shows how to navigate and consume a parametric route, the delete action shows how to invoke service operations over the loaded data - this means that the component is reusable and when the data comes with and API, only the service will need it's implementation changed)
 
 Check out the https://github.com/devonfw/devon4ng/tree/develop/samples/AngularMockService[Angular Mock Service] sample from the samples folder and easily get started with fast data roundtrips between your mock data and your components. 
 

@@ -45,3 +45,4 @@
 === Cookbook
 ** link:cookbook-abstract-class-store[Abstract Class Store]
 ** link:guide-add-electron[Angular Electron]
+** link:guide-angular-mock-service.asciidoc[Mock Service]

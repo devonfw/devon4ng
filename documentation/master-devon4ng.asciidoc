@@ -78,3 +78,5 @@ include::guide-ngrx-entity[leveloffset=2]
 include::cookbook-abstract-class-store[leveloffset=2]
 
 include::guide-add-electron[leveloffset=2]
+
+include::guide-angular-mock-service.asciidoc[leveloffset=2]

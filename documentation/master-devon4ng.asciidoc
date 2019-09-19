@@ -2,9 +2,9 @@
 
 == Architecture
 
-include::architecture[leveloffset=1]
+include::architecture[leveloffset=2]
 
-include::meta-architecture[leveloffset=1]
+include::meta-architecture[leveloffset=2]
 
 == Layers
 

@@ -1,5 +1,7 @@
 = devon4ng
 
+== Architecture
+
 include::architecture[leveloffset=1]
 
 include::meta-architecture[leveloffset=1]

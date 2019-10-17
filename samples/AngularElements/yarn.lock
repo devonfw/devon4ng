@@ -4542,10 +4542,10 @@ neo-async@^2.5.0:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.0.tgz#b9d15e4d71c6762908654b5183ed38b753340835"
   integrity sha512-MFh0d/Wa7vkKO3Y3LlacqAEeHK0mckVqzDieUKTT+KGxi+zIpeVsFxymkIiRpbpDziHc290Xr9A1O4Om7otoRA==
 
-ngx-build-plus@8.0.3:
-  version "8.0.3"
-  resolved "https://registry.yarnpkg.com/ngx-build-plus/-/ngx-build-plus-8.0.3.tgz#a047c21257d1101bd76cde130fbe765acc91eb34"
-  integrity sha512-+XQXx7p/oQt7Pgng/VQ3OoL3cIrt6a9ZJPKfn/7c4rljGqAyhqlpSbJzUpnQE6+lvCWbju243qpQu0qxQPEGeA==
+ngx-build-plus@~8.1.5:
+  version "8.1.5"
+  resolved "https://registry.yarnpkg.com/ngx-build-plus/-/ngx-build-plus-8.1.5.tgz#a3cbd83dc2fcb523cdb068bf4ba834a47892ec6a"
+  integrity sha512-jkMN43wBqCqIBYKnQwf+NiZYgbYY1nNTs/Jg41lt7mc9nxBQobs3Cypty3Hy22m9caFLWQR+3AQIttxmr3o9NA==
   dependencies:
     "@schematics/angular" "8.0.0"
     cross-spawn "^6.0.5"

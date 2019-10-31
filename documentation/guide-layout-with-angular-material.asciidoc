@@ -29,7 +29,7 @@ We start with opening the console(running console.bat in the Devon distribution 
 ** `ng new devon4ng-mat-layout`
 
 Select `y` when it asks whether it would like to add Angular routing and select `SCSS` when it asks for the stylesheet format.
-You can also use the Devcon to create a new devon4ng application.
+You can also use the **devonfw-ide** CLI to create a new devon4ng application.
 
 Once the creation process is complete, open your newly created application in Visual Studio Code. Try running the empty application by running the following command in the integrated terminal:
 

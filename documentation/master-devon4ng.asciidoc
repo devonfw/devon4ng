@@ -50,9 +50,9 @@ include::guide-testing[leveloffset=2]
 
 include::guide-update-angular-cli[leveloffset=2]
 
-include::guide-working-with-angular-cli[leveloffset=2]
-
 include::guide-upgrade-devon4ng[leveloffset=2]
+
+include::guide-working-with-angular-cli[leveloffset=2]
 
 == Ionic
 

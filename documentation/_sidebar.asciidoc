@@ -26,8 +26,8 @@
 ** link:guide-routing[Routing]
 ** link:guide-testing[Testing]
 ** link:guide-update-angular-cli[Update Angular CLI]
-** link:guide-working-with-angular-cli[Working with Angular CLI]
 ** link:guide-upgrade-devon4ng[Upgrade devon4ng applications]
+** link:guide-working-with-angular-cli[Working with Angular CLI]
 
 === Ionic
 ** link:guide-ionic-getting-started[Ionic 4 Getting started]

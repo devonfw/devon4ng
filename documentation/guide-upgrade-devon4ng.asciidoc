@@ -63,4 +63,3 @@ Another example could be that you need to upgrade `@ngx-translate` packages. As 
 ```bash
 $ ng update @ngx-translate/core @ngx-translate/http-loader
 ```
-

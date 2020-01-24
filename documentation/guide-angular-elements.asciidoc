@@ -19,7 +19,7 @@ toc::[]
 
 == What are Angular Elements?
 
-https://angular.io/guide/elements[Angular elements] are Angular components packaged as custom elements, a web standard for defining new HTML elements in a framework-agnostic way.
+https://angular.io/guide/elements[Angular elements] are Angular components packaged as custom elements, a web standard for defining new HTML elements in a framework-agnostic way. 
 
 Custom elements are a Web Platform feature currently supported by Chrome, Firefox, Opera, and Safari, and available in other browsers through https://angular.io/guide/elements#browser-support[Polyfills]. A custom element extends HTML by allowing you to define a tag whose content is created and controlled by JavaScript code. The browser maintains a CustomElementRegistry of defined custom elements (also called Web Components), which maps an instantiable JavaScript class to an HTML tag.
 

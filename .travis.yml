@@ -17,6 +17,8 @@ jobs:
   include:
     - stage: Documentation
       script:
+        #Check current location (debugging)
+        - pwd
         # Clone repositories
         - git clone -b develop --single-branch https://${GH_REPO_SOURCE}
         - git clone https://${GH_REPO_DEST}

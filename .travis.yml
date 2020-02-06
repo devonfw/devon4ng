@@ -19,7 +19,6 @@ jobs:
       script:
         # Exit devon4ng folder
         - cd ..
-        - ls
         # Clone repositories
         - git clone https://${GH_REPO_DEST}
         - git clone https://${GH_REPO_CONSOLIDATE}

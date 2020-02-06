@@ -17,12 +17,9 @@ jobs:
   include:
     - stage: Documentation
       script:
-        #Check current location (debugging)
-        - pwd
-        - ls
+        # Exit devon4ng folder
         - cd ..
         # Clone repositories
-        
         - git clone https://${GH_REPO_DEST}
         - git clone https://${GH_REPO_CONSOLIDATE}
         # Update wiki repository with documentation folder contents

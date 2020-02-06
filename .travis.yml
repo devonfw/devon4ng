@@ -19,6 +19,7 @@ jobs:
       script:
         #Check current location (debugging)
         - pwd
+        - ls
         # Clone repositories
         - git clone -b develop --single-branch https://${GH_REPO_SOURCE}
         - git clone https://${GH_REPO_DEST}

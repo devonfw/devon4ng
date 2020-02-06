@@ -19,7 +19,7 @@ toc::[]
 
 When the development of an application starts, it just contains a small set of features so the app usually loads fast. However, as new features are added, the overall application size grows up  and its loading speed decreases, is in this context where Lazy loading finds its place.
 Lazy loading is a dessign pattern that defers initialization of objects until it is needed so, for example, Users that just access to a website's home page do not need to have other areas loaded.
-Angular handles lazy loading through the routing module which redirect to requested pages. Those pages can be loaded at start or on demand.
+Angular handles lazy loading through the routing module which redirect to requested pages. Those pages can be loaded at start or on demand. 
 
 == An example with Angular
 

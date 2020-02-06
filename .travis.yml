@@ -25,6 +25,7 @@ jobs:
         # Update wiki repository with documentation folder contents
         - yes | cp -rf ${REPO_SOURCE}/documentation/* ${REPO_DEST}/
         - cd ${REPO_DEST}
+        - git status
         - grep -lr "link:[a-zA-Z0-9_.-]*.asciidoc.*" .| xargs -r sed -i "s/.asciidoc//g"
         # Terminate Travis CI build when no changes detected
         - |

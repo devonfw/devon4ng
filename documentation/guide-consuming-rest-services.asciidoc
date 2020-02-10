@@ -100,6 +100,44 @@ export class FlightsAdapter {
 
 == Token management
 
-// TODO
+When sending an http request to a backend, it is common to go through an authentication process, where you obtain a token that must be used to access the resources of that backend.
+To ensure that all your request to the server include the token, you have to setup an intermediate to: 
 
-// Either middleware or by hand - if more than one backend
+1. Stop your request
+2. Add the necessary token
+3. Let it continue with the proper identification
+
+In the example below you can see an example of this:
+
+[source,ts]
+.Example of http interceptor.
+----
+import {
+  HttpHandler,
+  HttpInterceptor,
+  HttpRequest,
+} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { AuthService} from '../services/AuthService';
+
+@Injectable()
+export class HttpRequestInterceptorService implements HttpInterceptor {
+  constructor(private authService: AuthService) {}
+  
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
+    return this.authService.getToken()
+      .subscribe((token) => {
+        const authReq = !!token
+          ? req.clone({
+              setHeaders: { Authorization: 'Bearer ' + token },
+            })
+          : req;
+        return next.handle(authReq);
+      })
+  }
+}
+----
+
+In order to make it simple, it is assumed that exists a service that gives you the token automatically (AuthService) using an observable.
+
+Every interceptor must implement the interface `HttpInterceptor` and its method `intercep`, which receives the request to be modified. `intercept` will get the token from AuthService and use it as a header for the new request.

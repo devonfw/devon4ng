@@ -64,7 +64,7 @@ $ ng update @angular/material
   }
 }
 ```
-More information at https://angular.io/guide/ivy. 
+More information at https://angular.io/guide/updating-to-version-9 and https://angular.io/guide/ivy. 
 
 **Important use cases:**
 

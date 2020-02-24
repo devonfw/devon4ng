@@ -223,7 +223,7 @@ $ yarn add ngx-electron --save
 
 This package contains a module named *NgxElectronModule* which exposes Electron APIs through a service called *ElectronService*.
 
-If you decide to implement your own ElectronService, please refer to this file in the ElectronTest sample.
+If you decide to implement your own ElectronService, please refer to https://github.com/devonfw/devon4ng/blob/develop/samples/ElectronTest/src/app/core/service/electron/electron.service.ts[this file] in the ElectronTest sample.
 
 ==== Update `app.module.ts` and `app-routing.module.ts`
 

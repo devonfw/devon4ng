@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "MyLibrary": {
+    "my-library": {
       "root": "projects/my-library",
       "sourceRoot": "projects/my-library/src",
       "projectType": "library",
@@ -14,13 +14,13 @@
           "options": {
             "tsConfig": "projects/my-library/tsconfig.lib.json",
             "project": "projects/my-library/ng-package.json"
-          }
-        ,          "configurations": {
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/my-library/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -36,13 +36,11 @@
               "projects/my-library/tsconfig.lib.json",
               "projects/my-library/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
     }
   },
-  "defaultProject": "MyLibrary"
+  "defaultProject": "my-library"
 }

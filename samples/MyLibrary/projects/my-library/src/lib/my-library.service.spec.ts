@@ -6,12 +6,12 @@ describe('MyLibraryService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: MyLibraryService = TestBed.get(MyLibraryService);
+    const service: MyLibraryService = TestBed.inject(MyLibraryService);
     expect(service).toBeTruthy();
   });
 
   it('test firstLetterToUpper', () => {
-    const service: MyLibraryService = TestBed.get(MyLibraryService);
+    const service: MyLibraryService = TestBed.inject(MyLibraryService);
     expect(service.firstLetterToUpper('test')).toBe('Test');
   });
 });

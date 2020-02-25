@@ -6,19 +6,17 @@ import { ErrorsHandlerInterceptor } from './errors-handler-interceptor';
 
 @NgModule({
   declarations: [], // Declare here component if you want to use routing to error component
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   providers: [
     {
       provide: ErrorHandler,
-      useClass: ErrorsHandler,
+      useClass: ErrorsHandler
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorsHandlerInterceptor,
-      multi: true,
+      multi: true
     }
   ]
 })
-export class ErrorsHandlerModule { }
+export class ErrorsHandlerModule {}

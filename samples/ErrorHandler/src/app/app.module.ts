@@ -9,18 +9,16 @@ import { ErrorsHandlerModule } from './core/errors/errors-handler.module';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
     ErrorsHandlerModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

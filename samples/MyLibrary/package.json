@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:my-library": "ng build MyLibrary",
+    "pack:my-library": "yarn build:my-library && cd dist\\my-library && yarn pack",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

@@ -1,6 +1,6 @@
 # Devon4ngMatLayoutScss
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.2 and updated to 9.0.3. It is a reference to the devon4ng wiki guide [Angular Material Layout](https://github.com/devonfw/devon4ng/wiki/guide-layout-with-angular-material). This application has a basic layout created using Angular Material, having a header with some menu buttons, and a sidenav with some navigational links.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.2 and updated with 9.0.3. It is a reference to the devon4ng wiki guide [Angular Material Layout](https://github.com/devonfw/devon4ng/wiki/guide-layout-with-angular-material). This application has a basic layout created using Angular Material, having a header with some menu buttons, and a sidenav with some navigational links.
 
 ## Development server
 

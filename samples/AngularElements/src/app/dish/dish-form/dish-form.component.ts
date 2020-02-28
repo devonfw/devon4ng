@@ -7,7 +7,6 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./dish-form.component.scss']
 })
 export class DishFormComponent implements OnInit {
-
   @Input() platename;
 
   @Input() platedescription;
@@ -16,9 +15,9 @@ export class DishFormComponent implements OnInit {
   submitDishEvent = new EventEmitter();
 
   submitted = false;
-  dish = {name: '', description: ''};
+  dish = { name: '', description: '' };
 
-  constructor(public dishShareService: DishShareService) { }
+  constructor(public dishShareService: DishShareService) {}
 
   ngOnInit() {
     this.dish.name = this.platename;
@@ -28,8 +27,10 @@ export class DishFormComponent implements OnInit {
   onSubmit(dishForm: NgForm): void {
     console.log('SUBMIT');
     console.log(dishForm.value);
-    this.dishShareService.createDish(dishForm.value.name, dishForm.value.description);
+    this.dishShareService.createDish(
+      dishForm.value.name,
+      dishForm.value.description
+    );
     this.submitDishEvent.emit('dishSubmited');
   }
-
 }

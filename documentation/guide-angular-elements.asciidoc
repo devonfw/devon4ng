@@ -63,7 +63,7 @@ Inside the `app.module.ts`, in addition to the normal declaration of the compone
 @NgModule({
   declarations: [
     DishFormComponent,
-    DishviewComponent
+    DishViewComponent
   ],
   imports: [
     CoreModule,  // Module containing Angular Materials
@@ -71,7 +71,7 @@ Inside the `app.module.ts`, in addition to the normal declaration of the compone
   ],
   entryComponents: [
     DishFormComponent,
-    DishviewComponent
+    DishViewComponent
   ],
   providers: [DishShareService]
 })
@@ -93,7 +93,7 @@ export class AppModule {
     const el = createCustomElement(DishFormComponent, {injector: this.injector});
     customElements.define('dish-form', el);
 
-    const elView = createCustomElement(DishviewComponent, {injector: this.injector});
+    const elView = createCustomElement(DishViewComponent, {injector: this.injector});
     customElements.define('dish-view', elView);
   }
 }

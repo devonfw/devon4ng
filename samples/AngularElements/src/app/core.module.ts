@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { CdkTableModule } from '@angular/cdk/table';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -32,8 +31,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { CdkTableModule } from '@angular/cdk/table';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -42,7 +41,7 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    CdkTableModule,
+    CdkTableModule
   ],
   exports: [
     CommonModule,
@@ -77,9 +76,8 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    HttpClientModule,
+    HttpClientModule
   ],
-  providers: [
-  ],
+  providers: []
 })
 export class CoreModule {}

@@ -1,0 +1,8 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "basic-ion-pwa",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {}
+}

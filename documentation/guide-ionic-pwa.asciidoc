@@ -26,7 +26,7 @@ This guide assumes that you already have installed:
 * Node.js
 * npm package manager
 * Angular CLI
-* Ionic 4 CLI
+* Ionic 5 CLI
 * Capacitor
 
 Also, it is a good idea to read the document about PWA using Angular.
@@ -34,7 +34,7 @@ Also, it is a good idea to read the document about PWA using Angular.
 == Sample Application
 
 .Basic ionic PWA.
-image::images/ionic/ionic-pwa/base.png["Ionic 4 PWA Base", width=250 link="images/ionic/ionic-pwa/base.png"]
+image::images/ionic/ionic-pwa/base.png["Ionic 5 PWA Base", width=250 link="images/ionic/ionic-pwa/base.png"]
 
 To explain how to build progressive web apps (PWA) using Ionic 4, a basic application is going to be built. This app will be able to take photos even without network using PWA elements.
 
@@ -117,7 +117,7 @@ defineCustomElements(window);
 
 === Step 5: Make it Progressive.
 
-Turining an ionic 4 app into a PWA is pretty easy, the same module used to turn Angular apps into PWAs has to be added, to do so, run: `ng add @angular/pwa`. This command also creates an *icons* folder inside *src/assets* and contains angular icons for multiple resolutions. If you want use other images, be sure that they have the same resolution, the names can be different but the file *manifest.json* has to be changed accordingly. 
+Turining an Ionic 5 app into a PWA is pretty easy, the same module used to turn Angular apps into PWAs has to be added, to do so, run: `ng add @angular/pwa`. This command also creates an *icons* folder inside *src/assets* and contains angular icons for multiple resolutions. If you want use other images, be sure that they have the same resolution, the names can be different but the file *manifest.json* has to be changed accordingly. 
 
 === Step 6: Configure the app
 
@@ -138,11 +138,13 @@ To check if an app is a PWA lets compare its normal behaviour against itself but
 
 `ionic build --prod` to build the app using production settings.
 
-`npm install http-server` to install an npm module that can serve your built application. Documentation https://www.npmjs.com/package/http-server[here].
+`npm install http-server` to install an npm module that can serve your built application. Documentation https://www.npmjs.com/package/http-server[here]. A good alternative is also `npm install serve`. It can be checked https://github.com/zeit/serve[here]. 
 
 Go to the *www* folder running `cd www`.
 
-`http-server -o` to serve your built app.
+`http-server -o` or `serve` to serve your built app.
+
+NOTE: In order not to install anything not necessary `npx` can be used directly to serve the app. i.e run `npx serve [folder]` will automatically download and run this HTTP server without installing it in the project dependencies. 
 
 .Http server running on localhost:8081.
 image::images/ionic/ionic-pwa/http-server.png["Http server running", width=600 link="images/ionic/ionic-pwa/http-server.png"]

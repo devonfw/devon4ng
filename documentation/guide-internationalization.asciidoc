@@ -27,7 +27,7 @@ The official approach could be a bit complicated, therefore the recommended one 
 
 === Install and configure Transloco
 
-In order to include this library in your devon4ng **Angular >= 4.3** project you will need to execute in a terminal:
+In order to include this library in your devon4ng **Angular >= 7.2** project you will need to execute in a terminal:
 
 [source,bash]
 ----

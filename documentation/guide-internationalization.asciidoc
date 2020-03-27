@@ -95,7 +95,7 @@ An **optional** parameter from the component TypeScript class could be included 
 
 [source,html]
 ----
-{{ 'HELLO' | translate: { value: dynamic } }}
+{{ 'HELLO' | transloco: { value: dynamic } }}
 ----
 
 It is possible to use with `inputs`:

@@ -158,8 +158,6 @@ export class DishFormComponent implements OnInit {
   }
 
   onSubmit(dishForm: NgForm): void {
-    console.log('SUBMIT');
-    console.log(dishForm.value);
     this.dishShareService.createDish(dishForm.value.name, dishForm.value.description);
     this.submitDishEvent.emit('dishSubmited');
   }

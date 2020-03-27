@@ -7,6 +7,7 @@ The devonfw Platform provides a solution to building applications which combine 
 This repository contains the following assets:
 
 * **devon4ng-application-template:** It is the Angular application template used by the CobiGen code generation tool.
+* **devon4ng-ngrx-template:** It is the Angular application template used by the CobiGen code generation tool that makes use of NgRx for state management.
 * **devon4ng-ionic-application-template:** It is the Ionic mobile application template used by the CobiGen code generation tool.
 * **samples:** Folder containing different samples for the devon4ng guides.
 ** **AngularBasicPWA:** Project sample that contains an Angular progressive web app

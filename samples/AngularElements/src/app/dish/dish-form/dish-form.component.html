@@ -1,23 +1,32 @@
-
 <mat-card>
-    <mat-grid-list cols="1" rowHeight="100px" rowWidth="50%">
-				<mat-grid-tile colspan="1" rowspan="1">
-					<span>{{ platename }}</span>
-				</mat-grid-tile>
-				<form (ngSubmit)="onSubmit(dishForm)" #dishForm="ngForm">
-					<mat-grid-tile colspan="1" rowspan="1">
-						<mat-form-field>
-							<input matInput placeholder="Name" name="name" [(ngModel)]="dish.name">
-						</mat-form-field>
-					</mat-grid-tile>
-					<mat-grid-tile colspan="1" rowspan="1">
-						<mat-form-field>
-							<textarea matInput placeholder="Description" name="description" [(ngModel)]="dish.description"></textarea>
-						</mat-form-field>
-					</mat-grid-tile>
-					<mat-grid-tile colspan="1" rowspan="1">
-						<button mat-raised-button color="primary" type="submit">Submit</button>
-					</mat-grid-tile>
-				</form>
-		</mat-grid-list>
+  <mat-grid-list cols="1" rowHeight="100px" rowWidth="50%">
+    <mat-grid-tile colspan="1" rowspan="1">
+      <span>{{ platename }}</span>
+    </mat-grid-tile>
+    <form (ngSubmit)="onSubmit(dishForm)" #dishForm="ngForm">
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Name"
+            name="name"
+            [(ngModel)]="dish.name"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-form-field>
+          <textarea
+            matInput
+            placeholder="Description"
+            name="description"
+            [(ngModel)]="dish.description"
+          ></textarea>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+      </mat-grid-tile>
+    </form>
+  </mat-grid-list>
 </mat-card>

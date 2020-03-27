@@ -5,17 +5,14 @@ import { DishShareService } from '../shared/dish-share.service';
   templateUrl: './dishview.component.html',
   styleUrls: ['./dishview.component.scss']
 })
-export class DishviewComponent implements OnInit {
-
-
+export class DishViewComponent implements OnInit {
   dishname;
   dishdescription;
 
-  constructor(public dishShareService: DishShareService) { }
+  constructor(public dishShareService: DishShareService) {}
 
   ngOnInit() {
     this.dishname = this.dishShareService.name;
     this.dishdescription = this.dishShareService.description;
   }
-
 }

@@ -1,8 +1,9 @@
 {
   "name": "my-library",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "peerDependencies": {
-    "@angular/common": "~8.2.11",
-    "@angular/core": "~8.2.11"
+    "@angular/common": "~9.0.2",
+    "@angular/core": "~9.0.2",
+    "tslib": "^1.10.0"
   }
 }

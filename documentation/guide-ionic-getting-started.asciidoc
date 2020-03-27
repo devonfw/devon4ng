@@ -15,7 +15,7 @@ toc::[]
 :source-highlighter: rouge
 :listing-caption: Listing
 
-= Ionic 4 Getting started
+= Ionic 5 Getting started
 
 Ionic is a front-end focused framework which offers different tools for developing hybrid mobile applications. The web technologies used for this purpose are CSS, Sass, HTML5 and Typescript.
 
@@ -23,33 +23,22 @@ Ionic is a front-end focused framework which offers different tools for developi
 
 Ionic is used for developing hybrid applications, which means not having to rely on a specifyc IDE such as Android Studio or Xcode. Furthermore, development of native apps require learning different languages (Java/Kotlin for Android and Objective-C/Swift for Apple), with Ionic, a developer does not have to code the same functionality for multiple platforms, just use the adecuate libraries and components.
 
-
 == Basic environment set up
 
 === Install Ionic CLI
 Although the devonfw distribution comes with and already installed Ionic CLI, here are the steps to install it. The instalation of Ionic is easy, just one command has to be written:
 
-`npm install -g ionic`
+`$ npm install -g @ionic/cli`
 
 === Update Ionic CLI
 
-To update the installed version of the CLI run:
+If there was a previous installation of the Ionic CLI, it will need to be uninstalled due to a change in package name.
 
-`npm install -g ionic@latest`
-
-If the devonfw's ionic CLI has to be updated, the steps are a little bit different:
-
-* open the devonfw bundled console.
-
-* `cd [devonfw_dist_folder]`
-
-* `cd software/nodejs`
-
-* `npm uninstall ionic --no-save`
-
-* `npm install ionic@latest --no-save`
-
-image::images/ionic-getting-started/update-ionic-cli.PNG["devonfw's Ionic CLI uptaded", link="images/ionic-getting-started/update-ionic-cli.PNG"]
+[source, bash]
+----
+$ npm uninstall -g ionic
+$ npm install -g @ionic/cli
+----
 
 # Basic proyect set up
 The set up of an ionic application is pretty inmediate and can be done in one line:
@@ -77,4 +66,6 @@ There are more templates available that can be seen with the command
 
 image::images/ionic-getting-started/ionic-start-list.png["List of ionic templates", link="images/ionic-getting-started/ionic-start-list.png"]
 
-The templates surrounded by red line are based on angular and comes with Ionic v4, while the others belong to earlier versions (before v4).
+The templates surrounded by red line are based on angular and comes with Ionic v5, while the others belong to earlier versions (before v4).
+
+NOTE: More info at https://ionicframework.com/docs. Remember to select **Angular documentation**, since Ionic supports React, Vue and Vanilla JS.

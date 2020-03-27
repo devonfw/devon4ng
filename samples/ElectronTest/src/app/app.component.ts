@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ElectronService } from './shared/electron/electron.service';
+import { AppConfig } from '../environments/environment';
+import { ElectronService } from './core/service/electron/electron.service';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +8,16 @@ import { ElectronService } from './shared/electron/electron.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
   constructor(public electronService: ElectronService) {
-    if (electronService.isElectron()) {
-      // Do electron stuff
+    console.log('AppConfig', AppConfig);
+
+    if (electronService.isElectron) {
+      console.log(process.env);
+      console.log('Mode electron');
+      console.log('Electron ipcRenderer', electronService.ipcRenderer);
+      console.log('NodeJS childProcess', electronService.childProcess);
     } else {
-      // Do other web stuff
+      console.log('Mode web');
     }
   }
   title = 'Devon4ngElectronTest';

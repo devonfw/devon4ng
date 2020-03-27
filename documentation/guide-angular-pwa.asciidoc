@@ -39,7 +39,7 @@ image::images/angular/angular-pwa/mts-pwa-rec.png["My thai star recommendation",
 
 To explain how to build PWAs using angular, a basic application is going to be built. This app will be able to ask for resources and save in the cache in order to work even offline.
 
-=== Step 1: Create a new project
+=== Step 1: Create a new project and install Angular PWA package
 
 This step can be completed with one simple command: `ng new <name>`, where <names> is the name for the app. In this case, the app is going to be named *basic-ng-pwa*.
 
@@ -159,12 +159,22 @@ This file is also used to reload the app if there are any changes.
 
 === Step 5: Make it Progressive.
 
-Turining an angular app into a PWA is pretty easy, just one module has to be added. To do so, run: `ng add @angular/pwa`. This command also adds two important files, explained below.
+Install Angular PWA package with `ng add @angular/pwa --project <name>`. As before substitute `name` with **basic-ng-pwa**.
 
-{nbsp} +
-{nbsp} +
+The above command completes the following actions:
 
-* manifest.json
+1. Adds the @angular/service-worker package to your project.
+2. Enables service worker build support in the CLI.
+3. Imports and registers the service worker in the app module.
+4. Updates the `index.html` file:
+
+  - Includes a link to add the `manifest.json` file.
+  - Adds meta tags for theme-color.
+  - Installs icon files to support the installed Progressive Web App (PWA).
+  - Creates the service worker configuration file called `ngsw-config.json`, which specifies the caching behaviors and other settings.
+
+
+==== manifest.json
 
 manifest.json is a file that allows to control how the app is displayed in places where native apps are displayed.
 
@@ -188,10 +198,8 @@ _icons_: Array of icons that serve as representations of the web app.
 
 Additional information can be found https://developers.google.com/web/fundamentals/web-app-manifest/[here].
 
-{nbsp} +
-{nbsp} +
 
-* ngsw-config.json
+==== ngsw-config.json
 
 nsgw-config.json specifies which files and data URLs have to be cached and updated by the Angular service worker.
 

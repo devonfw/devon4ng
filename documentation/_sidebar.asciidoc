@@ -30,8 +30,8 @@
 ** link:guide-working-with-angular-cli[Working with Angular CLI]
 
 === Ionic
-** link:guide-ionic-getting-started[Ionic 4 Getting started]
-** link:guide-ionic-from-code-to-android[Ionic 4 to Android]
+** link:guide-ionic-getting-started[Ionic Getting started]
+** link:guide-ionic-from-code-to-android[Ionic to Android]
 ** link:guide-ionic-pwa[Ionic Progressive Web Apps]
 
 === Layouts

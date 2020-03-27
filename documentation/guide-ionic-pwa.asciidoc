@@ -36,7 +36,7 @@ Also, it is a good idea to read the document about PWA using Angular.
 .Basic ionic PWA.
 image::images/ionic/ionic-pwa/base.png["Ionic 5 PWA Base", width=250 link="images/ionic/ionic-pwa/base.png"]
 
-To explain how to build progressive web apps (PWA) using Ionic 4, a basic application is going to be built. This app will be able to take photos even without network using PWA elements.
+To explain how to build progressive web apps (PWA) using Ionic, a basic application is going to be built. This app will be able to take photos even without network using PWA elements.
 
 === Step 1: Create a new project
 

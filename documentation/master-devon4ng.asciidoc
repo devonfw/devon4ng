@@ -18,6 +18,8 @@ include::guide-package-managers[leveloffset=2]
 
 include::guide-npm-yarn-workflow[leveloffset=2]
 
+include::guide-yarn-2-support[leveloffset=2]
+
 == Angular
 
 include::guide-accessibility[leveloffset=2]

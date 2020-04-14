@@ -60,7 +60,7 @@ yarn policies set-version berry # below v1.22
 yarn set version berry          # on v1.22+
 ----
 
-. Since Angular CLI still is not fully supported with the new https://yarnpkg.com/advanced/architecture[Yarn architecture] as it is not compatible eith PnP it is necessary to include the https://github.com/yarnpkg/berry/tree/master/packages/plugin-node-modules[`node-modules`] plugin adding the following line in the `.yarnrc.yml` file:
+. Since Angular CLI still is not fully supported with the new https://yarnpkg.com/advanced/architecture[Yarn architecture] as it is not compatible with PnP it is necessary to include the https://github.com/yarnpkg/berry/tree/master/packages/plugin-node-modules[`node-modules`] plugin adding the following line in the `.yarnrc.yml` file:
 +
 [source,yml]
 ----

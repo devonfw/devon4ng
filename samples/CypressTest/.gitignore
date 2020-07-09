@@ -42,3 +42,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+#cypress e2e
+/cypress/videos
+/cypress/screenshots
+/cypress/report
+/mochawesome-report

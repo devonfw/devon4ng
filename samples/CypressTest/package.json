@@ -7,8 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "cy": "node cypress/script.js"
+    "e2e": "node cypress/script.js"
   },
   "private": true,
   "dependencies": {

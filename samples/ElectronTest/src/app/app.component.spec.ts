@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Devon4ngElectronTest'`, () => {
+  it(`should have as title 'Devon4ngAngularElementsTest'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('Devon4ngElectronTest');
+    expect(app.title).toEqual('Devon4ngAngularElementsTest');
   });
 
   it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to Devon4ngElectronTest!');
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to Devon4ngAngularElementsTest!');
   });
 });

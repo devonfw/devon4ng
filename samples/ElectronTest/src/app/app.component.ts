@@ -1,19 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ElectronService } from './shared/electron/electron.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
-  title = 'Devon4ngAngularElementsTest';
-  ngOnInit(): void {
-    //this.createComponent();
+  constructor(public electronService: ElectronService) {
+    if (electronService.isElectron()) {
+      // Do electron stuff
+    } else {
+      // Do other web stuff
+    }
   }
-  createComponent(): void {
-    const container = document.getElementById('container');
-    const component = document.createElement('dish-form');
-    container.appendChild(component);
-  }
+  title = 'Devon4ngElectronTest';
 }

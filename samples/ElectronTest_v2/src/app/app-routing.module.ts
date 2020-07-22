@@ -4,15 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(
-      routes,
-      {
-        enableTracing: true,
-        useHash: true
-      }, // <-- debugging purposes only
-    ),
-  ],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

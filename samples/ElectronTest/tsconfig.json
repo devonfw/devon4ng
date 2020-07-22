@@ -18,5 +18,12 @@
       "es2018",
       "dom"
     ]
-  }
+  },
+  "include": [
+    "main.ts",
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

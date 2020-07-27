@@ -1,5 +1,9 @@
 {
   "name": "devon4ng-aelectron-test",
+  "description": "Electron with angular",
+  "author": {
+    "name": "devon4ng"
+  },
   "version": "0.0.0",
   "main": "main.ts",
   "scripts": {
@@ -9,8 +13,19 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start:electron": "ng build --base-href ./ && electron ."
+    "electron:start": "ng build --base-href ./ && npx electron . --serve",
+    "electron-builder:pack": "electron-builder --dir",
+    "electron-builder:dist": "electron-builder build"
   },
+  "build": {
+    "appId": "your.id",
+    "directories":{
+      "output": "./builder-release"
+    },
+    "mac": {
+      "category": "your.app.category.type"
+    }
+  },  
   "private": true,
   "dependencies": {
     "@angular/animations": "~10.0.4",
@@ -36,6 +51,7 @@
     "@types/node": "~8.9.4",
     "codelyzer": "5.1.0",
     "electron": "^9.1.1",
+    "electron-builder": "^22.7.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~3.1.1",

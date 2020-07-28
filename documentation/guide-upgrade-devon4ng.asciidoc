@@ -43,7 +43,7 @@ $ ng update @angular/cli@9 @angular/core@9
 
 Optionally the flag `-C` can be added to previous command to make a commit automatically. This is also valid for the next steps. 
 
-- Then, upgrade to Angular 10:
+- Then, upgrade Angular:
 
 ```bash
 $ ng update @angular/cli @angular/core

@@ -42,7 +42,9 @@ import { Observable } from 'rxjs/Observable';
 
 import { FlightTo } from './flight-to';
 
-@Injectable()
+@Injectable({
+ providedIn: 'root',
+})
 export class FlightsAdapter {
 
   constructor(
@@ -72,7 +74,9 @@ import { map } from 'rxjs/operators';
 import { FlightTo } from './flight-to';
 import { Flight } from '../../../model/flight';
 
-@Injectable()
+@Injectable({
+ providedIn: 'root',
+})
 export class FlightsAdapter {
 
   constructor(
@@ -100,6 +104,126 @@ export class FlightsAdapter {
 
 == Token management
 
-// TODO
+In most cases the access to backend API is secured using well konwn mechanisms as **CSRF**, **JWT** or both. In these cases the frontend application must manage the tokens that are generated when the user authenticates. More concretely it must store them to include them in every request automatically. Obviously, when user logs out these tokens must be removed from localStorage, memory, etc.
 
-// Either middleware or by hand - if more than one backend
+=== Store security token
+
+In order to make this guide simple we are going to store the token in memory. Therefore, if we consider that we already have a login mechanism implemented we would like to store the token using a `auth.service.ts`:
+
+[source, typescript]
+----
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class AuthService {
+  private loggedIn = false;
+  private token: string;
+
+  constructor(public router: Router) {}
+
+  public isLogged(): boolean {
+    return this.loggedIn || false;
+  }
+
+  public setLogged(login: boolean): void {
+    this.loggedIn = login;
+  }
+
+  public getToken(): string {
+    return this.token;
+  }
+
+  public setToken(token: string): void {
+    this.token = token;
+  }
+}
+----
+
+Using the previous service we will be able to store the token obtained in the login request using the method `setToken(token)`. Please consider that, if you want a more sofisticated approach using localStorage API, you will need to modify this service accordingly.
+
+=== Include token in every request
+
+Now that the token is available in the application it is necessary to include it in every request to a protected API endpoint. Instead of modifying all the http requests in our application, Angular provides a class to intercept every request (and every response if we need to) called `HttpInterceptor`. Let's create a service called `http-interceptor.service.ts` to implement the `intercept` method of this class:
+
+[source, typescript]
+----
+import {
+  HttpEvent,
+  HttpHandler,
+  HttpInterceptor,
+  HttpRequest,
+} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
+import { AuthService } from './auth.service';
+
+@Injectable()
+export class HttpRequestInterceptorService implements HttpInterceptor {
+  
+  constructor(private auth: AuthService) {}
+
+  intercept(
+    req: HttpRequest<any>,
+    next: HttpHandler,
+  ): Observable<HttpEvent<any>> {
+    // Get the auth header from the service.
+    const authHeader: string = this.auth.getToken();
+    if (authHeader) {
+      let authReq: HttpRequest<any>;
+
+      // CSRF
+      if (environment.security === 'csrf') {
+        authReq = req.clone({
+          withCredentials: true,
+          setHeaders: { 'x-csrf-token': authHeader },
+        });
+      }
+
+      // JWT
+      if (environment.security === 'jwt') {
+        authReq = req.clone({
+          setHeaders: { Authorization: authHeader },
+        });
+      }
+
+      return next.handle(authReq);
+    } else {
+      return next.handle(req);
+    }
+  }
+}
+----
+
+As you may notice, this service is making use of an environment field `environment.security` to determine if we are using JWT o CSRF in order to inject the token accordingly. In your application you can combine both if necessary.
+
+The `authHeader` used is obtained using the injected service `AuthService` already presented above.
+
+In order to activate the interceptor we need to provide it in our `app.module.ts` or `core.module.ts` depending on the application structure. Let's assume that we are using the latter and the interceptor file is inside a `security` folder:
+
+[source, typescript]
+----
+...
+import { HttpRequestInterceptorService } from './security/http-request-interceptor.service';
+...
+
+@NgModule({
+  imports: [...],
+  exports: [...],
+  declarations: [],
+  providers: [
+    ...
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpRequestInterceptorService,
+      multi: true,
+    },
+  ],
+})
+export class CoreModule {}
+----
+
+Angular automatically will now modify every request and include in the header the token if it is convenient. 

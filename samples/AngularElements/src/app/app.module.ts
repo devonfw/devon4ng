@@ -1,37 +1,32 @@
-import { NgModule, Injector } from '@angular/core';
-
-import { CoreModule } from './core.module';
+import { Injector, NgModule } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
-import { DishviewComponent } from './dish/dishview/dishview.component';
-import { DishFormComponent } from './dish/dish-form/dish-form.component';
-import { DishShareService } from './dish/shared/dish-share.service';
 import { FormsModule } from '@angular/forms';
+import { CoreModule } from './core.module';
+import { DishFormComponent } from './dish/dish-form/dish-form.component';
+import { DishViewComponent } from './dish/dishview/dishview.component';
+import { DishShareService } from './dish/shared/dish-share.service';
 
 @NgModule({
-  declarations: [
-    DishFormComponent,
-    DishviewComponent
-  ],
+  declarations: [DishFormComponent, DishViewComponent],
   imports: [
-    CoreModule,  // Module containing Angular Materials
+    CoreModule, // Module containing Angular Materials
     FormsModule
   ],
-  entryComponents: [
-    DishFormComponent,
-    DishviewComponent
-  ],
+  entryComponents: [DishFormComponent, DishViewComponent],
   providers: [DishShareService]
 })
 export class AppModule {
-  constructor(private injector: Injector) {
-
-  }
+  constructor(private injector: Injector) {}
 
   ngDoBootstrap() {
-    const el = createCustomElement(DishFormComponent, {injector: this.injector});
+    const el = createCustomElement(DishFormComponent, {
+      injector: this.injector
+    });
     customElements.define('dish-form', el);
 
-    const elView = createCustomElement(DishviewComponent, {injector: this.injector});
+    const elView = createCustomElement(DishViewComponent, {
+      injector: this.injector
+    });
     customElements.define('dish-view', elView);
   }
 }

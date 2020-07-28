@@ -15,9 +15,11 @@ toc::[]
 :source-highlighter: rouge
 :listing-caption: Listing
 
+= Angular Elements
+
 == What are Angular Elements?
 
-https://angular.io/guide/elements[Angular elements] are Angular components packaged as custom elements, a web standard for defining new HTML elements in a framework-agnostic way.
+https://angular.io/guide/elements[Angular elements] are Angular components packaged as custom elements, a web standard for defining new HTML elements in a framework-agnostic way. 
 
 Custom elements are a Web Platform feature currently supported by Chrome, Firefox, Opera, and Safari, and available in other browsers through https://angular.io/guide/elements#browser-support[Polyfills]. A custom element extends HTML by allowing you to define a tag whose content is created and controlled by JavaScript code. The browser maintains a CustomElementRegistry of defined custom elements (also called Web Components), which maps an instantiable JavaScript class to an HTML tag.
 
@@ -61,7 +63,7 @@ Inside the `app.module.ts`, in addition to the normal declaration of the compone
 @NgModule({
   declarations: [
     DishFormComponent,
-    DishviewComponent
+    DishViewComponent
   ],
   imports: [
     CoreModule,  // Module containing Angular Materials
@@ -69,7 +71,7 @@ Inside the `app.module.ts`, in addition to the normal declaration of the compone
   ],
   entryComponents: [
     DishFormComponent,
-    DishviewComponent
+    DishViewComponent
   ],
   providers: [DishShareService]
 })
@@ -91,7 +93,7 @@ export class AppModule {
     const el = createCustomElement(DishFormComponent, {injector: this.injector});
     customElements.define('dish-form', el);
 
-    const elView = createCustomElement(DishviewComponent, {injector: this.injector});
+    const elView = createCustomElement(DishViewComponent, {injector: this.injector});
     customElements.define('dish-view', elView);
   }
 }
@@ -156,8 +158,6 @@ export class DishFormComponent implements OnInit {
   }
 
   onSubmit(dishForm: NgForm): void {
-    console.log('SUBMIT');
-    console.log(dishForm.value);
     this.dishShareService.createDish(dishForm.value.name, dishForm.value.description);
     this.submitDishEvent.emit('dishSubmited');
   }

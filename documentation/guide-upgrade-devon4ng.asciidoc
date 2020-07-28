@@ -1,0 +1,104 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+= Upgrade devon4ng Angular and Ionic/Angular applications
+
+Angular CLI provides a powerful tool to upgrade Angular based applications to the current stable release of the core framework. 
+
+This tool is `ng update`. It will not only upgrade dependencies and their related ones but also will perform some fixes in your code if available thanks to the provided _schematics_. It will check even if the update is not possible as there is another library or libraries that are not compatible with the versions of the upgraded dependencies. In this case it will keep your application untouched. 
+
+NOTE: The repository must be in a clean state before executing a `ng update`. So, remember to commit your changes first. 
+
+== Basic usage
+
+In order to perform a basic upgrade we will execute:
+
+```bash
+$ ng update @angular/cli @angular/core
+```
+
+=== Upgrade to new Angular version
+
+The process will be the same, but first we need to make sure that our devon4ng application is in the lates version of Angular 8, so the `ng update` command can perform the upgrade not only in the dependencies but also making code changes to reflect the new features and fixes.
+
+- First, upgrade to latest Angular 9 version:
+
+```bash
+$ ng update @angular/cli@9 @angular/core@9
+```
+
+Optionally the flag `-C` can be added to previous command to make a commit automatically. This is also valid for the next steps. 
+
+- Then, upgrade Angular:
+
+```bash
+$ ng update @angular/cli @angular/core
+```
+
+- In case you use Angular Material:
+
+```bash
+$ ng update @angular/material
+```
+
+- If the application depends on third party libraries, the new tool `ngcc` can be run to make them compatible with the new **Ivy compiler**. In this case it is recommended to include a `postinstall` script in the `package.json`:
+
+```json
+{
+  "scripts": {
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
+  }
+}
+```
+More information at https://angular.io/guide/updating-to-version-9 and https://angular.io/guide/ivy. 
+
+**Important use cases:**
+
+* To update to the next beta or pre-release version, use the `--next=true` option.
+* To update from one major version to another, use the format `ng update @angular/cli@^<major_version> @angular/core@^<major_version>`.
+* In case your Angular application uses `@angular/material` include it in the first command:
+
++
+```bash
+$ ng update @angular/cli @angular/core @angular/material
+```
+
+=== Ionic/Angular applications
+
+Just following the same procedure we can upgrade Angular applications, but we must take care of important specific Ionic dependencies:
+
+```bash
+$ ng update @angular/cli @angular/core @ionic/angular @ionic/angular-toolkit [@ionic/...]
+```
+
+=== Other dependencies
+
+Every application will make use of different dependencies. Angular CLI `ng upgrade` will also take care of these ones. For example, if you need to upgrade `@capacitor` you will perform:
+
+```bash
+$ ng update @capacitor/cli @capacitor/core [@capacitor/...]
+```
+
+Another example could be that you need to upgrade `@ngx-translate` packages. As always in this case you will execute:
+
+```bash
+$ ng update @ngx-translate/core @ngx-translate/http-loader
+```
+
+=== Angular Update Guide online tool
+
+It is recommended to use the Angular Update Guide tool at https://update.angular.io/ that will provide the necessary steps to upgrade any Angular application depending on multiple criteria. 

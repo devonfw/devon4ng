@@ -4,11 +4,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DishShareService {
-
   name;
   description;
 
-  constructor() { }
+  constructor() {}
 
   createDish(name, description): void {
     this.name = name;

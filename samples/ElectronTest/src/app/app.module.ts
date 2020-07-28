@@ -1,21 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { WebviewDirective } from './shared/electron/webview.directive';
-import { ElectronService } from './shared/electron/electron.service';
+import { CoreModule } from './core/core.module';
+import { WebviewDirective } from './shared/directives/webview/webview.directive';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    WebviewDirective
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [ElectronService],
+  declarations: [AppComponent, WebviewDirective],
+  imports: [BrowserModule, AppRoutingModule, CoreModule],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

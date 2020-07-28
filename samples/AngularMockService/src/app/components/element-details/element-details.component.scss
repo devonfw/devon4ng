@@ -1,0 +1,31 @@
+.example-element-card {
+    width: 445px;
+    margin: 0 auto;
+}
+
+.example-element-diagram {
+    display: inline-block;
+    min-width: 80px;
+    border: 2px solid black;
+    padding: 8px;
+    font-weight: lighter;
+    margin: 8px 0;
+    height: 104px;
+  }
+  
+  .example-element-symbol {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: normal;
+  }
+  
+  .example-element-description {
+      width: 280px;
+    padding: 16px;
+    display: inline-block;
+    vertical-align: top;
+  }
+  
+  .example-element-description-attribution {
+    opacity: 0.5;
+  }

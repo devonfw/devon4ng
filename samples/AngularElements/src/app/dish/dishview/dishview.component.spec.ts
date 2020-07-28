@@ -1,20 +1,18 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { DishViewComponent } from './dishview.component';
 
-import { DishviewComponent } from './dishview.component';
-
-describe('DishviewComponent', () => {
-  let component: DishviewComponent;
-  let fixture: ComponentFixture<DishviewComponent>;
+describe('DishViewComponent', () => {
+  let component: DishViewComponent;
+  let fixture: ComponentFixture<DishViewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DishviewComponent ]
-    })
-    .compileComponents();
+      declarations: [DishViewComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DishviewComponent);
+    fixture = TestBed.createComponent(DishViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -19,35 +19,34 @@ toc::[]
 
 This guide is a continuation of the guide link:guide-angular-pwa[Angular PWAs], therefore, valid concepts explained there are still valid in this page but focused on Ionic.
 
-
-= Assumptions
+== Assumptions
 
 This guide assumes that you already have installed:
 
 * Node.js
 * npm package manager
 * Angular CLI
-* Ionic 4 CLI
+* Ionic 5 CLI
 * Capacitor
 
 Also, it is a good idea to read the document about PWA using Angular.
 
-= Sample Application
+== Sample Application
 
 .Basic ionic PWA.
-image::images/ionic/ionic-pwa/base.png["Ionic 4 PWA Base", width=250 link="images/ionic/ionic-pwa/base.png"]
+image::images/ionic/ionic-pwa/base.png["Ionic 5 PWA Base", width=250 link="images/ionic/ionic-pwa/base.png"]
 
-To explain how to build progressive web apps (PWA) using Ionic 4, a basic application is going to be built. This app will be able to take photos even without network using PWA elements.
+To explain how to build progressive web apps (PWA) using Ionic, a basic application is going to be built. This app will be able to take photos even without network using PWA elements.
 
-== Step 1: Create a new project
+=== Step 1: Create a new project
 
 This step can be completed with one simple command: `ionic start <name> <template>`, where <name> is the name and <template> a model for the app. In this case, the app is going to be named *basic-ion-pwa*.
 
-== Step 2: Structures and styles
+=== Step 2: Structures and styles
 
 The styles (scss) and structures (html) do not have anything specially relevant, just colors and ionic web components. The code can be found in https://github.com/devonfw/devon4ng/tree/master/samples/IonicBasicPWA[devon4ng samples].
 
-== Step 3: Add functionality
+=== Step 3: Add functionality
 
 After this step, the app will allow users take photos and display them in the main screen. 
 First we have to import three important elements:
@@ -94,7 +93,7 @@ The process of taking a picture is enclosed in a *takePicture* method. takePictu
   }
 ----
 
-== Step 4: PWA Elements
+=== Step 4: PWA Elements
 
 When Ionic apps are not running natively, some resources like Camera do not work by default but can be enabled using PWA Elements. To use Capacitor's PWA elements run `npm install @ionic/pwa-elements` and modify src/main.ts as shown below.
 
@@ -116,11 +115,11 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 defineCustomElements(window);
 ----
 
-== Step 5: Make it Progressive.
+=== Step 5: Make it Progressive.
 
-Turining an ionic 4 app into a PWA is pretty easy, the same module used to turn Angular apps into PWAs has to be added, to do so, run: `ng add @angular/pwa`. This command also creates an *icons* folder inside *src/assets* and contains angular icons for multiple resolutions. If you want use other images, be sure that they have the same resolution, the names can be different but the file *manifest.json* has to be changed accordingly. 
+Turining an Ionic 5 app into a PWA is pretty easy, the same module used to turn Angular apps into PWAs has to be added, to do so, run: `ng add @angular/pwa`. This command also creates an *icons* folder inside *src/assets* and contains angular icons for multiple resolutions. If you want use other images, be sure that they have the same resolution, the names can be different but the file *manifest.json* has to be changed accordingly. 
 
-== Step 6: Configure the app
+=== Step 6: Configure the app
 
 *manifest.json*
 
@@ -133,17 +132,19 @@ At _assetGroups -> resources_ add a urls field and a pattern to match PWA Elemen
 [source]
   "urls": ["https://unpkg.com/@ionic/pwa-elements@1.0.2/dist/**"]
 
-== Step 7: Check that your app is a PWA
+=== Step 7: Check that your app is a PWA
 
 To check if an app is a PWA lets compare its normal behaviour against itself but built for production. Run in the project's root folder the commands below:
 
 `ionic build --prod` to build the app using production settings.
 
-`npm install http-server` to install an npm module that can serve your built application. Documentation https://www.npmjs.com/package/http-server[here].
+`npm install http-server` to install an npm module that can serve your built application. Documentation https://www.npmjs.com/package/http-server[here]. A good alternative is also `npm install serve`. It can be checked https://github.com/zeit/serve[here]. 
 
 Go to the *www* folder running `cd www`.
 
-`http-server -o` to serve your built app.
+`http-server -o` or `serve` to serve your built app.
+
+NOTE: In order not to install anything not necessary `npx` can be used directly to serve the app. i.e run `npx serve [folder]` will automatically download and run this HTTP server without installing it in the project dependencies. 
 
 .Http server running on localhost:8081.
 image::images/ionic/ionic-pwa/http-server.png["Http server running", width=600 link="images/ionic/ionic-pwa/http-server.png"]

@@ -15,21 +15,20 @@ toc::[]
 :source-highlighter: rouge
 :listing-caption: Listing
 
-= Ionic: From code to android
+= Ionic to android
 
 This page is written to help developers to go from the source code of an ionic application to an android one, with this in mind, topics such as: environment, commands, modifications,...  are covered.
 
-= Assumptions
+== Assumptions
 
 This document assumes that the reader has already:
 
-** Source code of an ionic 4 application and wants to build it on an android device, 
+** Source code of an Ionic application and wants to build it on an android device, 
 ** A working installation of Node.js
 ** An Ionic CLI installed and up-to-date.
 ** Android Studio and Android SDK.
 
-
-= From ionic 4 to Android project
+== From Ionic to Android project
 
 When a native application is being dessigned, sometimes, functionalities that uses camera, geolocation, push notification, ... are requested. To resolve these requests, Capacitor can be used.
 
@@ -44,9 +43,9 @@ Then, it is necessary to initialize capacitor with some information: app id, nam
 
 ** `npx cap init`
 
-== Modifications
+=== Modifications
 
-Throughout the development process, usually back-end and front-end are on a local computer, so it's a common practice to have diferent configuration files for each environment (commonly production and development). Ionic 4 uses an angular.json file to store those configurations and some rules to be applied.
+Throughout the development process, usually back-end and front-end are on a local computer, so it's a common practice to have diferent configuration files for each environment (commonly production and development). Ionic uses an angular.json file to store those configurations and some rules to be applied.
 
 If a back-end is hosted on http://localhost:8081, and that direction is used in every environment, the application built for android will not work because computer and device do not have the same localhost. Fortunately, different configurations can be defined.
 
@@ -69,9 +68,9 @@ image::images/ionic-to-android/environments.png["Android environment and angular
         }
     }
 
-== Build
+=== Build
 
-Once configured, it is necessary to build the Ionic 4 app using this new configuration:
+Once configured, it is necessary to build the Ionic app using this new configuration:
 
 * `ionic build --configuration=android`
 
@@ -82,7 +81,7 @@ The next commands copy the build application on a folder named android and open 
 * `npx cap open android`
 
 
-= From Android project to emulated device
+== From Android project to emulated device
 
 Once Android Studio is opened, follow these steps:
 
@@ -123,7 +122,7 @@ image:images/ionic-to-android/config-device.png["Check configuration",width="400
 
 image::images/ionic-to-android/new-phone-created.png["New created device",width="400" link="images/ionic-to-android/new-phone-created.png"]
 
-= From Android project to real device
+== From Android project to real device
 
 To test on a real android device, an easy aproach to comunicate a smartphone (front-end) and computer (back-end) is to configure a Wi-fi hotspot and connect the computer to it. A guide about this process can be found at https://support.google.com/nexus/answer/9059108?hl=en
 
@@ -135,9 +134,9 @@ This obtained IP must be used instead of "localhost" or "10.0.2.2" at environmen
 
 image::images/ionic-to-android/new-backend-url.PNG["Android environment file server URL" ,width="700" link="images/ionic-to-android/new-backend-url.PNG"]
 
-After this configuration, follow the build steps in "From ionic 4 to Android project" and the first three steps in "From Android project to emulated device".
+After this configuration, follow the build steps in "From Ionic to Android project" and the first three steps in "From Android project to emulated device".
 
-== Send APK to Android through USB
+=== Send APK to Android through USB
 
 To send the built application to a device, you can connect computer and mobile through USB, but first, it is necessary to unlock developer options.
 
@@ -156,14 +155,14 @@ image::images/ionic-to-android/enable-developer-options4_5_6.png["Steps to enabl
 
 After this, do the step four in "From Android project to emulated device" and choose the connected smartphone.
 
-== Send APK to Android throught email
+=== Send APK to Android throught email
 
 When you build an APK, a dialog gives two options: locate or analyze. If the first one is chosen, Windows file explorer will be opened showing an APK that can be send using email. Download the APK on your phone and click it to install.
 
 image::images/ionic-to-android/locate-apk.png["Steps to enable developer options: 4, 5, 6" ,width="300" link="images/ionic-to-android/locate-apk.png"]
 
-= Result
+== Result
 
-If everything goes correctly, the Ionic 4 application will be ready to be tested.
+If everything goes correctly, the Ionic application will be ready to be tested.
 
 image::images/ionic-to-android/real-device.png["Application running on a real device" ,width="300" link="images/ionic-to-android/real-device.png"]

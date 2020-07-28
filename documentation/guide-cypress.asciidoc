@@ -40,9 +40,9 @@ We need to run Cypress in order to get the folder tree downloaded, then create a
 [source, bash]
 ----
 . /node_modules/.bin/cypress open
+----
 
 * cypress / tsconfig.json
-----
 
 [source, json]
 ----

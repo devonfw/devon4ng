@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { MyLibraryModule } from 'my-library';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -12,7 +13,7 @@ import { MyLibraryModule } from 'my-library';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MyLibraryModule
+    MyLibraryModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

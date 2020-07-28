@@ -30,17 +30,22 @@ Why Cypress?
 
 **Install**
 
-[source,ts]
+[source, TypeScript]
+----
 npm install cypress
+----
 
 We need to run Cypress in order to get the folder tree downloaded, then create a **tsconfig.json** file inside **cypress folder**.
 
-[source,ts]
+[source, bash]
+----
 . /node_modules/.bin/cypress open
 
 * cypress / tsconfig.json
+----
 
-[source,json]
+[source, json]
+----
 {
   "compilerOptions": {
     "strict": true,
@@ -53,6 +58,7 @@ We need to run Cypress in order to get the folder tree downloaded, then create a
     "**/*.ts"
   ]
 }
+----
 
 **BaseUrl**
 
@@ -61,12 +67,15 @@ Let's setup the base url, go to __cypress.json__ on the root of the project.
 * cypress.json
 
 [source,json]
+----
 {
   "baseUrl": "http://localhost:4200"
 }
+----
 
 == Files / Structure
-[source,ts]
+[source, TypeScript]
+----
 /cypress
   tsconfig.json
   /fixtures
@@ -80,11 +89,12 @@ Let's setup the base url, go to __cypress.json__ on the root of the project.
   /support
     - commands.js
     - index.js
-
+----
 == Tests
-First, we define a context to group all our tests referred to the same subject
+First, we define a context to group all our tests referred to the same subject.
 
-[source,ts]
+[source, TypeScript]
+----
 context('Button page', () => {
   beforeEach(() => {
     cy.visit('/');
@@ -96,6 +106,7 @@ context('Button page', () => {
     cy.contains('button', 'PRESS');
   });
 });
+----
 
 The structure is the same than Mocha.
 
@@ -110,16 +121,19 @@ For more info check link:docs.cypress.io/guides/core-concepts/writing-and-organi
 == Fixtures
 
 We use fixtures to mock data, it can be a json, an img, video...
----
+[source, json]
+----
 {
   "name": "Dummy name",
   "phone": 999 99 99 99,
   "body": "Mock data"
 }
----
-You can store multiple mocks on the same fixture file
+----
+
+You can store multiple mocks on the same fixture file.
 
 [source,json]
+----
 {
   "create":{"name": "e2etestBox"},
   "boxFruit":{
@@ -132,32 +146,36 @@ You can store multiple mocks on the same fixture file
     ]
   },
 }
+----
 
 To access data we don't need to import any file, we just call cy.fixture + the name file.
 We can name it as we want.
 
-[source,ts]
+[source, TypeScript]
+----
 cy.fixture('box.json').as('fruitBox')
+----
 
 == Request / Route
 
 With cypress you can test your application with real data or with mocks.
 
 Not using mocks guarantees that your tests are real e2e test but makes them vulnerable to external issues.
-When you mock data you don't know exactly if the data and the structure received from the backend is correct because you are forcing a mock on the response,
-but you can avoid external issues, run test faster and have better control on the structure and status.
+When you mock data you don't know exactly if the data and the structure received from the backend is correct because you are forcing a mock on the response, but you can avoid external issues, run test faster and have better control on the structure and status.
 
 === Route
 
 Cypress can intercept a XHR request and interact with it.
 
-[source,ts]
+[source, TypeScript]
+----
 cy.server();
 cy.route(
   'GET',
   '/apiUrl/list',
   [{"name":"apple", "units":3},{"name":"kiwi", "units":2}]
 )
+----
 
 _cy.server(options)_ start a server to interact with the responses.
 
@@ -167,18 +185,19 @@ _cy.route(options)_ intercepts a XMLHttpRequests
 .*respones* [{"name":"apple", "units":3},{"name":"kiwi", "units":2}]
 
 *Waits*
-Every cypress action has a default await time to avoid asynchronous issues, but this time can be short for
-some particular actions like api calls, for those cases we can use *cy.wait()*
+Every cypress action has a default await time to avoid asynchronous issues, but this time can be short for some particular actions like api calls, for those cases we can use *cy.wait()*
 
-[source,ts]
+[source, TypeScript]
+----
 cy.server();
 cy.route('/apiUrl/list').as('list');
 cy.visit('/boxList');
 cy.wait('@list');
-
+----
 To mock data with fixtures:
 
-[source,ts]
+[source, TypeScript]
+----
 cy.fixture('box')
   .then(({boxFruit}) => {
     cy.route(
@@ -190,30 +209,35 @@ cy.fixture('box')
     cy.wait('@journalsList');
     cy.get('#list').contains('apple');
   })
+----
 
 We get boxFruit data from the box fixture and then we mock the api call with it so now the response of the call is boxFruit object.
-When the button is clicked, it waits to recive the response of the call and then checks if the list 
-contains one of the elements of the fruitBox.
+When the button is clicked, it waits to recive the response of the call and then checks if the list contains one of the elements of the fruitBox.
 
 To get more information check link:https://docs.cypress.io/guides/guides/network-requests.html#Testing-Strategies[cy network route documentation]
 
 === Request
 Make a HTTP request.
 
-[source,ts]
+[source, TypeScript]
+----
 cy.server();
 cy.request('http://localhost:4200/').its('body').should('include', '<h1>Welcome to Devon4ngAngularElementsTest!</h1>');
+----
 
 If we have _http://localhost:4200_ as baseUrl on _cypress.json_
 
-[source,ts]
+[source, TypeScript]
+----
 cy.server();
 cy.request('/').its('body').should('include', '<h1>Welcome to Devon4ngAngularElementsTest!</h1>');
 // Goes to http://localhost:4200/
+----
 
 We can add other options
 
-[source,ts]
+[source, TypeScript]
+----
 cy.server();
 cy.request({
   method: 'POST',
@@ -224,16 +248,16 @@ cy.request({
     description: 'description of the task'
   }
 });
-
+----
 
 == Custom comands
 
-If you see yourself writing the same test more than once, you can create a custom command to make things
-faster.
+If you see yourself writing the same test more than once, you can create a custom command to make things faster.
 
 * commands.ts
 
-[source,ts]
+[source, TypeScript]
+----
 Cypress.Commands.add('checkPlaceholder', (name) => {
   cy.get(`[name=${name}]`)
     .click()
@@ -241,24 +265,29 @@ Cypress.Commands.add('checkPlaceholder', (name) => {
       cy.get(`[name=${name}]`).should('have','class','mat-focused');
     })
 })
+----
 
 * index.ts
 
 To use the commands we need to import the files on index.ts
 
-[source,ts]
+[source, TypeScript]
+----
 import './commands'
 import './file1'
 import './folder/file2'
+----
 
 * index.d.ts
 
-[source,ts]
+[source, TypeScript]
+----
 declare namespace Cypress {
   interface Chainable<Subject> {
     checkPlaceholder(name:string):Chainable<void>
   }
 }
+----
 
 == Reporter
 
@@ -270,25 +299,31 @@ image::./images/reporter_cy.jpg[]
 
 **Install**
 
-[source,ts]
+[source, bash]
+----
 npm install --save-dev mochawesome
-
+----
 To run the reporter:
 
-[source,ts]
+[source, bash]
+----
 cypress run --reporter mochawesome
+----
 
 Mochawesome saves by default the generated files on __./mochawesome-report/__ but we can add options to change this behabour.
 
 Options can be passed to the reporter in two ways
 
 Using a flag
-[source,ts]
+[source, bash]
+----
 cypress run --reporter mochawesome --reporter-options reportDir=report
+----
 
 Or on __cypress.json__
 
 [source,json]
+----
 {
   "baseUrl": "http://localhost:4200",
   "reporter": "mochawesome",
@@ -299,6 +334,7 @@ Or on __cypress.json__
     "reportDir": "cypress/report"
   }
 }
+----
 
 __Overwrite:false__ to not overwrite every **:spec.ts test report.
 __reportDir__ to set a custom directory.
@@ -311,19 +347,23 @@ Mochawesome only creates the html file of the last .spec.ts file that the tests 
 
 Mochawesome-merge is a library that helps us to merge the different json.
 
-[source,ts]
+[source, bash]
+----
 npm install --save-dev mochawesome-merge
 npm install --save-dev mochawesome-report-generator
-
+----
 
 To merge the files we execute this command:
 
-[source,ts]
+[source, bash]
+----
 mochawesome-merge cypress/report/*.json > cypress/reportFinal.json
+----
 
 We can also run the test, merge and convert to html using a script.
 
-[source,ts]
+[source, TypeScript]
+----
 const cypress = require('cypress');
 const fse = require('fs-extra');
 const { merge } = require('mochawesome-merge');
@@ -347,7 +387,8 @@ const generateReport = (options)=> {
     });
   });
 };
-runTests()
+runTests();
+----
 
 __fse.remove()__ to remove older reports data.
 

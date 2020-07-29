@@ -1,6 +1,5 @@
 {
   "compileOnSave": false,
-  "main": "main.js",
   "compilerOptions": {
     "outDir": "./dist",
     "sourceMap": true,

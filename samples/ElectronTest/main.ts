@@ -1,8 +1,10 @@
-const {app, BrowserWindow} = require('electron')
-const url = require("url");
-const path = require("path"); 
+// const {app, BrowserWindow, screen} = require('electron')
+import { app, BrowserWindow } from 'electron';
+import * as path from 'path';
+import * as url from 'url';
 
 let win: any = null;
+
 const createWindow:any = ()=>{
   win = new BrowserWindow({
     fullscreen: true,

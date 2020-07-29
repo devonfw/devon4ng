@@ -8,7 +8,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Code scaffolding
 
-Run `npm run start:electron` to open electron app.
+Run `npm run electron:start` to open electron app.
 
 ## Build
 

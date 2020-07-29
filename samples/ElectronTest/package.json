@@ -13,11 +13,11 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "electron:start": "ng build --base-href ./ && npx electron .",
+    "electron:serve": "ng build --base-href ./ && npx electron . --serve",
+    "electron:serve-tsc": "tsc -p tsconfig.serve.json",
     "electron:pack": "electron-builder --dir --config electron-builder.json",
     "electron:build": "electron-builder --config electron-builder.json build",
-    "electron:serve-tsc": "tsc -p tsconfig.serve.json",
-    "electron:serve": "npm run electron:serve-tsc && npx electron . --serve"
+    "electron:start": "npm run electron:serve-tsc && npm run electron:serve"
   },  
   "private": true,
   "dependencies": {

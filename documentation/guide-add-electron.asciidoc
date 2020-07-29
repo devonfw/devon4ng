@@ -16,9 +16,9 @@ toc::[]
 :listing-caption: Listing
 
 == Add Electron to an Angular application
-This cookbook recipe explains how to integrate Electron in an Angular 6+ application. https://electronjs.org/[Electron] is a framework for creating native applications with web technologies like JavaScript, HTML, and CSS. As an example, very well known applications as Visual Studio Code, Atom, Slack or Skype (and many more) are using Electron too. 
+This cookbook recipe explains how to integrate Electron in an Angular 10+ application. https://electronjs.org/[Electron] is a framework for creating native applications with web technologies like JavaScript, HTML, and CSS. As an example, very well known applications as Visual Studio Code, Atom, Slack or Skype (and many more) are using Electron too. 
 
-NOTE: At the moment of this writing Angular 7.2.3 and Electron 4.0.2 were the versions available. 
+NOTE: At the moment of this writing Angular 10.0.4, Electron 9.1.1 and Electron-builder 22.7.0 were the versions available. 
 
 Here are the steps to achieve this goal. Follow them in order. 
 
@@ -36,13 +36,8 @@ In order to add the dependencies directly in the `package.json` file, include th
 ----
 "devDependencies": {
 ...
-    "electron": "^4.0.2",
-    "electron-builder": "^20.38.5",
-    "electron-reload": "^1.4.0",
-    "npm-run-all": "^4.1.5",
-    "npx": "^10.2.0",
-    "wait-on": "^3.2.0",
-    "webdriver-manager": "^12.1.1"
+    "electron": "^9.1.1",
+    "electron-builder": "^22.7.0",
 ...
 },
 ----
@@ -51,93 +46,137 @@ As indicated above, instead of this `npm install` can be used:
 
 [source, bash]
 ----
-$ npm install -D electron electron-builder electron-reload npm-run-all npx wait-on webdriver-manager 
+$ npm install -D electron electron-builder
 ----
 
 Or with `yarn`:
 
 [source, bash]
 ----
-$ yarn add -D electron electron-builder electron-reload npm-run-all npx wait-on webdriver-manager
+$ yarn add -D electron electron-builder
 ----
-
-=== Add Electron build configuration
-
-In order to configure electron builds properly a `electron-builder.json` must be included in the root folder of the application. For more information and fine tuning please refer to the https://www.electron.build/configuration/configuration[Electron Builder official documentation].
-
-The contents of the file will be something similar to the following:
-
-[source, json]
-----
-{
-  "productName": "app-name",
-  "directories": {
-    "output": "release/"
-  },
-  "files": [
-    "**/*",
-    "!**/*.ts",
-    "!*.code-workspace",
-    "!LICENSE.md",
-    "!package.json",
-    "!package-lock.json",
-    "!src/",
-    "!e2e/",
-    "!hooks/",
-    "!angular.json",
-    "!_config.yml",
-    "!karma.conf.js",
-    "!tsconfig.json",
-    "!tslint.json"
-  ],
-  "win": {
-    "icon": "dist/assets/icons",
-    "target": ["portable"]
-  },
-  "mac": {
-    "icon": "dist/assets/icons",
-    "target": ["dmg"]
-  },
-  "linux": {
-    "icon": "dist/assets/icons",
-    "target": ["AppImage"]
-  }
-}
-----
-
-Theres two important things in this file:
-  
-  1. "output": this is where electron builder is going to build our application
-
-  2. "icon": in every OS possible theres an icon parameter, the route to the icon folder that will be created after building with angular needs to be used here. This will make it so the electron builder can find the icons and build.
 
 === Create the necessary typescript configurations
 
-In order to initiate electron in an angular app we need to modify the `tsconfig.json` file and create a new one named `tsconfig-serve.json` in the root folder.
+In order to initiate electron in an angular app we need to modify the `tsconfig.json` file and create a `tsconfig.serve.json` and a `tsconfig.base.json` in the root folder.
 
 ==== tsconfig.json
 
-This file needs to be modified to add the `main.ts` and `src/\**/*` folders excluding the `node_modules`:
+This file needs to be modified to create references to `./src/tsconfig.app.json` and `./src/tsconfig.spec.json`:
 
 [source,json]
 ----
 {
-....
+  "files": [],
+  "references": [
+    {
+      "path": "./src/tsconfig.app.json"
+    },
+    {
+      "path": "./src/tsconfig.spec.json"
+    }
+  ]
+}
+----
+
+==== tsconfig.app.json
+
+[source,json]
+----
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "../app",
+    "module": "es2015",
+    "baseUrl": "",
+    "types": []
   },
   "include": [
-    "main.ts",
-    "src/**/*"
+    "**/*.ts",
+
+  ],
+  "exclude": [
+    "**/*.spec.ts"
+  ],
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "preserveWhitespaces": true
+  }
+}
+----
+
+==== tsconfig.spec.json
+
+[source,json]
+----
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "../spec",
+    "module": "commonjs",
+    "types": [
+      "jasmine",
+      "node"
+    ]
+  },
+  "files": [
+    "test.ts",
+  ],
+  "include": [
+    "**/*.spec.ts",
+    "**/*.d.ts"
+  ],
+  "exclude": [
+    "dist",
+    "release",
+    "node_modules"
+  ]
+}
+----
+
+==== tsconfig.base.json
+
+This will be extended on both app and spec versions and it is the base.
+
+[source, json]
+----
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "es2016",
+      "es2015",
+      "dom"
+    ]
+  },
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
   ],
   "exclude": [
     "node_modules"
   ]
-....
 }
 ----
 
-==== tsconfig-serve.json
+==== tsconfig.serve.json
 
-In the root, `tsconfig-serve.json` needs to be created. This typescript config file is going to be used when we serve electron:
+In the root, `tsconfig.serve.json` needs to be created. This typescript config file is going to be used when we serve electron:
 
 [source, json]
 ----
@@ -169,175 +208,93 @@ In the root, `tsconfig-serve.json` needs to be created. This typescript config f
 } 
 ----
 
+=== Add Electron build configuration
+
+In order to configure electron builds properly we need to create a new json on our application, let's call it electron-builder.json. For more information and fine tuning please refer to the https://www.electron.build/configuration/configuration[Electron Builder official documentation].
+
+The contents of the file will be something similar to the following:
+
+[source, json]
+----
+{
+  "productName": "devon4ngElectron",
+  "directories":{
+    "output": "./builder-release"
+  },
+  "win": {
+    "icon": "dist/assets/icons",
+    "target": [
+      "portable"
+    ]
+  },
+  "mac": {
+    "icon": "dist/assets/icons",
+    "target": [
+      "dmg"
+    ]
+  },
+  "linux": {
+    "icon": "dist/assets/icons",
+    "target": [
+      "AppImage"
+    ]
+  }
+}
+----
+
+Theres two important things in this files:
+  
+  1. "output": this is where electron builder is going to build our application
+
+  2. "icon": in every OS possible theres an icon parameter, the route to the icon folder that will be created after building with angular needs to be used here. This will make it so the electron builder can find the icons and build.
+
 === Modify angular.json
 
 `angular.json` has to to be modified so the project is build inside _/dist_ without an intermediate folder.
 
-[source,TypeScript]
+[source,json]
 ----
 {
-....
   "architect": {
-    ....
     "build": {
-      outputPath": "dist",
-      ....
-}
-----
-
-=== Add Angular Electron directives
-In order to use Electron's webview tag and its methods inside an Angular application our project needs the directive `webview.directive.ts` file. We recommend to create this file inside a **shared** module folder, although it has to be declared inside the main module `app.module.ts`.
-
-.File webview.directive.ts
-[source,TypeScript]
-----
-import { Directive } from '@angular/core';
-
-@Directive({
-  selector: '[webview]',
-})
-export class WebviewDirective {}
-
-----
-
-=== Add access Electron APIs
-
-To call Electron APIs from the Renderer process, install ngx-electron module.
-
-With `npm`:
-[source, bash]
-----
-$ npm install ngx-electron --save
-----
-
-Or with `yarn`:
-
-[source, bash]
-----
-$ yarn add ngx-electron --save
-----
-
-This package contains a module named *NgxElectronModule* which exposes Electron APIs through a service called *ElectronService* 
-
-
-==== Update `app.module.ts` and `app-routing.module.ts`
-
-As an example, the `webview.directive.ts` file is located inside a `shared` module:
-
-.File app.module.ts
-[source,TypeScript]
-----
-// imports
-import { NgxElectronModule } from 'ngx-electron';
-import { WebviewDirective } from './shared/directives/webview.directive';
-
-@NgModule({
-  declarations: [AppComponent, WebviewDirective],
-  imports: [
-    ...
-    NgxElectronModule
-    ...
-    ],
-  providers: [],
-  bootstrap: [AppComponent],
-})
-export class AppModule {}
-----
-
-Here NgxElectronModule is also added so ElectronService can be injected wherever is needed.
-
-After that is done, the use of hash has to be allowed so electron can reload content properly. On the `app-routing.module.ts`:
-
-[source,TypeScript]
-----
-....
-  imports: [RouterModule.forRoot(routes,
-    {
-      ....
-      useHash: true,
-    },
-  )],
-----
-
-==== Usage
-In order to use Electron in any component class the ElectronService must be injected:
-
-[source,TypeScript]
-----
-import { ElectronService } from 'ngx-electron';
-
-...
-
-constructor(
-  // other injected services
-  public electronService: ElectronService,
-) {
-  // previous code...
-
-  if (electronService.isElectronApp) {
-    // Do electron stuff
-  } else {
-    // Do other web stuff
+      "outputPath": "dist"
+    }
   }
-
 }
 ----
-
-TIP: A list of all accesible APIs can be found at https://github.com/ThorstenHans/ngx-electron[Thorsten Hans' ngx-electron repository].
 
 === Create the electron window in `main.ts`
 
 In order to use electron, a file needs to be created at the root of the application (`main.ts`). This file will create a window with different settings checking if we are using `--serve` as an argument:
 
-[source, typescript, linenums]
+[source,TypeScript]
 ----
-import { app, BrowserWindow, screen } from 'electron';
+import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 
 let win: any;
-let serve: any;
 const args: any = process.argv.slice(1);
 serve = args.some((val) => val === '--serve');
 
- function createWindow(): void {
-  const electronScreen: any = screen;
-  const size: any = electronScreen.getPrimaryDisplay().workAreaSize;
-
-   // Create the browser window.
+const createWindow:any = ()=>{
+  // Create the browser window.
   win = new BrowserWindow({
-    x: 0,
-    y: 0,
-    width: size.width,
-    height: size.height,
-
-    // Needed if you are using service workers
+    fullscreen: true,
     webPreferences: {
       nodeIntegration: true,
-      nodeIntegrationInWorker: true,
     }
   });
 
-   if (serve) {
-    // tslint:disable-next-line:no-require-imports
-    require('electron-reload')(__dirname, {
-      electron: require(`${__dirname}/node_modules/electron`),
-    });
-    win.loadURL('http://localhost:4200');
-  } else {
-    win.loadURL(
-      url.format({
-        pathname: path.join(__dirname, 'dist/index.html'),
-        protocol: 'file',
-        slashes: true,
-      }),
-    );
-  }
+  win.loadURL(
+    url.format({
+      pathname: path.join(__dirname, `/dist/index.html`),
+      protocol: "file:",
+      slashes: true
+    })
+  );
 
-   // Uncoment the following line if you want to open the DevTools by default
-  // win.webContents.openDevTools();
-
-   // Emitted when the window is closed.
+  // Emitted when the window is closed.
   win.on('closed', () => {
     // Dereference the window object, usually you would store window
     // in an array if your app supports multi windows, this is the time
@@ -347,7 +304,7 @@ serve = args.some((val) => val === '--serve');
   });
 }
 
- try {
+try {
   // This method will be called when Electron has finished
   // initialization and is ready to create browser windows.
   // Some APIs can only be used after this event occurs.
@@ -395,67 +352,16 @@ The `scripts` section in the `package.json` can be improved to avoid running too
 [source,json]
 ----
   "scripts": {
-    "postinstall": "npx electron-builder install-app-deps",
-    ".": "sh .angular-gui/.runner.sh",
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json -o",
-    "start:electron": "npm-run-all -p serve electron:serve",
-    "compodoc": "compodoc -p src/tsconfig.app.json -s",
-    "test": "ng test --browsers Chrome",
-    "test:ci": "ng test --browsers ChromeHeadless --watch=false",
-    "test:firefox": "ng test --browsers Firefox",
-    "test:ci:firefox": "ng test --browsers FirefoxHeadless --watch=false",
-    "test:firefox-dev": "ng test --browsers FirefoxDeveloper",
-    "test:ci:firefox-dev": "ng test --browsers FirefoxDeveloperHeadless --watch=false",
-    "test:electron": "ng test",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "ngsw-config": "npx ngsw-config dist ngsw-config.json",
-    "ngsw-copy": "cp node_modules/@angular/service-worker/ngsw-worker.js dist/",
-    "serve": "ng serve",
-    "serve:open": "npm run start",
-    "serve:pwa": "npm run build:pwa && http-server dist -p 8080",
-    "serve:prod": "ng serve --open --prod",
-    "serve:prodcompose": "ng serve --open --configuration=prodcompose",
-    "serve:node": "ng serve --open --configuration=node",
-    "build": "ng build",
-    "build:pwa": "ng build --configuration=pwa --prod --build-optimizer && npm run ngsw-config && npm run ngsw-copy",
-    "build:prod": "ng build --prod --build-optimizer",
-    "build:prodcompose": "ng build --configuration=prodcompose ",
-    "build:electron": "npm run electron:serve-tsc && ng build --base-href ./",
-    "build:electron:dev": "npm run build:electron -- -c dev",
-    "build:electron:prod": "npm run build:electron -- -c production",
-    "electron:start": "npm-run-all -p serve electron:serve",
-    "electron:serve-tsc": "tsc -p tsconfig-serve.json",
-    "electron:serve": "wait-on http-get://localhost:4200/ && npm run electron:serve-tsc && electron . --serve",
-    "electron:local": "npm run build:electron:prod && electron .",
-    "electron:linux": "npm run build:electron:prod && npx electron-builder build --linux",
-    "electron:windows": "npm run build:electron:prod && npx electron-builder build --windows",
-    "electron:mac": "npm run build:electron:prod && npx electron-builder build --mac"
+    "electron:serve": "ng build --base-href ./ && npx electron . --serve",
+    "electron:serve-tsc": "tsc -p tsconfig.serve.json",
+    "electron:pack": "electron-builder --dir --config electron-builder.json",
+    "electron:build": "electron-builder --config electron-builder.json build",
+    "electron:start": "npm run electron:serve-tsc && npm run electron:serve"
   },
-----
-
-Here the important thing to look out for is that the base href when building electron can be changed as needed. In our case:
-
-[source, json]
-----
-    "build:electron": "npm run postinstall:electron && npm run electron:serve-tsc && ng build --base-href \"\" ",
-----
-
-NOTE: Some of these lines are intended to be shortcuts used in other scripts. Do not hesitate to modify them depending on your needs.
-
-Some usage examples:
-
-[source,bash]
-----
-$ npm run electron:start                # Serve Angular app and run it inside electron
-$ npm run electron:local                # Serve Angular app for production and run it inside electron
-$ npm run electron:windows              # Build Angular app for production and package it for Windows OS
-----
-
-[source,bash]
-----
-$ yarn run electron:start                # Serve Angular app and run it inside electron
-$ yarn run electron:local                # Serve Angular app for production and run it inside electron
-$ yarn run electron:windows              # Build Angular app for production and package it for Windows OS
 ----

@@ -1,5 +1,5 @@
 {
-  "productName": "angular-electron",
+  "productName": "devon4ngElectron",
   "directories":{
     "output": "./builder-release"
   },

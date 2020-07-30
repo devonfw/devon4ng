@@ -22,6 +22,7 @@ This guide will cover the basics of e2e testing using Cypress.
 Cypress is a framework “all in one” that provides the necessary libraries to write specific e2e tests, without the need of Selenium.
 
 Why Cypress?
+
 * Uses javascript
 * It works directly with the browser so the compatibility with the frontend framework the project uses (in this case Angular) is not a problem.
 * Easy cross browser testing
@@ -29,21 +30,28 @@ Why Cypress?
 == Setup
 
 **Install**
-
-[source, TypeScript]
-----
-npm install cypress
-----
-
-We need to run Cypress in order to get the folder tree downloaded, then create a **tsconfig.json** file inside **cypress folder**.
+First of all we need to install it, we can use `npm install`:
 
 [source, bash]
 ----
-. /node_modules/.bin/cypress open
+$ npm install -D cypress 
 ----
 
-* cypress / tsconfig.json
+Or we can install it with `yarn`:
 
+[source, bash]
+----
+$ yarn add -D cypress
+----
+
+We need to run Cypress in order to get the folder tree downloaded, then create a `tsconfig.json` file inside `cypress folder` to add the typescript configuration.
+
+[source, bash]
+----
+$ . /node_modules/.bin/cypress open
+----
+
+.tsconfig.json
 [source, json]
 ----
 {
@@ -62,10 +70,9 @@ We need to run Cypress in order to get the folder tree downloaded, then create a
 
 **BaseUrl**
 
-Let's setup the base url, go to __cypress.json__ on the root of the project.
+Let's setup the base url so when we run the tests cypress will "navegate" to the right place, go to `cypress.json` on the root of the project.
 
-* cypress.json
-
+.cypress.json
 [source,json]
 ----
 {
@@ -74,6 +81,7 @@ Let's setup the base url, go to __cypress.json__ on the root of the project.
 ----
 
 == Files / Structure
+
 [source, TypeScript]
 ----
 /cypress
@@ -90,9 +98,25 @@ Let's setup the base url, go to __cypress.json__ on the root of the project.
     - commands.js
     - index.js
 ----
-== Tests
-First, we define a context to group all our tests referred to the same subject.
 
+`tsconfig.json` for typescript configuration.
+
+`fixtures` to store our mock data or files (img, mp3...) to use on our tests.
+
+`integration` is where our tests go, by default it comes with an examples folder with tests samples.
+
+`plugins` is where the configuration files of the plugins go.
+
+`support` to add custom commands.
+
+
+== Tests
+
+The structure is the same than Mocha.
+
+First, we create a file, for example `form.spec.ts`, inside we define a context to group all our tests referred to the same subject.
+
+.form.spec.ts
 [source, TypeScript]
 ----
 context('Button page', () => {
@@ -102,25 +126,29 @@ context('Button page', () => {
   it('should have button',()=>{
     cy.get('button').should('exist');
   });
-  it('should contain 'PRESS',()=>{
+  it('should contain PRESS',()=>{
     cy.contains('button', 'PRESS');
   });
 });
 ----
 
-The structure is the same than Mocha.
-
 .beforeEach
 Visit '/' before every test.
 
 .it
-Inside we write the test steps.
+Inside we write the test.
+
+The result:
+
+image::./images/cypress/contextImg.jpg[]
+
 
 For more info check link:docs.cypress.io/guides/core-concepts/writing-and-organizing-tests.html#Folder-Structure[Cypress documentation]
 
 == Fixtures
 
 We use fixtures to mock data, it can be a json, an img, video...
+
 [source, json]
 ----
 {
@@ -148,13 +176,15 @@ You can store multiple mocks on the same fixture file.
 }
 ----
 
-To access data we don't need to import any file, we just call cy.fixture + the name file.
-We can name it as we want.
+To access data we don't need to import any file, we just call cy.fixture(filename) inside the `**.spec.ts`. We can name it as we want.
 
 [source, TypeScript]
 ----
 cy.fixture('box.json').as('fruitBox')
 ----
+
+`cy.fixture('box.json')` we get access to `box.json`
+`.as(fruitBox)` is used to create an alias (fruitBox) to the fixture.
 
 == Request / Route
 
@@ -162,6 +192,9 @@ With cypress you can test your application with real data or with mocks.
 
 Not using mocks guarantees that your tests are real e2e test but makes them vulnerable to external issues.
 When you mock data you don't know exactly if the data and the structure received from the backend is correct because you are forcing a mock on the response, but you can avoid external issues, run test faster and have better control on the structure and status.
+
+To get more information go to link:https://docs.cypress.io/guides/guides/network-requests.html#Testing-Strategies[Testing Strategies]
+
 
 === Route
 
@@ -177,15 +210,17 @@ cy.route(
 )
 ----
 
-_cy.server(options)_ start a server to interact with the responses.
+`cy.server(options)` start a server to interact with the responses.
 
-_cy.route(options)_ intercepts a XMLHttpRequests
-*method* GET
-.*url* '/apiUrl/list'
-.*respones* [{"name":"apple", "units":3},{"name":"kiwi", "units":2}]
+.`cy.route(options)` intercepts a XMLHttpRequests
+* method `GET`
+* url `/apiUrl/list'`
+* response `[{"name":"apple", "units":3},{"name":"kiwi", "units":2}]`
+
 
 *Waits*
-Every cypress action has a default await time to avoid asynchronous issues, but this time can be short for some particular actions like api calls, for those cases we can use *cy.wait()*
+
+Every cypress action has a default await time to avoid asynchronous issues, but this time can be short for some particular actions like api calls, for those cases we can use `cy.wait()`.
 
 [source, TypeScript]
 ----
@@ -194,6 +229,9 @@ cy.route('/apiUrl/list').as('list');
 cy.visit('/boxList');
 cy.wait('@list');
 ----
+
+You can find more information about `cy.wait()` link:https://docs.cypress.io/guides/guides/network-requests.html#Waiting[here]
+
 To mock data with fixtures:
 
 [source, TypeScript]
@@ -222,19 +260,23 @@ Make a HTTP request.
 [source, TypeScript]
 ----
 cy.server();
-cy.request('http://localhost:4200/').its('body').should('include', '<h1>Welcome to Devon4ngAngularElementsTest!</h1>');
+cy.request('http://localhost:4200/')
+  .its('body')
+  .should('include', '<h1>Welcome to Devon4ngAngularElementsTest!</h1>');
 ----
 
-If we have _http://localhost:4200_ as baseUrl on _cypress.json_
+If we have `'http://localhost:4200'` as baseUrl on `cypress.json`
 
 [source, TypeScript]
 ----
 cy.server();
-cy.request('/').its('body').should('include', '<h1>Welcome to Devon4ngAngularElementsTest!</h1>');
+cy.request('/')
+  .its('body')
+  .should('include', '<h1>Welcome to Devon4ngAngularElementsTest!</h1>');
 // Goes to http://localhost:4200/
 ----
 
-We can add other options
+We can add other options, like we can send the body of a form.
 
 [source, TypeScript]
 ----
@@ -250,12 +292,14 @@ cy.request({
 });
 ----
 
+
 == Custom comands
 
-If you see yourself writing the same test more than once, you can create a custom command to make things faster.
+If you see yourself writing the same test more than once (login is a common one), you can create a custom command to make things faster.
 
-* commands.ts
+`Cypress.Commands.add('name', ()=>{})` to create the test.
 
+.commands.ts
 [source, TypeScript]
 ----
 Cypress.Commands.add('checkPlaceholder', (name) => {
@@ -267,10 +311,12 @@ Cypress.Commands.add('checkPlaceholder', (name) => {
 })
 ----
 
-* index.ts
 
-To use the commands we need to import the files on index.ts
 
+.index.ts
+To use the commands we need to import the files on support/index.ts
+
+.index.ts
 [source, TypeScript]
 ----
 import './commands'
@@ -278,8 +324,11 @@ import './file1'
 import './folder/file2'
 ----
 
-* index.d.ts
+index.ts is where all our custom commands files unite so Cypress knows where to find them.
 
+And as we are using typescript we need to define a `namespace`, `interface` and define our function.
+
+.index.d.ts
 [source, TypeScript]
 ----
 declare namespace Cypress {
@@ -295,13 +344,24 @@ The tests results appear on the terminal, but to have a more friendly view we ca
 
 image::./images/reporter_cy.jpg[]
 
-=== Mochawessome
+=== Mochawesome
+
+In this case we are going to use Mochawesome, initialy its a Mocha reporter but as Cypress uses Mocha it works the same.
 
 **Install**
+
+npm
 
 [source, bash]
 ----
 npm install --save-dev mochawesome
+----
+
+yarn
+
+[source, bash]
+----
+yarn add -D mochawesome
 ----
 To run the reporter:
 
@@ -336,10 +396,13 @@ Or on __cypress.json__
 }
 ----
 
-__Overwrite:false__ to not overwrite every **:spec.ts test report.
-__reportDir__ to set a custom directory.
-__html:false__ because we don't need it.
-__json:true__ to save them on json.
+`Overwrite:false` to not overwrite every **:spec.ts test report, we want them to create a merged version later.
+
+`reportDir` to set a custom directory.
+
+`html:false` because we don't need it.
+
+`json:true` to save them on json.
 
 Mochawesome only creates the html file of the last .spec.ts file that the tests run, that's why we don't generate html reports directly, in order to stack them all on the same final html we need to merge the reports.
 
@@ -347,10 +410,20 @@ Mochawesome only creates the html file of the last .spec.ts file that the tests 
 
 Mochawesome-merge is a library that helps us to merge the different json.
 
+npm
+
 [source, bash]
 ----
 npm install --save-dev mochawesome-merge
 npm install --save-dev mochawesome-report-generator
+----
+
+yarn
+
+[source, bash]
+----
+yarn add -D mochawesome-merge
+yarn add -D mochawesome-report-generator
 ----
 
 To merge the files we execute this command:
@@ -360,7 +433,9 @@ To merge the files we execute this command:
 mochawesome-merge cypress/report/*.json > cypress/reportFinal.json
 ----
 
-We can also run the test, merge and convert to html using a script.
+`reportFinal.json` is the result of this merge, whit that we hace the data of all the spec files in one json.
+
+We can also automate the test, merge and convertion to html using a script.
 
 [source, TypeScript]
 ----
@@ -390,10 +465,10 @@ const generateReport = (options)=> {
 runTests();
 ----
 
-__fse.remove()__ to remove older reports data.
+`fse.remove()` to remove older reports data.
 
-__cypress.run()__ to run the tests.
+`cypress.run()` to run the tests.
 
-__merge(options)__ we merge the jsons output from running the tests.
+`merge(options)` we merge the jsons output from running the tests.
 
-__generator.create(jsonReport)__ then we generate the html view of the report.
+`generator.create(jsonReport)` then we generate the html view of the report.

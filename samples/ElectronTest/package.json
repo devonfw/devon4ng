@@ -18,7 +18,7 @@
     "electron:pack": "electron-builder --dir --config electron-builder.json",
     "electron:build": "electron-builder --config electron-builder.json build",
     "electron:start": "npm run electron:serve-tsc && npm run electron:serve"
-  },  
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~10.0.4",
@@ -30,6 +30,7 @@
     "@angular/platform-browser-dynamic": "~10.0.4",
     "@angular/router": "~10.0.4",
     "core-js": "^2.5.4",
+    "electron-reload": "^1.5.0",
     "rxjs": "~6.6.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.10.3"
@@ -41,7 +42,7 @@
     "@angular/language-service": "~10.0.4",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "~8.9.4",
+    "@types/node": "~8.9.3",
     "codelyzer": "5.1.0",
     "electron": "^9.1.1",
     "electron-builder": "^22.7.0",

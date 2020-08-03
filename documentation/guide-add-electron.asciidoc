@@ -275,7 +275,7 @@ import * as url from 'url';
 
 let win: any;
 const args: any = process.argv.slice(1);
-serve = args.some((val) => val === '--serve');
+const serve: any = args.some((val) => val === '--serve');
 
 const createWindow:any = ()=>{
   // Create the browser window.
@@ -286,13 +286,24 @@ const createWindow:any = ()=>{
     }
   });
 
-  win.loadURL(
-    url.format({
-      pathname: path.join(__dirname, `/dist/index.html`),
-      protocol: "file:",
-      slashes: true
-    })
-  );
+  if (serve) {
+    require('electron-reload')(__dirname, {
+      electron: require(`${__dirname}/node_modules/electron`)
+    });
+    win.loadURL('http://localhost:4200');
+  } else {
+    win.loadURL(
+      url.format({
+        pathname: path.join(__dirname, 'dist/index.html'),
+        protocol: 'file:',
+        slashes: true
+      })
+    );
+  }
+
+  if (serve) {
+    win.webContents.openDevTools();
+  }
 
   // Emitted when the window is closed.
   win.on('closed', () => {

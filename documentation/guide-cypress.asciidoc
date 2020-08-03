@@ -1,0 +1,482 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+= Testing e2e with Cypress
+
+This guide will cover the basics of e2e testing using Cypress.
+
+Cypress is a framework “all in one” that provides the necessary libraries to write specific e2e tests, without the need of Selenium.
+
+Why Cypress?
+
+* Uses javascript
+* It works directly with the browser so the compatibility with the frontend framework the project uses (in this case Angular) is not a problem.
+* Easy cross browser testing
+
+== Setup
+
+**Install**
+First of all we need to install it, we can use `npm install`:
+
+[source, bash]
+----
+$ npm install -D cypress 
+----
+
+Or we can install it with `yarn`:
+
+[source, bash]
+----
+$ yarn add -D cypress
+----
+
+We need to run Cypress in order to get the folder tree downloaded, then create a `tsconfig.json` file inside `cypress folder` to add the typescript configuration.
+
+[source, bash]
+----
+$ . /node_modules/.bin/cypress open
+----
+
+.tsconfig.json
+[source, json]
+----
+{
+  "compilerOptions": {
+    "strict": true,
+    "baseUrl": "../node_modules",
+    "target": "es5",
+    "lib": ["es5", "dom"],
+    "types": ["cypress"]
+  },
+  "include": [
+    "**/*.ts"
+  ]
+}
+----
+
+**BaseUrl**
+
+Let's setup the base url so when we run the tests cypress will "navegate" to the right place, go to `cypress.json` on the root of the project.
+
+.cypress.json
+[source,json]
+----
+{
+  "baseUrl": "http://localhost:4200"
+}
+----
+
+== Files / Structure
+
+[source, TypeScript]
+----
+/cypress
+  tsconfig.json
+  /fixtures
+    - example.json
+  /integration
+    - button.spec.ts
+    - test.spec.ts
+    /examples
+  /plugins
+    - index.js
+  /support
+    - commands.js
+    - index.js
+----
+
+`tsconfig.json` for typescript configuration.
+
+`fixtures` to store our mock data or files (img, mp3...) to use on our tests.
+
+`integration` is where our tests go, by default it comes with an examples folder with tests samples.
+
+`plugins` is where the configuration files of the plugins go.
+
+`support` to add custom commands.
+
+
+== Tests
+
+The structure is the same than Mocha.
+
+First, we create a file, for example `form.spec.ts`, inside we define a context to group all our tests referred to the same subject.
+
+.form.spec.ts
+[source, TypeScript]
+----
+context('Button page', () => {
+  beforeEach(() => {
+    cy.visit('/');
+  });
+  it('should have button',()=>{
+    cy.get('button').should('exist');
+  });
+  it('should contain PRESS',()=>{
+    cy.contains('button', 'PRESS');
+  });
+});
+----
+
+.beforeEach
+Visit '/' before every test.
+
+.it
+Inside we write the test.
+
+The result:
+
+image::./images/cypress/contextImg.jpg[]
+
+
+For more info check link:docs.cypress.io/guides/core-concepts/writing-and-organizing-tests.html#Folder-Structure[Cypress documentation]
+
+On link:https://github.com/cypress-io/cypress-example-kitchensink[kitchensink]
+you can find an official cypress demo with all the comands being used.
+
+== Fixtures
+
+We use fixtures to mock data, it can be a json, an img, video...
+
+[source, json]
+----
+{
+  "name": "Dummy name",
+  "phone": 999 99 99 99,
+  "body": "Mock data"
+}
+----
+
+You can store multiple mocks on the same fixture file.
+
+[source,json]
+----
+{
+  "create":{"name": "e2etestBox"},
+  "boxFruit":{
+    "uuid":"3376339576e33dfb9145362426a33333",
+    "name":"e2etestBox",
+    "visibility":true,
+    "items":[
+      {"name":"apple","units":3},
+      {"name":"kiwi","units":2},
+    ]
+  },
+}
+----
+
+To access data we don't need to import any file, we just call cy.fixture(filename) inside the `**.spec.ts`. We can name it as we want.
+
+[source, TypeScript]
+----
+cy.fixture('box.json').as('fruitBox')
+----
+
+`cy.fixture('box.json')` we get access to `box.json`
+`.as(fruitBox)` is used to create an alias (fruitBox) to the fixture.
+
+For more info check link:https://docs.cypress.io/api/commands/fixture.html#Syntax[Fixtures documentation]
+
+== Request / Route
+
+With cypress you can test your application with real data or with mocks.
+
+Not using mocks guarantees that your tests are real e2e test but makes them vulnerable to external issues.
+When you mock data you don't know exactly if the data and the structure received from the backend is correct because you are forcing a mock on the response, but you can avoid external issues, run test faster and have better control on the structure and status.
+
+To get more information go to link:https://docs.cypress.io/guides/guides/network-requests.html#Testing-Strategies[Testing Strategies]
+
+
+=== Route
+
+Cypress can intercept a XHR request and interact with it.
+
+[source, TypeScript]
+----
+cy.server();
+cy.route(
+  'GET',
+  '/apiUrl/list',
+  [{"name":"apple", "units":3},{"name":"kiwi", "units":2}]
+)
+----
+
+`cy.server(options)` start a server to interact with the responses.
+
+.`cy.route(options)` intercepts a XMLHttpRequests
+* method `GET`
+* url `/apiUrl/list'`
+* response `[{"name":"apple", "units":3},{"name":"kiwi", "units":2}]`
+
+
+*Waits*
+
+Every cypress action has a default await time to avoid asynchronous issues, but this time can be short for some particular actions like api calls, for those cases we can use `cy.wait()`.
+
+[source, TypeScript]
+----
+cy.server();
+cy.route('/apiUrl/list').as('list');
+cy.visit('/boxList');
+cy.wait('@list');
+----
+
+You can find more information about `cy.wait()` link:https://docs.cypress.io/guides/guides/network-requests.html#Waiting[here]
+
+To mock data with fixtures:
+
+[source, TypeScript]
+----
+cy.fixture('box')
+  .then(({boxFruit}) => {
+    cy.route(
+      'GET',
+      '/apiUrl/list',
+      boxFruit
+    ).as('boxFruit');
+    cy.get('#button').click();
+    cy.wait('@journalsList');
+    cy.get('#list').contains('apple');
+  })
+----
+
+We get boxFruit data from the box fixture and then we mock the api call with it so now the response of the call is boxFruit object.
+When the button is clicked, it waits to recive the response of the call and then checks if the list contains one of the elements of the fruitBox.
+
+=== Request
+Make a HTTP request.
+
+[source, TypeScript]
+----
+cy.server();
+cy.request('http://localhost:4200/')
+  .its('body')
+  .should('include', '<h1>Welcome to Devon4ngAngularElementsTest!</h1>');
+----
+
+If we have `'http://localhost:4200'` as baseUrl on `cypress.json`
+
+[source, TypeScript]
+----
+cy.server();
+cy.request('/')
+  .its('body')
+  .should('include', '<h1>Welcome to Devon4ngAngularElementsTest!</h1>');
+// Goes to http://localhost:4200/
+----
+
+We can add other options, like we can send the body of a form.
+
+[source, TypeScript]
+----
+cy.server();
+cy.request({
+  method: 'POST',
+  url: '/send',
+  form: true,
+  body: {
+    name: 'name task',
+    description: 'description of the task'
+  }
+});
+----
+
+== Custom comands
+
+If you see yourself writing the same test more than once (login is a common one), you can create a custom command to make things faster.
+
+`Cypress.Commands.add('name', ()=>{})` to create the test.
+
+.commands.ts
+[source, TypeScript]
+----
+Cypress.Commands.add('checkPlaceholder', (name) => {
+  cy.get(`[name=${name}]`)
+    .click()
+    .then(()=>{
+      cy.get(`[name=${name}]`).should('have','class','mat-focused');
+    })
+})
+----
+
+
+
+.index.ts
+To use the commands we need to import the files on support/index.ts
+
+.index.ts
+[source, TypeScript]
+----
+import './commands'
+import './file1'
+import './folder/file2'
+----
+
+index.ts is where all our custom commands files unite so Cypress knows where to find them.
+
+And as we are using typescript we need to define a `namespace`, `interface` and define our function.
+
+* index.d.ts
+[source, TypeScript]
+----
+declare namespace Cypress {
+  interface Chainable<Subject> {
+    checkPlaceholder(name:string):Chainable<void>
+  }
+}
+----
+
+Check link:https://docs.cypress.io/guides/tooling/typescript-support.html#Types-for-custom-commands[typescript custom commands]
+
+== Reporter
+
+The tests results appear on the terminal, but to have a more friendly view we can add a reporter.
+
+image::./images/cypress/reporter.jpg[]
+
+=== Mochawesome
+
+In this case we are going to use Mochawesome, initialy its a Mocha reporter but as Cypress uses Mocha it works the same.
+
+**Install**
+
+npm
+
+[source, bash]
+----
+npm install --save-dev mochawesome
+----
+
+yarn
+
+[source, bash]
+----
+yarn add -D mochawesome
+----
+To run the reporter:
+
+[source, bash]
+----
+cypress run --reporter mochawesome
+----
+
+Mochawesome saves by default the generated files on __./mochawesome-report/__ but we can add options to change this behabour.
+
+Options can be passed to the reporter in two ways
+
+Using a flag
+[source, bash]
+----
+cypress run --reporter mochawesome --reporter-options reportDir=report
+----
+
+Or on __cypress.json__
+
+[source,json]
+----
+{
+  "baseUrl": "http://localhost:4200",
+  "reporter": "mochawesome",
+  "reporterOptions": {
+    "overwrite": false,
+    "html": false,
+    "json": true,
+    "reportDir": "cypress/report"
+  }
+}
+----
+
+`Overwrite:false` to not overwrite every **:spec.ts test report, we want them to create a merged version later.
+
+`reportDir` to set a custom directory.
+
+`html:false` because we don't need it.
+
+`json:true` to save them on json.
+
+Mochawesome only creates the html file of the last .spec.ts file that the tests run, that's why we don't generate html reports directly, in order to stack them all on the same final html we need to merge the reports.
+
+Check the link:https://www.npmjs.com/package/mochawesome-report-generator[mochawesome documentation]
+
+**mochawesome-merge**
+
+Mochawesome-merge is a library that helps us to merge the different json.
+
+npm
+
+[source, bash]
+----
+npm install --save-dev mochawesome-merge
+npm install --save-dev mochawesome-report-generator
+----
+
+yarn
+
+[source, bash]
+----
+yarn add -D mochawesome-merge
+yarn add -D mochawesome-report-generator
+----
+
+To merge the files we execute this command:
+
+[source, bash]
+----
+mochawesome-merge cypress/report/*.json > cypress/reportFinal.json
+----
+
+`reportFinal.json` is the result of this merge, whit that we hace the data of all the spec files in one json.
+
+We can also automate the test, merge and convertion to html using a script.
+
+[source, TypeScript]
+----
+const cypress = require('cypress');
+const fse = require('fs-extra');
+const { merge } = require('mochawesome-merge');
+const generator = require('mochawesome-report-generator');
+const runTests= async ()=>{
+  await fse.remove('mochawesome-report');
+  await fse.remove('cypress/report');
+  const {totalFailed} = await cypress.run();
+  const reporterOptions = {
+    files: ["cypress/report/*.json"]
+  };
+  await generateReport(reporterOptions);
+  if(totalFailed !== 0){
+    process.exit(2);
+  };
+};
+const generateReport = (options)=> {
+  return merge(options).then((jsonReport)=>{
+    generator.create(jsonReport).then(()=>{
+      process.exit();
+    });
+  });
+};
+runTests();
+----
+
+`fse.remove()` to remove older reports data.
+
+`cypress.run()` to run the tests.
+
+`merge(options)` we merge the jsons output from running the tests.
+
+`generator.create(jsonReport)` then we generate the html view of the report.
+
+Check the link:https://www.npmjs.com/package/mochawesome-merge[mochawesome-merge documentation]

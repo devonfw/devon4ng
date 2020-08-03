@@ -145,6 +145,9 @@ image::./images/cypress/contextImg.jpg[]
 
 For more info check link:docs.cypress.io/guides/core-concepts/writing-and-organizing-tests.html#Folder-Structure[Cypress documentation]
 
+On link:https://github.com/cypress-io/cypress-example-kitchensink[kitchensink]
+you can find an official cypress demo with all the comands being used.
+
 == Fixtures
 
 We use fixtures to mock data, it can be a json, an img, video...
@@ -185,6 +188,8 @@ cy.fixture('box.json').as('fruitBox')
 
 `cy.fixture('box.json')` we get access to `box.json`
 `.as(fruitBox)` is used to create an alias (fruitBox) to the fixture.
+
+For more info check link:https://docs.cypress.io/api/commands/fixture.html#Syntax[Fixtures documentation]
 
 == Request / Route
 
@@ -252,8 +257,6 @@ cy.fixture('box')
 We get boxFruit data from the box fixture and then we mock the api call with it so now the response of the call is boxFruit object.
 When the button is clicked, it waits to recive the response of the call and then checks if the list contains one of the elements of the fruitBox.
 
-To get more information check link:https://docs.cypress.io/guides/guides/network-requests.html#Testing-Strategies[cy network route documentation]
-
 === Request
 Make a HTTP request.
 
@@ -292,7 +295,6 @@ cy.request({
 });
 ----
 
-
 == Custom comands
 
 If you see yourself writing the same test more than once (login is a common one), you can create a custom command to make things faster.
@@ -328,7 +330,7 @@ index.ts is where all our custom commands files unite so Cypress knows where to 
 
 And as we are using typescript we need to define a `namespace`, `interface` and define our function.
 
-.index.d.ts
+* index.d.ts
 [source, TypeScript]
 ----
 declare namespace Cypress {
@@ -338,11 +340,13 @@ declare namespace Cypress {
 }
 ----
 
+Check link:https://docs.cypress.io/guides/tooling/typescript-support.html#Types-for-custom-commands[typescript custom commands]
+
 == Reporter
 
 The tests results appear on the terminal, but to have a more friendly view we can add a reporter.
 
-image::./images/reporter_cy.jpg[]
+image::./images/cypress/reporter.jpg[]
 
 === Mochawesome
 
@@ -405,6 +409,8 @@ Or on __cypress.json__
 `json:true` to save them on json.
 
 Mochawesome only creates the html file of the last .spec.ts file that the tests run, that's why we don't generate html reports directly, in order to stack them all on the same final html we need to merge the reports.
+
+Check the link:https://www.npmjs.com/package/mochawesome-report-generator[mochawesome documentation]
 
 **mochawesome-merge**
 
@@ -472,3 +478,5 @@ runTests();
 `merge(options)` we merge the jsons output from running the tests.
 
 `generator.create(jsonReport)` then we generate the html view of the report.
+
+Check the link:https://www.npmjs.com/package/mochawesome-merge[mochawesome-merge documentation]

@@ -1,11 +1,11 @@
 {
-  "name": "devon4ng-aelectron-test",
+  "name": "devon4ng-electron-test",
   "description": "Electron with angular",
   "author": {
     "name": "devon4ng"
   },
   "version": "0.0.0",
-  "main": "main.js",
+  "main": "electron-main.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -13,7 +13,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "electron:serve": "ng build --base-href ./ && npx electron . --serve",
+    "electron:serve": "ng build --base-href ./ && npx electron .",
     "electron:serve-tsc": "tsc -p tsconfig.serve.json",
     "electron:pack": "electron-builder --dir --config electron-builder.json",
     "electron:build": "electron-builder --config electron-builder.json build",
@@ -42,7 +42,7 @@
     "@angular/language-service": "~10.0.4",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "~8.9.3",
+    "@types/node": "^12.12.6",
     "codelyzer": "5.1.0",
     "electron": "^9.1.1",
     "electron-builder": "^22.7.0",

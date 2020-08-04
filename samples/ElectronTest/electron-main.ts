@@ -6,12 +6,11 @@ let win: BrowserWindow;
 const args: any = process.argv.slice(1);
 const serve: any = args.some((val) => val === '--serve');
 
-const createWindow:any = ()=>{
+const createWindow: any = () => {
   win = new BrowserWindow({
     fullscreen: true,
     webPreferences: {
       nodeIntegration: true,
-      preload: path.join(__dirname, 'preload.js'),
     }
   });
 

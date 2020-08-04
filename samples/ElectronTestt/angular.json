@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Devon4ngAngularElementsTest": {
+    "angular-electron": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -64,18 +64,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Devon4ngAngularElementsTest:build"
+            "browserTarget": "angular-electron:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Devon4ngAngularElementsTest:build:production"
+              "browserTarget": "angular-electron:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Devon4ngAngularElementsTest:build"
+            "browserTarget": "angular-electron:build"
           }
         },
         "test": {
@@ -112,7 +112,7 @@
         }
       }
     },
-    "Devon4ngAngularElementsTest-e2e": {
+    "angular-electron-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -121,11 +121,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Devon4ngAngularElementsTest:serve"
+            "devServerTarget": "angular-electron:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Devon4ngAngularElementsTest:serve:production"
+              "devServerTarget": "angular-electron:serve:production"
             }
           }
         },
@@ -141,5 +141,5 @@
       }
     }
   },
-  "defaultProject": "Devon4ngAngularElementsTest"
+  "defaultProject": "angular-electron"
 }

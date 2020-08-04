@@ -1,0 +1,95 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+= Yarn 2
+
+Yarn v2 is a very different software from the v1. The following list contains the main new features:
+
+- https://yarnpkg.com/features/constraints[Constraints]
+- https://yarnpkg.com/features/offline-cache[Offline Cache]
+- https://yarnpkg.com/features/pnp[Plug'n'Play]
+- https://yarnpkg.com/features/plugins[Plugins]
+- https://yarnpkg.com/features/protocols[Protocols]
+- https://yarnpkg.com/features/release-workflow[Release Workflow]
+- https://yarnpkg.com/features/workspaces[Workspaces]
+- https://yarnpkg.com/features/zero-installs[Zero-Installs]
+
+Please, read them carefully to decide if your current project is suitable to use Yarn 2 as package manager.
+
+IMPORTANT: Some features are still experimental, so please do not use them in production enviroments.
+
+More info at https://yarnpkg.com/ 
+
+== Global Install
+
+Installing Yarn 2.x globally is discouraged as Yarn team is moving to a per-project install strategy. We advise you to keep Yarn 1.x (Classic) as your global binary by installing it via the instructions you can find https://classic.yarnpkg.com/en/docs/install[here].
+
+Once you've followed the instructions (running yarn --version from your home directory should yield something like 1.22.0), go to the next section to see how to enable Yarn 2 on your project.
+
+== Per-project install
+
+Follow these instructions to update your current devon4ng project to Yarn 2: 
+
+. Follow the global install instructions.
+. Move into your project folder:
++
+[source,bash]
+----
+cd ~/path/to/project
+----
+
+. Run the following command:
++
+[source,bash]
+----
+yarn policies set-version berry # below v1.22
+yarn set version berry          # on v1.22+
+----
+
+. Since Angular CLI still is not fully supported with the new https://yarnpkg.com/advanced/architecture[Yarn architecture] as it is not compatible with PnP it is necessary to include the https://github.com/yarnpkg/berry/tree/master/packages/plugin-node-modules[`node-modules`] plugin adding the following line in the `.yarnrc.yml` file:
++
+[source,yml]
+----
+nodeLinker: node-modules
+----
+. Commit the `.yarn` and `.yarnrc.yml` changes
+. Run again `yarn install`.
+
+NOTE: For more advanced migration topics please refer to https://yarnpkg.com/advanced/migration 
+
+== Which files should be gitignored?
+If you're using Zero-Installs:
+
+[source, gitignore]
+----
+.yarn/*
+!.yarn/cache
+!.yarn/releases
+!.yarn/plugins
+----
+
+If you're not using Zero-Installs:
+
+[source, gitignore]
+----
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+.pnp.*
+----
+
+More details at https://yarnpkg.com/advanced/qa#details

@@ -15,13 +15,13 @@ toc::[]
 :source-highlighter: rouge
 :listing-caption: Listing
 
-= Lazy loading
+= Angular Lazy loading
 
 When the development of an application starts, it just contains a small set of features so the app usually loads fast. However, as new features are added, the overall application size grows up  and its loading speed decreases, is in this context where Lazy loading finds its place.
 Lazy loading is a dessign pattern that defers initialization of objects until it is needed so, for example, Users that just access to a website's home page do not need to have other areas loaded.
-Angular handles lazy loading through the routing module which redirect to requested pages. Those pages can be loaded at start or on demand.
+Angular handles lazy loading through the routing module which redirect to requested pages. Those pages can be loaded at start or on demand. 
 
-= An example with Angular
+== An example with Angular
 
 To explain how lazy loading is implemented using angular, a basic sample app is going to be developed. This app will consist in a window named "level 1" that contains two buttons that redirects to other windows in a "second level". It is a simple example, but useful to understand the relation between angular modules and lazy loading.
 
@@ -33,7 +33,7 @@ This graphic shows that modules acts as gates to access components "inside" them
 Because the objective of this guide is related mainly with logic, the html structure and scss styles are less relevant, but the complete code can be found as a sample https://github.com/devonfw/devon4ng/tree/master/samples/AngularLazyLoading[here].
 
 
-== Implementation
+=== Implementation
 
 First write in a console `ng new level-app --routing`, to generate a new project called level-app including an app-routing.module.ts file (*--routing* flag).
 
@@ -304,6 +304,6 @@ Clicking on *[Go to left module]* triggers the load of SecondLeftModule.
 .Second level lazy loading network.
 image::images/angular/angular-lazy/second-lvl-left-lazy.png["Second level lazy network", width=800 link="images/angular/angular-lazy/second-lvl-left-lazy.png"]
 
-= Conclusion
+== Conclusion
 
 Lazy loading is a pattern useful when new features are added, these features are usually identified as modules which can be loaded only if needed as shown in this document, reducing the time spent loading an application.

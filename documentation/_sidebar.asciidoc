@@ -9,6 +9,7 @@
 === Guides
 ** link:guide-package-managers[Package Managers]
 ** link:guide-npm-yarn-workflow[Package Managers Workflow]
+** link:guide-yarn-2-support[Yarn 2 Support]
 
 === Angular
 ** link:guide-accessibility[Accessibility]
@@ -26,11 +27,12 @@
 ** link:guide-routing[Routing]
 ** link:guide-testing[Testing]
 ** link:guide-update-angular-cli[Update Angular CLI]
+** link:guide-upgrade-devon4ng[Upgrade devon4ng applications]
 ** link:guide-working-with-angular-cli[Working with Angular CLI]
 
 === Ionic
-** link:guide-ionic-getting-started[Ionic 4 Getting started]
-** link:guide-ionic-from-code-to-android[Ionic 4 to Android]
+** link:guide-ionic-getting-started[Ionic Getting started]
+** link:guide-ionic-from-code-to-android[Ionic to Android]
 ** link:guide-ionic-pwa[Ionic Progressive Web Apps]
 
 === Layouts
@@ -45,3 +47,5 @@
 === Cookbook
 ** link:cookbook-abstract-class-store[Abstract Class Store]
 ** link:guide-add-electron[Angular Electron]
+** link:guide-angular-mock-service.asciidoc[Mock Service]
+** link:guide-cypress.asciidoc[Cypress e2e testing]

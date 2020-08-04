@@ -15,6 +15,8 @@ toc::[]
 :source-highlighter: rouge
 :listing-caption: Listing
 
+= Update Angular CLI
+
 == Angular CLI common issues
 
 There are constant updates for the official Angular framework dependencies. These dependencies are directly related with the Angular CLI package. Since this package comes installed by default inside the devonfw distribution folder for Windows OS and the distribution is updated every few months it needs to be updated in order to avoid known issues. 

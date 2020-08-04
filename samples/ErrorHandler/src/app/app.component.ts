@@ -9,11 +9,8 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent implements OnInit {
   title = 'Devon4ngErrorHandler';
 
-  constructor(private httpClient: HttpClient) {
-
-  }
-  ngOnInit() {
-  }
+  constructor(private httpClient: HttpClient) {}
+  ngOnInit() {}
   serverError() {
     this.httpClient.get('non existing url').subscribe();
   }

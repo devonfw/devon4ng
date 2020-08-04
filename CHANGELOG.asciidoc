@@ -1,0 +1,16 @@
+= devon4ng changelog
+
+This file documents all notable changes to https://github.com/devonfw/devon4ng[devon4ng].
+
+== 2020.04.001
+
+Starting with this release we have changed the versioning schema in `devonfw` to `yyyy.mm.NNN` where `yyyy.mm` is the date of the planned milestone release and `NNN` is a running number increased with every bug- or security-fix update.
+
+* https://github.com/devonfw/devon4ng/pull/111[#111]: Yarn 2 support included
+* https://github.com/devonfw/devon4ng/pull/96[#96]: devon4ng upgrade to Angular 9
+  ** Templates and samples updated to Angular 9, NgRx 9 and Ionic 5.
+  ** New internationalization module.
+  ** Documentation updates and improvements.
+* https://github.com/devonfw/devon4ng/pull/95[#95]: Added token management info in documentation
+
+

@@ -18,7 +18,7 @@ toc::[]
 = Architecture
 
 The following principles and guidelines are based on Angular Styleguide - especially Angular modules (see https://angular.io/guide/ngmodule[Angular Docs]).
-It extends those where additional guidance is needed to define an architecture which is
+It extends those where additional guidance is needed to define an architecture which is:
 
 * maintainable across applications and teams
 * easy to understand, especially when coming from a classic Java/.Net perspective - so whenever possible the same principles apply both to the server and the client  

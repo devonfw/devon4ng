@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "outDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "module": "es2020",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "types": [
+      "node"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ]
+  }
+}

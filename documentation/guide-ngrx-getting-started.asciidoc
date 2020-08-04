@@ -15,7 +15,7 @@ toc::[]
 :source-highlighter: rouge
 :listing-caption: Listing
 
-= NgRx
+= Introduction to NgRx
 
 https://github.com/ngrx[NgRx] is a state management framework for Angular based on the https://redux.js.org/[Redux] pattern.
 

@@ -1,0 +1,89 @@
+= devon4ng
+
+== Architecture
+
+include::architecture[leveloffset=2]
+
+include::meta-architecture[leveloffset=2]
+
+== Layers
+
+include::components-layer[leveloffset=2]
+
+include::services-layer[leveloffset=2]
+
+== Guides
+
+include::guide-package-managers[leveloffset=2]
+
+include::guide-npm-yarn-workflow[leveloffset=2]
+
+include::guide-yarn-2-support[leveloffset=2]
+
+== Angular
+
+include::guide-accessibility[leveloffset=2]
+
+include::guide-angular-elements[leveloffset=2]
+
+include::guide-angular-lazy-loading[leveloffset=2]
+
+include::guide-angular-library[leveloffset=2]
+
+include::guide-angular-theming[leveloffset=2]
+
+include::guide-angular-pwa[leveloffset=2]
+
+include::guide-app-initializer[leveloffset=2]
+
+include::guide-component-decomposition[leveloffset=2]
+
+include::guide-consuming-rest-services[leveloffset=2]
+
+include::guide-error-handler[leveloffset=2]
+
+include::guide-file-structure[leveloffset=2]
+
+include::guide-internationalization[leveloffset=2]
+
+include::guide-routing[leveloffset=2]
+
+include::guide-testing[leveloffset=2]
+
+include::guide-update-angular-cli[leveloffset=2]
+
+include::guide-upgrade-devon4ng[leveloffset=2]
+
+include::guide-working-with-angular-cli[leveloffset=2]
+
+== Ionic
+
+include::guide-ionic-getting-started[leveloffset=2]
+
+include::guide-ionic-from-code-to-android[leveloffset=2]
+
+include::guide-ionic-pwa[leveloffset=2]
+
+== Layouts
+
+include::guide-layout-with-angular-material[leveloffset=2]
+
+== NgRx
+
+include::guide-ngrx-getting-started[leveloffset=2]
+
+include::guide-ngrx-simple-store[leveloffset=2]
+
+include::guide-ngrx-effects[leveloffset=2]
+
+include::guide-ngrx-entity[leveloffset=2]
+
+== Cookbook
+
+include::cookbook-abstract-class-store[leveloffset=2]
+
+include::guide-add-electron[leveloffset=2]
+
+include::guide-angular-mock-service.asciidoc[leveloffset=2]
+
+include::guide-cypress.asciidoc[leveloffset=2]

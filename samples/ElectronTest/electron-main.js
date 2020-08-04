@@ -11,7 +11,6 @@ var createWindow = function () {
         fullscreen: true,
         webPreferences: {
             nodeIntegration: true,
-            preload: path.join(__dirname, 'preload.js'),
         }
     });
     if (serve) {
@@ -52,4 +51,4 @@ try {
 catch (error) {
     throw new Error("Unavailable");
 }
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=electron-main.js.map

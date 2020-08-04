@@ -62,7 +62,7 @@ In order to initiate electron in an angular app we need to modify the `tsconfig.
 
 ==== tsconfig.json
 
-This file needs to be modified to create references to `./src/tsconfig.app.json` and `./src/tsconfig.spec.json`:
+This file needs to be modified to create references to `./src/tsconfig.app.json` and `./src/tsconfig.spec.json` to support different configurations.
 
 [source,json]
 ----
@@ -93,7 +93,6 @@ This file needs to be modified to create references to `./src/tsconfig.app.json`
   },
   "include": [
     "**/*.ts",
-
   ],
   "exclude": [
     "**/*.spec.ts"
@@ -137,7 +136,7 @@ This file needs to be modified to create references to `./src/tsconfig.app.json`
 
 ==== tsconfig.base.json
 
-This will be extended on both app and spec versions and it is the base.
+This is shared betwen tsconfig.app.json and tsconfig.spec.json and it will be extended on each config file.
 
 [source, json]
 ----
@@ -162,7 +161,7 @@ This will be extended on both app and spec versions and it is the base.
     ]
   },
   "files": [
-    "src/main.ts",
+    "electron-main.ts"
     "src/polyfills.ts"
   ],
   "include": [
@@ -182,6 +181,7 @@ In the root, `tsconfig.serve.json` needs to be created. This typescript config f
 ----
 {
   "compilerOptions": {
+    "outDir": ".",
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
@@ -193,13 +193,11 @@ In the root, `tsconfig.serve.json` needs to be created. This typescript config f
     ],
     "lib": [
       "es2017",
-      "es2016",
-      "es2015",
       "dom"
     ]
   },
   "include": [
-    "main.ts"
+    "electron-main.ts"
   ],
   "exclude": [
     "node_modules",
@@ -263,7 +261,7 @@ Theres two important things in this files:
 }
 ----
 
-=== Create the electron window in `main.ts`
+=== Create the electron window in `electron-main.ts`
 
 In order to use electron, a file needs to be created at the root of the application (`main.ts`). This file will create a window with different settings checking if we are using `--serve` as an argument:
 
@@ -346,13 +344,13 @@ try {
 
 === Add the electron window and improve the `package.json` scripts
 
-Inside `package.json` the electron window that will be transformed to `main.js` when building needs to be added.
+Inside `package.json` the electron window that will be transformed to `electron-main.js` when building needs to be added.
 
 [source,json]
 ----
 {
   ....
-  "main": "main.js",
+  "main": "electron-main.js",
   "scripts": {
   ....
 }
@@ -369,7 +367,7 @@ The `scripts` section in the `package.json` can be improved to avoid running too
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "electron:serve": "ng build --base-href ./ && npx electron . --serve",
+    "electron:serve": "ng build --base-href ./ && npx electron .",
     "electron:serve-tsc": "tsc -p tsconfig.serve.json",
     "electron:pack": "electron-builder --dir --config electron-builder.json",
     "electron:build": "electron-builder --config electron-builder.json build",

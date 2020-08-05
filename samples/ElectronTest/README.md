@@ -8,7 +8,8 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Code scaffolding
 
-Run `npm run electron:start` to open electron app.
+Run `yarn run electron:run` to open an static electron app.
+Run `yarn run electron:serve` to run electron app and reload when files change (the app needs to be already running, if not `ng serve` or `yarn run start`).
 
 ## Build
 

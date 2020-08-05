@@ -3,7 +3,6 @@
     "outDir": ".",
     "sourceMap": true,
     "declaration": false,
-    "module": "es2020",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -18,5 +17,12 @@
       "es2017",
       "dom"
     ]
-  }
+  },
+  "files": [
+    "electron-main.ts"
+  ],
+  "exclude": [
+    "node_modules",
+      "**/*.spec.ts"
+  ]
 }

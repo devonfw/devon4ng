@@ -1,6 +1,10 @@
 # Devon4ngMatLayoutScss
 
+<<<<<<< HEAD:samples/ElectronTestt/README.md
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.4.
+=======
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.2 and updated with 9.0.3. It is a reference to the devon4ng wiki guide [Angular Material Layout](https://github.com/devonfw/devon4ng/wiki/guide-layout-with-angular-material). This application has a basic layout created using Angular Material, having a header with some menu buttons, and a sidenav with some navigational links.
+>>>>>>> develop:samples/AngularMockService/README.md
 
 ## Development server
 
@@ -8,7 +12,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `npm run electron:start` to open electron app.
 
 ## Build
 

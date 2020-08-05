@@ -4,6 +4,10 @@
 /dist
 /tmp
 /out-tsc
+<<<<<<< HEAD:samples/ElectronTestt/.gitignore
+/builder-release
+=======
+>>>>>>> develop:samples/AngularMockService/.gitignore
 
 # dependencies
 /node_modules

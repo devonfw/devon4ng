@@ -1,24 +1,19 @@
-import { Component } from '@angular/core';
-import { AppConfig } from '../environments/environment';
-import { ElectronService } from './core/service/electron/electron.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  constructor(public electronService: ElectronService) {
-    console.log('AppConfig', AppConfig);
+export class AppComponent implements OnInit {
 
-    if (electronService.isElectron) {
-      console.log(process.env);
-      console.log('Mode electron');
-      console.log('Electron ipcRenderer', electronService.ipcRenderer);
-      console.log('NodeJS childProcess', electronService.childProcess);
-    } else {
-      console.log('Mode web');
-    }
+  title = 'Devon4ngAngularElementsTest';
+  ngOnInit(): void {
+    //this.createComponent();
   }
-  title = 'Devon4ngElectronTest';
+  createComponent(): void {
+    const container = document.getElementById('container');
+    const component = document.createElement('dish-form');
+    container.appendChild(component);
+  }
 }

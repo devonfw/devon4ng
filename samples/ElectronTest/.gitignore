@@ -4,7 +4,7 @@
 /dist
 /tmp
 /out-tsc
-/release
+/builder-release
 
 # dependencies
 /node_modules
@@ -39,6 +39,8 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+electron-main.js
+electron-main.js.map
 
 # System Files
 .DS_Store

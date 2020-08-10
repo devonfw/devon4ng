@@ -8,15 +8,19 @@ const serve: any = args.some((val) => val === '--serve');
 
 const createWindow: any = () => {
   win = new BrowserWindow({
-    fullscreen: true,
+    x: 0,
+    y: 0,
+    width: 900,
+    height: 800,
     webPreferences: {
       nodeIntegration: true,
+      allowRunningInsecureContent: (serve) ? true : false,
     }
   });
 
   if (serve) {
     require('electron-reload')(__dirname, {
-      electron: require(`${__dirname}/node_modules/electron`)
+      electron: path.join(`${__dirname}/node_modules/electron`)
     });
     win.loadURL('http://localhost:4200');
   } else {

@@ -2,6 +2,16 @@
 
 This file documents all notable changes to https://github.com/devonfw/devon4ng[devon4ng].
 
+== 2020.08.001
+
+This release is focused mainly on the **Angular 10 upgrade**:
+
+* https://github.com/devonfw/devon4ng/pull/176[#176]: Template submodules updated to Angular 10 and NgRx 10.
+* https://github.com/devonfw/devon4ng/pull/167[#167], https://github.com/devonfw/devon4ng/pull/168[#168], https://github.com/devonfw/devon4ng/pull/174[#174] and https://github.com/devonfw/devon4ng/pull/175[#175]: Updated electron (sample and documentation). 
+* https://github.com/devonfw/devon4ng/pull/166[#166]: Update error handler.
+* https://github.com/devonfw/devon4ng/pull/165[#165]: Cypress sample.
+* https://github.com/devonfw/devon4ng/pull/164[#164]: Update to Angular 10 (samples and documentation).
+
 == 2020.04.001
 
 Starting with this release we have changed the versioning schema in `devonfw` to `yyyy.mm.NNN` where `yyyy.mm` is the date of the planned milestone release and `NNN` is a running number increased with every bug- or security-fix update.

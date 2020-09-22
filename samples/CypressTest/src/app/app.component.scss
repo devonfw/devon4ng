@@ -1,0 +1,11 @@
+@media screen and (max-width: 320px) {
+  .title-l {
+      display: none !important;
+  }
+}
+
+@media screen and (min-width: 321px) {
+  .title-s {
+      display: none !important;
+  }
+}

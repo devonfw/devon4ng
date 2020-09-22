@@ -6,6 +6,10 @@
     "html": false,
     "json": true,
     "reportDir": "cypress/report"
+  },
+  "retries": {
+    "runMode": 3,
+    "openMode": 3
   }
 }
   

@@ -7,6 +7,8 @@ const runTests= async ()=>{
   await fse.remove('mochawesome-report');
   await fse.remove('cypress/report');
   const {totalFailed} = await cypress.run();
+  // To run tests with firefox comment the line above and uncomment the next one
+  // const {totalFailed} = await cypress.run({browser:'firefox'});
   const reporterOptions = {
     files: ["cypress/report/*.json"]
   };

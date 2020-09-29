@@ -342,6 +342,118 @@ declare namespace Cypress {
 
 Check link:https://docs.cypress.io/guides/tooling/typescript-support.html#Types-for-custom-commands[typescript custom commands]
 
+== Cross browser testing
+
+By default the browser used by Cypress is Chrome, it has compativility with it's family browsers (including Microsoft Edge) and has beta support for Mozilla Firefox.
+
+To change the browser on the panel we can do it by selecting the desired one on the browsers tab before running the spec file.
+
+`Cypress will detect and display, except electron, only the browsers that you have already installed on your machine.`
+
+image::./images/cypress/browserTab.jpg[]
+
+Once the browser is selected, you can run your tests.
+
+To change the browser on the automatic test run, you can add a flag on the node command
+[source, bash]
+----
+cypress run --browser edge
+----
+Only if we use the `cypress run` command.
+
+Or we can change the script file.
+
+* cypress/script.js
+[source, Javascript]
+----
+const runTests= async ()=>{
+  ...
+  const {totalFailed} = await cypress.run({browser:'edge'});
+  ...
+};
+----
+
+https://docs.cypress.io/guides/guides/cross-browser-testing.html#Continuous-Integration-Strategies[Cypress documentation]
+
+== Viewport
+
+Cypress allow us to create tests depending on the viewport, so we can test responsiveness.
+
+There are diferent ways to use it:
+
+Inside a test case
+[source, Typescript]
+----
+it('should change title when viewport is less than 320px', ()=>{
+  cy.get('.title-l').should('be.visible');
+  cy.get('.title-s').should('not.be.visible');
+  cy.viewport(320, 480);
+  cy.get('.title-l').should('not.be.visible');
+  cy.get('.title-s').should('be.visible');
+})
+----
+
+Passing the configuration as an option
+[source, Typescript]
+----
+describe('page display on medium size screen', {
+  viewportHeight: 1000,
+  viewportWidth: 400
+}, () => {
+  ...
+})
+----
+
+Or we can set a default
+
+ * cypress.json 
+[source, Typescript]
+----
+...
+{
+ "viewportHeight": 1000
+ "viewportWidth": 400,
+}
+...
+----
+
+https://docs.cypress.io/api/commands/viewport.html#Syntax[Viewport documentation]
+
+== Test retries
+
+We can get false negatives intermittently due external issues that can affect our tests, because of that we can add, in the configuration, a retries entry so cypres can run again a certain failed test the selected number of times to verify that the error is real.
+
+We can set retries for run or open mode.
+
+* cypress.json 
+[source, Typescript]
+----
+...
+"retries": {
+    "runMode": 3,
+    "openMode": 3
+  }
+...
+----
+
+The retries can be configured on the `cypress.json` or directly on a specific test.
+
+[source, Typescript]
+----
+it('should get button', {
+  retries: {
+    runMode: 2,
+    openMode: 2
+  }
+}, () => {
+  ...
+})
+----
+
+This retries thoes not show on the test log.
+
+Check more on https://docs.cypress.io/guides/guides/test-retries.html#Introduction[retries documentation]
+
 == Reporter
 
 The tests results appear on the terminal, but to have a more friendly view we can add a reporter.
@@ -480,3 +592,6 @@ runTests();
 `generator.create(jsonReport)` then we generate the html view of the report.
 
 Check the link:https://www.npmjs.com/package/mochawesome-merge[mochawesome-merge documentation]
+
+On link:https://github.com/cypress-io/cypress-example-kitchensink[kitchensink]
+you can find an official cypress demo with all the comands being used.

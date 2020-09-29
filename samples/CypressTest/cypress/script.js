@@ -10,13 +10,12 @@ const runTests = async () => {
   // To run tests with firefox comment the line above and uncomment the next one
   // const {totalFailed} = await cypress.run({browser:'firefox'});
   const reporterOptions = {
-    files: ["cypress/report/*.json"]
+    files: ['cypress/report/*.json'],
   };
   await generateReport(reporterOptions);
-
   if (totalFailed !== 0) {
     process.exit(2);
-  };
+  }
 };
 const generateReport = async (options) => {
   const jsonReport = await merge(options);
@@ -25,4 +24,4 @@ const generateReport = async (options) => {
   });
 };
 
-runTests()
+runTests();

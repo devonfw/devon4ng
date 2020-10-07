@@ -1,0 +1,42 @@
+<ul nz-menu nzMode="horizontal" class="container">
+  <li nz-menu-item nzSelected>
+    <i nz-icon nzType="mail"></i>
+    Navigation One
+  </li>
+  <li nz-menu-item nzDisabled>
+    <i nz-icon nzType="appstore"></i>
+    Navigation Two
+  </li>
+  <li nz-submenu nzTitle="Navigation Three - Submenu" nzIcon="setting">
+    <ul>
+      <li nz-menu-group nzTitle="Modals">
+        <ul>
+             <li nz-menu-item nz-button (click)="info()"> Info</li>
+               <li nz-menu-item nz-button (click)="success()">Success</li>
+             <li nz-menu-item nz-button (click)="error()">Error</li>
+             <li nz-menu-item nz-button (click)="warning()">Warning</li>
+        </ul>
+      </li>
+      <li nz-menu-group nzTitle="Item 2">
+        <ul>
+          <li nz-menu-item>Option 3</li>
+          <li nz-submenu nzTitle="Sub Menu">
+            <ul>
+              <li nz-menu-item nzDisabled>Option 4</li>
+              <li nz-menu-item>Option 5</li>
+            </ul>
+          </li>
+          <li nz-submenu nzDisabled nzTitle="Disabled Sub Menu">
+            <ul>
+              <li nz-menu-item>Option 6</li>
+              <li nz-menu-item>Option 7</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li nz-menu-item>
+    <a href="https://ng.ant.design" target="_blank" rel="noopener noreferrer">Navigation Four - Link</a>
+  </li>
+</ul>

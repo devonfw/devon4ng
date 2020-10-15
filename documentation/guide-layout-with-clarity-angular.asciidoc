@@ -1,0 +1,239 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+= Angular Clarity Layout
+
+The purpose of this guide is to get a basic understanding of creating layouts Angular Clarity in a devon4ng application. https://clarity.design/[Angular Clarity] is a HTML/CSS framework.
+
+
+.This is what the finished application will look like
+image::images/angular-clarity-layout/1.png[]
+
+
+== Let's begin
+
+We start with opening the console(in the Devon distribution folder) and running the following command to start a project named AngularZorroLayout.
+
+`devon ng new AngularZorroLayout`
+
+Select y when it asks whether it would like to add Angular routing and select `SCSS` when it asks for the stylesheet format. You can also use the devonfw-ide CLI to create a new devon4ng application.
+
+Once the creation process is complete, open your newly created application in Visual Studio Code. Try running the empty application by running the following command in the integrated terminal:
+
+`devon ng serve`
+
+Angular will spin up a server and you can check your application by visiting http://localhost:4200/ in your browser. 
+
+.Blank Application
+image::images/angular-clarity-layout/2.png[]
+
+==  Adding Angular Clarity framework to the project
+
+Next we will add Angular Material to our application. In the integrated terminal, press Ctrl + C to terminate the running application and run the following command:
+
+Generate a new Angular application (if you haven't already):
+`ng new my-app`
+Navigate to the directory:
+`cd my-app`
+Run the ng add command for Clarity:
+`ng add @clr/angular`
+
+After that we can see that the module is imported on app.module.ts
+
+.ClarityModule
+image::images/angular-clarity-layout/3.png[]
+
+== Development
+
+After we install the library we can start to develop the code.
+
+Adding styles in styles.css
+`body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, sans-serif;
+}`
+
+
+
+First thing that we need to do is the menu
+
+.ClarityModule
+image::images/angular-clarity-layout/4.png[]
+
+How we can see, the framework has its own css classes.
+For example, the first class that we can see is the `header-6` that one is a css style that change the colour from the menu.
+Also, we can see it that the framework has some icons where we can choose, where the tag is
+`<clr-icon shape”vm-bug></clr-icon>`
+The next div on the menu will have the navigation header
+As with all this framework we can see that has is own css class `<div class=”header-nav”`
+We can see 2 `<a> `tags with a different css class
+The first one has the activated class. The difference between both of them shows like this.
+
+.Difference 
+image::images/angular-clarity-layout/5.png[]
+
+After seeing this piece of code, we can see that the other part of the menu has another css class.
+`<div class=”header-actions”> `
+After this all divs inside the last one, they are going to be aligned to the right.
+
+.Search 
+image::images/angular-clarity-layout/6.png[]
+
+To do this search bar, we just need to create a form with the class `search`
+`<form class=”search”>`
+To shows the icon we use the tag         `<label for="search_input"></label>`
+And the normal input with the 	`id=”search_input”` to match with the previous label
+
+.Dropdown 
+image::images/angular-clarity-layout/7.png[]
+
+To do the menu-dropdown , we use the tag owned by the framework called 
+`<clr-dropdown>`
+
+.Dropdown 
+image::images/angular-clarity-layout/8.png[]
+
+The attribute `clrDropdownTrigger is needed because if not, we cannot do the tag `<clr-dropdown-menu>` because that tag is going to be activated just if the `clrDropdownTrigger` is activated too.
+Also, with the attribute `clrPosition` when can decided where will be positioned the dropdown.
+
+The other part the menu, see the next figure
+
+.Button  
+image::images/angular-clarity-layout/9.png[]
+
+Its pretty much the same code but we just change the attribute aria-abel and the icons
+
+.Button Logic 
+image::images/angular-clarity-layout/10.png[]
+
+After we have the whole menu done, we are going to see the card.
+
+.Card 
+image::images/angular-clarity-layout/11.png[]
+
+How you can see it in the first figure, all the elements are aligned to the center.
+To do this, we just need to use the classes by the framework.
+`<div class="clr-main-container">`
+The first css class is giving the style to the main container.
+
+  `<div class="clr-row clr-justify-content-center">`
+This one, is saying that its going to be sorted by rows and all the content inside of this div will be in the center
+      `<div class="clr-col-lg-4">`
+And the last one it’s the size of the div. This framework has as maximum 12, is like bootstrap.
+More examples in: 
+https://clarity.design/documentation/grid 
+
+To create the card with his border and all the properties we just call the class
+`<div class=”card”>`
+To do the tooltip, check next figure.
+
+.Tooltip 
+image::images/angular-clarity-layout/12.png[]
+
+We just need to do an <a> tag with this attributes
+  `<a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-bottom-right">`
+The class is giving us the toltip and his position.
+After that we have the:
+`<clr-icon shape="info-circle" size="24"></clr-icon>`
+That is giving us the icon and the size
+And the content of the tooltip is coming from the: 
+`<span class="tooltip-content">`
+After the tooltip done, we just need to add a image and the text.
+To do it we just need to code
+
+```
+<div class="card-img">
+            <img src="../assets/images/clarity.png">
+          </div>
+          <div class="card-block">
+            <p class="card-text">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+              dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
+              book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+              unchanged. It was popularised in the 1930s with the release of Letraset sheets containing Lorem Ipsum passages, and more
+              recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
+          </div>
+```
+
+For the next card, check next figure
+
+.Card 
+image::images/angular-clarity-layout/13.png[]
+
+We are using the same class from the card that we used before.
+But to do the numbers on the top we used :
+<span class="badge">
+And to give some colors we used:
+<span class="badge badge-purple"> for example
+
+The next step is do the bars with the progress, to do it we just need to create a div with the class `“progress-block”`
+```
+        <div class="progress-block">
+              <label>Label</label>
+                <div class="progress-static">
+                  <div class="progress-meter" data-value="25"></div>
+                </div>
+              </div>
+```
+To do the bar with that widh and high we ull the class `“progress-static”`
+And finally to change the color and the value is with the class “progress-meter” and “progress success”
+Depends with class are we using, we will have different attributes to put the value
+If we have the progress-static we will use 
+`<div class="progress-meter" data-value="43"></div>`
+If we have the progress success we need to use:
+`<progress value="75" max="100" data-displayval="...%"></progress>`
+
+As you can see, the card has a footer. Check next picture
+
+.Card
+image::images/angular-clarity-layout/14.png[]
+
+To do it we just need to add a div with this class inside of the card div
+`<div class="card-footer">`
+And how  we can see it it’s a link in the card. To do it, we need to create:
+
+`<a class="card-link" (click)="send()">Click to see the modal</a>`
+And the method send() its just a method to convert the variable basic to true when is false and false when its true:
+```
+  basic = false;
+  send(): void {
+    this.basic = !this.basic;
+  }
+```
+So in the html file we need to write a div with a ngIf, to check if the variable is true and create a model with the tag <clr-modal> and the attribute clrModalOpen and the same name as the variable has.
+```
+<div *ngIf="basic">
+        <clr-modal [(clrModalOpen)]="basic">
+```
+After this we need to create the body of the modal, to do it we will use a div with the classes from the framework
+```
+<div class="modal-body">
+            <p>But not much to say...</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="basic = true">Ok</button>
+            <button type="button" class="btn btn-outline" (click)="basic = false">Cancel</button>          </div>
+        </clr-modal>
+```
+Has we can see on the previous code the class to create the body of the modal, its just create a div with the class
+`<div class="modal-body">`
+And to create the footer 
+`<div class="modal-footer">`
+We can see that the footer has 2 buttons, with different style coming from the framework and with 2 methods with different values
+`(click)="basic = true"` on Okk button, this button wont change the variable value so woudnt do anything.
+`(click)="basic = false"` on Cancel button. This button will change the value of the variable and will leave the modal.

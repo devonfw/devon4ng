@@ -1,0 +1,298 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+= Angular Zorro Layout
+
+TThe purpose of this guide is to get a basic understanding of creating layouts using https://ng.ant.design/docs/introduce/en[Angular Zorro] in a devon4ng application.
+
+.This is what the finished application will look like
+image::images/angular-zorro-layout/figure1.png[]
+
+== Let's begin
+
+We start with opening the console(in the Devon distribution folder) and running the following command to start a project named AngularZorroLayout.
+“devon ng new AngularZorroLayout”
+
+
+
+** `devon ng new AngularZorroLayout`
+
+Select `y` when it asks whether it would like to add Angular routing and select `scss` when it asks for the stylesheet format. 
+
+Once the creation process is complete, open your newly created application in Visual Studio Code. Try running the empty application by running the following command in the integrated terminal:
+
+** `devon ng serve`
+
+Angular will spin up a server and you can check your application by visiting http://localhost:4200/ in your browser.
+
+.Blank application
+
+== Adding Angular Zorro library to the project
+
+Next we will add Angular Material to our application. In the integrated terminal, press Ctrl + C to terminate the running application and run the following command:
+
+** `ng add ng-zorro-antd`
+
+.Cli Angular Zorro Layout
+image::images/angular-zorro-layout/figure3.png[]
+
+Or if we would like to customize our workflow we can install it with:
+
+**	`npm install ng-zorro-antd`
+
+After run that command, we need to import the pre-build styles in angular.json
+
+.Styles on angular.json
+[source,ts]
+
+"styles": [
+    "src/styles.scss",
+    "node_modules/ng-zorro-antd/src/ng-zorro-antd.min.css",
+    "node_modules/ng-zorro-antd/resizable/style/index.min.css"
+],
+
+
+Once the dependencies are installed, we need to import the `BrowserAnimationsModule` in our AppModule for animations support.
+
+.Importing BrowserAnimationsModule in AppModule
+[source,ts]
+----
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+@NgModule({
+  ...
+  imports: [BrowserAnimationsModule],
+  ...
+})
+export class AppModule { }
+----
+
+Angular Material provides a host of components for designing our application. All the components are well structured into NgModules. For each component from the Angular Material library that we want to use, we have to import the respective NgModule.
+
+== Internationalization
+
+The default language of `ng-zorro-antd` is `Chinese` . If you want to use other languages, you can follow the instructions below. You can also set the language with ng add ng-zorro-antd when creating project.
+
+`ng-zorro-antd` provides several configuration tokens for global configuration of international copy and date, NZ_I18N for international copy.
+
+.Importing Configuration in App.module
+[source,ts]
+----
+import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
+
+@NgModule({
+  ...
+  providers: [
+    { provide: NZ_I18N, useValue: en_US },
+  ...
+})
+export class AppModule { }
+----
+
+
+To finish the configuration, we need to import the icons from the Library.
+
+
+.Importing Icons in App.module
+[source,ts]
+----
+
+import * as AllIcons from '@ant-design/icons-angular/icons';
+
+const antDesignIcons = AllIcons as {
+  [key: string]: IconDefinition;
+};
+const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key]);
+----
+
+== Development
+
+Now that we have all the Angular Zorro related dependencies set up in our project, we can start coding.
+
+.Adding styles in styles.css
+[source,ts]
+----
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+----
+
+Now we need to create a component for the header. We will create it with the command
+We will create a folder component to have a good practices.
+
+`ng generate component components/header`
+
+In this component, we are going to create the menu.
+
+To do it, first able, we need to import the menu module on app.module.
+
+.Adding module in app.module
+[source,ts]
+----
+
+import { NzMenuModule } from 'ng-zorro-antd/menu';
+----
+
+And we will create the header with this code:
+
+.Header  component
+image::images/angular-zorro-layout/figure4.png[]
+
+**Note **
+We can see that the menu has some properties like `nzTitle`, `nzButton`, `nzDisabled` or `nzSelected`. 
+
+And we are going to modify the stiles on header.component.scss
+
+.Adding styles on header.scss
+[source,ts]
+----
+.container{
+  margin: auto;
+  text-align: center;
+}
+----
+
+The library has enough styles and we don’t need to change to much.
+We’ll be like:
+
+.Header  component Looks like
+image::images/angular-zorro-layout/figure5.png[]
+
+In the menu, we add an example of a Modal
+
+To use it we need to import that module on app.module.ts
+[source,ts]
+----
+`import { NzModalModule } from 'ng-zorro-antd/modal';`
+----
+In the html file we just need to create a method on (click) to call the modal.
+
+.Modal
+image::images/angular-zorro-layout/figure6.png[]
+
+And now, we just need to create those methods in the file header.component.ts
+Also, we need to import the modal service and we need to use it in the constructor of the class.
+
+.Import ModalService from Zorro
+image::images/angular-zorro-layout/figure7.png[]
+
+.Logic on ts file looks like 
+image::images/angular-zorro-layout/figure8.png[]
+
+After the header is done, we can jump to create the main component. In this case will be those elements.
+
+.Main Component
+image::images/angular-zorro-layout/figure9.png[]
+
+The first element that we can see, it’s a carousel.
+To implement it on the code, we just need to do the same that we done before, import the module and import the component.
+Do we import the next module on app.module
+
+.Import carousel Module
+[source,ts]
+----
+import { NzCarouselModule } from 'ng-zorro-antd/carousel';
+----
+
+
+And use the label “nz-carousel” to create the Carousel.
+How we can see, it has some attributes coming from the library.
+
+.Import ModalService from Zorro
+image::images/angular-zorro-layout/figure10.png[]
+
+**NOTE
+The loop that we are doing its how many images we will have.
+And finally, we will give some styles.
+
+.Styling
+image::images/angular-zorro-layout/figure11.png[]
+
+Next element, the cards 
+
+.Cards1
+image::images/angular-zorro-layout/figure12.png[]
+
+
+.Cards Unlocked
+image::images/angular-zorro-layout/figure13.png[]
+
+How we can see it, we will have a button to activate or deactivate the cards. 
+To do it, we will write the next code in our file html.
+
+.Cards HTML
+image::images/angular-zorro-layout/figure14.png[]
+
+
+The first thing that we can see it is a button to switch between see it or not.
+So,first thing, we need to import that `switch`.
+
+`import { NzSwitchModule } from 'ng-zorro-antd/switch';`
+
+Next step, that we need to do its write the html code. Its quite simple, its just:
+
+`<nz-switch [(ngModel)]="loading"></nz-switch>`
+
+So now, in the ts file. We just need to create a Boolean variable.
+With the ngModel and the switch, each time that we will click on the button the variable will swap between true or false.
+After create the button, we are going to create the card.
+
+Like always we need to import the following module on `app.module`
+`import { NzCardModule } from 'ng-zorro-antd/card';`
+And after that we need to write the html code
+
+.Cards Logic
+image::images/angular-zorro-layout/figure15.png[]
+
+As we can see, we will find a lot of attributes.
+We can find their explication in the api: 
+https://ng.ant.design/components/card/en[Angular Zorro] 
+
+Last Element, the table
+
+.Table
+image::images/angular-zorro-layout/figure16.png[]
+
+We need to import the module
+`import { NzTableModule } from 'ng-zorro-antd/table';`
+
+After that we can see a button, this is just to create a new row in the table.
+The button only has a method to add a new value to our array
+
+.Table Interface
+image::images/angular-zorro-layout/figure17.png[]
+
+.Add Method
+image::images/angular-zorro-layout/figure18.png[]
+
+After that we are going to create the table
+
+.Table HTML Logic
+image::images/angular-zorro-layout/figure19.png[]
+
+How we can see it, to create the table we need to use the tag  <nz-table> and after that is like a Html table, with the `<thead>` and `<tbody>`
+
+How it shows with the for, we are showing the data from the array created before.
+In the first cell we can see, that we have a method to edit the value. 
+
+.Table methods
+image::images/angular-zorro-layout/figure20.png[]
+
+.Table
+image::images/angular-zorro-layout/figure21.png[]

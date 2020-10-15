@@ -1,0 +1,123 @@
+<header class="header-6">
+  <div class="branding">
+    <a href="..." class="nav-link">
+      <clr-icon shape="vm-bug"></clr-icon>
+      <span class="title">Project Clarity</span>
+    </a>
+  </div>
+
+  <div class="header-nav">
+    <a href="..." class="active nav-link"><span class="nav-text">Dashboard</span></a>
+    <a href="..." class="nav-link"><span class="nav-text">Interactive Analytics</span></a>
+  </div>
+  <div class="header-actions">
+      <form class="search">
+        <label for="search_input">
+          <input id="search_input" type="text" placeholder="Search for keywords...">
+        </label>
+      </form>
+        <clr-dropdown>
+          <button class="nav-text" clrDropdownTrigger aria-label="open user profile">
+            devonfw@clarityangular
+            <clr-icon shape="caret down"></clr-icon>
+          </button>
+          <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+            <a href="..." clrDropdownItem>Settings</a>
+            <a href="..." clrDropdownItem>Log out</a>
+          </clr-dropdown-menu>
+        </clr-dropdown>
+<clr-dropdown>
+  <button class="nav-icon" clrDropdownTrigger aria-label="toggle settings menu">
+    <clr-icon shape="cog"></clr-icon>
+    <clr-icon shape="caret down"></clr-icon>
+  </button>
+  <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+    <a href="..." clrDropdownItem>About</a>
+    <a href="..." clrDropdownItem>Preferences</a>
+  </clr-dropdown-menu>
+</clr-dropdown>
+  </div>
+</header>
+
+<div class="clr-main-container">
+  <div class="clr-row clr-justify-content-center">
+      <div class="clr-col-lg-4">
+        <div class="card">
+          <a href="..." class="tooltip tooltip-bottom-right">
+            <clr-icon shape="info-circle" size="24"></clr-icon>
+            <span class="tooltip-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+            dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
+            book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+            unchanged. It was popularised in the 1930s with the release of Letraset sheets containing Lorem Ipsum passages, and more
+            recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</span>
+          </a>
+          <div class="card-img">
+            <img src="../assets/images/clarity.png">
+          </div>
+          <div class="card-block">
+            <p class="card-text">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+              dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
+              book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+              unchanged. It was popularised in the 1930s with the release of Letraset sheets containing Lorem Ipsum passages, and more
+              recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
+          </div>
+        </div>
+      </div>
+</div>
+<div class="clr-row clr-justify-content-center">
+      <div class="clr-col-lg-8 clr-col-12">
+        <div class="card">
+          <div class="card-block">
+              <span class="badge">1</span>
+              <span class="badge badge-purple">15</span>
+              <span class="badge badge-blue">2</span>
+              <span class="badge badge-orange">3</span>
+              <span class="badge badge-light-blue">12</span>
+              <span class="badge badge-1">90</span>
+              <span class="badge badge-2">51</span>
+              <span class="badge badge-3">25</span>
+              <span class="badge badge-4">32</span>
+              <span class="badge badge-5">57</span>
+              <h4 class="card-title">US-1111</h4>
+              <p class="card-text">Here is a progress bar at the very top of a card.</p>
+            <div class="progress-block">
+              <label>Label</label>
+                <div class="progress-static">
+                  <div class="progress-meter" data-value="25"></div>
+                </div>
+              </div>
+            <div class="progress-block">
+              <label>Longer Label</label>
+              <div class="progress-static ">
+                <div class="progress-meter" data-value="43"></div>
+              </div>
+            </div>
+            <div class="progress-block">
+              <label>Really, Really, Really Long Label</label>
+              <div class="progress success">
+                <progress value="75" max="100" data-displayval="...%"></progress>
+              </div>
+            </div>
+          </div>
+    <div class="card-footer">
+      <a class="card-link" (click)="send()">Click to see the modal</a>
+      <div *ngIf="basic">
+        <clr-modal [(clrModalOpen)]="basic">
+          <h3 class="modal-title">Hi! You just clicked the modal</h3>
+          <div class="modal-body">
+            <p>But not much to say...</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="basic = true">Ok</button>
+            <button type="button" class="btn btn-outline" (click)="basic = false">Cancel</button>
+          </div>
+        </clr-modal>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+</div>

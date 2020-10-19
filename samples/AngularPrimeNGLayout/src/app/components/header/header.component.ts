@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +7,8 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  items: MenuItem[];
 
+  items: MenuItem[];
   constructor() { }
 
   ngOnInit(): void {

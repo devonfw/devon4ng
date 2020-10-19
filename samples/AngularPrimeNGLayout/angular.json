@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "AngularPrimeNGLayout": {
+    "AngularPrimeNgLayout": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/AngularPrimeNGLayout",
+            "outputPath": "dist/AngularPrimeNgLayout",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -69,18 +69,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "AngularPrimeNGLayout:build"
+            "browserTarget": "AngularPrimeNgLayout:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "AngularPrimeNGLayout:build:production"
+              "browserTarget": "AngularPrimeNgLayout:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "AngularPrimeNGLayout:build"
+            "browserTarget": "AngularPrimeNgLayout:build"
           }
         },
         "test": {
@@ -117,15 +117,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "AngularPrimeNGLayout:serve"
+            "devServerTarget": "AngularPrimeNgLayout:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "AngularPrimeNGLayout:serve:production"
+              "devServerTarget": "AngularPrimeNgLayout:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "AngularPrimeNGLayout"
+  "defaultProject": "AngularPrimeNgLayout"
 }

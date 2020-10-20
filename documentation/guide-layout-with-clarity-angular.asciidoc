@@ -54,6 +54,23 @@ Run the ng add command for Clarity:
 
 After that we can see that the module is imported on app.module.ts
 
+```
+import { ClarityModule } from '@clr/angular';
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+imports: [
+    ClarityModule,
+ ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+```
+
+
 .ClarityModule
 image::images/angular-clarity-layout/3.png[]
 
@@ -62,16 +79,60 @@ image::images/angular-clarity-layout/3.png[]
 After we install the library we can start to develop the code.
 
 Adding styles in styles.css
-`body {
+```
+body {
   margin: 0;
   font-family: "Segoe UI", Roboto, sans-serif;
-}`
+}
+```
 
 
 
 First thing that we need to do is the menu
+```
+<header class="header-6">
+  <div class="branding">
+    <a href="..." class="nav-link">
+      <clr-icon shape="vm-bug"></clr-icon>
+      <span class="title">Project Clarity</span>
+    </a>
+  </div>
 
-.ClarityModule
+  <div class="header-nav">
+    <a href="..." class="active nav-link"><span class="nav-text">Dashboard</span></a>
+    <a href="..." class="nav-link"><span class="nav-text">Interactive Analytics</span></a>
+  </div>
+  <div class="header-actions">
+      <form class="search">
+        <label for="search_input">
+          <input id="search_input" type="text" placeholder="Search for keywords...">
+        </label>
+      </form>
+        <clr-dropdown>
+          <button class="nav-text" clrDropdownTrigger aria-label="open user profile">
+            devonfw@clarityangular
+            <clr-icon shape="caret down"></clr-icon>
+          </button>
+          <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+            <a href="..." clrDropdownItem>Settings</a>
+            <a href="..." clrDropdownItem>Log out</a>
+          </clr-dropdown-menu>
+        </clr-dropdown>
+<clr-dropdown>
+  <button class="nav-icon" clrDropdownTrigger aria-label="toggle settings menu">
+    <clr-icon shape="cog"></clr-icon>
+    <clr-icon shape="caret down"></clr-icon>
+  </button>
+  <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+    <a href="..." clrDropdownItem>About</a>
+    <a href="..." clrDropdownItem>Preferences</a>
+  </clr-dropdown-menu>
+</clr-dropdown>
+  </div>
+</header>
+
+```
+.Clarity Menu
 image::images/angular-clarity-layout/4.png[]
 
 How we can see, the framework has its own css classes.
@@ -103,7 +164,18 @@ image::images/angular-clarity-layout/7.png[]
 
 To do the menu-dropdown , we use the tag owned by the framework called 
 `<clr-dropdown>`
-
+```
+ <clr-dropdown>
+          <button class="nav-text" clrDropdownTrigger aria-label="open user profile">
+            devonfw@clarityangular
+            <clr-icon shape="caret down"></clr-icon>
+          </button>
+          <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+            <a href="..." clrDropdownItem>Settings</a>
+            <a href="..." clrDropdownItem>Log out</a>
+          </clr-dropdown-menu>
+  </clr-dropdown>
+```
 .Dropdown 
 image::images/angular-clarity-layout/8.png[]
 
@@ -130,7 +202,8 @@ To do this, we just need to use the classes by the framework.
 `<div class="clr-main-container">`
 The first css class is giving the style to the main container.
 
-  `<div class="clr-row clr-justify-content-center">`
+`<div class="clr-row clr-justify-content-center">`
+
 This one, is saying that its going to be sorted by rows and all the content inside of this div will be in the center
       `<div class="clr-col-lg-4">`
 And the last one it’s the size of the div. This framework has as maximum 12, is like bootstrap.
@@ -203,7 +276,7 @@ As you can see, the card has a footer. Check next picture
 .Card
 image::images/angular-clarity-layout/14.png[]
 
-To do it we just need to add a div with this class inside of the card div
+Wwe just need to add a div with this class inside of the card div
 `<div class="card-footer">`
 And how  we can see it it’s a link in the card. To do it, we need to create:
 

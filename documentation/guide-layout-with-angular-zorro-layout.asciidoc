@@ -17,7 +17,7 @@ toc::[]
 
 = Angular Zorro Layout
 
-TThe purpose of this guide is to get a basic understanding of creating layouts using https://ng.ant.design/docs/introduce/en[Angular Zorro] in a devon4ng application.
+The purpose of this guide is to get a basic understanding of creating layouts using https://ng.ant.design/docs/introduce/en[Angular Zorro] in a devon4ng application.
 
 .This is what the finished application will look like
 image::images/angular-zorro-layout/figure1.png[]
@@ -54,7 +54,7 @@ Or if we would like to customize our workflow we can install it with:
 
 **	`npm install ng-zorro-antd`
 
-After run that command, we need to import the pre-build styles in angular.json
+After run that command, need to import the pre-build styles in angular.json
 
 .Styles on angular.json
 [source,ts]
@@ -66,7 +66,7 @@ After run that command, we need to import the pre-build styles in angular.json
 ],
 
 
-Once the dependencies are installed, we need to import the `BrowserAnimationsModule` in our AppModule for animations support.
+Once the dependencies are installed, need to import the `BrowserAnimationsModule` in our AppModule for animations support.
 
 .Importing BrowserAnimationsModule in AppModule
 [source,ts]
@@ -81,7 +81,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 export class AppModule { }
 ----
 
-Angular Material provides a host of components for designing our application. All the components are well structured into NgModules. For each component from the Angular Material library that we want to use, we have to import the respective NgModule.
+
 
 == Internationalization
 
@@ -121,7 +121,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
 
 == Development
 
-Now that we have all the Angular Zorro related dependencies set up in our project, we can start coding.
+We have all the Angular Zorro related dependencies set up in our project, we can start coding.
 
 .Adding styles in styles.css
 [source,ts]
@@ -133,14 +133,14 @@ body {
 }
 ----
 
-Now we need to create a component for the header. We will create it with the command
+Next step is to create a component for the header. We will create it with the command
 We will create a folder component to have a good practices.
 
 `ng generate component components/header`
 
 In this component, we are going to create the menu.
 
-To do it, first able, we need to import the menu module on app.module.
+To do it, firstable, we need to import the menu module on app.module.
 
 .Adding module in app.module
 [source,ts]
@@ -150,6 +150,52 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 ----
 
 And we will create the header with this code:
+```
+<ul nz-menu nzMode="horizontal" class="container">
+  <li nz-menu-item nzSelected>
+    <i nz-icon nzType="mail"></i>
+    Navigation One
+  </li>
+  <li nz-menu-item nzDisabled>
+    <i nz-icon nzType="appstore"></i>
+    Navigation Two
+  </li>
+  <li nz-submenu nzTitle="Navigation Three - Submenu" nzIcon="setting">
+    <ul>
+      <li nz-menu-group nzTitle="Modals">
+        <ul>
+             <li nz-menu-item nz-button (click)="info()"> Info</li>
+               <li nz-menu-item nz-button (click)="success()">Success</li>
+             <li nz-menu-item nz-button (click)="error()">Error</li>
+             <li nz-menu-item nz-button (click)="warning()">Warning</li>
+        </ul>
+      </li>
+      <li nz-menu-group nzTitle="Item 2">
+        <ul>
+          <li nz-menu-item>Option 3</li>
+          <li nz-submenu nzTitle="Sub Menu">
+            <ul>
+              <li nz-menu-item nzDisabled>Option 4</li>
+              <li nz-menu-item>Option 5</li>
+            </ul>
+          </li>
+          <li nz-submenu nzDisabled nzTitle="Disabled Sub Menu">
+            <ul>
+              <li nz-menu-item>Option 6</li>
+              <li nz-menu-item>Option 7</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li nz-menu-item>
+    <a href="https://ng.ant.design" target="_blank" rel="noopener noreferrer">Navigation Four - Link</a>
+  </li>
+</ul>
+
+```
+
 
 .Header  component
 image::images/angular-zorro-layout/figure4.png[]
@@ -157,7 +203,7 @@ image::images/angular-zorro-layout/figure4.png[]
 **Note **
 We can see that the menu has some properties like `nzTitle`, `nzButton`, `nzDisabled` or `nzSelected`. 
 
-And we are going to modify the stiles on header.component.scss
+And modify the styles on header.component.scss
 
 .Adding styles on header.scss
 [source,ts]
@@ -183,14 +229,61 @@ To use it we need to import that module on app.module.ts
 ----
 In the html file we just need to create a method on (click) to call the modal.
 
+```
+  <li nz-submenu nzTitle="Navigation Three - Submenu" nzIcon="setting">
+    <ul>
+      <li nz-menu-group nzTitle="Modals">
+        <ul>
+             <li nz-menu-item nz-button (click)="info()"> Info</li>
+               <li nz-menu-item nz-button (click)="success()">Success</li>
+             <li nz-menu-item nz-button (click)="error()">Error</li>
+             <li nz-menu-item nz-button (click)="warning()">Warning</li>
+        </ul>
+      </li>
+```
+
 .Modal
 image::images/angular-zorro-layout/figure6.png[]
 
 And now, we just need to create those methods in the file header.component.ts
 Also, we need to import the modal service and we need to use it in the constructor of the class.
 
+`import {NzModalService} from 'ng-zorro-antd/modal';`
+`constructor(private modal: NzModalService){}`
+
 .Import ModalService from Zorro
 image::images/angular-zorro-layout/figure7.png[]
+
+```
+  info(): void {
+    this.modal.info({
+      nzTitle: 'This is a notification message',
+      nzContent: '<p>some messages...some messages...</p><p>some messages...some messages...</p>',
+      nzOnOk: () => console.log('Info OK')
+    });
+  }
+
+  success(): void {
+    this.modal.success({
+      nzTitle: 'This is a success message',
+      nzContent: 'some messages...some messages...'
+    });
+  }
+
+  error(): void {
+    this.modal.error({
+      nzTitle: 'This is an error message',
+      nzContent: 'some messages...some messages...'
+    });
+  }
+
+  warning(): void {
+    this.modal.warning({
+      nzTitle: 'This is an warning message',
+      nzContent: 'some messages...some messages...'
+    });
+  }
+```
 
 .Logic on ts file looks like 
 image::images/angular-zorro-layout/figure8.png[]
@@ -220,6 +313,31 @@ image::images/angular-zorro-layout/figure10.png[]
 **NOTE
 The loop that we are doing its how many images we will have.
 And finally, we will give some styles.
+```
+.container{
+  margin: auto;
+  text-align: center;
+  margin-top: 20px;
+}
+[nz-carousel-content] {
+        text-align: center;
+        height: 160px;
+        line-height: 160px;
+        background: #364d79;
+        color: #fff;
+        overflow: hidden;
+      }
+
+      h3 {
+        color: #fff;
+        margin-bottom: 0;
+      }
+
+nz-content{
+  padding: 0 30px 0 30px;
+}
+
+```
 
 .Styling
 image::images/angular-zorro-layout/figure11.png[]
@@ -233,9 +351,36 @@ image::images/angular-zorro-layout/figure12.png[]
 .Cards Unlocked
 image::images/angular-zorro-layout/figure13.png[]
 
-How we can see it, we will have a button to activate or deactivate the cards. 
+We will have a button to activate or deactivate the cards. 
 To do it, we will write the next code in our file html.
-
+```
+        <div nz-row>
+          <div nz-col [nzXs]="{ span: 5, offset: 1 }" [nzLg]="{ span: 6, offset: 2 }">
+            <nz-card nzXs="8">
+              <nz-skeleton [nzActive]="true" [nzLoading]="loading" [nzAvatar]="{ size: 'large' }">
+                <nz-card-meta [nzAvatar]="avatarTemplate" nzTitle="Card title" nzDescription="This is the description">
+                </nz-card-meta>
+              </nz-skeleton>
+            </nz-card>
+          </div>
+          <div nz-col [nzXs]="{ span: 11, offset: 1 }" [nzLg]="{ span: 6, offset: 2 }">
+            <nz-card nzXs="8">
+              <nz-skeleton [nzActive]="true" [nzLoading]="!loading" [nzAvatar]="{ size: 'small' }">
+                <nz-card-meta [nzAvatar]="avatarTemplate" nzTitle="Card title" nzDescription="This is the description">
+                </nz-card-meta>
+              </nz-skeleton>
+            </nz-card>
+          </div>
+          <div nz-col [nzXs]="{ span: 5, offset: 1 }" [nzLg]="{ span: 6, offset: 2 }">
+            <nz-card nzXs="8">
+              <nz-skeleton [nzActive]="true" [nzLoading]="loading" [nzAvatar]="{ size: 'large' }">
+                <nz-card-meta [nzAvatar]="avatarTemplate" nzTitle="Card title" nzDescription="This is the description">
+                </nz-card-meta>
+              </nz-skeleton>
+            </nz-card>
+          </div>
+        </div>
+```
 .Cards HTML
 image::images/angular-zorro-layout/figure14.png[]
 
@@ -275,14 +420,66 @@ We need to import the module
 After that we can see a button, this is just to create a new row in the table.
 The button only has a method to add a new value to our array
 
+Table Interface
+```
+interface ItemData {
+  id: string;
+  name: string;
+  age: string;
+  address: string;
+}
+```
+
 .Table Interface
 image::images/angular-zorro-layout/figure17.png[]
+
+Add Row Method
+```
+  addRow(): void {
+    this.listOfData = [
+      ...this.listOfData,
+      {
+        id: `${this.i}`,
+        name: `Edward King ${this.i}`,
+        age: '32',
+        address: `London, Park Lane no. ${this.i}`
+      }
+    ];
+    this.i++;
+  }
+```
 
 .Add Method
 image::images/angular-zorro-layout/figure18.png[]
 
-After that we are going to create the table
-
+After that we need to create the table
+```
+<nz-table #editRowTable nzBordered [nzData]="listOfData">
+          <thead>
+            <tr>
+              <th nzWidth="30%">Name</th>
+              <th>Age</th>
+              <th>Address</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of editRowTable.data" class="editable-row">
+              <td>
+                <div class="editable-cell" [hidden]="editId === data.id" (click)="startEdit(data.id)">
+                  {{ data.name }}
+                </div>
+                <input [hidden]="editId !== data.id" type="text" nz-input [(ngModel)]="data.name" (blur)="stopEdit()" />
+              </td>
+              <td>{{ data.age }}</td>
+              <td>{{ data.address }}</td>
+              <td>
+                <a nz-popconfirm nzPopconfirmTitle="Sure to delete?" (nzOnConfirm)="deleteRow(data.id)">Delete</a>
+              </td>
+            </tr>
+          </tbody>
+        </nz-table>
+```
 .Table HTML Logic
 image::images/angular-zorro-layout/figure19.png[]
 

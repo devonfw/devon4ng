@@ -133,7 +133,7 @@ First thing that we need to do is the menu
 
 ```
 .Clarity Menu
-image::images/angular-clarity-layout/4.png[]
+image::images/angular-clarity-layout/4.png[] 
 
 The framework has its own css classes.
 For example, the first class that we can see is the `header-6` that one is a css style that change the color from the menu.

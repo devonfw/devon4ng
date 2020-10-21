@@ -24,7 +24,7 @@ image::images/angular-zorro-layout/figure1.png[]
 
 == Let's begin
 
-We start with opening the console(in the Devon distribution folder) and running the following command to start a project named AngularZorroLayout.
+Starts with opening the console(in the Devon distribution folder) and running the following command to start a project named AngularZorroLayout.
 “devon ng new AngularZorroLayout”
 
 
@@ -87,7 +87,7 @@ export class AppModule { }
 
 The default language of `ng-zorro-antd` is `Chinese` . If you want to use other languages, you can follow the instructions below. You can also set the language with ng add ng-zorro-antd when creating project.
 
-`ng-zorro-antd` provides several configuration tokens for global configuration of international copy and date, NZ_I18N for international copy.
+`ng-zorro-antd` provides several configuration tokens for global configuration of international copy and date, `NZ_I18N` for international copy.
 
 .Importing Configuration in App.module
 [source,ts]
@@ -121,7 +121,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
 
 == Development
 
-We have all the Angular Zorro related dependencies set up in our project, we can start coding.
+We have all the NG Zorro related dependencies set up in our project, we can start coding.
 
 .Adding styles in styles.css
 [source,ts]
@@ -133,14 +133,14 @@ body {
 }
 ----
 
-Next step is to create a component for the header. We will create it with the command
+Next step is to create a component for the header. We will create it with the next command.
 We will create a folder component to have a good practices.
 
 `ng generate component components/header`
 
 In this component, we are going to create the menu.
 
-To do it, firstable, we need to import the menu module on app.module.
+Firstable, we need to import the menu module on app.module.
 
 .Adding module in app.module
 [source,ts]
@@ -201,7 +201,7 @@ And we will create the header with this code:
 image::images/angular-zorro-layout/figure4.png[]
 
 **Note **
-We can see that the menu has some properties like `nzTitle`, `nzButton`, `nzDisabled` or `nzSelected`. 
+The menu has some properties like `nzTitle`, `nzButton`, `nzDisabled` or `nzSelected`. 
 
 And modify the styles on header.component.scss
 
@@ -217,17 +217,18 @@ And modify the styles on header.component.scss
 The library has enough styles and we don’t need to change to much.
 We’ll be like:
 
-.Header  component Looks like
+.Header Component
 image::images/angular-zorro-layout/figure5.png[]
 
-In the menu, we add an example of a Modal
+
+In the menu, we added an example of a `modal`
 
 To use it we need to import that module on app.module.ts
 [source,ts]
 ----
-`import { NzModalModule } from 'ng-zorro-antd/modal';`
+import { NzModalModule } from 'ng-zorro-antd/modal';
 ----
-In the html file we just need to create a method on (click) to call the modal.
+In the HTML file we just need to create a method on (click) to call the modal.
 
 ```
   <li nz-submenu nzTitle="Navigation Three - Submenu" nzIcon="setting">
@@ -245,8 +246,8 @@ In the html file we just need to create a method on (click) to call the modal.
 .Modal
 image::images/angular-zorro-layout/figure6.png[]
 
-And now, we just need to create those methods in the file header.component.ts
-Also, we need to import the modal service and we need to use it in the constructor of the class.
+And now, we just need to create those methods in the file `header.component.ts`
+Also, need to import the modal service and we use it in the constructor of the class.
 
 `import {NzModalService} from 'ng-zorro-antd/modal';`
 `constructor(private modal: NzModalService){}`
@@ -288,7 +289,7 @@ image::images/angular-zorro-layout/figure7.png[]
 .Logic on ts file looks like 
 image::images/angular-zorro-layout/figure8.png[]
 
-After the header is done, we can jump to create the main component. In this case will be those elements.
+Once the header is done, time to create the main component. In this case will be those elements.
 
 .Main Component
 image::images/angular-zorro-layout/figure9.png[]
@@ -313,6 +314,7 @@ image::images/angular-zorro-layout/figure10.png[]
 **NOTE
 The loop that we are doing its how many images we will have.
 And finally, we will give some styles.
+
 ```
 .container{
   margin: auto;
@@ -385,12 +387,12 @@ To do it, we will write the next code in our file html.
 image::images/angular-zorro-layout/figure14.png[]
 
 
-The first thing that we can see it is a button to switch between see it or not.
+The first thing that we can see, it's a button to switch between see it or not.
 So,first thing, we need to import that `switch`.
 
 `import { NzSwitchModule } from 'ng-zorro-antd/switch';`
 
-Next step, that we need to do its write the html code. Its quite simple, its just:
+Next step, that we need to do its write the `HTML code. It's simple:
 
 `<nz-switch [(ngModel)]="loading"></nz-switch>`
 
@@ -398,16 +400,15 @@ So now, in the ts file. We just need to create a Boolean variable.
 With the ngModel and the switch, each time that we will click on the button the variable will swap between true or false.
 After create the button, we are going to create the card.
 
-Like always we need to import the following module on `app.module`
+Need to import the following module on `app.module`
 `import { NzCardModule } from 'ng-zorro-antd/card';`
-And after that we need to write the html code
+And after that we need to write the `HTML` code
 
 .Cards Logic
 image::images/angular-zorro-layout/figure15.png[]
-
-As we can see, we will find a lot of attributes.
+We will find a lot of attributes.
 We can find their explication in the api: 
-https://ng.ant.design/components/card/en[Angular Zorro] 
+https://ng.ant.design/components/card/en[NG Zorro] 
 
 Last Element, the table
 
@@ -483,7 +484,7 @@ After that we need to create the table
 .Table HTML Logic
 image::images/angular-zorro-layout/figure19.png[]
 
-How we can see it, to create the table we need to use the tag  <nz-table> and after that is like a Html table, with the `<thead>` and `<tbody>`
+To create the table we need to use the tag  `<nz-table>` and after that is like a Html table, with the `<thead>` and `<tbody>`
 
 How it shows with the for, we are showing the data from the array created before.
 In the first cell we can see, that we have a method to edit the value. 

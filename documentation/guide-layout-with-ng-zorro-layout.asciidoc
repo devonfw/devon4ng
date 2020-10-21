@@ -305,8 +305,7 @@ import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 ----
 
 
-And use the label “nz-carousel” to create the Carousel.
-How we can see, it has some attributes coming from the library.
+And use the label “nz-carousel” to create the Carousel, it has some attributes coming from the library.
 
 .Import ModalService from Zorro
 image::images/angular-zorro-layout/figure10.png[]
@@ -396,7 +395,7 @@ Next step, that we need to do its write the `HTML code. It's simple:
 
 `<nz-switch [(ngModel)]="loading"></nz-switch>`
 
-So now, in the ts file. We just need to create a Boolean variable.
+So now, in the ts file we just need to create a `Boolean` variable.
 With the ngModel and the switch, each time that we will click on the button the variable will swap between true or false.
 After create the button, we are going to create the card.
 

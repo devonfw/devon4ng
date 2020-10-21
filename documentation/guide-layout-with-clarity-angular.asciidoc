@@ -198,7 +198,7 @@ After we have the whole menu finished, time to see the card.
 .Card 
 image::images/angular-clarity-layout/11.png[]
 
-How you can see it in the first figure, all the elements are aligned to the center.
+In the first figure, all the elements are aligned to the center.
 To do this, we just need to use the classes by the framework.
 `<div class="clr-main-container">`
 The first css class is giving the style to the main container.
@@ -277,9 +277,9 @@ As you can see, the card has a footer. Check next picture
 .Card
 image::images/angular-clarity-layout/14.png[]
 
-Wwe just need to add a div with this class inside of the card div
+We just need to add a div with this class inside of the card div
 `<div class="card-footer">`
-And how  we can see it it’s a link in the card. To do it, we need to create:
+And will link to the card:
 
 `<a class="card-link" (click)="send()">Click to see the modal</a>`
 And the method send() its just a method to convert the variable basic to true when is false and false when its true:

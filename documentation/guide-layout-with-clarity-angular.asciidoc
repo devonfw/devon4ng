@@ -28,9 +28,9 @@ image::images/angular-clarity-layout/1.png[]
 
 We start with opening the console(in the Devon distribution folder) and running the following command to start a project named AngularZorroLayout.
 
-`devon ng new AngularZorroLayout`
+`devon ng new AngularClarityLayout`
 
-Select y when it asks whether it would like to add Angular routing and select `SCSS` when it asks for the stylesheet format. You can also use the devonfw-ide CLI to create a new devon4ng application.
+Select `y` when it asks whether it would like to add Angular routing and select `SCSS` when it asks for the stylesheet format. You can also use the devonfw-ide CLI to create a new devon4ng application.
 
 Once the creation process is complete, open your newly created application in Visual Studio Code. Try running the empty application by running the following command in the integrated terminal:
 
@@ -43,7 +43,7 @@ image::images/angular-clarity-layout/2.png[]
 
 ==  Adding Angular Clarity framework to the project
 
-Next we will add Angular Material to our application. In the integrated terminal, press Ctrl + C to terminate the running application and run the following command:
+Next we will add Angular Clarity to our application. In the integrated terminal, press Ctrl + C to terminate the running application and run the following command:
 
 Generate a new Angular application (if you haven't already):
 `ng new my-app`
@@ -76,7 +76,7 @@ image::images/angular-clarity-layout/3.png[]
 
 == Development
 
-After we install the library we can start to develop the code.
+After installed the library we can start to develop the code.
 
 Adding styles in styles.css
 ```
@@ -135,26 +135,27 @@ First thing that we need to do is the menu
 .Clarity Menu
 image::images/angular-clarity-layout/4.png[]
 
-How we can see, the framework has its own css classes.
-For example, the first class that we can see is the `header-6` that one is a css style that change the colour from the menu.
+The framework has its own css classes.
+For example, the first class that we can see is the `header-6` that one is a css style that change the color from the menu.
 Also, we can see it that the framework has some icons where we can choose, where the tag is
 `<clr-icon shape”vm-bug></clr-icon>`
-The next div on the menu will have the navigation header
+The next `div` on the menu will have the navigation header.
 As with all this framework we can see that has is own css class `<div class=”header-nav”`
-We can see 2 `<a> `tags with a different css class
+We can see 2 `<a>` tags with a different css class
 The first one has the activated class. The difference between both of them shows like this.
 
 .Difference 
 image::images/angular-clarity-layout/5.png[]
 
-After seeing this piece of code, we can see that the other part of the menu has another css class.
-`<div class=”header-actions”> `
+
+After seeing this piece of code,  can see that the other part of the menu has another css class.
+`<div class=”header-actions”>`
 After this all divs inside the last one, they are going to be aligned to the right.
 
 .Search 
 image::images/angular-clarity-layout/6.png[]
 
-To do this search bar, we just need to create a form with the class `search`
+To do this search bar, just need to create a form with the class `search`
 `<form class=”search”>`
 To shows the icon we use the tag         `<label for="search_input"></label>`
 And the normal input with the 	`id=”search_input”` to match with the previous label
@@ -179,20 +180,20 @@ To do the menu-dropdown , we use the tag owned by the framework called
 .Dropdown 
 image::images/angular-clarity-layout/8.png[]
 
-The attribute `clrDropdownTrigger is needed because if not, we cannot do the tag `<clr-dropdown-menu>` because that tag is going to be activated just if the `clrDropdownTrigger` is activated too.
+The attribute `clrDropdownTrigger` is needed because if not, we cannot do the tag `<clr-dropdown-menu>` because that tag is going to be activated just if the `clrDropdownTrigger` is activated too.
 Also, with the attribute `clrPosition` when can decided where will be positioned the dropdown.
 
-The other part the menu, see the next figure
+The other part the menu, check the next figure.
 
 .Button  
 image::images/angular-clarity-layout/9.png[]
 
-Its pretty much the same code but we just change the attribute aria-abel and the icons
+It's pretty much the same code but we just change the attribute `aria-abel` and the icons`
 
 .Button Logic 
 image::images/angular-clarity-layout/10.png[]
 
-After we have the whole menu done, we are going to see the card.
+After we have the whole menu finished, time to see the card.
 
 .Card 
 image::images/angular-clarity-layout/11.png[]
@@ -303,10 +304,10 @@ After this we need to create the body of the modal, to do it we will use a div w
             <button type="button" class="btn btn-outline" (click)="basic = false">Cancel</button>          </div>
         </clr-modal>
 ```
-Has we can see on the previous code the class to create the body of the modal, its just create a div with the class
+The class to create the body of the modal, it's just to create a div with the class
 `<div class="modal-body">`
 And to create the footer 
 `<div class="modal-footer">`
 We can see that the footer has 2 buttons, with different style coming from the framework and with 2 methods with different values
-`(click)="basic = true"` on Okk button, this button wont change the variable value so woudnt do anything.
+`(click)="basic = true"` on Okk button, this button won't change the variable value so woudnt do anything.
 `(click)="basic = false"` on Cancel button. This button will change the value of the variable and will leave the modal.

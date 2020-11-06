@@ -1,0 +1,17 @@
+.content {
+  display: flex;
+  margin: 82px auto 32px;
+  padding: 0 16px;
+  max-width: 960px;
+  justify-content: space-around;
+}
+
+mat-progress-bar {
+  margin: 82px auto 32px;
+  width: 85%;
+}
+
+.mat-raised-button {
+  background-color: #1976d2;
+  color: white;
+}

@@ -1,0 +1,27 @@
+<div class="content">
+  <div>
+    <button mat-raised-button (click)="upload()">Upload file</button>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <mat-label>ID of file to retrieve</mat-label>
+      <input matInput placeholder="10" [(ngModel)]="idFileToRetrieve" />
+    </mat-form-field>
+    <button mat-raised-button (click)="download()">Download file</button>
+  </div>
+
+  <input
+    type="file"
+    #fileUpload
+    name="fileUpload"
+    multiple="multiple"
+    accept="*"
+    style="display: none"
+  />
+</div>
+
+<mat-progress-bar
+  *ngIf="fileInProgress"
+  [value]="fileProgress"
+></mat-progress-bar>

@@ -1,15 +1,23 @@
 <div class="content">
-  <div>
-    <button mat-raised-button (click)="upload()">Upload file</button>
+  <div class="upload">
+    <div>
+      <button mat-raised-button (click)="upload()">Upload file</button>
+    </div>
+    <label mat-label *ngIf="uploadSuccess"
+      >The file was upload succesfully!</label
+    >
+    <label mat-label *ngIf="uploadFail"
+      >There was an error uploading the file</label
+    >
   </div>
 
-  <div>
+  <!-- <div class="download">
     <mat-form-field>
       <mat-label>ID of file to retrieve</mat-label>
       <input matInput placeholder="10" [(ngModel)]="idFileToRetrieve" />
     </mat-form-field>
     <button mat-raised-button (click)="download()">Download file</button>
-  </div>
+  </div> -->
 
   <input
     type="file"
@@ -25,3 +33,5 @@
   *ngIf="fileInProgress"
   [value]="fileProgress"
 ></mat-progress-bar>
+
+<img [src]="image" />

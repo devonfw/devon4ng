@@ -6,6 +6,16 @@
   justify-content: space-around;
 }
 
+.upload {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.download {
+  margin: auto;
+}
+
 mat-progress-bar {
   margin: 82px auto 32px;
   width: 85%;

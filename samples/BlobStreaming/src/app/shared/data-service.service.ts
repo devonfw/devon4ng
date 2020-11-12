@@ -12,9 +12,9 @@ export class DataService {
 
   constructor(private httpClient: HttpClient) {}
 
-  uploadFile(bodyObject: any): Observable<any> {
+  uploadFile(bodyObject: FormData): Observable<any> {
     const headers = new HttpHeaders({
-      'Content-Type': 'multipart/mixed',
+      'Content-Type': 'multipart/form-data',
     });
 
     return this.httpClient.post<any>(
@@ -24,14 +24,17 @@ export class DataService {
         headers,
         reportProgress: true,
         observe: 'events',
-        responseType: 'json',
       }
     );
   }
 
-  downloadFile(idFileToRetrieve: number): Observable<BinaryObject> {
-    return this.httpClient.get<BinaryObject>(
-      this.SERVER_URL + 'binaryobject/' + idFileToRetrieve
+  downloadFile(idFileToRetrieve: number): Observable<any> {
+    // Missing the binaryObject data from backend
+    return this.httpClient.get<any>(
+      this.SERVER_URL + 'binaryobject/multipart/' + idFileToRetrieve,
+      {
+        responseType: 'blob' as 'json',
+      }
     );
   }
 }

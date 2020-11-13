@@ -9,6 +9,13 @@
     <label mat-label *ngIf="uploadFail"
       >There was an error uploading the file</label
     >
+    <input
+      type="file"
+      #fileUpload
+      name="fileUpload"
+      accept="*"
+      style="display: none"
+    />
   </div>
 
   <!-- <div class="download">
@@ -17,21 +24,11 @@
       <input matInput placeholder="10" [(ngModel)]="idFileToRetrieve" />
     </mat-form-field>
     <button mat-raised-button (click)="download()">Download file</button>
-  </div> -->
+  </div>
+</div> -->
 
-  <input
-    type="file"
-    #fileUpload
-    name="fileUpload"
-    multiple="multiple"
-    accept="*"
-    style="display: none"
-  />
+  <mat-progress-bar
+    *ngIf="fileInProgress"
+    [value]="fileProgress"
+  ></mat-progress-bar>
 </div>
-
-<mat-progress-bar
-  *ngIf="fileInProgress"
-  [value]="fileProgress"
-></mat-progress-bar>
-
-<img [src]="image" />

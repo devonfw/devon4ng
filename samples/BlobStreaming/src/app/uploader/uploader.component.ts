@@ -1,15 +1,7 @@
-import {
-  Component,
-  OnInit,
-  ElementRef,
-  ViewChild,
-  Sanitizer,
-} from '@angular/core';
-import { DataService } from '../shared/data-service.service';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { DataService } from './service/data-service.service';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
-import { BinaryObject } from '../shared/model/BinaryObject';
-import { BodyObject } from '../shared/model/BodyObject';
-import { DomSanitizer } from '@angular/platform-browser';
+import { BinaryObject } from '../core/interfaces/BinaryObject';
 
 @Component({
   selector: 'app-uploader',
@@ -23,25 +15,23 @@ export class UploaderComponent implements OnInit {
   idFileToRetrieve = 1000116;
   uploadSuccess = false;
   uploadFail = false;
-  image: any;
 
-  constructor(
-    private dataService: DataService,
-    private sanitizer: DomSanitizer
-  ) {}
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {}
 
-  download(): any {
+  download(): void {
     this.dataService
       .downloadFile(this.idFileToRetrieve)
-      .subscribe((blob: any) => {
+      .subscribe((blob: Blob) => {
         // Missing the binaryObject data from backend
         console.log(blob);
       });
   }
 
   upload(): void {
+    this.fileUpload.nativeElement.click();
+
     this.fileUpload.nativeElement.onchange = () => {
       const file = this.fileUpload.nativeElement.files[0];
       console.log(file);
@@ -49,7 +39,6 @@ export class UploaderComponent implements OnInit {
     };
     this.uploadSuccess = false;
     this.uploadFail = false;
-    this.fileUpload.nativeElement.click();
   }
 
   uploadFile(file: File): void {
@@ -63,7 +52,7 @@ export class UploaderComponent implements OnInit {
           this.idFileToRetrieve = event.body.id;
           this.fileInProgress = false;
           this.uploadSuccess = true;
-          this.download();
+          // this.download();
         }
       },
       (err) => {

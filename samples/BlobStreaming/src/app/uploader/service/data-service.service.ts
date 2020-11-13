@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BodyObject } from './model/BodyObject';
-import { BinaryObject } from './model/BinaryObject';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpResponse,
+  HttpEvent,
+} from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { BinaryObject } from 'src/app/core/interfaces/BinaryObject';
 
 @Injectable({
   providedIn: 'root',
@@ -12,14 +16,14 @@ export class DataService {
 
   constructor(private httpClient: HttpClient) {}
 
-  uploadFile(bodyObject: FormData): Observable<any> {
+  uploadFile(formdData: FormData): Observable<HttpEvent<BinaryObject>> {
     const headers = new HttpHeaders({
       'Content-Type': 'multipart/form-data',
     });
 
-    return this.httpClient.post<any>(
+    return this.httpClient.post<BinaryObject>(
       this.SERVER_URL + 'binaryobject',
-      bodyObject,
+      formdData,
       {
         headers,
         reportProgress: true,

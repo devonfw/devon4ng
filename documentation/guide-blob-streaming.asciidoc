@@ -47,7 +47,7 @@ The next step will be to create a component to place the uploader:
 
 So this will be our project structure so far:
 
-image::images/blob-streaming/folder-structure.png
+image::images/blob-streaming/folder-structure.PNG[width="300"]
 
 Then, in the app.component.html we need to add the selector for our new component, so it will be represented there. We are not going to create any route for this sample. We can aslo modify the values for the toolbar.
 
@@ -107,7 +107,7 @@ I will begin editing our html file. First thing we need is an input component, w
 The button will call the upload() method in our uploader.component.ts, and as we can see, I assigned an identifier for the input, #fileUpload, so we can reference it from uploader.component.ts. It accepts any file, and the display none style si because it will e called when we hit the button, so it is no necessary to be present in the view. 
 Our html view should look something similar to this:
 
-image::images/blob-streaming/html-view-1.png
+image::images/blob-streaming/html-view-1.PNG[width="600"]
 
 Let's start in our ts file. In order to interact with the input #fileUpload it is necessary to declare it like this:
 

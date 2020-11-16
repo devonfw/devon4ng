@@ -1,6 +1,9 @@
 = Angular File Uploading
 
-This sample demonstrates how to upload a file to a server.For this, we will need to use an Angular form. In this case we have chosen a simple template-driven form, as the goal of this sample is just to show the process to upload a file. You can learn more about Forms in Angular in the https://angular.io/guide/forms-overview[official documentation].
+This sample demonstrates how to upload a file to a server. For this, we will need to use an Angular form. In this case we have chosen a simple template-driven form, as the goal of this sample is just to show the process to upload a file. You can learn more about Forms in Angular in the https://angular.io/guide/forms-overview[official documentation].
+
+NOTE: The backend implementation for this sample is located here: https://github.com/devonfw-sample/devon4j-blob-streaming[
+devon4j-blob-streaming]
 
 == FormData
 
@@ -10,14 +13,16 @@ FormData is an object where you can store key-value pairs that allows you to sen
 ----
 ....
 const formData = new FormData();
+formData.append('key', value);
 ....
 ----
 
 == Let's begin
-I assume you already have your angular application running, if not, you can have a look to our link::guide-angular-pwa.asciidoc[AngularBasicPWA sample]
+I assume you already have your angular application running, if not, you can have a look to our  AngularBasicPWA sample include::guide-angular-pwa[leveloffset=2]
 
 We are going to use Angular Material components, so it is necessary to install the dependency with the following command:
-** `npm install --save @angular/material @angular/cdk @angular/animations`
+
+`npm install --save @angular/material @angular/cdk @angular/animations`
 
 == Importing necessary components
 
@@ -73,7 +78,7 @@ Now, our new component uploader will be loaded in the root page. Let's add some 
 
 == Uploader component
 
-I will begin editing our html file. First thing we need is an input component, where will allow us to select the file to upload. Furthermore, I added a button which will be the responsible of calling the upload file window. Apart from this there is also two labels and a progress bar. Labels will give feedback about file upload request, both with an if clause with uploadSuccess and uploadFail global variables that will be in uploader.component.html. The progress bar will show the progress of the file being uploaded.
+I will begin editing the html file. First thing we need is an input component, which will allow us to select the file to upload. Furthermore, I added a button which will be the responsible of calling the upload file window. Apart from this, there is also two labels and a progress bar. Labels will give feedback about file upload request, both with an if clause with uploadSuccess and uploadFail global variables that will be in uploader.component.ts. The progress bar will show the progress of the file being uploaded.
 
 [source, html]
 ----
@@ -104,17 +109,19 @@ I will begin editing our html file. First thing we need is an input component, w
 ....
 ----
 
-The button will call the upload() method in our uploader.component.ts, and as we can see, I assigned an identifier for the input, #fileUpload, so we can reference it from uploader.component.ts. It accepts any file, and the display none style si because it will e called when we hit the button, so it is no necessary to be present in the view. 
+The button will call the upload() method in our uploader.component.ts, and as we can see, I assigned an identifier for the input, #fileUpload, so we can reference it from uploader.component.ts. It accepts any file, and the display none style si because it will be called when we click the button, so it is no necessary to be present in the view. 
+
 Our html view should look something similar to this:
 
 image::images/blob-streaming/html-view-1.PNG[width="600"]
 
-Let's start in our ts file. In order to interact with the input #fileUpload it is necessary to declare it like this:
+Let's start in our .ts file. In order to interact with the input #fileUpload, it is necessary to declare it like this:
 
 [source, typescript]
 ----
 ....
 @ViewChild('fileUpload') fileUpload: ElementRef;
+constructor() {}
 ....
 ----
 
@@ -134,7 +141,7 @@ And then, the upload() mehtod that the button in html is calling:
 ....
 ----
 
-The click method at first line will open the file explorer in order to select the desired file to upload, and on change method will be called when a new file is selected. Then, uploadFile(...) method will be called.
+The click method at first line will open the file explorer in order to select the desired file to upload, and on change method will be called when a new file is selected, so a change is detected. Then, uploadFile(...) method will be called.
 
 Before explain this uploadFile(...) mehtod, there is something still missing, a service to communicate with backend through http.
 I am going to place the service in a service folder inside our uploader component folder. 
@@ -167,7 +174,10 @@ export class DataService {
 ....
 ----
 
-We have delcared the url as a global variable. Also is necessary to set the content-type as multipart/form-data in the headers sections, that will be passed in the request. There is also two options to say about; reportProgress, to have a feedback about the file upload so we can show percentage on the view, ad observe: ' events' for the same purpose.
+We have delcared the url as a global variable. Also is necessary to set the content-type as multipart/form-data in the headers sections, that will be the body of the request. There is also two options to talk about:
+
+  * reportProgress: to have a feedback about the file upload so we can show percentage on the view.
+  * observe: ' events' in order to receive this type of events information.
 
 In uploader.component.ts is missing uploadFile(...) method.
 
@@ -197,6 +207,8 @@ In uploader.component.ts is missing uploadFile(...) method.
 Notice that whether we have a correct response, or an error response, we set the variable `this.uploadSuccess` or `this.uploadFail` to show the labels in the html giving feedback.
 Once we call the service to do the http request, we expect two types of response(three if we count the error), the first one is the progress of the upload, and will update the progress bar through `this.fileProgress` variable. The second one is a response when the request is finished.
 That is why the type of the response is checked between HttpEventType or HttpResponse. 
+
+Now, if you have your backend running, you should be able to upload a file, and check in DB that all the process worked fine.
 
 
 

@@ -12,7 +12,7 @@ export class UploaderComponent implements OnInit {
   @ViewChild('fileUpload') fileUpload: ElementRef;
   fileProgress = 0;
   fileInProgress = false;
-  idFileToRetrieve = 1000116;
+  idFileToRetrieve: number;
   uploadSuccess = false;
   uploadFail = false;
 
@@ -34,7 +34,6 @@ export class UploaderComponent implements OnInit {
 
     this.fileUpload.nativeElement.onchange = () => {
       const file = this.fileUpload.nativeElement.files[0];
-      console.log(file);
       this.uploadFile(file);
     };
     this.uploadSuccess = false;
@@ -48,7 +47,6 @@ export class UploaderComponent implements OnInit {
         if (event.type === HttpEventType.UploadProgress) {
           this.fileProgress = Math.round((100 * event.loaded) / event.total);
         } else if (event instanceof HttpResponse) {
-          console.log(event);
           this.idFileToRetrieve = event.body.id;
           this.fileInProgress = false;
           this.uploadSuccess = true;

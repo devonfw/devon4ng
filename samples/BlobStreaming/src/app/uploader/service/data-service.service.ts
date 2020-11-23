@@ -33,7 +33,7 @@ export class DataService {
   }
 
   downloadFile(idFileToRetrieve: number): Observable<any> {
-    // Missing the binaryObject data from backend
+    // response is not in correct format
     return this.httpClient.get<any>(
       this.SERVER_URL + 'binaryobject/multipart/' + idFileToRetrieve,
       {

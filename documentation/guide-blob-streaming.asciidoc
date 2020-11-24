@@ -210,6 +210,8 @@ That is why the type of the response is checked between HttpEventType or HttpRes
 
 Now, if you have your backend running, you should be able to upload a file, and check in DB that all the process worked fine.
 
+NOTE: Download method is not implemented yet.
+
 
 
 

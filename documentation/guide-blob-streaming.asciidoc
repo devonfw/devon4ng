@@ -18,7 +18,8 @@ formData.append('key', value);
 ----
 
 == Let's begin
-I assume you already have your angular application running, if not, you can have a look to our  AngularBasicPWA sample include::guide-angular-pwa[leveloffset=2]
+I assume you already have your angular application running, if not, you can have a look to our  AngularBasicPWA sample      
+include::guide-angular-pwa[leveloffset=2]
 
 We are going to use Angular Material components, so it is necessary to install the dependency with the following command:
 

@@ -198,7 +198,14 @@ export class HttpRequestInterceptorService implements HttpInterceptor {
 }
 ----
 
-As you may notice, this service is making use of an environment field `environment.security` to determine if we are using JWT o CSRF in order to inject the token accordingly. In your application you can combine both if necessary.
+As you may notice, this service is making use of an environment field `environment.security` to determine if we are using JWT or CSRF in order to inject the token accordingly. In your application you can combine both if necessary.
+
+Configure environment.ts file to use the CSRF/JWT.
+
+[source]
+----
+security: 'csrf'
+----
 
 The `authHeader` used is obtained using the injected service `AuthService` already presented above.
 

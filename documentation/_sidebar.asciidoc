@@ -49,3 +49,5 @@
 ** link:guide-add-electron[Angular Electron]
 ** link:guide-angular-mock-service.asciidoc[Mock Service]
 ** link:guide-cypress.asciidoc[Cypress e2e testing]
+** link:guide-eslint.asciidoc[Angular ESLint]
+

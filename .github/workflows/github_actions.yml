@@ -3,7 +3,6 @@
 name: devon4ng github actions
 env:
   ORG: "devonfw"
-  EMAIL: "icsddevonfwsupport.apps2@capgemini.com"
   REPO_SOURCE: "devon4ng"
   REPO_DEST: "devon4ng.wiki"
   REPO_CONSOLIDATE: "devonfw-guide"

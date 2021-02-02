@@ -1,0 +1,79 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+= Angular ESLint support
+
+IMPORTANT: ESLint is supported in Angular 10.1.0 onwards. 
+
+== What about TSLint?
+
+TSLint is a fantastic tool. It is a linter that was written specifically to work based on the TypeScript AST format. This has advantages and disadvantages, as with most decisions we are faced with in software engineering!
+
+One advantage is there is no tooling required to reconcile differences between ESLint and TypeScript AST formats, but the major disadvantage is that the tool is therefore unable to reuse any of the previous work which has been done in the JavaScript ecosystem around linting, and it has to reimplement everything from scratch. Everything from rules to auto-fixing capabilities and more.
+
+However, the backers behind TSLint announced in 2019 that **they would be deprecating TSLint in favor of supporting** `typescript-eslint` in order to benefit the community. You can read more about that here: https://medium.com/palantir/tslint-in-2019-1a144c2317a9
+
+The TypeScript Team themselves also announced their plans to move the TypeScript codebase from TSLint to `typescript-eslint`, and they have been big supporters of this project. More details at https://github.com/microsoft/TypeScript/issues/30553
+
+Angular ESLint support comes from the https://github.com/angular-eslint/angular-eslint[`angular-eslint`] tooling package. Angular documentation also links to this repository as you can check in the https://angular.io/cli/lint[`ng lint` section] of the Angular CLI documentation.
+
+== Quick start with Angular and ESLint
+
+In order to create a brand new Angular CLI workspace which uses ESLint instead of TSLint and Codelyzer, simply run the following commands:
+
+[source, bash]
+----
+# Install the Angular CLI and @angular-eslint/schematics globally however you want (e.g. npm, yarn, volta etc)
+
+$ npm i -g @angular/cli @angular-devkit/core @angular-devkit/schematics @angular-eslint/schematics
+
+# Create a new Angular CLI workspace using the @angular-eslint/schematics collection (instead of the default)
+
+$ ng new --collection=@angular-eslint/schematics
+----
+
+== Migrating an Angular CLI project from Codelyzer and TSLint
+
+=== 1 - Add relevant dependencies
+
+The first step is to run the schematic to add `@angular-eslint` to your project:
+
+[source, bash]
+----
+$ ng add @angular-eslint/schematics
+----
+
+This will handle installing the latest version of all the relevant packages for you and adding them to the devDependencies of your package.json.
+
+=== 2 - Run the convert-tslint-to-eslint schematic on a project
+
+The next thing to do is consider which "project" you want to migrate to use ESLint. If you have a single application in your workspace you will likely have just a single entry in the projects configuration object within your `angular.json` file. If you have a `projects/`` directory in your workspace, you will have multiple entries in your `projects` configuration and you will need to chose which one you want to migrate using the `convert-tslint-to-eslint` schematic.
+
+You can run it like so:
+
+[source, bash]
+----
+$ ng g @angular-eslint/schematics:convert-tslint-to-eslint {{YOUR_PROJECT_NAME_GOES_HERE}}
+----
+
+From now on, `ng lint` will use ESLint!
+
+=== 3 - Remove root TSLint configuration and use only ESLint
+
+Once you are happy with your ESLint setup, you simply need to remove the root-level `tslint.json` and potentially uninstall TSLint and any TSLint-related plugins/dependencies if your Angular CLI workspace is now no longer using TSLint at all.
+
+More info at https://github.com/angular-eslint/angular-eslint

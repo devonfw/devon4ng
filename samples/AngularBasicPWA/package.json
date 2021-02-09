@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint": "npx ng lint basic-ng-pwa",
     "e2e": "ng e2e",
     "serve:pwa": "ng build --prod && npx serve ./dist/basic-ng-pwa/"
   },

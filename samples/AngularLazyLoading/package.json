@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint": "npx ng lint levels-app",
     "e2e": "ng e2e"
   },
   "private": true,

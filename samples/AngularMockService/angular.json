@@ -31,12 +31,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "src/assets/css/devon4ngAngularElements.css"
+              "src/styles.scss"
             ],
-            "scripts": [
-              "src/assets/js/devon4ngAngularElements.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -93,12 +90,9 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.scss",
-              "src/assets/css/devon4ngAngularElements.css"
+              "src/styles.scss"
             ],
-            "scripts": [
-              "src/assets/js/devon4ngAngularElements.js"
-            ],
+            "scripts": [],
             "assets": [
               "src/favicon.ico",
               "src/assets"

@@ -18,7 +18,7 @@ toc::[]
 == Add Electron to an Angular application
 This cookbook recipe explains how to integrate Electron in an Angular 10+ application. https://electronjs.org/[Electron] is a framework for creating native applications with web technologies like JavaScript, HTML, and CSS. As an example, very well known applications as Visual Studio Code, Atom, Slack or Skype (and many more) are using Electron too. 
 
-NOTE: At the moment of this writing Angular 10.0.4, Electron 9.1.1 and Electron-builder 22.7.0 were the versions available. 
+NOTE: At the moment of this writing Angular 11.2.0, Electron 11.2.3 and Electron-builder 22.9.1 were the versions available. 
 
 Here are the steps to achieve this goal. Follow them in order. 
 
@@ -36,8 +36,8 @@ In order to add the dependencies directly in the `package.json` file, include th
 ----
 "devDependencies": {
 ...
-    "electron": "^9.1.1",
-    "electron-builder": "^22.7.0",
+    "electron": "^11.2.3",
+    "electron-builder": "^22.9.1",
 ...
 },
 ----
@@ -350,12 +350,12 @@ Inside `package.json` the electron window that will be transformed to `electron-
 {
   ....
   "main": "electron-main.js",
-  "scripts": {
+  "scripts": {...}
   ....
 }
 ----
 
-The `scripts` section in the `package.json` can be improved to avoid running too verbose commands. As a very complete example we can take a look to the My Thai Star's `scripts` section and copy the lines useful in your project.
+The `scripts` section in the `package.json` can be improved to avoid running too verbose commands. As a very complete example we can take a look to the My Thai Star's `scripts` section and copy the lines useful in your project. In any case, at least we recommend to add the following lines: 
 
 [source,json]
 ----
@@ -366,10 +366,18 @@ The `scripts` section in the `package.json` can be improved to avoid running too
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "electron:serve": "ng build --base-href ./ && npx electron .",
-    "electron:serve-tsc": "tsc -p tsconfig.serve.json",
-    "electron:pack": "electron-builder --dir --config electron-builder.json",
-    "electron:build": "electron-builder --config electron-builder.json build",
-    "electron:start": "npm run electron:serve-tsc && npm run electron:serve"
+    "electron:tsc": "tsc -p tsconfig.serve.json", 
+    "electron:run": "npm run electron:tsc && ng build --base-href ./ && npx electron .", 
+    "electron:serve": "npm run electron:tsc && npx electron . --serve", 
+    "electron:pack": "npm run electron:tsc && electron-builder --dir --config electron-builder.json", 
+    "electron:build": "npm run electron:tsc && electron-builder --config electron-builder.json build" 
   },
 ----
+
+The `electron:` scripts do the following:
+
+- `electron:tsc`: Compiles electron TS files.
+- `electron:run`: Serves Angular app and runs electron.
+- `electron:serve`: Serves electron with an already running angular app (i.e. a `ng serve` command running on another terminal).
+- `electron:pack`: Packs electron app.
+- `electron:build`: Builds electron app.

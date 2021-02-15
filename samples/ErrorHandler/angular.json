@@ -142,5 +142,8 @@
       }
     }
   },
-  "defaultProject": "Devon4ngErrorHandler"
+  "defaultProject": "Devon4ngErrorHandler",
+  "cli": {
+    "analytics": "8d17666e-7692-4852-87ed-465584a2cb0d"
+  }
 }

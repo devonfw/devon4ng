@@ -2,25 +2,25 @@ import { Component } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Plugins, CameraResultType } from '@capacitor/core';
 
-const { Camera, Toast } = Plugins;
+const { camera, toast } = Plugins;
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePageComponent {
   image: SafeResourceUrl;
 
   constructor(private sanitizer: DomSanitizer) {
     this.image = this.sanitizer.bypassSecurityTrustResourceUrl(
-      '../../assets/capgemini-logo.png',
+      '../../assets/capgemini-logo.png'
     );
   }
 
   async takePicture() {
     try {
-      const image = await Camera.getPhoto({
+      const image = await camera.getPhoto({
         quality: 90,
         allowEditing: true,
         resultType: CameraResultType.Uri,
@@ -34,7 +34,7 @@ export class HomePage {
   }
 
   async show(message: string) {
-    await Toast.show({
+    await toast.show({
       text: message,
     });
   }

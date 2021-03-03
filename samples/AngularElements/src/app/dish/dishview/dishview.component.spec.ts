@@ -1,11 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { DishViewComponent } from './dishview.component';
 
 describe('DishViewComponent', () => {
   let component: DishViewComponent;
   let fixture: ComponentFixture<DishViewComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [DishViewComponent]
     }).compileComponents();

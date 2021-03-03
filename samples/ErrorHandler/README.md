@@ -1,6 +1,6 @@
 # Devon4ngErrorHandler
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.2 and updated with 9.0.3.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.2 and updated with 11.2.1.
 
 ## Development server
 

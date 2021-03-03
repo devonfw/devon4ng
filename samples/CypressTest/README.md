@@ -1,6 +1,6 @@
 # CypressTest
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.3 and updated to 10.0.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.3 and updated to 11.1.2.
 
 ## Development server
 

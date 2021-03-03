@@ -14,13 +14,13 @@ import { environment } from '../environments/environment';
   entryComponents: [],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(),
+    IonicModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production
-    })
+      enabled: environment.production,
+    }),
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 /** When it comes to navigating back and forth, it's best to interact with the location servuce on the page level */
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-data',
@@ -14,6 +14,6 @@ export class DataComponent implements OnInit {
   ngOnInit() {}
 
   goBack(): void {
-    this.location.back()
+    this.location.back();
   }
 }

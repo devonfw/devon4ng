@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MyLibraryService {
+  constructor() {}
 
   firstLetterToUpper(word: string): string {
     let firstLetter = word.substring(0, 1);
@@ -13,6 +14,4 @@ export class MyLibraryService {
     const wordFirstUpper = firstLetter + restWord;
     return wordFirstUpper;
   }
-
-  constructor() { }
 }

@@ -21,18 +21,98 @@ This guide describes an application architecture for web client development with
 
 == Motivation
 
-The main challenge we encounter in our projects is to bring junior developers into client development.
-There are a lot of different frameworks and architectures in the market.
-The idea is to define an architecture which is a compromise between, on the one hand, leveraging the best practices and latest trends like reactive style development,
-on the other hand, providing a short onboarding time while still using an architecture that helps us scale and be productive at the same time.
-Also, the architecture must be compatible with the market. 
-Guides, practices and naming found in the web should still be valid (e.g. a stackoverflow article for a given problem)
+Frontend development is a very difficult task since there are a lot of different frameworks, patterns and practices nowadays. For that reason, in devonfw we decided to make use of Angular since it is a full frontend framework that includes almost all the different patterns and features that any SPA may need and provides a well defined architecture to development, build and deploy. 
 
-== Gotchas
+The idea with *devon4ng* is to define an architecture which is a compromise between, on the one hand, leveraging the best practices and latest trends like reactive style development, on the other hand, providing a short onboarding time while still using an architecture that helps us scale and be productive at the same time.
 
-What we decided to go for is an architecture that leverages the benefits of reactive frontend architecture
-while remaining free of a dependency to a concrete framework like https://github.com/ngrx[ngrx] or https://github.com/angular-redux/store[angular-redux].
-The main driver is, to make it easy to adapt the architecture and get going very fast.
-So, it is not necessary to learn about reducers, actions and middleware (e.g. action-creators, thunks, effects, etc.) and still have the benefits of reactive style programming.
+At the same time *devon4ng* aims to help developers to solve common problems that appear in many projects and provide samples and blueprints to show how to apply this solutions in real situations. 
 
-That being said, we provide a link:guide-ngrx-getting-started[tutorial for using NgRx as a state management framework].
+== Contents
+
+=== link:architecture[Architecture Overview]
+  
+This section introduces in an easy way the main principles and guidelines based on Angular Styleguide
+
+=== link:meta-architecture[Client Meta Architecture]
+
+The goal of this topic is to support the non-functional requirements for the client, i.e. mostly maintainability, scalability, efficiency and portability. As such it provides a component-oriented architecture following the same principles listed already in the devonfw architecture overview.
+
+=== Layers
+
+This section provides a condensed explanation about the different layers a good Angular application must provide.
+
+* link:components-layer[Components Layer]
+* link:services-layer[Services Layer]
+
+=== Guides
+
+This section introduces concepts to help developes with the tooling and package managers.
+
+* link:guide-package-managers[Package Managers]
+* link:guide-npm-yarn-workflow[Package Managers Workflow]
+* link:guide-yarn-2-support[Yarn 2 Support]
+
+=== Angular
+
+This is the main section of the documentation, where the developer will find guidelines for accesibility, how to use the Angular toolchain, how to refactor components, create libraries and, in general, maintain Angular applications. But last and not least, developers will also find solutions to common problems many of the Angular projects may have. 
+
+NOTE: All the different topics are demonstrated in the `samples` folder with a small application. 
+
+* link:guide-accessibility[Accessibility]
+* link:guide-angular-elements[Angular Elements]
+* link:guide-angular-lazy-loading[Angular Lazy Loading]
+* link:guide-angular-library[Angular Library]
+* link:guide-angular-theming[Angular Material Theming]
+* link:guide-angular-pwa[Angular Progressive Web Apps]
+* link:guide-app-initializer[App Initializer]
+* link:guide-component-decomposition[Component Decomposition]
+* link:guide-consuming-rest-services[Consuming REST services]
+* link:guide-error-handler[Error Handler]
+* link:guide-file-structure[File Structure]
+* link:guide-internationalization[Internationalization]
+* link:guide-routing[Routing]
+* link:guide-testing[Testing]
+* link:guide-update-angular-cli[Update Angular CLI]
+* link:guide-upgrade-devon4ng[Upgrade devon4ng applications]
+* link:guide-working-with-angular-cli[Working with Angular CLI]
+
+=== Ionic
+
+As part of the devon4ng stack, we include a small section to explain how to develop hybrid mobile Ionic/Angular applications and create PWAs with this UI library. As the pervious section, the contents are demonstrated in the `samples` folder. 
+
+* link:guide-ionic-getting-started[Ionic Getting started]
+* link:guide-ionic-from-code-to-android[Ionic to Android]
+* link:guide-ionic-pwa[Ionic Progressive Web Apps]
+
+=== Layouts
+
+Any SPA application must have a layout. So, the purpose of this section is to explain the Angular Material approach. 
+
+* link:guide-layout-with-angular-material[Angular Material Layout]
+
+=== NgRx
+
+State Management is a big topic in big frontend application. This section explains the fundamentals of the industry standard library NgRx, showing its main components.
+
+* link:guide-ngrx-getting-started[Introduction]
+* link:guide-ngrx-simple-store[State, Selection and Reducers]
+* link:guide-ngrx-effects[Side effects with NgRx/Effects]
+* link:guide-ngrx-entity[Simplifying CRUD with NgRx/Entity]
+
+=== Cookbook
+
+The Cookbook section aims to provide solutions to cross-topic challenges that at this moment do not fit in the previous sections. As the *Angular* section, some of the topics are demonstrated with a sample located in the `samples` folder.
+
+* link:cookbook-abstract-class-store[Abstract Class Store]
+* link:guide-add-electron[Angular Electron]
+* link:guide-angular-mock-service.asciidoc[Mock Service]
+* link:guide-cypress.asciidoc[Cypress e2e testing]
+* link:guide-eslint.asciidoc[Angular ESLint]
+
+=== devon4ng templates
+
+In order to support CobiGen generation tool for Angular applications, devon4ng demos realization and provide more opinionated samples, the following templates are also included in devon4ng contents:
+
+* link:https://github.com/devonfw/devon4ng-application-template[devon4ng-application-template]: It is the Angular application template used by the CobiGen code generation tool.
+* link:https://github.com/devonfw/devon4ng-ngrx-template[devon4ng-ngrx-template]: It is the Angular application template used by the CobiGen code generation tool that makes use of NgRx for state management.
+* link:https://github.com/devonfw/devon4ng-ionic-application-template[devon4ng-ionic-application-template]: It is the Ionic mobile application template used by the CobiGen code generation tool.

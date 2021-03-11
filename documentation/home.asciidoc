@@ -111,7 +111,7 @@ The Cookbook section aims to provide solutions to cross-topic challenges that at
 
 === devon4ng templates
 
-In order to support devon4ng demos and provide more opinionated samples we included a set of templates:
+In order to support CobiGen generation tool for Angular applications, devon4ng demos realization and provide more opinionated samples, the following templates are also included in devon4ng contents:
 
 * link:https://github.com/devonfw/devon4ng-application-template[devon4ng-application-template]: It is the Angular application template used by the CobiGen code generation tool.
 * link:https://github.com/devonfw/devon4ng-ngrx-template[devon4ng-ngrx-template]: It is the Angular application template used by the CobiGen code generation tool that makes use of NgRx for state management.

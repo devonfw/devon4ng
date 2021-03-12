@@ -1,5 +1,9 @@
 = devon4ng
 
+== Introduction
+
+include::home[leveloffset=2]
+
 == Architecture
 
 include::architecture[leveloffset=2]

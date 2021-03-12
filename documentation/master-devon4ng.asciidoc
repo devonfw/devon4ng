@@ -2,7 +2,7 @@
 
 == Introduction
 
-include::home[leveloffset=1]
+include::home[leveloffset=2]
 
 == Architecture
 

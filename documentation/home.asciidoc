@@ -31,7 +31,7 @@ At the same time *devon4ng* aims to help developers to solve common problems tha
 
 * link:architecture[Architecture Overview]
   
-This section introduces in an easy way the main principles and guidelines based on Angular Styleguide
+This section introduces in an easy way the main principles and guidelines based on Angular Styleguide 
 
 * link:meta-architecture[Client Meta Architecture]
 

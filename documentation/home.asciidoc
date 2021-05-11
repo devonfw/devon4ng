@@ -29,11 +29,11 @@ At the same time *devon4ng* aims to help developers to solve common problems tha
 
 == Contents
 
-=== link:architecture[Architecture Overview]
+* link:architecture[Architecture Overview]
   
 This section introduces in an easy way the main principles and guidelines based on Angular Styleguide
 
-=== link:meta-architecture[Client Meta Architecture]
+* link:meta-architecture[Client Meta Architecture]
 
 The goal of this topic is to support the non-functional requirements for the client, i.e. mostly maintainability, scalability, efficiency and portability. As such it provides a component-oriented architecture following the same principles listed already in the devonfw architecture overview.
 

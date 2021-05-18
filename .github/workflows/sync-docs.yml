@@ -78,4 +78,4 @@ jobs:
           token: ${{ secrets.GHA_TOKEN }}
           repository: devonfw/devonfw-guide
           event-type: dispatch-update-guide
-          client-payload: '{"ref": "${{ github.ref }}"}'
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "commitno": "${{ github.event.after }}", "repository": "devonfw/devon4ng"}'

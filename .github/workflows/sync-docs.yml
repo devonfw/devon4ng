@@ -10,7 +10,8 @@ on:
 name: Sync Docs
 jobs:
   update-wiki:
-    if: ${{github.repository == 'devonfw/devon4ng'}}
+    if: ${{ startsWith(github.repository, 'devonfw/') }}
+    #if: ${{github.repository == 'devonfw/devon4ng'}}
     runs-on: ubuntu-latest
     steps:
       - name: setup variables

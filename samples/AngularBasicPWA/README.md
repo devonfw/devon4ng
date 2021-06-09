@@ -1,6 +1,6 @@
 # BasicNgPwa
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.7 and updated with 11.1.2.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.7 and updated with 12.0.3.
 
 ## Development server
 

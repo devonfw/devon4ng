@@ -1,6 +1,6 @@
 # Devon4ngAngularElementsTest
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.3 and updated to 9.0.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.3 and updated to 12.0.4.
 
 ## Development server
 

@@ -1,6 +1,6 @@
 # Devon4ng Angular Material Theming
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.2 and updated with 11.1.2. It is a reference to the devon4ng wiki guide [Angular Material Layout](https://github.com/devonfw/devon4ng/wiki/guide-layout-with-angular-material). This application has a basic layout created using Angular Material, having a header with some menu buttons, and a sidenav with some navigational links.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.2 and updated with 12.1.0. It is a reference to the devon4ng wiki guide [Angular Material Theming](https://github.com/devonfw/devon4ng/wiki/guide-angular-theming). This application has a basic layout created using Angular Material, having a header with some menu buttons, and a sidenav with some navigational links.
 
 ## Development server
 

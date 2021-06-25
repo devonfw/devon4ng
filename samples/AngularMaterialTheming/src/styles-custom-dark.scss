@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import '~@angular/material/theming';
 
 $my-pink: (
@@ -35,11 +36,11 @@ $my-pink: (
 
 
 // custom primary palettes
-$custom-dark-theme-primary: mat-palette($my-pink);
-$custom-dark-theme-accent: mat-palette($mat-blue);
-$custom-dark-theme-warn: mat-palette($mat-red);
+$custom-dark-theme-primary: mat.define-palette($my-pink);
+$custom-dark-theme-accent: mat.define-palette(mat.$blue-palette);
+$custom-dark-theme-warn: mat.define-palette(mat.$red-palette);
 
-$custom-dark-theme: mat-dark-theme(
+$custom-dark-theme: mat.define-dark-theme(
   $custom-dark-theme-primary,
   $custom-dark-theme-accent,
   $custom-dark-theme-warn

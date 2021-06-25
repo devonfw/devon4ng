@@ -1,9 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+@use '~@angular/material' as mat;
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 
 @import '~@angular/material/theming';
 
-@include mat-core();
+@include mat.core();
 
 body {
   margin: 0;
@@ -12,10 +13,10 @@ body {
 
 @import 'styles-custom-cap.scss';
 .custom-cap-theme {
-  @include angular-material-theme($custom-cap-theme);
+  @include mat.all-component-themes($custom-cap-theme);
 }
 
 @import 'styles-custom-dark.scss';
 .custom-dark-theme {
-  @include angular-material-theme($custom-dark-theme);
+  @include mat.all-component-themes($custom-dark-theme);
 }

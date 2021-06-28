@@ -8,7 +8,7 @@ import { MyLibraryService } from 'my-library';
 })
 export class AppComponent implements OnInit {
   toUpper: string;
-  title = 'devon4ng library test';
+  title = 'devon4ng-library-test';
 
   constructor(private myLibraryService: MyLibraryService) {}
   ngOnInit(): void {

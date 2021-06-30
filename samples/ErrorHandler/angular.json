@@ -64,20 +64,24 @@
                   "maximumWarning": "6kb"
                 }
               ]
-            }
+            },
+            "development": {}
           },
-          "defaultConfiguration": ""
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Devon4ngErrorHandler:build"
           },
           "configurations": {
             "production": {
               "browserTarget": "Devon4ngErrorHandler:build:production"
+            },
+            "development": {
+              "browserTarget": "Devon4ngErrorHandler:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -122,14 +126,17 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Devon4ngErrorHandler:serve"
+            "protractorConfig": "e2e/protractor.conf.js"
           },
           "configurations": {
             "production": {
               "devServerTarget": "Devon4ngErrorHandler:serve:production"
+            },
+            "development": {
+              "devServerTarget": "Devon4ngErrorHandler:serve:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",

@@ -1,6 +1,6 @@
 # Devon4ngElectronTest
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.0.
 
 ## Development server
 

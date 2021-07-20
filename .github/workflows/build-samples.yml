@@ -1,0 +1,259 @@
+on:
+  push:
+    branches: [develop]
+
+  pull_request:
+    branches: [develop]
+
+name: Build
+
+jobs:
+  # JOB to run change detection
+  changes:
+    runs-on: ubuntu-latest
+    # Set job outputs to values from filter step
+    outputs:
+      AngularBasicPWA: ${{ steps.filter.outputs.AngularBasicPWA }}
+      AngularElements: ${{ steps.filter.outputs.AngularElements }}
+      AngularElementsTest: ${{ steps.filter.outputs.AngularElementsTest }}
+      AngularLazyLoading: ${{ steps.filter.outputs.AngularLazyLoading }}
+      AngularMaterialBasicLayout: ${{ steps.filter.outputs.AngularMaterialBasicLayout }}
+      AngularMaterialTheming: ${{ steps.filter.outputs.AngularMaterialTheming }}
+      AngularMockService: ${{ steps.filter.outputs.AngularMockService }}
+      AppInitializer: ${{ steps.filter.outputs.AppInitializer }}
+      CypressTest: ${{ steps.filter.outputs.CypressTest }}
+      ElectronTest: ${{ steps.filter.outputs.ElectronTest }}
+      ErrorHandler: ${{ steps.filter.outputs.ErrorHandler }}
+      IonicBasicPWA: ${{ steps.filter.outputs.IonicBasicPWA }}
+      MyLibrary: ${{ steps.filter.outputs.MyLibrary }}
+      MyLibraryTest: ${{ steps.filter.outputs.MyLibraryTest }}
+    steps:
+    # For pull requests it's not necessary to checkout the code
+    - uses: dorny/paths-filter@v2
+      id: filter
+      with:
+        filters: |
+          AngularBasicPWA:
+            - 'samples/AngularBasicPWA/**'
+          AngularElements:
+            - 'samples/AngularElements/**'
+          AngularElementsTest:
+            - 'samples/AngularElementsTest/**'
+          AngularLazyLoading:
+            - 'samples/AngularLazyLoading/**'
+          AngularMaterialBasicLayout:
+            - 'samples/AngularMaterialBasicLayout/**'
+          AngularMaterialTheming:
+            - 'samples/AngularMaterialTheming/**'
+          AngularMockService:
+            - 'samples/AngularMockService/**'
+          AppInitializer:
+            - 'samples/AppInitializer/**'
+          CypressTest:
+            - 'samples/CypressTest/**'
+          ElectronTest:
+            - 'samples/ElectronTest/**'
+          ErrorHandler:
+            - 'samples/ErrorHandler/**'
+          IonicBasicPWA:
+            - 'samples/IonicBasicPWA/**'
+          MyLibrary:
+            - 'samples/MyLibrary/**'
+          MyLibraryTest:
+            - 'samples/MyLibraryTest/**'
+
+  # JOB to build AngularBasicPWA code
+  AngularBasicPWA:
+    needs: changes
+    if: ${{ needs.changes.outputs.AngularBasicPWA == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: build
+        run: |
+          cd samples/AngularBasicPWA
+          yarn install
+          npm run build
+
+  # JOB to build AngularElements code
+  AngularElements:
+    needs: changes
+    if: ${{ needs.changes.outputs.AngularElements == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: build
+        run: |
+          cd samples/AngularElements
+          yarn install
+          npm run build
+
+  # JOB to build AngularElementsTest code
+  AngularElementsTest:
+    needs: changes
+    if: ${{ needs.changes.outputs.AngularElementsTest == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: build
+        run: |
+          cd samples/AngularElementsTest
+          yarn install
+          npm run build
+
+  # JOB to build AngularLazyLoading code
+  AngularLazyLoading:
+    needs: changes
+    if: ${{ needs.changes.outputs.AngularLazyLoading == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: build
+        run: |
+          cd samples/AngularLazyLoading
+          yarn install
+          npm run build
+
+  # JOB to build AngularMaterialBasicLayout code
+  AngularMaterialBasicLayout:
+    needs: changes
+    if: ${{ needs.changes.outputs.AngularMaterialBasicLayout == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: build
+        run: |
+          cd samples/AngularMaterialBasicLayout
+          yarn install
+          npm run build
+
+  # JOB to build AngularMaterialTheming code
+  AngularMaterialTheming:
+    needs: changes
+    if: ${{ needs.changes.outputs.AngularMaterialTheming == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: build
+        run: |
+          cd samples/AngularMaterialTheming
+          yarn install
+          npm run build
+
+  # JOB to build AngularMockService code
+  AngularMockService:
+    needs: changes
+    if: ${{ needs.changes.outputs.AngularMockService == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: build
+        run: |
+          cd samples/AngularMockService
+          yarn install
+          npm run build
+
+  # JOB to build AppInitializer code
+  AppInitializer:
+    needs: changes
+    if: ${{ needs.changes.outputs.AppInitializer == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: build
+        run: |
+          cd samples/AppInitializer
+          yarn install
+          npm run build
+
+  # JOB to build CypressTest code
+  CypressTest:
+    needs: changes
+    if: ${{ needs.changes.outputs.CypressTest == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: build
+        run: |
+          cd samples/CypressTest
+          yarn install
+          npm run build
+
+  # JOB to build ElectronTest code
+  ElectronTest:
+    needs: changes
+    if: ${{ needs.changes.outputs.ElectronTest == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: build
+        run: |
+          cd samples/ElectronTest
+          yarn install
+          npm run build
+
+  # JOB to build ErrorHandler code
+  ErrorHandler:
+    needs: changes
+    if: ${{ needs.changes.outputs.ErrorHandler == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: build
+        run: |
+          cd samples/ErrorHandler
+          yarn install
+          npm run build
+
+  # JOB to build IonicBasicPWA code
+  IonicBasicPWA:
+    needs: changes
+    if: ${{ needs.changes.outputs.IonicBasicPWA == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: build
+        run: |
+          cd samples/IonicBasicPWA
+          yarn install
+          npm run build
+
+  # JOB to build MyLibrary code
+  MyLibrary:
+    needs: changes
+    if: ${{ needs.changes.outputs.MyLibrary == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: build
+        run: |
+          cd samples/MyLibrary
+          yarn install
+          npm run build
+
+  # JOB to build MyLibraryTest code
+  MyLibraryTest:
+    needs: changes
+    if: ${{ needs.changes.outputs.MyLibraryTest == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: build
+        run: |
+          cd samples/MyLibraryTest
+          yarn install
+          npm run build

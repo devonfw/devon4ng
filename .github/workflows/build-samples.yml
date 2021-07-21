@@ -224,11 +224,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: build
+      - name: Install dependencies with YARN
         run: |
           cd samples/IonicBasicPWA
           yarn install
-          npm run build
+      - name: Setup ionic
+        uses: coturiv/setup-ionic@v1.0.4
+      - name: Build the app
+        run: npm run build
 
   # JOB to build MyLibrary code
   MyLibrary:

@@ -257,6 +257,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Pack my-library
+        run: |
+          cd samples/MyLibrary
+          yarn install
+          npm run pack:my-library
       - name: build
         run: |
           cd samples/MyLibraryTest

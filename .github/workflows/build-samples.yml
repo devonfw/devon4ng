@@ -265,5 +265,6 @@ jobs:
       - name: build
         run: |
           cd samples/MyLibraryTest
+          yarn --update-checksums
           yarn install
           npm run build

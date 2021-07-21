@@ -5916,9 +5916,9 @@ mute-stream@0.0.8:
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.8.tgz#1630c42b2251ff81e2a283de96a5497ea92e5e0d"
   integrity sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==
 
-my-library@../MyLibrary/dist/my-library/my-library-v0.0.6.tgz:
+my-library@./my-library-v0.0.6.tgz:
   version "0.0.6"
-  resolved "../MyLibrary/dist/my-library/my-library-v0.0.6.tgz#160cf5c37fede8745668b81fc40ba1302dc879a3"
+  resolved "./my-library-v0.0.6.tgz#72d02d31539cebc96fac22e0f092ab8370a7e7a0"
   dependencies:
     tslib "^2.0.0"
 

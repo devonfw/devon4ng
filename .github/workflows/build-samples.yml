@@ -249,4 +249,16 @@ jobs:
           yarn install
           npm run build
 
-  # TODO: JOB to build MyLibraryTest code
+  # JOB to build MyLibraryTest code
+  MyLibraryTest:
+    needs: changes
+    if: ${{ needs.changes.outputs.MyLibraryTest == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: build
+        run: |
+          cd samples/MyLibraryTest
+          yarn install
+          npm run build

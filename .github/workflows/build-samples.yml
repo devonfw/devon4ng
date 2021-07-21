@@ -224,10 +224,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: build
+      - name: Install dependencies with YARN
         run: |
           cd samples/IonicBasicPWA
           yarn install
+      - name: Setup ionic
+        uses: coturiv/setup-ionic@v1.0.4
+      - name: Build the app
+        run: |
+          cd samples/IonicBasicPWA
           npm run build
 
   # JOB to build MyLibrary code
@@ -244,16 +249,4 @@ jobs:
           yarn install
           npm run build
 
-  # JOB to build MyLibraryTest code
-  MyLibraryTest:
-    needs: changes
-    if: ${{ needs.changes.outputs.MyLibraryTest == 'true' }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: build
-        run: |
-          cd samples/MyLibraryTest
-          yarn install
-          npm run build
+  # TODO: JOB to build MyLibraryTest code

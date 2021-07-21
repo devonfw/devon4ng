@@ -231,7 +231,9 @@ jobs:
       - name: Setup ionic
         uses: coturiv/setup-ionic@v1.0.4
       - name: Build the app
-        run: npm run build
+        run: |
+          cd samples/IonicBasicPWA
+          npm run build
 
   # JOB to build MyLibrary code
   MyLibrary:

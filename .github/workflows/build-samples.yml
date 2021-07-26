@@ -1,6 +1,6 @@
 on:
 
-  pull_request:
+  push:
     branches: [develop]
 
 name: Build
@@ -26,6 +26,7 @@ jobs:
       MyLibrary: ${{ steps.filter.outputs.MyLibrary }}
       MyLibraryTest: ${{ steps.filter.outputs.MyLibraryTest }}
     steps:
+    - uses: actions/checkout@v2
     - uses: dorny/paths-filter@v2
       id: filter
       with:

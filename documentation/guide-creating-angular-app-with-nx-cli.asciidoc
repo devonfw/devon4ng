@@ -1,0 +1,105 @@
+:toc: macro
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+toc::[]
+:idprefix:
+:idseparator: -
+:reproducible:
+:source-highlighter: rouge
+:listing-caption: Listing
+
+= Nx CLI
+
+Nx CLI provides a wrapper around Angular CLI and makes it faster, in addition to other benefits. Its computational cache significantly speeds up building and serving applications successively.
+
+With Nx CLI you always get the latest tools to develop your angular applications. By default it is integrated with tools like Jest, Cypress, ESLlint and many more. Though you can always configure to use other tools as per your preference.
+
+One difference you will find while working with Nx CLI is that an Nx workspace follows a certain folder structure. That is because Nx strongly supports monorepo architeture, wherein you place all the different components that make up your entire application (front-end, back-end, libraries, models) into one single repository. Nx also provides the tooling between these different components, so that you can share your code across your different applications in the same repo and avoid re-writing. We will go through the folder structure later in this guide. But we might not always want to follow a monorepo architecture and it is possible to create a single application with Nx CLI.
+
+In this guide we are going to learn how to create an angular app with Nx CLI. But first, let us start by installing Nx
+
+== Installing Nx
+
+You can install Nx globally in your system using the following command:
+
+[source, shell]
+----
+npm install -g nx
+----
+
+Now let us proceed to creating an angular application using Nx.
+
+== Creating Angular app with Nx
+
+To create an angular app with Nx, we simply create an Nx workspace with angular preset using the following command:
+
+[source, shell]
+----
+npx create-nx-workspace --preset=angular
+----
+
+The CLI will ask a series of questions and setup your workspace with an empty angular application.
+
+.Creating a Nx workspace.
+image::images/nx-cli/create-nx-workspace.png["Creating a Nx workspace", width=500 link="images/nx-cli/create-nx-workspace.png"]
+
+Here we have given the workspace name as *nx-guide* and the app name as *nx-ng-app*. Let us have a look at the folder structure created by Nx CLI.
+
+== Nx workspace folder structure
+
+Every Nx workspace has the following folder structure:
+
+[source]
+----
+myorg/
+├── apps/
+├── libs/
+├── tools/
+├── workspace.json
+├── nx.json
+├── package.json
+└── tsconfig.base.json
+----
+
+Nx creates such a folder structure because it strongly supports the concept of monorepos, wherein all the inter-related applications and libraries are put together in the same repository for better maintanace, code-sharing and avoiding duplication of codes. 
+
+As per the structure, all runable applications should belong in the *apps/* directory. Supporting applications and libraries can be put in the *libs/* folder, with each library defining its own external API to differentiate between them. *tools/* folder can contain scripts which act on your code like database scripts, for example. The JSON files contain various information and configuration settings about the workspace and the projects within them.
+
+You will find your angular app named *nx-ng-app* in the *apps/* folder. The folder structure within your app is similar to any Angular app created with Angular CLI.
+
+.Your Nx workspace in VSCode.
+image::images/nx-cli/nx-workspace-in-vscode.png["Your Nx workspace in VSCode", width=650 link="images/nx-cli/nx-workspace-in-vscode.png"]
+
+You will also notice another app named *nx-ng-app-e2e* automatically generated in the *apps* folder. This for performing end-to-end testing with Cypress on your app. 
+
+Now that we have created our angular app, let us serve it so we can view the application in our browser.
+
+== Running your angular application
+
+You can still use the `ng` command to serve your application from your workspace root directory as such:
+
+[source, shell]
+----
+ng serve nx-ng-app
+----
+
+Using Nx, you can use either of the commands below for the same purpose:
+
+[source, shell]
+----
+nx run my-app:serve
+nx serve my-app
+----
+
+Once your code is compiled, you can view your application at http://localhost:4200 as usual.
+
+== Conclusion
+
+In this guide you learned how to install Nx and create an Angular application with it. Nx comes with a host of features and documentation. You can read more about using Nx for you angular projects over  https://nx.dev/latest/angular/getting-started/intro[here].

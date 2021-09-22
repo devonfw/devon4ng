@@ -1,9 +1,23 @@
 name: spellcheck
 on:
-  push:
+  pull_request:
   workflow_dispatch:
 jobs:
+  changes:
+    runs-on: ubuntu-latest
+    # Set job outputs to values from filter step
+    outputs:
+      documentation: ${{ steps.filter.outputs.documentation }}
+    steps:
+    - uses: dorny/paths-filter@v2
+      id: filter
+      with:
+        filters: |
+          documentation:
+            - 'documentation/**'
   build:
+    needs: changes
+    if: ${{ needs.changes.outputs.documentation == 'true' }}
     runs-on: ubuntu-latest
     steps:
      - name: spellcheck checkout

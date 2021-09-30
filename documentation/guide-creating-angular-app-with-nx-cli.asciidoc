@@ -48,7 +48,7 @@ npx create-nx-workspace --preset=angular
 The CLI will ask a series of questions and setup your workspace with an empty angular application.
 
 .Creating a Nx workspace.
-image::images/nx-cli/create-nx-workspace.png["Creating a Nx workspace", width=500 link="images/nx-cli/create-nx-workspace.png"]
+image::images/nx-cli/create-nx-workspace.png["Creating a Nx workspace", width=900, link="images/nx-cli/create-nx-workspace.png"]
 
 Here we have given the workspace name as *nx-guide* and the app name as *nx-ng-app*. Let us have a look at the folder structure created by Nx CLI.
 
@@ -75,7 +75,7 @@ As per the structure, all runable applications should belong in the *apps/* dire
 You will find your angular app named *nx-ng-app* in the *apps/* folder. The folder structure within your app is similar to any Angular app created with Angular CLI.
 
 .Your Nx workspace in VSCode.
-image::images/nx-cli/nx-workspace-in-vscode.png["Your Nx workspace in VSCode", width=650 link="images/nx-cli/nx-workspace-in-vscode.png"]
+image::images/nx-cli/nx-workspace-in-vscode.png["Your Nx workspace in VSCode", width=900, link="images/nx-cli/nx-workspace-in-vscode.png"]
 
 You will also notice another app named *nx-ng-app-e2e* automatically generated in the *apps* folder. This for performing end-to-end testing with Cypress on your app. 
 

@@ -1,6 +1,8 @@
 on:
 
   push:
+    paths-ignore:
+      - 'documentation/**'
     branches: [develop]
 
 name: Build

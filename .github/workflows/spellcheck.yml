@@ -1,6 +1,9 @@
 name: spellcheck
 on:
-  pull_request:
+  push:
+     paths:
+       - '**.asciidoc'
+       - '**.md'
   workflow_dispatch:
 jobs:
   changes:

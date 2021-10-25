@@ -30,7 +30,7 @@ Yarn v2 is a very different software from the v1. The following list contains th
 
 Please, read them carefully to decide if your current project is suitable to use Yarn 2 as package manager.
 
-IMPORTANT: Some features are still experimental, so please do not use them in production enviroments.
+IMPORTANT: Some features are still experimental, so please do not use them in production environments.
 
 More info at https://yarnpkg.com/ 
 

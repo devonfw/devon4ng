@@ -70,7 +70,7 @@ $ . /node_modules/.bin/cypress open
 
 **BaseUrl**
 
-Let's setup the base url so when we run the tests cypress will "navegate" to the right place, go to `cypress.json` on the root of the project.
+Let's setup the base url so when we run the tests cypress will "navigate" to the right place, go to `cypress.json` on the root of the project.
 
 .cypress.json
 [source,json]
@@ -255,7 +255,7 @@ cy.fixture('box')
 ----
 
 We get boxFruit data from the box fixture and then we mock the api call with it so now the response of the call is boxFruit object.
-When the button is clicked, it waits to recive the response of the call and then checks if the list contains one of the elements of the fruitBox.
+When the button is clicked, it waits to receive the response of the call and then checks if the list contains one of the elements of the fruitBox.
 
 === Request
 Make a HTTP request.
@@ -341,7 +341,7 @@ Check link:https://docs.cypress.io/guides/tooling/typescript-support.html#Types-
 
 == Cross browser testing
 
-By default the browser used by Cypress is Chrome, it has compativility with it's family browsers (including Microsoft Edge) and has beta support for Mozilla Firefox.
+By default the browser used by Cypress is Chrome, it has compatibility with it's family browsers (including Microsoft Edge) and has beta support for Mozilla Firefox.
 
 To change the browser on the panel we can do it by selecting the desired one on the browsers tab before running the spec file.
 
@@ -376,7 +376,7 @@ https://docs.cypress.io/guides/guides/cross-browser-testing.html#Continuous-Inte
 
 Cypress allow us to create tests depending on the viewport, so we can test responsiveness.
 
-There are diferent ways to use it:
+There are different ways to use it:
 
 Inside a test case
 [source, Typescript]
@@ -447,7 +447,7 @@ it('should get button', {
 })
 ----
 
-This retries thoes not show on the test log.
+This retries those not shown on the test log.
 
 Check more on https://docs.cypress.io/guides/guides/test-retries.html#Introduction[retries documentation]
 
@@ -459,7 +459,7 @@ image::./images/cypress/reporter.jpg[]
 
 === Mochawesome
 
-In this case we are going to use Mochawesome, initialy its a Mocha reporter but as Cypress uses Mocha it works the same.
+In this case we are going to use Mochawesome, initially its a Mocha reporter but as Cypress uses Mocha it works the same.
 
 **Install**
 
@@ -483,7 +483,7 @@ To run the reporter:
 cypress run --reporter mochawesome
 ----
 
-Mochawesome saves by default the generated files on __./mochawesome-report/__ but we can add options to change this behabour.
+Mochawesome saves by default the generated files on __./mochawesome-report/__ but we can add options to change this behaviour.
 
 Options can be passed to the reporter in two ways
 
@@ -550,7 +550,7 @@ mochawesome-merge cypress/report/*.json > cypress/reportFinal.json
 
 `reportFinal.json` is the result of this merge, whit that we hace the data of all the spec files in one json.
 
-We can also automate the test, merge and convertion to html using a script.
+We can also automate the test, merge and conversion to html using a script.
 
 [source, TypeScript]
 ----
@@ -591,4 +591,4 @@ runTests();
 Check the link:https://www.npmjs.com/package/mochawesome-merge[mochawesome-merge documentation]
 
 On link:https://github.com/cypress-io/cypress-example-kitchensink[kitchensink]
-you can find an official cypress demo with all the comands being used.
+you can find an official cypress demo with all the commands being used.

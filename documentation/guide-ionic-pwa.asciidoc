@@ -62,7 +62,7 @@ First we have to import three important elements:
   import { Plugins, CameraResultType } from '@capacitor/core';
   const { Camera, Toast } = Plugins;
 
-The process of taking a picture is enclosed in a *takePicture* method. takePicture calls the Camera's _getPhoto_ function which returs an URL or an exception. If a photo is taken then the image displayed in the main page will be changed for the new picture, else, if the app is closed without changing it, a toast message will be displayed.
+The process of taking a picture is enclosed in a *takePicture* method. takePicture calls the Camera's _getPhoto_ function which returns an URL or an exception. If a photo is taken then the image displayed in the main page will be changed for the new picture, else, if the app is closed without changing it, a toast message will be displayed.
 
 [source,ts]
 ----
@@ -117,7 +117,7 @@ defineCustomElements(window);
 
 === Step 5: Make it Progressive.
 
-Turining an Ionic 5 app into a PWA is pretty easy, the same module used to turn Angular apps into PWAs has to be added, to do so, run: `ng add @angular/pwa`. This command also creates an *icons* folder inside *src/assets* and contains angular icons for multiple resolutions. If you want use other images, be sure that they have the same resolution, the names can be different but the file *manifest.json* has to be changed accordingly. 
+Turning an Ionic 5 app into a PWA is pretty easy, the same module used to turn Angular apps into PWAs has to be added, to do so, run: `ng add @angular/pwa`. This command also creates an *icons* folder inside *src/assets* and contains angular icons for multiple resolutions. If you want use other images, be sure that they have the same resolution, the names can be different but the file *manifest.json* has to be changed accordingly. 
 
 === Step 6: Configure the app
 
@@ -162,7 +162,7 @@ The first difference can be found on _Developer tools -> application_, here it i
 image::images/ionic/ionic-pwa/pwa-nopwa-app.png["Application comparison", width=800 link="images/ionic/ionic-pwa/pwa-nopwa-app.png"]
 
 {nbsp} +
-If the "offline" box is checked, it will force a disconnection from network. In situations where users do not have connectivity or have a slow, one the PWA can still be accesed and used. 
+If the "offline" box is checked, it will force a disconnection from network. In situations where users do not have connectivity or have a slow, one the PWA can still be accessed and used. 
 
 .Offline application.
 image::images/ionic/ionic-pwa/online-offline.png["Online offline apps", width=800 link="images/ionic/ionic-pwa/online-offline.png"]

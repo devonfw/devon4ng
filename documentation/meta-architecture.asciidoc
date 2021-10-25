@@ -182,5 +182,5 @@ The Quasar client architecture as the consolidated knowledge of our CSD projects
 
 * Architecture Guidelines for Application Design:
 https://troom.capgemini.com/sites/vcc/engineering/Cross%20Cutting/ArchitectureGuide/Architecture_Guidelines_for_Application_Design_v2.0.docx
-* Quasar Client Architekturen:
+* Quasar Client Architecture:
 https://troom.capgemini.com/sites/vcc/Shared%20Documents/CrossCuttingContent/TopicOrientedCCC/QuasarOverview/NCE%20Quasar%20Review%20Workshop%202009-11-17/Quasar%20Development/Quasar-Client-Architectures.doc

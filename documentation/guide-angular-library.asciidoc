@@ -48,7 +48,7 @@ ng generate library "library-name" --prefix="library-prefix-wanted"
 
 === Generating/Modifying in our library
 
-In the last step we generated a library. This generates automaticly a `module`,`service` and `component` inside (`projects/"library-name"`) that we can modify adding new methods, components etc that we want to use in other projects. We can generate other elements, using the usual `Angular CLI` generate commands adding the option `--project="library-name"` is going to allow to generate elements within our project . An example of this is: `ng generate service "name" --project="library-name"`.
+In the last step we generated a library. This generates automatically a `module`,`service` and `component` inside (`projects/"library-name"`) that we can modify adding new methods, components etc that we want to use in other projects. We can generate other elements, using the usual `Angular CLI` generate commands adding the option `--project="library-name"` is going to allow to generate elements within our project . An example of this is: `ng generate service "name" --project="library-name"`.
 
 [source]
 ----
@@ -57,7 +57,7 @@ ng generate "element" "name" --project="library-name"
 
 === Exporting the generated things
 
-Inside the library (`projects/"library-name`) theres a `public_api.ts` which is the file that exports the elements inside the library. In case we generated other things, that file needs to be modified adding the extra exports with the generated elements. In addition, changing the library version is possible in the file `package.json`.
+Inside the library (`projects/"library-name`) there's a `public_api.ts` which is the file that exports the elements inside the library. In case we generated other things, that file needs to be modified adding the extra exports with the generated elements. In addition, changing the library version is possible in the file `package.json`.
 
 === Building our library
 

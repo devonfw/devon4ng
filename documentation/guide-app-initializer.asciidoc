@@ -19,7 +19,7 @@ toc::[]
 
 == What is the APP_INITIALIZER pattern
 
-The APP_INITIALIZER pattern allows an aplication to choose which configuration is going to be used in the start of the application, this is useful because it allows to setup different configurations, for example, for docker or a remote configuration. This provides benefits since this is done on `runtime`, so theres no need to recompile the whole application to switch from configuration.
+The APP_INITIALIZER pattern allows an application to choose which configuration is going to be used in the start of the application, this is useful because it allows to setup different configurations, for example, for docker or a remote configuration. This provides benefits since this is done on `runtime`, so there's no need to recompile the whole application to switch from configuration.
 
 == What is APP_INITIALIZER
 
@@ -172,7 +172,7 @@ export const environment: {
 
 == Creating a APP_INITIALIZER configuration
 
-This section is going to be used to create a new `APP_INITIALIZER` basic example. For this, a basic app with angular is going to be generated using `ng new "appname"` substituting `appname` for the name of the app choosed.
+This section is going to be used to create a new `APP_INITIALIZER` basic example. For this, a basic app with angular is going to be generated using `ng new "appname"` substituting `appname` for the name of the app opted.
 
 == Setting up the config files
 
@@ -238,7 +238,7 @@ COPY docker-external-config.json /usr/share/nginx/html/docker-external-config.js
 
 == Setting up the proxies
 
-This step is going to setup two proxies. This is going to allow to load the config desired by the context, in case that it is using docker to load the app or in case it loads the app with angular. Loading diferent files is made posible by the fact that the `ConfigService` method `loadExternalConfig()` looks for the path `/config`.
+This step is going to setup two proxies. This is going to allow to load the config desired by the context, in case that it is using docker to load the app or in case it loads the app with angular. Loading different files is made possible by the fact that the `ConfigService` method `loadExternalConfig()` looks for the path `/config`.
 
 === Docker (Optional)
 
@@ -358,7 +358,7 @@ export class ConfigService {
 }
 ----
 
-As it was explained in previous steps, at first, there is a factory that uses the method `loadExternalConfig()`, this factory is going to be used in later steps in the module. After that, the `loadExternalConfig()` method checks if the boolean in the environment is false. If it is false it will return the promise resolved with the normal config. Else, it is going to load the external config in the path (`/config`), and overwrite the values from the external config to the config thats going to be used by the app, this is all returned in a promise.
+As it was explained in previous steps, at first, there is a factory that uses the method `loadExternalConfig()`, this factory is going to be used in later steps in the module. After that, the `loadExternalConfig()` method checks if the boolean in the environment is false. If it is false it will return the promise resolved with the normal config. Else, it is going to load the external config in the path (`/config`), and overwrite the values from the external config to the config that's going to be used by the app, this is all returned in a promise.
 
 3.- Create in the core a module for the config `app/core/config/` a `config.module.ts`:
 

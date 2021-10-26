@@ -21,7 +21,7 @@ Angular allows us to set up a custom error handler that can be used to control t
 
 == What is ErrorHandler
 
-`ErrorHandler` is the class that `Angular` uses by default to control the errors. This means that, even if the application doesnt have a `ErrorHandler` it is going to use the one setup by default in `Angular`. This can be tested by trying to find a page not existing in any app, instantly `Angular` will print the error in the console.
+`ErrorHandler` is the class that `Angular` uses by default to control the errors. This means that, even if the application doesn't have a `ErrorHandler` it is going to use the one setup by default in `Angular`. This can be tested by trying to find a page not existing in any app, instantly `Angular` will print the error in the console.
 
 == Creating your custom ErrorHandler step by step
 
@@ -49,7 +49,7 @@ export class ErrorsHandler implements ErrorHandler {
         case 'HttpErrorResponse':
           console.error('HttpError:' + error.message);
           if (!navigator.onLine) {
-            console.error('Theres no internet connection');
+            console.error('There's no internet connection');
             // To do: control here in internet what you wanna do if user has no internet
           } else {
             console.error('Server Error:' + error.message);
@@ -156,7 +156,7 @@ As a final step, handling these errors is necessary. Theres different ways that 
 
 ==== Using `SnackBarService` and `NgZone` 
 
-If the https://material.angular.io/components/snack-bar/overview[SnackBar] is used directly, some errors can ocurr, this is due to `SnackBar` being out of the `Angular` zone. In order to use this service properly, https://angular.io/api/core/NgZone[NgZone] is necessary. The method `run()` from `NgZone` will allow the service to be inside the `Angular Zone`. An example on how to use it: 
+If the https://material.angular.io/components/snack-bar/overview[SnackBar] is used directly, some errors can occur, this is due to `SnackBar` being out of the `Angular` zone. In order to use this service properly, https://angular.io/api/core/NgZone[NgZone] is necessary. The method `run()` from `NgZone` will allow the service to be inside the `Angular Zone`. An example on how to use it: 
 
 [source, TypeScript]
 ----

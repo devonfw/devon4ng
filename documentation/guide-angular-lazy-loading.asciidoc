@@ -18,7 +18,7 @@ toc::[]
 = Angular Lazy loading
 
 When the development of an application starts, it just contains a small set of features so the app usually loads fast. However, as new features are added, the overall application size grows up  and its loading speed decreases, is in this context where Lazy loading finds its place.
-Lazy loading is a dessign pattern that defers initialization of objects until it is needed so, for example, Users that just access to a website's home page do not need to have other areas loaded.
+Lazy loading is a design pattern that defers initialization of objects until it is needed so, for example, Users that just access to a website's home page do not need to have other areas loaded.
 Angular handles lazy loading through the routing module which redirect to requested pages. Those pages can be loaded at start or on demand. 
 
 == An example with Angular
@@ -205,14 +205,14 @@ const routes: Routes = [
 export class AppRoutingModule {}
 ----
 
-Notice that instead of loading a component, you dynamically import it in a _loadChildren_ attribute because modules acts as gates to access components "inside" them. Updating the app to load lazily has four consecuences:
+Notice that instead of loading a component, you dynamically import it in a _loadChildren_ attribute because modules acts as gates to access components "inside" them. Updating the app to load lazily has four consequences:
 
 1. No component attribute.
 2. No import of FirstComponent.
 3. FirstModule import has to be removed from the imports array at app.module.ts.
 4. Change of context.
 
-If we check *first-routing.module.ts* again, the can see that the path for ContentLeft and ContentRight is set to 'first/second-left' and 'first/second-right' respectively, so writing 'http//localhost:4200/first/second-left' will redirect us to ContentLeft. However, after loading a module with loadChildren setting the path to '_second-left_' and '_second-right_' is enough because it adquires the context set by AppRoutingModule.
+If we check *first-routing.module.ts* again, the can see that the path for ContentLeft and ContentRight is set to 'first/second-left' and 'first/second-right' respectively, so writing 'http//localhost:4200/first/second-left' will redirect us to ContentLeft. However, after loading a module with loadChildren setting the path to '_second-left_' and '_second-right_' is enough because it acquires the context set by AppRoutingModule.
 
 .File first-routing.module.ts
 [source, ts]

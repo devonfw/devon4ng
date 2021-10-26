@@ -28,7 +28,7 @@ Components - are the building blocks of our application. Their main role is to e
 
 Components stay at the forefront of the application. They should also be reusable (as much as possible). Reusability is key for what we are trying to achieve - a stable, maintainable frontend where multiple people can contribute and collaborate. 
 
-In our project, we are at the beginning. That means we may have more ideas than plans. We are exploring possibilites. In order to code eficiently: +
+In our project, we are at the beginning. That means we may have more ideas than plans. We are exploring possibilities. In order to code efficiently: +
 1) We will not store mock data in the components. +
 2) We will not fetch or save data directly in the components.  
 
@@ -46,7 +46,7 @@ image::images/architecture.png["Service Architecture", width=600 link="images/ar
 
 Inside the Angular App, an Injector gives access to each component to their required services. It's good coding practice to use a distinct service to each data type you want to manipulate. The type is described in a interface. 
 
-Still, our ideas drive in diferent ways, so we have to stay flexible. We cannot use a database at the moment, but we want a way to represent data on screen, which can grow organically. 
+Still, our ideas drive in different ways, so we have to stay flexible. We cannot use a database at the moment, but we want a way to represent data on screen, which can grow organically. 
 
 https://github.com/devonfw/devon4ng/wiki/services-layer[Learn more about Angular Services]
 
@@ -56,7 +56,7 @@ https://github.com/devonfw/devon4ng/wiki/services-layer[Learn more about Angular
 .Data box in relation to services and components.
 image::images/data-box.jpg["Data Box", width=600 link="images/data-box.jpg"]
 
-Let's consider a 'box of data' represented in JSON. Phisicly this means a folder with some JSON/TS files in it. They are located in the *app/mock* folder. The example uses only one mock data file. The file is typed according to our data model. 
+Let's consider a 'box of data' represented in JSON. Physically, this means a folder with some JSON/TS files in it. They are located in the *app/mock* folder. The example uses only one mock data file. The file is typed according to our data model. 
 
 Pro tip: separate your files based on purpose. In your source code, put the *mock files* in the *mock folder*, *components* in the *components folder*, *services* in the *services folder* and *data models* in the *models folder*. 
 
@@ -64,16 +64,16 @@ Pro tip: separate your files based on purpose. In your source code, put the *moc
 .Project structure.
 image::images/project-structure.png["Project Structure", width=auto, link="images/data-box.png"]
 
-Aligned with the Angular way of development, we are implementing a model-view-controler pattern. 
+Aligned with the Angular way of development, we are implementing a model-view-controller pattern. 
 
-The *model* is represented by the interfaces we make. These interfaces describe the data structures we will use in our application. In this example, there is one data model, coresponding with the 'type' of data that was mocked. In the models folder you will find the .ts script file that describes chemical elements. The corresponding mock file defines a set is chemical emlements objects, in accordance to our interface definition. 
+The *model* is represented by the interfaces we make. These interfaces describe the data structures we will use in our application. In this example, there is one data model, corresponding with the 'type' of data that was mocked. In the models folder you will find the .ts script file that describes chemical elements. The corresponding mock file defines a set is chemical elements objects, in accordance to our interface definition. 
 
 == Use case
 Enough with the theory, let's see what we have here. The app presents 3 pages as follows:
 
-* A leader bord with the top 3 elements
+* A leader board with the top 3 elements
 * A data table with all the elements
-* A details page that reads a route paramenter and displays the details of the element. 
+* A details page that reads a route parameter and displays the details of the element. 
 
 There are a lot of business cases which have these requirements: 
 

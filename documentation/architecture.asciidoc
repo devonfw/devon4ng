@@ -30,7 +30,7 @@ It extends those where additional guidance is needed to define an architecture w
 
 When using Angular the web client architecture is driven by the framework in a certain way Google and the Angular community think about web client architecture.
 Angular gives an opinion on how to look at architecture.
-It is component based like devon4j but uses different terms which are common language in web application development.
+It is a component based like devon4j but uses different terms which are common language in web application development.
 The important term is _module_ which is used instead of _component_. The primary reason is the naming collision with the _Web Components_ standard (see https://www.w3.org/standards/techs/components[Web Components]). +
 To clarify this:
 

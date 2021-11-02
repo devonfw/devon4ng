@@ -11,9 +11,7 @@ matrix:
     output: en-devonfw.dic
   pipeline:
   - pyspelling.filters.context:      
-      escapes: \\[\\[a-z]+((\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?~]
-  - pyspelling.filters.context:      
-      escapes: \\[\\(?:[A-Z])(?:[a-z])+(?:[A-Z])(?:[a-z])+]
+      escapes: \\[\\(?:[A-Z][a-z]*)+]
   - pyspelling.filters.context:
       context_visible_first: true
       escapes: \\[\\-~]
@@ -23,4 +21,4 @@ matrix:
       # content
       # ----
       - open: '(?s)^(?P<open> *-{4,})$'
-        close: '^(?P=open)$'      
+        close: '^(?P=open)$'

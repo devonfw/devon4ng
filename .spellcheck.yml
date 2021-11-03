@@ -1,27 +1,25 @@
---- 
-matrix: 
-  - 
-    aspell: 
-      d: en_US
-      lang: en
-    dictionary: 
-      output: en-devonfw.dic
-      wordlists: 
-        - en-devonfw.dict
-    name: "asciidoc source py spell check configuration"
-    pipeline: 
-      - 
-        pyspelling.filters.url: ~
-      - 
-        escapes: "\\\\[\\\\[a-z]+((\\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?~]"
-        pyspelling.filters.context: ~
-      - 
-        context_visible_first: true
-        delimiters: 
-          - 
-            close: ^(?P=open)$
-            open: "(?s)^(?P<open> *-{4,})$"
-        escapes: "\\\\[\\\\-~]"
-        pyspelling.filters.context: ~
-    sources: 
-      - documentation/*.asciidoc
+matrix:
+- name: asciidoc source py spell check configuration
+  aspell:
+    lang: en
+    d: en_US
+  sources:
+  - documentation/*.asciidoc 
+  dictionary:
+    wordlists:
+    - en-devonfw.dict
+    output: en-devonfw.dic
+  pipeline:
+  - pyspelling.filters.url:
+  - pyspelling.filters.context:      
+      escapes: \\[\\[a-z]+((\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?~]
+  - pyspelling.filters.context:
+      context_visible_first: true
+      escapes: \\[\\-~]
+      delimiters:
+      # Ignore multiline content between fences (fences can have 4 or more hyphens)
+      # ----
+      # content
+      # ----
+      - open: '(?s)^(?P<open> *-{4,})$'
+        close: '^(?P=open)$'

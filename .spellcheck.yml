@@ -12,8 +12,6 @@ matrix:
   pipeline:
   - pyspelling.filters.context:      
       escapes: \\[\\(?:[A-Z][a-z]*)+]
-  - pyspelling.filters.context:      
-      escapes: "^(.+)\/([^\/]+)$"
   - pyspelling.filters.context:
       context_visible_first: true
       escapes: \\[\\-~]

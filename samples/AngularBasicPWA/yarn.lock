@@ -133,6 +133,11 @@
   resolved "https://registry.yarnpkg.com/@angular-eslint/bundled-angular-compiler/-/bundled-angular-compiler-12.6.0.tgz#cd0a38e96896afd7708d00808e060a26721515e4"
   integrity sha512-T3gNjwuNX+1ZtdjYujOeFe5MQ+BBMJzWbQWnUDrEyGHIStrZFrUZ41gdCCflXmeo8KCe/iigqKI6P83umnP1EQ==
 
+"@angular-eslint/bundled-angular-compiler@12.6.1":
+  version "12.6.1"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/bundled-angular-compiler/-/bundled-angular-compiler-12.6.1.tgz#9fcb606f74fb8e287e628309263f3968c6ff849e"
+  integrity sha512-m5upUwjiegTe/iPEn02ZYg/I0pKWRJkpgvQm4Odp2Bm173orpEihzCTursUxwEi1WPNlcyduh1bgjNKAPCOtkQ==
+
 "@angular-eslint/eslint-plugin-template@12.6.0":
   version "12.6.0"
   resolved "https://registry.yarnpkg.com/@angular-eslint/eslint-plugin-template/-/eslint-plugin-template-12.6.0.tgz#8367fc9d33edb3249b85f501f0c4391b2f15fd9d"
@@ -149,6 +154,14 @@
   integrity sha512-I/dpEkH62NL55KLAQX1+GkTVhupDLCa7c6iFrMSrcTxOuLk8721HqcCuOfwoGL1jcn/kuyv0xkcmVkuTPKksOg==
   dependencies:
     "@angular-eslint/utils" "12.6.0"
+    "@typescript-eslint/experimental-utils" "4.28.2"
+
+"@angular-eslint/eslint-plugin@12.6.1":
+  version "12.6.1"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/eslint-plugin/-/eslint-plugin-12.6.1.tgz#2eaf2767ccd493e0802ea397f7fc9e2e65eac508"
+  integrity sha512-zchuiGeaeWYEc4q3XhHcX6Q5y4MOjtt3cZY2UxOaCTaYYp9yTh6k2MuE9hj0BO6qAcQyCrLlBiHhuYCpjAPO4Q==
+  dependencies:
+    "@angular-eslint/utils" "12.6.1"
     "@typescript-eslint/experimental-utils" "4.28.2"
 
 "@angular-eslint/schematics@12.6.0":
@@ -176,6 +189,14 @@
   integrity sha512-YBOWMHXKVnu1U/r3D82Tx56Ee2fT0gQ05vBv3e/YVNiXvPzmdgw8/yb0RHFfNYkXb8Kp1yLNtkkEXSegsA3zKw==
   dependencies:
     "@angular-eslint/bundled-angular-compiler" "12.6.0"
+    "@typescript-eslint/experimental-utils" "4.28.2"
+
+"@angular-eslint/utils@12.6.1":
+  version "12.6.1"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/utils/-/utils-12.6.1.tgz#f183261c1559a3ca89d602670a712fba9b88c610"
+  integrity sha512-v+Vl9y0hUCDRA8hFgYov3IORfD/e1AoEEL0rhznwH7hfXwbQhwDrjSZHeQ+BMh27rEz5e8LXxJGiicF3Sq8uJw==
+  dependencies:
+    "@angular-eslint/bundled-angular-compiler" "12.6.1"
     "@typescript-eslint/experimental-utils" "4.28.2"
 
 "@angular/animations@~12.0.3":
@@ -264,10 +285,10 @@
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-12.0.5.tgz#cf54656a3dec81c826e823cc1b00e141ccbedc8b"
   integrity sha512-mhb21Ixdky3KOAQ9eps16tzP5hm/uKwCToLM244Llgozem1zHdfc2LPePAwWt/9fSl642xX2JKWjjKFgC4bgNw==
 
-"@angular/localize@^12.0.3":
-  version "12.1.3"
-  resolved "https://registry.yarnpkg.com/@angular/localize/-/localize-12.1.3.tgz#fdb5aec1cc9c3198c3bd44c9f57660187b55b223"
-  integrity sha512-1G3tZL+GKYiIS7441LjFoBLj4vebxXv+EqMzvU57uBFsOLpouSRZokOjl7+ebkD3l0wc2rNYBRw/Z1D//9XMDA==
+"@angular/localize@^12.2.12":
+  version "12.2.12"
+  resolved "https://registry.yarnpkg.com/@angular/localize/-/localize-12.2.12.tgz#66367caa6899a044332d6949199d7a27d2586677"
+  integrity sha512-F1h2LI5DVrpLUYlncJ5Bhd21CS8S5gXUGeHVJXo0uED/y2HcsK/WiolCw0nvQOqRnMpdJzQIGpIcuh/WG+4Mkw==
   dependencies:
     "@babel/core" "7.8.3"
     glob "7.1.7"

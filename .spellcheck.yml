@@ -10,8 +10,7 @@ matrix:
     - en-devonfw.dict
     output: en-devonfw.dic
   pipeline:
-  - pyspelling.filters.context:      
-      escapes: \\[\\(?:[A-Z][a-z]*)+]
+  - pyspelling.filters.url:
   - pyspelling.filters.context:
       context_visible_first: true
       escapes: \\[\\-~]
@@ -22,3 +21,4 @@ matrix:
       # ----
       - open: '(?s)^(?P<open> *-{4,})$'
         close: '^(?P=open)$'
+        

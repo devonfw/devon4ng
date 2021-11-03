@@ -1,0 +1,72 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/samples/AngularBasicPWA"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "npm"
+    directory: "/samples/AngularElements"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "npm"
+    directory: "/samples/AngularElementsTest"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "npm"
+    directory: "/samples/AngularLazyLoading"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "npm"
+    directory: "/samples/AngularMaterialBasicLayout"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "npm"
+    directory: "/samples/AngularMaterialTheming"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "npm"
+    directory: "/samples/AngularMockService"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "npm"
+    directory: "/samples/AppInitializer"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "npm"
+    directory: "/samples/CypressTest"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "npm"
+    directory: "/samples/ElectronTest"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "npm"
+    directory: "/samples/ErrorHandler"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "npm"
+    directory: "/samples/IonicBasicPWA"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "npm"
+    directory: "/samples/MyLibrary"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "npm"
+    directory: "/samples/MyLibraryTest"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 5

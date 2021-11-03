@@ -11,10 +11,13 @@ matrix:
     output: en-devonfw.dic
   pipeline:
   - pyspelling.filters.url:
+  # Regex for lower camel case
   - pyspelling.filters.context:      
       escapes: \\[\\[a-z]+((\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?~]
+  # Regex for directory path
   - pyspelling.filters.context:      
       escapes: '^(.+)\/([^\/]+)$'
+  # Regex for upper camel case
   - pyspelling.filters.context:      
       escapes: '([A-Z][a-z0-9]+)((\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?'
   - pyspelling.filters.context:

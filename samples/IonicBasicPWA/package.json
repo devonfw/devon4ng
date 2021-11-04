@@ -39,7 +39,7 @@
     "@angular-devkit/architect": "~0.1300.1",
     "@angular-devkit/build-angular": "~12.1.0",
     "@angular-devkit/core": "~12.1.0",
-    "@angular-devkit/schematics": "~12.1.0",
+    "@angular-devkit/schematics": "~13.0.1",
     "@angular-eslint/builder": "1.2.0",
     "@angular-eslint/eslint-plugin": "1.2.0",
     "@angular-eslint/eslint-plugin-template": "1.2.0",

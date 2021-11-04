@@ -35,7 +35,7 @@
     "@angular/cli": "~12.1.0",
     "@angular/compiler-cli": "~12.1.0",
     "@angular/language-service": "~12.1.0",
-    "@types/node": "^12.11.1",
+    "@types/node": "^16.11.6",
     "@typescript-eslint/eslint-plugin": "4.3.0",
     "@typescript-eslint/parser": "4.3.0",
     "codelyzer": "^6.0.0",

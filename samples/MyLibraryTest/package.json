@@ -18,7 +18,7 @@
     "@angular/forms": "~12.1.0",
     "@angular/localize": "12.1.0",
     "@angular/platform-browser": "~12.1.0",
-    "@angular/platform-browser-dynamic": "~12.1.0",
+    "@angular/platform-browser-dynamic": "~13.0.0",
     "@angular/router": "~12.1.0",
     "core-js": "^2.5.4",
     "my-library": "./my-library-v0.0.6.tgz",

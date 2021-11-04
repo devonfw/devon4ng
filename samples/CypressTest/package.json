@@ -42,7 +42,7 @@
     "cypress": "^6.4.0",
     "eslint": "^7.6.0",
     "eslint-plugin-import": "2.25.2",
-    "eslint-plugin-jsdoc": "30.7.6",
+    "eslint-plugin-jsdoc": "37.0.3",
     "eslint-plugin-prefer-arrow": "1.2.2",
     "mochawesome": "^6.1.1",
     "mochawesome-merge": "^4.1.0",

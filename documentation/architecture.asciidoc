@@ -77,4 +77,4 @@ The _core_ module holds services shared across modules.
 So _core_ module is a module only having a services layer
 and _shared_ module is a module only having a components layer.
 
-This is testFor SpellCheck. Directory path can be C:\\Sample\\sample1.txt or C:/sample/sample1.txt
+This isas testFor SpellCheck. Directory path can be C:\\Sample\\sample1.txt or C:/sample/sample1.txt

@@ -13,13 +13,13 @@ matrix:
   - pyspelling.filters.url:
   # Regex for lower camel case
   - pyspelling.filters.context:      
-      escapes: \\[\\[a-z]+((\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?~]
+      escapes: '\b([a-z]+)([A-Z][a-z0-9])+[A-Za-z0-9]*\b'
   # Regex for directory path
   - pyspelling.filters.context:      
-      escapes: '^(.+)\/([^\/]+)$'
+      escapes: '^.*[\/\\][^\/\\]+$'
   # Regex for upper camel case
   - pyspelling.filters.context:      
-      escapes: '([A-Z][a-z0-9]+)((\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?'
+      escapes: '\b([A-Z]+)([a-z0-9]+[A-Z])+[a-z0-9]*\b'
   - pyspelling.filters.context:
       context_visible_first: true
       escapes: \\[\\-~]

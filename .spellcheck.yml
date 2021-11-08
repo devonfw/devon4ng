@@ -12,7 +12,7 @@ matrix:
   pipeline:
   - pyspelling.filters.context:
       context_visible_first: true    
-      escapes: \\[\\([A-Z]+)([a-z0-9]+[A-Z])+[a-z0-9]*]
+      escapes: '\b([A-Z]+)([a-z0-9]+[A-Z])+[a-z0-9]*\b'
   - pyspelling.filters.context:
       context_visible_first: true    
       escapes: \\[\\([a-z]+)([A-Z][a-z0-9])+[A-Za-z0-9]*]

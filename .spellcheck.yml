@@ -14,8 +14,8 @@ matrix:
       context_visible_first: true    
       escapes: '^.*[\/\\][^\/\\]+$'
   - pyspelling.filters.context:
-      context_visible_first: false    
-      escapes: '([A-Z]+)([a-z0-9]+[A-Z])+[a-z0-9]*'
+      context_visible_first: true    
+      escapes: '\b([A-Z]+)([a-z0-9]+[A-Z])+[a-z0-9]*\b'
   - pyspelling.filters.context:
       context_visible_first: true
       escapes: \\[\\-~]

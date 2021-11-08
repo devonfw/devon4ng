@@ -11,7 +11,8 @@ matrix:
     output:  en-devonfw.dic
   pipeline:
   - pyspelling.filters.url:
-  - pyspelling.filters.context:      
+  - pyspelling.filters.context: 
+      context_visible_first: true
       escapes: '^.*[\/\\][^\/\\]+$'
   - pyspelling.filters.context:
       context_visible_first: true

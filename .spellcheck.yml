@@ -15,10 +15,10 @@ matrix:
       escapes: '^.*[\/\\][^\/\\]+$'
   - pyspelling.filters.context:
       context_visible_first: true    
-      escapes: '\b([A-Z]+)([a-z0-9]+[A-Z])+([a-z0-9]*)+[A-Za-z0-9]\b'
+      escapes: \\[\b([A-Z]+)([a-z0-9]+[A-Z])+([a-z0-9]*)+[A-Za-z0-9]\b]
   - pyspelling.filters.context:
       context_visible_first: true
-      escapes: \\[\\-~]'
+      escapes: \\[\\-~]
       delimiters:
       # Ignore multiline content between fences (fences can have 4 or more hyphens)
       # ----

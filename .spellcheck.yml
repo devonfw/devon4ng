@@ -10,6 +10,9 @@ matrix:
     - en-devonfw.dict
     output: en-devonfw.dic
   pipeline:
+  # Regex for directory path
+  - pyspelling.filters.context:      
+      escapes: '^.*[\/\\][^\/\\]+$'
   - pyspelling.filters.context:
       context_visible_first: true
       escapes: \\[\\-~]

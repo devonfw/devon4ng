@@ -10,8 +10,8 @@ matrix:
     - en-devonfw.dict
     output: en-devonfw.dic
   pipeline:
-  - pyspelling.filters.context:      
-      escapes: "\b([A-Z]+)([a-z0-9]+[A-Z])+[a-z0-9]*\b"
+  - pyspelling.filters.text:      
+      escapes: '\b([A-Z]+)([a-z0-9]+[A-Z])+[a-z0-9]*\b'
   - pyspelling.filters.context:
       context_visible_first: true
       escapes: \\[\\-~]'

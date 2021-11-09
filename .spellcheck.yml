@@ -11,5 +11,8 @@ matrix:
     output:  en-devonfw.dic
   pipeline:
   - pyspelling.filters.url:
-  - pyspelling.filters.context: 
-      escapes: 'getSelectors'     
+  - pyspelling.filters.context_filter:
+      context_visible_first: true
+      delimiters:
+      - open: '\b[A-Z][a-z0-9]+[A-Z]'
+        close: '[a-z0-9]*\b'

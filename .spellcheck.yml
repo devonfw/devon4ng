@@ -12,5 +12,4 @@ matrix:
   pipeline:
   - pyspelling.filters.url:
   - pyspelling.filters.context: 
-      context_visible_first: true
       escapes: 'getSelectors'     

@@ -13,16 +13,4 @@ matrix:
   - pyspelling.filters.url:
   - pyspelling.filters.context: 
       context_visible_first: true
-      escapes: '\b([A-Z]+)([a-z0-9]+[A-Z])+[a-z0-9]*\b'
-  - pyspelling.filters.context:
-      context_visible_first: true
-      escapes: \\[\\-~]
-      delimiters:
-      # Ignore multiline content between fences (fences can have 4 or more hyphens)
-      # ----
-      # content
-      # ----
-      - open: '(?s)^(?P<open> *-{4,})$'
-        close: '^(?P=open)$'
-
-        
+      escapes: '\b([A-Z]+)([a-z0-9]+[A-Z])+[a-z0-9]*\b'      

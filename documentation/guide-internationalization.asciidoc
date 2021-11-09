@@ -23,7 +23,7 @@ More info at link:https://angular.io/guide/i18n[Angular i18n official documentat
 
 == devon4ng i18n approach
 
-The official approach could be a bit complicated, therefore the recommended one is to use the recommended library **Transloco** from https://netbasal.gitbook.io/transloco/.
+The official approach could be a bit complicated, therefore the recommended one is to use the recommended library **Transloco** from https://github.com/ngneat/transloco/.
 
 === Install and configure Transloco
 

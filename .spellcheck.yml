@@ -11,7 +11,7 @@ matrix:
     output:  en-devonfw.dic
   pipeline:
   - pyspelling.filters.url:
-  - pyspelling.filters.context_filter:
+  - pyspelling.filters.context:
       context_visible_first: true
       delimiters:
       - open: '\b[A-Z][a-z0-9]+[A-Z]'

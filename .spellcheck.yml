@@ -21,6 +21,16 @@ matrix:
         close: '[a-z0-9]*\b'
   - pyspelling.filters.context:
       context_visible_first: true
+      delimiters:
+      - open: '\b[a-z]+[A-Z]'
+        close: '[a-z0-9]*\b'
+  - pyspelling.filters.context:
+      context_visible_first: true
+      delimiters:
+      - open: '\b[A-Z][a-z0-9]+[A-Z]'
+        close: '[a-z0-9]*\b'
+  - pyspelling.filters.context:
+      context_visible_first: true
       escapes: \\[\\-~]
       delimiters:
       # Ignore multiline content between fences (fences can have 4 or more hyphens)

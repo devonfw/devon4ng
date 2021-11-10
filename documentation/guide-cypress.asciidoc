@@ -103,7 +103,7 @@ Let's setup the base url so when we run the tests cypress will "navigate" to the
 
 `fixtures` to store our mock data or files (img, mp3...) to use on our tests.
 
-`integration` is where our tests go, by default it comes with an examples folder with tests samples.
+`integration` is where our tests go, by default it comes with an examples folder with tested samples.
 
 `plugins` is where the configuration files of the plugins go.
 

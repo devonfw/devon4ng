@@ -154,7 +154,7 @@ Or you can go back to
 
 In order to manage dependencies we recommend using package managers in your projects.
 
-A big reason is their usability. Adding or removing a package is really easy, and by doing so, packet manager update the package.json and copies (or removes) the package in the needed location, with a single comand.
+A big reason is their usability. Adding or removing a package is really easy, and by doing so, packet manager update the package.json and copies (or removes) the package in the needed location, with a single command.
 
 Another reason, closely related to the first one, is reducing human error by automating the package management process.
 
@@ -177,7 +177,7 @@ $ npm install @angular/material @angular/cdk
 
 This command tells npm to look for the packages @angular/material and @angular/cdk in the npm registry, download and decompress them in the folder node_modules along with their own dependencies. Additionally, npm will update package.json and create a new file called package-lock.json.
 
-After initializating and installing the first package there will be a new folder called node_modules in your project. This folder is where your packages are unzipped and stored, following a tree scheme.
+After initializing and installing the first package there will be a new folder called node_modules in your project. This folder is where your packages are unzipped and stored, following a tree scheme.
 
 Take in consideration both npm and yarn need a package.json in the root of your project in order to work properly. If after creating your project don't have it, download again the package.json from the repository or you'll have to start again.
 
@@ -333,7 +333,7 @@ Yarn.lock follows the same structure as package-lock.json, you can find an examp
 
 
 [WARNING]
-As with package-lock.json, it's strongly *not* adviced to modify this file. Leave its management to yarn
+As with package-lock.json, it's strongly *not* advised to modify this file. Leave its management to yarn
 
 You can learn more about yarn.lock here: https://yarnpkg.com/en/docs/yarn-lock[yarn.lock]
 

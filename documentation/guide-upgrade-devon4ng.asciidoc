@@ -33,7 +33,7 @@ $ ng update @angular/cli @angular/core
 
 === Upgrade to new Angular version
 
-The process will be the same, but first we need to make sure that our devon4ng application is in the lates version of Angular 8, so the `ng update` command can perform the upgrade not only in the dependencies but also making code changes to reflect the new features and fixes.
+The process will be the same, but first we need to make sure that our devon4ng application is in the latest version of Angular 8, so the `ng update` command can perform the upgrade not only in the dependencies but also making code changes to reflect the new features and fixes.
 
 - First, upgrade to latest Angular 9 version:
 

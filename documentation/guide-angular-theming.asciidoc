@@ -24,7 +24,7 @@ Angular Material library offers UI components for developers, those components f
 
 In Angular Material, a theme is created mixing multiple colors. Colors and its light and dark variants conform a *palette*. In general, a theme consists of the following palettes:
 
-* *primary*: Most used across screens and componets. 
+* *primary*: Most used across screens and components. 
 * *accent*: Floating action button and interactive elements.
 * *warn*: Error state.
 * *foreground*: Text and icons.
@@ -227,7 +227,7 @@ Sometimes it is needed to custom different elementsw from background and foregro
 }
 ----
 
-As we can se, _mat-light-theme_ takes three arguments and returs a map including them as primary, accent and warn color; but there are three more keys in that map: is-dark, foreground and background.
+As we can se, _mat-light-theme_ takes three arguments and returns a map including them as primary, accent and warn color; but there are three more keys in that map: is-dark, foreground and background.
 
 * *is-dark*: Boolean true if it is a dark theme, false otherwise.
 
@@ -350,9 +350,9 @@ export class AppModule {
 
 == Useful resources
 
-* https://material.angular.io/guide/theming[Angular Material's oficial theming guide]
+* https://material.angular.io/guide/theming[Angular Material's official theming guide]
 
-* https://material.io/design/color/#color-theme-creation[Material Desing: Color theme creation]
+* https://material.io/design/color/#color-theme-creation[Material Design: Color theme creation]
 
 * http://mcg.mbitson.com[Palette generator]
 

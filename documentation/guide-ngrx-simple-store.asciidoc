@@ -265,12 +265,12 @@ First we specify the type, followed by a call to the payload definition function
 
 [TIP]
 =====
-Action types should follow the naming convention `[Source] Event`, e.g. `[Recommended List] Hide Recommendation` or `[Auth API] Login Success`. Think of actions rather as events than commands. You should never use the same action at two different places (you can still handle multiple actions the same way). This faciliates tracing the source of an action. For details see https://www.youtube.com/watch?v=JmnsEvoy-gY[Good Action Hygiene with NgRx] by Mike Ryan (video).
+Action types should follow the naming convention `[Source] Event`, e.g. `[Recommended List] Hide Recommendation` or `[Auth API] Login Success`. Think of actions rather as events than commands. You should never use the same action at two different places (you can still handle multiple actions the same way). This facilitates tracing the source of an action. For details see https://www.youtube.com/watch?v=JmnsEvoy-gY[Good Action Hygiene with NgRx] by Mike Ryan (video).
 =====
 
 ==== Dispatch
 
-We skip the implementation of an actual video playback page and simulate wathcing a movie in 10 minute segments by adding a link in the template:
+We skip the implementation of an actual video playback page and simulate watching a movie in 10 minute segments by adding a link in the template:
 
 *watchlist-component.html*
 [source,typescript]
@@ -329,7 +329,7 @@ Note how we changed the reducer's function signature to reference the actions un
 Selectors rely on object identity to decide whether the value has to be recalculated. Do not clone objects that are not on the path to the change you want to make. This is why `updatePlaybackMinutesMapper` returns the same item if the movie id does not match.
 =====
 
-==== Alternative state mapping with immer
+==== Alternative state mapping with inner
 It can be hard to think in immutable changes, especially if your team has a strong background in imperative programming. In this case, you may find the https://github.com/immerjs/immer[immer] library convenient, which allows to produce immutable objects by manipulating a proxied draft. The same reducer can then be written as:
 
 *watchlist-data.reducer.ts* with immer

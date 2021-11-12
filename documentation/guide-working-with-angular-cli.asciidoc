@@ -44,7 +44,7 @@ npm command
 npm install -g @angular/cli
 ```
 
-You can check a successful installtion with `ng --version`.
+You can check a successful installation with `ng --version`.
 This should print out the version installed.
 
 .Printing Angular CLI Version

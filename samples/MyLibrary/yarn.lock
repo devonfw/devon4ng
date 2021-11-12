@@ -155,32 +155,17 @@
   resolved "https://registry.yarnpkg.com/@angular-eslint/bundled-angular-compiler/-/bundled-angular-compiler-12.6.1.tgz#9fcb606f74fb8e287e628309263f3968c6ff849e"
   integrity sha512-m5upUwjiegTe/iPEn02ZYg/I0pKWRJkpgvQm4Odp2Bm173orpEihzCTursUxwEi1WPNlcyduh1bgjNKAPCOtkQ==
 
-"@angular-eslint/eslint-plugin-template@12.2.0":
-  version "12.2.0"
-  resolved "https://registry.yarnpkg.com/@angular-eslint/eslint-plugin-template/-/eslint-plugin-template-12.2.0.tgz#8ec6af0d4becb0516954e8c991203f77c2d5e1e5"
-  integrity sha512-DLZiv6x2ZF0OJ3a3KR/APQkhA3HZqebdVCJd29EzdF3qnZGQybNV5GfFONf67vDkm/wA/UaF8rO4Rc8WQv2PHQ==
+"@angular-eslint/eslint-plugin-template@12.6.1", "@angular-eslint/eslint-plugin-template@^12.0.0":
+  version "12.6.1"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/eslint-plugin-template/-/eslint-plugin-template-12.6.1.tgz#69bbf5a6fe0f97db3246422713eee0224ae09e6e"
+  integrity sha512-sJ6r1VKhUavQ1lTH53YdGF0bX17UywU8L2I+Oy5tl4diQ50RkIr8kwmilGC483/RuTCSwcE6mYS09a65HsPwyw==
   dependencies:
-    "@typescript-eslint/experimental-utils" "4.23.0"
-    aria-query "^4.2.2"
-    axobject-query "^2.2.0"
-
-"@angular-eslint/eslint-plugin-template@^12.0.0":
-  version "12.3.1"
-  resolved "https://registry.yarnpkg.com/@angular-eslint/eslint-plugin-template/-/eslint-plugin-template-12.3.1.tgz#33260cd5356df5db7e27719443eabcf6c214e32e"
-  integrity sha512-pz+nO64ma/9Sp2aeRnQ+Vktt7Fo1Lay/J+CG//3TIc3lYsoCTj4h42P6yCcxxJ9b4N7SUxMAnchA8eE5mJS4Ug==
-  dependencies:
+    "@angular-eslint/bundled-angular-compiler" "12.6.1"
     "@typescript-eslint/experimental-utils" "4.28.2"
     aria-query "^4.2.2"
     axobject-query "^2.2.0"
 
-"@angular-eslint/eslint-plugin@12.2.0":
-  version "12.2.0"
-  resolved "https://registry.yarnpkg.com/@angular-eslint/eslint-plugin/-/eslint-plugin-12.2.0.tgz#b8874f40f711a7388068a68ee8c23872f14f5d96"
-  integrity sha512-VKeRAql5AzhMrFFP865FjwkheUSsSGKpdTCa8jYZXZkmsXQnqta+omexBqvKT3CSYAEjSN3FLpQyqSXWWZysWg==
-  dependencies:
-    "@typescript-eslint/experimental-utils" "4.23.0"
-
-"@angular-eslint/eslint-plugin@^12.6.1":
+"@angular-eslint/eslint-plugin@12.6.1", "@angular-eslint/eslint-plugin@^12.6.1":
   version "12.6.1"
   resolved "https://registry.yarnpkg.com/@angular-eslint/eslint-plugin/-/eslint-plugin-12.6.1.tgz#2eaf2767ccd493e0802ea397f7fc9e2e65eac508"
   integrity sha512-zchuiGeaeWYEc4q3XhHcX6Q5y4MOjtt3cZY2UxOaCTaYYp9yTh6k2MuE9hj0BO6qAcQyCrLlBiHhuYCpjAPO4Q==
@@ -188,13 +173,13 @@
     "@angular-eslint/utils" "12.6.1"
     "@typescript-eslint/experimental-utils" "4.28.2"
 
-"@angular-eslint/schematics@12.2.0":
-  version "12.2.0"
-  resolved "https://registry.yarnpkg.com/@angular-eslint/schematics/-/schematics-12.2.0.tgz#c42ca2c5624e8ba947c2ebf3f90399ae0e39bc5b"
-  integrity sha512-HsUjfjvGzCv5zygwcxPP0zPp/qTCp4JZlA+8m59S1X5w+yy2zt/vQW/8bOFUtVJCFTa+KcxDt/fzU/qSZKpCGw==
+"@angular-eslint/schematics@12.6.1":
+  version "12.6.1"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/schematics/-/schematics-12.6.1.tgz#98a13d602e8363e1ac76918e66a77349cbcfa8db"
+  integrity sha512-PERmjyTNsp08w8ShKEfzcXRB8Ye4YWceFfR5WllgrMi+teOz9XmTSO62UixgqJSRCdn9ufSNMWmN3jwtGGf03w==
   dependencies:
-    "@angular-eslint/eslint-plugin" "12.2.0"
-    "@angular-eslint/eslint-plugin-template" "12.2.0"
+    "@angular-eslint/eslint-plugin" "12.6.1"
+    "@angular-eslint/eslint-plugin-template" "12.6.1"
     ignore "5.1.8"
     strip-json-comments "3.1.1"
     tmp "0.2.1"
@@ -1544,7 +1529,7 @@
   dependencies:
     "@types/jasmine" "*"
 
-"@types/json-schema@*", "@types/json-schema@^7.0.3", "@types/json-schema@^7.0.5", "@types/json-schema@^7.0.7", "@types/json-schema@^7.0.8":
+"@types/json-schema@*", "@types/json-schema@^7.0.5", "@types/json-schema@^7.0.7", "@types/json-schema@^7.0.8":
   version "7.0.8"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.8.tgz#edf1bf1dbf4e04413ca8e5b17b3b7d7d54b59818"
   integrity sha512-YSBPTLTVm2e2OoQIDYx8HaeWJ5tTToLH67kXR7zYNGupXMEHa2++G8k+DczX2cFVgalypqtyZIcU19AFcmOpmg==
@@ -1613,18 +1598,6 @@
     regexpp "^3.1.0"
     semver "^7.3.5"
     tsutils "^3.21.0"
-
-"@typescript-eslint/experimental-utils@4.23.0":
-  version "4.23.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/experimental-utils/-/experimental-utils-4.23.0.tgz#f2059434cd6e5672bfeab2fb03b7c0a20622266f"
-  integrity sha512-WAFNiTDnQfrF3Z2fQ05nmCgPsO5o790vOhmWKXbbYQTO9erE1/YsFot5/LnOUizLzU2eeuz6+U/81KV5/hFTGA==
-  dependencies:
-    "@types/json-schema" "^7.0.3"
-    "@typescript-eslint/scope-manager" "4.23.0"
-    "@typescript-eslint/types" "4.23.0"
-    "@typescript-eslint/typescript-estree" "4.23.0"
-    eslint-scope "^5.0.0"
-    eslint-utils "^2.0.0"
 
 "@typescript-eslint/experimental-utils@4.28.2":
   version "4.28.2"
@@ -3780,7 +3753,7 @@ eslint-plugin-prefer-arrow@1.2.2:
   resolved "https://registry.yarnpkg.com/eslint-plugin-prefer-arrow/-/eslint-plugin-prefer-arrow-1.2.2.tgz#0c6d25a6b94cb3e0110a23d129760af5860edb6e"
   integrity sha512-C8YMhL+r8RMeMdYAw/rQtE6xNdMulj+zGWud/qIGnlmomiPRaLDGLMeskZ3alN6uMBojmooRimtdrXebLN4svQ==
 
-eslint-scope@5.1.1, eslint-scope@^5.0.0, eslint-scope@^5.1.0, eslint-scope@^5.1.1:
+eslint-scope@5.1.1, eslint-scope@^5.1.0, eslint-scope@^5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-5.1.1.tgz#e786e59a66cb92b3f6c1fb0d508aab174848f48c"
   integrity sha512-2NxwbF/hZ0KpepYN0cNbo+FN6XoK7GaHlQhgx/hIZl6Va0bF45RQOOwhLIy8lQDbuCiadSLCBnH2CFYquit5bw==
@@ -3788,7 +3761,7 @@ eslint-scope@5.1.1, eslint-scope@^5.0.0, eslint-scope@^5.1.0, eslint-scope@^5.1.
     esrecurse "^4.3.0"
     estraverse "^4.1.1"
 
-eslint-utils@^2.0.0, eslint-utils@^2.1.0:
+eslint-utils@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/eslint-utils/-/eslint-utils-2.1.0.tgz#d2de5e03424e707dc10c74068ddedae708741b27"
   integrity sha512-w94dQYoauyvlDc43XnGB8lU3Zt713vNChgt4EWwhXAP2XkBvndfxF0AgIqKOOasjPIPzj9JqgwkwbCYD0/V3Zg==

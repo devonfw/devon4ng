@@ -46,7 +46,7 @@ This section provides a condensed explanation about the different layers a good 
 
 === Guides
 
-This section introduces concepts to help developes with the tooling and package managers.
+This section introduces concepts which helps in development along with the tooling and package managers.
 
 * link:guide-package-managers[Package Managers]
 * link:guide-npm-yarn-workflow[Package Managers Workflow]
@@ -54,7 +54,7 @@ This section introduces concepts to help developes with the tooling and package 
 
 === Angular
 
-This is the main section of the documentation, where the developer will find guidelines for accesibility, how to use the Angular toolchain, how to refactor components, create libraries and, in general, maintain Angular applications. But last and not least, developers will also find solutions to common problems many of the Angular projects may have. 
+This is the main section of the documentation, where the developer will find guidelines for accessibility, how to use the Angular toolchain, how to refactor components, create libraries and, in general, maintain Angular applications. But last and not least, developers will also find solutions to common problems many of the Angular projects may have. 
 
 NOTE: All the different topics are demonstrated in the `samples` folder with a small application. 
 
@@ -78,7 +78,7 @@ NOTE: All the different topics are demonstrated in the `samples` folder with a s
 
 === Ionic
 
-As part of the devon4ng stack, we include a small section to explain how to develop hybrid mobile Ionic/Angular applications and create PWAs with this UI library. As the pervious section, the contents are demonstrated in the `samples` folder. 
+As part of the devon4ng stack, we include a small section to explain how to develop hybrid mobile Ionic/Angular applications and create PWAs with this UI library. As the previous section, the contents are demonstrated in the `samples` folder. 
 
 * link:guide-ionic-getting-started[Ionic Getting started]
 * link:guide-ionic-from-code-to-android[Ionic to Android]

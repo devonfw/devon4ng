@@ -25,9 +25,9 @@ You may wonder why you should bother with state management. Usually data resides
 
 * the client has some kind of global state which should survive the destruction of a component, but does not warrant server side persistence, for example: volume level of media, expansion status of menus
 * sever side data should not be retrieved every time it is needed, either because multiple components consume it, or because it should be cached, e.g. the personal watchlist in an online streaming app
-* the app provides a rich experience with offline functionality, e.g. a native app built with link:guilde-ionic-getting-started[Ionic]
+* the app provides a rich experience with offline functionality, e.g. a native app built with link:guide-ionic-getting-started[Ionic]
 
-Saving global states inside the services they originates from results in a data flow that is hard to follow and state becoming inconsistent due to unordered state mutations. Following the _single source of truth_ principle, there should be a central location holding all your application's state, just like a server side database does. State managament libraries for Angular provide tools for storing, retrieving, and updating client-side state.
+Saving global states inside the services they originates from results in a data flow that is hard to follow and state becoming inconsistent due to unordered state mutations. Following the _single source of truth_ principle, there should be a central location holding all your application's state, just like a server side database does. State management libraries for Angular provide tools for storing, retrieving, and updating client-side state.
 
 == Why NgRx?
 

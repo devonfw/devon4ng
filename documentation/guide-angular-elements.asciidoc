@@ -37,7 +37,7 @@ In a generalized way, a simple `Angular component` could be transformed to an `A
 
 === Installing Angular Elements
 
-The first step is going to be install the library using our prefered packet manager:
+The first step is going to be install the library using our preferred packet manager:
 
 ===== NPM
 
@@ -55,7 +55,7 @@ yarn add @angular/elements
 
 === Preparing the components in the modules
 
-Inside the `app.module.ts`, in addition to the normal declaration of the components inside `declarations`, the modules inside `imports` and the services inside `providers`, the components need to added in `entryComponents`. If there are components that have their own module, the same logic is going to be applied for them, only adding in the `app.module.ts` the components that dont have their own module. Here is an example of this:
+Inside the `app.module.ts`, in addition to the normal declaration of the components inside `declarations`, the modules inside `imports` and the services inside `providers`, the components need to added in `entryComponents`. If there are components that have their own module, the same logic is going to be applied for them, only adding in the `app.module.ts` the components that don't have their own module. Here is an example of this:
 
 [source, typescript]
 ----
@@ -78,7 +78,7 @@ Inside the `app.module.ts`, in addition to the normal declaration of the compone
 ....
 ----
 
-After that is done, the constructor of the module is going to be modified to use injector and boostrap the application defining the components. This is going to allow the `Angular Element` to get the injections and to define a component tag that will be used later:
+After that is done, the constructor of the module is going to be modified to use injector and bootstrap the application defining the components. This is going to allow the `Angular Element` to get the injections and to define a component tag that will be used later:
 
 [source, typescript]
 ----
@@ -259,7 +259,7 @@ These files will be used later instead of the single js generated in the last st
 
 Here are some extra useful parameters that `ngx-build-plus` provides:
 
-  - `--keep-polyfills`: This paremeter is going to allow us to keep the polyfills. This needs to be used with caution, avoiding using multiple different polyfills that could cause an error is necessary.
+  - `--keep-polyfills`: This parameter is going to allow us to keep the polyfills. This needs to be used with caution, avoiding using multiple different polyfills that could cause an error is necessary.
   - `--extraWebpackConfig webpack.extra.js`: This parameter allows us to create a javascript file inside our `Angular Elements` project with the name of different libraries. Using `webpack` these libraries will not be included in the `Angular Element`. This is useful to lower the size of our `Angular Element` by removing libraries shared. Example:
 
 [source, javascript]
@@ -354,7 +354,7 @@ The `Angular Element` that got generated in the last step can be used in almost 
 </html>
 ----
 
-In this html, the css generated in the last step is going to be imported inside the `<head>` and then, the javascript element is going to be imported at the end of the body. After that is done, There is two uses of `Angular Elements` in the html, one directly whith use of the `@input()` variables as parameters commented in the html:
+In this html, the css generated in the last step is going to be imported inside the `<head>` and then, the javascript element is going to be imported at the end of the body. After that is done, There is two uses of `Angular Elements` in the html, one directly which use of the `@input()` variables as parameters commented in the html:
 
 [source, html]
 ----
@@ -451,7 +451,7 @@ By declaring the files in the `angular.json` angular will take care of including
 
 There are two ways that `Angular Element` can be used:
 
-===== Create component dynamicly
+===== Create component dynamically
 
 In order to add the component in a dynamic way, first adding a container is necessary:
 

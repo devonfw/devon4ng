@@ -188,4 +188,4 @@ export class ErrorsHandler implements ErrorHandler {
 }
 ----
 
-Using `Injector` the `MatSnackBar` is obtained, then the correct message is obtained inside the switch. Finally, using `NgZone` and `run()`, we open the `SnackBar` passing the message, and the paremeters wanted.
+Using `Injector` the `MatSnackBar` is obtained, then the correct message is obtained inside the switch. Finally, using `NgZone` and `run()`, we open the `SnackBar` passing the message, and the parameters wanted.

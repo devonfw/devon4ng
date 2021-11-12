@@ -23,9 +23,9 @@ This guide will show common tasks and best practices.
 
 == Defining Routes
 
-For each feature module and the app module all routes should be defined in a seperate module with the suffix `RoutingModule`.
+For each feature module and the app module all routes should be defined in a separate module with the suffix `RoutingModule`.
 This way the routing modules are the only place where routes are defined.
-This pattern achieves a clear seperation of concernes.
+This pattern achieves a clear separation of concerned.
 The following figure illustrates this.
 
 .Routing module declaration
@@ -134,7 +134,7 @@ With Angular you have two ways of triggering route changes.
 
 On the one hand, architecture-wise it is a much cleaner solution to trigger route changes in _Smart Components_.
 This way you have every UI event that should trigger a navigation handled in one place - in a _Smart Component_. 
-It becomes very easy to look inside the code for every navigation, that can occure.
+It becomes very easy to look inside the code for every navigation, that can occur.
 Refactoring is also much easier, as there are no navigation events "hidden" in the HTML templates
 
 On the other hand, in terms of accessibility and SEO it is a better solution to rely on bindings in the view - e.g. by using Angulars router-link directive.
@@ -152,7 +152,7 @@ Guards are Angular services implemented on routes which determines whether a use
 
 * *CanActivate*: It is used to determine whether a user can visit a route. The most common scenario for this guard is to check if the user is authenticated. For example, if we want only logged in users to be able to go to a particular route, we will implement the `CanActivate` guard on this route.
 * *CanActivateChild*: Same as above, only implemented on child routes.
-* *CanDeactivate*: It is used to determine if a user can naviagate away from a route. Most common example is when a user tries to go to a different page after filling up a form and does not save/submit the changes, we can use this guard to confirm whether the user really wants to leave the page without saving/submiting.
+* *CanDeactivate*: It is used to determine if a user can naviagate away from a route. Most common example is when a user tries to go to a different page after filling up a form and does not save/submit the changes, we can use this guard to confirm whether the user really wants to leave the page without saving/submitting.
 * *Resolve*: For resolving dynamic data.
 * *CanLoad*: It is used to determine whether an _Angular module_ can be loaded lazily. Example below will be helpful to understand it.
 

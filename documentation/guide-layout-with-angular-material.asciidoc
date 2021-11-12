@@ -164,7 +164,7 @@ We will clear the `app.component.html` file and setup a header with a menu butto
 The color attribute on the `mat-toolbar` element will give it the primary (indigo) color as defined by our theme. The color attribute works with most Angular Material components; the possible values are 'primary', 'accent' and 'warn'.
 The mat-toolbar is a suitable component to represent a header. It serves as a placeholder for elements we want in our header.
 Inside the mat-toolbar, we start with a button having mat-icon-button attribute, which itself contains a mat-icon element having the value `menu`. This will serve as a menu button which we can use to toggle the sidenav.
-We follow it with some sample buttons having the mat-button attribute. Notice the first button has a property `matMenuTriggerFor` binded to a local reference `submenu`. As the property name suggests, the click of this button will display the `mat-menu` element with the specified local reference as a drop-down menu. The rest of the code is self explanatory.
+We follow it with some sample buttons having the mat-button attribute. Notice the first button has a property `matMenuTriggerFor` linked to a local reference `submenu`. As the property name suggests, the click of this button will display the `mat-menu` element with the specified local reference as a drop-down menu. The rest of the code is self explanatory.
 
 .This is how our application looks with the first menu button (Menu 1) clicked.
 image::images/layout-angular-material/4-header.png["Header added to the application", width="700", link="images/layout-angular-material/4-header.png", align="center"]
@@ -196,7 +196,7 @@ The mat-toolbar element already has it's display property set to `flex`. Setting
 .Final look of the header.
 image::images/layout-angular-material/5-header-layout-final.png["Final look of the header", width="700", link="images/layout-angular-material/5-header-layout-final.png", align="center"]
 
-Next, we will create a sidenav. But before that lets create a couple of components to navgate between, the links of which we will add to the sidenav.
+Next, we will create a sidenav. But before that lets create a couple of components to navigate between, the links of which we will add to the sidenav.
 We will use the `ng generate component` (or `ng g c` command for short) to create _Home_ and _Data_ components. We nest them in the `pages` sub-directory since they represent our pages.
 
 ** `ng g c pages/home`
@@ -273,7 +273,7 @@ image::images/layout-angular-material/6-home-page.png["Home page", width="700", 
 image::images/layout-angular-material/7-data-page.png["Data page", width="700", link="images/layout-angular-material/7-data-page.png", align="center"]
 
 Let us finally create the sidenav. To implement the sidenav we need to use 3 Angular Material components: `mat-sidenav-container`, `mat-sidenav` and `mat-sidenav-content`.
-The `mat-sidenav-container`, as the name suggests, acts as a container for the sidenav and the associated content. So it is the parent element, and `mat-sidenav` and `mat-sidenav-content` are the children sibling elements. `mat-sidenav` represents the sidenav. We can put any content we want, though it is usually used to conatain a list of navigational links. The `mat-sidenav-content` element is for conataining our main page content. Since we need the sidenav application-wide, we will put it in the `app.component.html`.
+The `mat-sidenav-container`, as the name suggests, acts as a container for the sidenav and the associated content. So it is the parent element, and `mat-sidenav` and `mat-sidenav-content` are the children sibling elements. `mat-sidenav` represents the sidenav. We can put any content we want, though it is usually used to contain a list of navigational links. The `mat-sidenav-content` element is for containing our main page content. Since we need the sidenav application-wide, we will put it in the `app.component.html`.
 
 .app.component.html:
 [source,html]
@@ -360,7 +360,7 @@ The sidenav's width will be corrected when we add the navigational links to it. 
 ...
 ----
 
-We use the `mat-nav-list` element to set a list of navigational links. We use the `a` tags with `mat-list-item` directive. We implement a `click` listener on each link to close the sidenav when it is clicked. The `routerLink` directive is used to provide the URLs to navigate to. The `routerLinkActive` directive is used to provide the class name which will be added to the link when it's URL is visited. Here we name the class`active`. To stye it, let' modify the `app.component.scss` file:
+We use the `mat-nav-list` element to set a list of navigational links. We use the `a` tags with `mat-list-item` directive. We implement a `click` listener on each link to close the sidenav when it is clicked. The `routerLink` directive is used to provide the URLs to navigate to. The `routerLinkActive` directive is used to provide the class name which will be added to the link when it's URL is visited. Here we name the class`active`. To style it, let' modify the `app.component.scss` file:
 
 .app.component.scss:
 [source,css]

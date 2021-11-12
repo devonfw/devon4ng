@@ -20,7 +20,7 @@ toc::[]
 Progresive web applications (PWAs) are web application that offer better user experience than the traditional ones. In general, they solve problems related with reliability and speed:
 
 * _Reliability_:  PWAs are stable. In this context stability means than even with slow connections or even with no network at all, the application still works. To achieve this, some basic resources like styles, fonts, requests, ... are stored; due to this caching, it is not possible to assure that the content is always up-to-date.
-* _Speed_: When an users opens an application, he or she will expect it to load almost inmediately (almost 53% of users abandon sites that take longer that 3 seconds, source: https://developers.google.com/web/progressive-web-apps/#fast).
+* _Speed_: When an users opens an application, he or she will expect it to load almost immediately (almost 53% of users abandon sites that take longer that 3 seconds, source: https://developers.google.com/web/progressive-web-apps/#fast).
 
 PWAs uses a script called https://developers.google.com/web/fundamentals/primers/service-workers/[service worker], which runs in background and essentially act as proxy between web app and network, intercepting requests and acting depending on the network conditions.
 
@@ -51,7 +51,7 @@ Web applications usually uses external resources, making necessary the addition 
 * run `ng generate service data`
 * Modify *data.service.ts*, *environment.ts*, *environment.prod.ts*
 
-To retrieve data with this service, you have to import the module HttpClient and add it to the service's contructor. Once added, use it to create a function *getDishes()* that sends http request to My Thai Start's back-end. The URL of the back-end can be stored as an environment variable *MY_THAI_STAR_DISH*.
+To retrieve data with this service, you have to import the module HttpClient and add it to the service's constructor. Once added, use it to create a function *getDishes()* that sends http request to My Thai Start's back-end. The URL of the back-end can be stored as an environment variable *MY_THAI_STAR_DISH*.
 
 *data.service.ts*
 
@@ -91,7 +91,7 @@ To retrieve data with this service, you have to import the module HttpClient and
 
 === Step 3: Use the service
 
-The component AppComponent implements the interface OnInit and inside its method ngOnInit() the suscription to the services is done. When a dish arrives, it is saved and shown (app.component.html).
+The component AppComponent implements the interface OnInit and inside its method ngOnInit() the subscription to the services is done. When a dish arrives, it is saved and shown (app.component.html).
 
 [source,ts]
 ----
@@ -190,7 +190,7 @@ _background_color_: Expected background color of the web application.
 
 _display_: Preferred display mode.
 
-_scope_: Navigation scope of tghis web application's application context.
+_scope_: Navigation scope of this web application's application context.
 
 _start_url_: URL loaded when the user launches the web application.
 
@@ -301,7 +301,7 @@ image::images/angular/angular-pwa/pwa-nopwa-app-ng.png["Application comparison",
 
 {nbsp}
 
-If the "offline" box is checked, it will force a disconnection from network. In situations where users do not have connectivity or have a slow, one the PWA can still be accesed and used. 
+If the "offline" box is checked, it will force a disconnection from network. In situations where users do not have connectivity or have a slow, one the PWA can still be accessed and used. 
 
 .Offline application.
 image::images/angular/angular-pwa/online-offline-ng.png["Online offline apps", width=800 link="images/angular/angular-pwa/online-offline-ng.png"]

@@ -162,7 +162,7 @@ Sometimes it is not necessary to perform a full decomposition. The architecture 
 For example a template with 800 loc is:
 
 * not understandable
-* not maintanable
+* not maintainable
 * not testable
 * not reusable
 

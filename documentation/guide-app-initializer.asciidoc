@@ -52,7 +52,7 @@ import { ConfigService } from './config.service';
 export class ConfigModule {}
 ----
 
-This is going to allow the creation of a `ConfigService` where, using a singleton, the service is going to load an external config depending on a route. This dependence with a route, allows to setup diferent configuration for docker etc. This is seen in the `ConfigService` of MyThaiStar:
+This is going to allow the creation of a `ConfigService` where, using a singleton, the service is going to load an external config depending on a route. This dependence with a route, allows to setup different configuration for docker etc. This is seen in the `ConfigService` of MyThaiStar:
 
 [source, TypeScript]
 ----
@@ -178,7 +178,7 @@ This section is going to be used to create a new `APP_INITIALIZER` basic example
 
 === Docker external configuration (Optional)
 
-This section is only done if theres a docker configuration in the app you are setting up this type of configuration.
+This section is only done if there's a docker configuration in the app you are setting up this type of configuration.
 
 1.- Create in the root folder `/docker-external-config.json`. This external config is going to be used when the application is loaded with docker (if the boolean to load the external configuration is set to true). Here you need to add all the config parameter you want to load with docker:
 
@@ -282,7 +282,7 @@ This step is going to setup two proxies. This is going to allow to load the conf
 
 == Adding the loadExternalConfig boolean to the environments
 
-In order to load an external config we need to add the loadExternalConfig boolean to the environments. To do so, inside the folder `environments/` the files are going to get modified adding this boolean to each environment that is going to be used. In this case, only two environments are going to be modified (`environment.ts` and `environment.prod.ts`). Down below theres an example of the modification being done in the `environment.prod.ts`:
+In order to load an external config we need to add the loadExternalConfig boolean to the environments. To do so, inside the folder `environments/` the files are going to get modified adding this boolean to each environment that is going to be used. In this case, only two environments are going to be modified (`environment.ts` and `environment.prod.ts`). Down below there's an example of the modification being done in the `environment.prod.ts`:
 
 [source, TypeScript]
 ----
@@ -292,7 +292,7 @@ export const environment: {
 } = { production: false, loadExternalConfig: false };
 ----
 
-In the file in first instance theres the declaration of the types of the variables. After that, theres the definition of those variables. This variable `loadExternalConfig` is going to be used by the service, allowing to setup a external config just by switching the `loadExternalConfig` to true. 
+In the file in first instance there's the declaration of the types of the variables. After that, there's the definition of those variables. This variable `loadExternalConfig` is going to be used by the service, allowing to setup a external config just by switching the `loadExternalConfig` to true. 
 
 == Creating core configuration service
 

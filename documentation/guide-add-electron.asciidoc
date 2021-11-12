@@ -136,7 +136,7 @@ This file needs to be modified to create references to `./src/tsconfig.app.json`
 
 ==== tsconfig.base.json
 
-This is shared betwen tsconfig.app.json and tsconfig.spec.json and it will be extended on each config file.
+This is shared between tsconfig.app.json and tsconfig.spec.json and it will be extended on each config file.
 
 [source, json]
 ----
@@ -240,7 +240,7 @@ The contents of the file will be something similar to the following:
 }
 ----
 
-Theres two important things in this files:
+There are two important things in this files:
   
   1. "output": this is where electron builder is going to build our application
 

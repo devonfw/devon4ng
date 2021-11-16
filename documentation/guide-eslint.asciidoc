@@ -17,7 +17,7 @@ toc::[]
 
 = Angular ESLint support
 
-IMPORTANT: ESLint is supported in Angular 10.1.0 onwards. 
+IMPORTANT: ESLint is supported in Angular 10.1.0 onward. 
 
 == What about TSLint?
 

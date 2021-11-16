@@ -21,7 +21,7 @@ This guide describes an application architecture for web client development with
 
 == Motivation
 
-`Frontend` development is a very difficult task since there are a lot of different frameworks, patterns and practices nowadays. For that reason, in devonfw we decided to make use of Angular since it is a full frontend framework that includes almost all the different patterns and features that any SPA may need and provides a well defined architecture to development, build and deploy. 
+`Frontend` development is a very difficult task since there are a lot of different frameworks, patterns and practices nowadays. For that reason, in devonfw we decided to make use of Angular since it is a full `frontend` framework that includes almost all the different patterns and features that any SPA may need and provides a well defined architecture to development, build and deploy. 
 
 The idea with *devon4ng* is to define an architecture which is a compromise between, on the one hand, leveraging the best practices and latest trends like reactive style development, on the other hand, providing a short onboarding time while still using an architecture that helps us scale and be productive at the same time.
 
@@ -31,7 +31,7 @@ At the same time *devon4ng* aims to help developers to solve common problems tha
 
 * link:architecture[Architecture Overview]
   
-This section introduces in an easy way the main principles and guidelines based on Angular Styleguide.
+This section introduces in an easy way the main principles and guidelines based on `Angular Styleguide`.
 
 * link:meta-architecture[Client Meta Architecture]
 
@@ -46,7 +46,7 @@ This section provides a condensed explanation about the different layers a good 
 
 === Guides
 
-This section introduces concepts to help developes with the tooling and package managers.
+This section introduces concepts to help develops with the tooling and package managers.
 
 * link:guide-package-managers[Package Managers]
 * link:guide-npm-yarn-workflow[Package Managers Workflow]
@@ -54,7 +54,7 @@ This section introduces concepts to help developes with the tooling and package 
 
 === Angular
 
-This is the main section of the documentation, where the developer will find guidelines for accesibility, how to use the Angular toolchain, how to refactor components, create libraries and, in general, maintain Angular applications. But last and not least, developers will also find solutions to common problems many of the Angular projects may have. 
+This is the main section of the documentation, where the developer will find guidelines for accessibility, how to use the Angular toolchain, how to refactor components, create libraries and, in general, maintain Angular applications. But last and not least, developers will also find solutions to common problems many of the Angular projects may have. 
 
 NOTE: All the different topics are demonstrated in the `samples` folder with a small application. 
 
@@ -64,7 +64,7 @@ NOTE: All the different topics are demonstrated in the `samples` folder with a s
 * link:guide-angular-library[Angular Library]
 * link:guide-angular-theming[Angular Material Theming]
 * link:guide-angular-pwa[Angular Progressive Web Apps]
-* link:guide-app-initializer[App Initializer]
+* link:guide-app-initializer[`App Initializer`]
 * link:guide-component-decomposition[Component Decomposition]
 * link:guide-consuming-rest-services[Consuming REST services]
 * link:guide-error-handler[Error Handler]
@@ -78,7 +78,7 @@ NOTE: All the different topics are demonstrated in the `samples` folder with a s
 
 === Ionic
 
-As part of the devon4ng stack, we include a small section to explain how to develop hybrid mobile Ionic/Angular applications and create PWAs with this UI library. As the pervious section, the contents are demonstrated in the `samples` folder. 
+As part of the devon4ng stack, we include a small section to explain how to develop hybrid mobile Ionic/Angular applications and create `PWAs` with this UI library. As the previous section, the contents are demonstrated in the `samples` folder. 
 
 * link:guide-ionic-getting-started[Ionic Getting started]
 * link:guide-ionic-from-code-to-android[Ionic to Android]
@@ -90,14 +90,14 @@ Any SPA application must have a layout. So, the purpose of this section is to ex
 
 * link:guide-layout-with-angular-material[Angular Material Layout]
 
-=== NgRx
+=== `NgRx`
 
-State Management is a big topic in big frontend application. This section explains the fundamentals of the industry standard library NgRx, showing its main components.
+State Management is a big topic in big `frontend` application. This section explains the fundamentals of the industry standard library `NgRx`, showing its main components.
 
 * link:guide-ngrx-getting-started[Introduction]
 * link:guide-ngrx-simple-store[State, Selection and Reducers]
-* link:guide-ngrx-effects[Side effects with NgRx/Effects]
-* link:guide-ngrx-entity[Simplifying CRUD with NgRx/Entity]
+* link:guide-ngrx-effects[Side effects with `NgRx`/Effects]
+* link:guide-ngrx-entity[Simplifying CRUD with `NgRx`/Entity]
 
 === Cookbook
 
@@ -114,5 +114,5 @@ The Cookbook section aims to provide solutions to cross-topic challenges that at
 In order to support CobiGen generation tool for Angular applications, devon4ng demos realization and provide more opinionated samples, the following templates are also included in devon4ng contents:
 
 * link:https://github.com/devonfw/devon4ng-application-template[devon4ng-application-template]: It is the Angular application template used by the CobiGen code generation tool.
-* link:https://github.com/devonfw/devon4ng-ngrx-template[devon4ng-ngrx-template]: It is the Angular application template used by the CobiGen code generation tool that makes use of NgRx for state management.
+* link:https://github.com/devonfw/devon4ng-ngrx-template[devon4ng-ngrx-template]: It is the Angular application template used by the CobiGen code generation tool that makes use of `NgRx` for state management.
 * link:https://github.com/devonfw/devon4ng-ionic-application-template[devon4ng-ionic-application-template]: It is the Ionic mobile application template used by the CobiGen code generation tool.

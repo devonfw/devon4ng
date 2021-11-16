@@ -137,7 +137,7 @@ This way you have every UI event that should trigger a navigation handled in one
 It becomes very easy to look inside the code for every navigation, that can occure.
 Refactoring is also much easier, as there are no navigation events "hidden" in the HTML templates
 
-On the other hand, in terms of accessibility and SEO it is a better solution to rely on bindings in the view - e.g. by using Angulars router-link directive.
+On the other hand, in terms of accessibility and SEO it is a better solution to rely on bindings in the view - e.g. by using Angular router-link directive.
 This way screen readers and the Google crawler can move through the page easily.
 
 TIP: If you do not have to support accessibility (screen readers, etc.) and to care about SEO (Google rank, etc.),

@@ -24,7 +24,7 @@ Cypress is a framework “all in one” that provides the necessary libraries to
 Why Cypress?
 
 * Uses javascript
-* It works directly with the browser so the compatibility with the frontend framework the project uses (in this case Angular) is not a problem.
+* It works directly with the browser so the compatibility with the `frontend` framework the project uses (in this case Angular) is not a problem.
 * Easy cross browser testing
 
 == Setup
@@ -51,7 +51,7 @@ We need to run Cypress in order to get the folder tree downloaded, then create a
 $ . /node_modules/.bin/cypress open
 ----
 
-.tsconfig.json
+.`tsconfig.json`
 [source, json]
 ----
 {
@@ -68,7 +68,7 @@ $ . /node_modules/.bin/cypress open
 }
 ----
 
-**BaseUrl**
+**`BaseUrl`**
 
 Let's setup the base url so when we run the tests cypress will "navigate" to the right place, go to `cypress.json` on the root of the project.
 
@@ -132,7 +132,7 @@ context('Button page', () => {
 });
 ----
 
-.beforeEach
+.`beforeEach`
 Visit '/' before every test.
 
 .it
@@ -179,7 +179,7 @@ You can store multiple mocks on the same fixture file.
 }
 ----
 
-To access data we don't need to import any file, we just call cy.fixture(filename) inside the `**.spec.ts`. We can name it as we want.
+To access data we don't need to import any file, we just call `cy.fixture(filename)` inside the `**.spec.ts`. We can name it as we want.
 
 [source, TypeScript]
 ----
@@ -203,7 +203,7 @@ To get more information go to link:https://docs.cypress.io/guides/guides/network
 
 === Route
 
-Cypress can intercept a XHR request and interact with it.
+Cypress can intercept a `XHR` request and interact with it.
 
 [source, TypeScript]
 ----
@@ -217,7 +217,7 @@ cy.route(
 
 `cy.server(options)` start a server to interact with the responses.
 
-.`cy.route(options)` intercepts a XMLHttpRequests
+.`cy.route(options)` intercepts a `XMLHttpRequests`
 * method `GET`
 * url `/apiUrl/list'`
 * response `[{"name":"apple", "units":3},{"name":"kiwi", "units":2}]`
@@ -254,7 +254,7 @@ cy.fixture('box')
   })
 ----
 
-We get boxFruit data from the box fixture and then we mock the api call with it so now the response of the call is boxFruit object.
+We get `boxFruit` data from the box fixture and then we mock the api call with it so now the response of the call is `boxFruit` object.
 When the button is clicked, it waits to receive the response of the call and then checks if the list contains one of the elements of the fruitBox.
 
 === Request
@@ -268,7 +268,7 @@ cy.request('http://localhost:4200/')
   .should('include', '<h1>Welcome to Devon4ngAngularElementsTest!</h1>');
 ----
 
-If we have `'http://localhost:4200'` as baseUrl on `cypress.json`
+If we have `'http://localhost:4200'` as `baseUrl` on `cypress.json`
 
 [source, TypeScript]
 ----
@@ -457,9 +457,9 @@ The tests results appear on the terminal, but to have a more friendly view we ca
 
 image::./images/cypress/reporter.jpg[]
 
-=== Mochawesome
+=== `Mochawesome`
 
-In this case we are going to use Mochawesome, initially its a Mocha reporter but as Cypress uses Mocha it works the same.
+In this case we are going to use `Mochawesome`, initially its a Mocha reporter but as Cypress uses Mocha it works the same.
 
 **Install**
 
@@ -483,7 +483,7 @@ To run the reporter:
 cypress run --reporter mochawesome
 ----
 
-Mochawesome saves by default the generated files on __./mochawesome-report/__ but we can add options to change this behaviour.
+`Mochawesome` saves by default the generated files on __`./mochawesome-report/`__ but we can add options to change this behaviour.
 
 Options can be passed to the reporter in two ways
 
@@ -517,13 +517,13 @@ Or on __cypress.json__
 
 `json:true` to save them on json.
 
-Mochawesome only creates the html file of the last .spec.ts file that the tests run, that's why we don't generate html reports directly, in order to stack them all on the same final html we need to merge the reports.
+`Mochawesome` only creates the html file of the last .spec.ts file that the tests run, that's why we don't generate html reports directly, in order to stack them all on the same final html we need to merge the reports.
 
 Check the link:https://www.npmjs.com/package/mochawesome-report-generator[mochawesome documentation]
 
-**mochawesome-merge**
+**`mochawesome-merge`**
 
-Mochawesome-merge is a library that helps us to merge the different json.
+`Mochawesome-merge` is a library that helps us to merge the different json.
 
 npm
 
@@ -548,7 +548,7 @@ To merge the files we execute this command:
 mochawesome-merge cypress/report/*.json > cypress/reportFinal.json
 ----
 
-`reportFinal.json` is the result of this merge, whit that we hace the data of all the spec files in one json.
+`reportFinal.json` is the result of this merge, whit that we have the data of all the spec files in one json.
 
 We can also automate the test, merge and conversion to html using a script.
 
@@ -584,11 +584,11 @@ runTests();
 
 `cypress.run()` to run the tests.
 
-`merge(options)` we merge the jsons output from running the tests.
+`merge(options)` we merge the `json` output from running the tests.
 
 `generator.create(jsonReport)` then we generate the html view of the report.
 
-Check the link:https://www.npmjs.com/package/mochawesome-merge[mochawesome-merge documentation]
+Check the link:https://www.npmjs.com/package/mochawesome-merge[`mochawesome-merge` documentation]
 
 On link:https://github.com/cypress-io/cypress-example-kitchensink[kitchensink]
 you can find an official cypress demo with all the commands being used.

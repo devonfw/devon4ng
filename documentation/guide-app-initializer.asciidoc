@@ -15,15 +15,15 @@ toc::[]
 :source-highlighter: rouge
 :listing-caption: Listing
 
-= APP_INITIALIZER
+= `APP_INITIALIZER`
 
-== What is the APP_INITIALIZER pattern
+== What is the `APP_INITIALIZER` pattern
 
-The APP_INITIALIZER pattern allows an application to choose which configuration is going to be used in the start of the application, this is useful because it allows to setup different configurations, for example, for docker or a remote configuration. This provides benefits since this is done on `runtime`, so there's no need to recompile the whole application to switch from configuration.
+The `APP_INITIALIZER` pattern allows an application to choose which configuration is going to be used in the start of the application, this is useful because it allows to setup different configurations, for example, for docker or a remote configuration. This provides benefits since this is done on `runtime`, so there's no need to recompile the whole application to switch from configuration.
 
-== What is APP_INITIALIZER
+== What is `APP_INITIALIZER`
 
-APP_INITIALIZER allows to provide a service in the initialization of the application in a `@NgModule`. It also allows to use a factory, allowing to create a singleton in the same service. An example can be found in MyThaiStar `/core/config/config.module.ts`:
+`APP_INITIALIZER` allows to provide a service in the initialization of the application in a `@NgModule`. It also allows to use a factory, allowing to create a singleton in the same service. An example can be found in `MyThaiStar` `/core/config/config.module.ts`:
 
 [NOTE]
 ====
@@ -52,7 +52,7 @@ import { ConfigService } from './config.service';
 export class ConfigModule {}
 ----
 
-This is going to allow the creation of a `ConfigService` where, using a singleton, the service is going to load an external config depending on a route. This dependence with a route, allows to setup diferent configuration for docker etc. This is seen in the `ConfigService` of MyThaiStar:
+This is going to allow the creation of a `ConfigService` where, using a singleton, the service is going to load an external config depending on a route. This dependence with a route, allows to setup different configuration for docker etc. This is seen in the `ConfigService` of `MyThaiStar`:
 
 [source, TypeScript]
 ----
@@ -97,7 +97,7 @@ export class ConfigService {
 }
 ----
 
-As it is mentioned earlier, you can see the use of a factory to create a singleton at the start. After that, `loadExternalConfig` is going to look for a boolean inside the corresponding environment file inside the path `src/environments/`, this boolean `loadExternalConfig` is going to easily allow to switch to a external config. If it is true, it generates a promise that overwrites the parameters of the local config, allowing to load the external config. Finally, the last method `getValues()` is going to allow to return the file config with the values (overwritten or not). The local `config` file from MyThaiStar can be seen here:
+As it is mentioned earlier, you can see the use of a factory to create a singleton at the start. After that, `loadExternalConfig` is going to look for a boolean inside the corresponding environment file inside the path `src/environments/`, this boolean `loadExternalConfig` is going to easily allow to switch to a external config. If it is true, it generates a promise that overwrites the parameters of the local config, allowing to load the external config. Finally, the last method `getValues()` is going to allow to return the file config with the values (overwritten or not). The local `config` file from `MyThaiStar` can be seen here:
 
 [source, TypeScript]
 ----
@@ -170,7 +170,7 @@ export const environment: {
 ----
 
 
-== Creating a APP_INITIALIZER configuration
+== Creating a `APP_INITIALIZER` configuration
 
 This section is going to be used to create a new `APP_INITIALIZER` basic example. For this, a basic app with angular is going to be generated using `ng new "appname"` substituting `appname` for the name of the app opted.
 
@@ -178,7 +178,7 @@ This section is going to be used to create a new `APP_INITIALIZER` basic example
 
 === Docker external configuration (Optional)
 
-This section is only done if theres a docker configuration in the app you are setting up this type of configuration.
+This section is only done if there is a docker configuration in the app you are setting up this type of configuration.
 
 1.- Create in the root folder `/docker-external-config.json`. This external config is going to be used when the application is loaded with docker (if the boolean to load the external configuration is set to true). Here you need to add all the config parameter you want to load with docker:
 

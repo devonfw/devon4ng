@@ -142,7 +142,7 @@ export class AuthService {
 }
 ----
 
-Using the previous service we will be able to store the token obtained in the login request using the method `setToken(token)`. Please consider that, if you want a more sophisticated approach using `localStorage API`, you will need to modify this service accordingly.
+Using the previous service we will be able to store the token obtained in the login request using the method `setToken(token)`. Please consider that, if you want a more sophisticated approach using `localStorage` API, you will need to modify this service accordingly.
 
 === Include token in every request
 

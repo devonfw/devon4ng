@@ -90,14 +90,14 @@ Any SPA application must have a layout. So, the purpose of this section is to ex
 
 * link:guide-layout-with-angular-material[Angular Material Layout]
 
-=== `NgRx`
+=== NgRx
 
-State Management is a big topic in big `frontend` application. This section explains the fundamentals of the industry standard library `NgRx`, showing its main components.
+State Management is a big topic in big `frontend` application. This section explains the fundamentals of the industry standard library NgRx, showing its main components.
 
 * link:guide-ngrx-getting-started[Introduction]
 * link:guide-ngrx-simple-store[State, Selection and Reducers]
-* link:guide-ngrx-effects[Side effects with `NgRx`/Effects]
-* link:guide-ngrx-entity[Simplifying CRUD with `NgRx`/Entity]
+* link:guide-ngrx-effects[Side effects with NgRx/Effects]
+* link:guide-ngrx-entity[Simplifying CRUD with NgRx/Entity]
 
 === Cookbook
 
@@ -114,5 +114,5 @@ The Cookbook section aims to provide solutions to cross-topic challenges that at
 In order to support CobiGen generation tool for Angular applications, devon4ng demos realization and provide more opinionated samples, the following templates are also included in devon4ng contents:
 
 * link:https://github.com/devonfw/devon4ng-application-template[devon4ng-application-template]: It is the Angular application template used by the CobiGen code generation tool.
-* link:https://github.com/devonfw/devon4ng-ngrx-template[devon4ng-ngrx-template]: It is the Angular application template used by the CobiGen code generation tool that makes use of `NgRx` for state management.
+* link:https://github.com/devonfw/devon4ng-ngrx-template[devon4ng-ngrx-template]: It is the Angular application template used by the CobiGen code generation tool that makes use of NgRx for state management.
 * link:https://github.com/devonfw/devon4ng-ionic-application-template[devon4ng-ionic-application-template]: It is the Ionic mobile application template used by the CobiGen code generation tool.

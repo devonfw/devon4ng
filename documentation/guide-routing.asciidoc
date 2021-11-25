@@ -129,7 +129,7 @@ export class FlightSearchRoutingModule { }
 
 With Angular you have two ways of triggering route changes.
 
-1. Declarative with bindings in component `HTML` templates
+1. Declarative with bindings in component HTML templates
 2. Programmatic with Angular `Router` service inside component classes
 
 On the one hand, architecture-wise it is a much cleaner solution to trigger route changes in _Smart Components_.

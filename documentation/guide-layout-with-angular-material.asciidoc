@@ -100,7 +100,7 @@ We will include the indigo-pink theme in our application by importing the `indig
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 ----
 
-Some Angular Material components depend on `HammerJs` for gestures. So it is a good idea to install `HammerJs` as a dependency in our application. To do so, run the following command in the terminal:
+Some Angular Material components depend on HammerJs for gestures. So it is a good idea to install HammerJs as a dependency in our application. To do so, run the following command in the terminal:
 
 ** `npm install --save hammerjs`
 

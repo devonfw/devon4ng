@@ -30,6 +30,7 @@ Create a module for recommendations and add stores and states as in the previous
 We need actions for loading the movie list, success and failure cases:
 
 *recommendation/actions/index.ts*
+
 [source, typescript]
 ----
 import { createAction, props, union } from '@ngrx/store';
@@ -158,4 +159,4 @@ Effects are always observables and return actions. In this example, we consume t
 If an effect should not dispatch another action, return an empty observable.
 ====
 
-link:guide-ngrx-entity[Continue reading how to simplify CRUD (Create Read Update Delete) operations using @ngrx/entity].
+link:guide-ngrx-entity[Continue reading how to simplify CRUD (Create Read Update Delete) operations using `@ngrx/entity`].

@@ -124,9 +124,9 @@ image::images/ionic-to-android/new-phone-created.png["New created device",width=
 
 == From Android project to real device
 
-To test on a real android device, an easy aproach to comunicate a smartphone (front-end) and computer (back-end) is to configure a Wi-fi hotspot and connect the computer to it. A guide about this process can be found at https://support.google.com/nexus/answer/9059108?hl=en
+To test on a real android device, an easy aproach to comunicate a smartphone (front-end) and computer (back-end) is to configure a Wi-Fi hotspot and connect the computer to it. A guide about this process can be found at https://support.google.com/nexus/answer/9059108?hl=en
 
-Once connected, run `ipconfig` on a console if you are using windows or `ifconfig` on a linux machine to get the IP address of your machine's Wireless LAN adapter Wi-fi.
+Once connected, run `ipconfig` on a console if you are using windows or `ifconfig` on a linux machine to get the IP address of your machine's Wireless LAN adapter Wi-Fi.
 
 image::images/ionic-to-android/ipconfig-short.png["Result of ipconfig command on Windows 10" ,width="700"link="images/ionic-to-android/ipconfig-short.png"]
 

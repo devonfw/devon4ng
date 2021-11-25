@@ -21,13 +21,13 @@ IMPORTANT: ESLint is supported in Angular 10.1.0 onward.
 
 == What about TSLint?
 
-TSLint is a fantastic tool. It is a linter that was written specifically to work based on the `TypeScript AST` format. This has advantages and disadvantages, as with most decisions we are faced with in software engineering!
+TSLint is a fantastic tool. It is a linter that was written specifically to work based on the TypeScript `AST` format. This has advantages and disadvantages, as with most decisions we are faced with in software engineering!
 
-One advantage is there is no tooling required to reconcile differences between ESLint and `TypeScript AST` formats, but the major disadvantage is that the tool is therefore unable to reuse any of the previous work which has been done in the `JavaScript` ecosystem around linting, and it has to reimplement everything from scratch. Everything from rules to auto-fixing capabilities and more.
+One advantage is there is no tooling required to reconcile differences between ESLint and TypeScript `AST` formats, but the major disadvantage is that the tool is therefore unable to reuse any of the previous work which has been done in the JavaScript ecosystem around linting, and it has to reimplement everything from scratch. Everything from rules to auto-fixing capabilities and more.
 
 However, the backers behind TSLint announced in 2019 that **they would be deprecating TSLint in favor of supporting** `typescript-eslint` in order to benefit the community. You can read more about that here: https://medium.com/palantir/tslint-in-2019-1a144c2317a9
 
-The `TypeScript` Team themselves also announced their plans to move the `TypeScript` codebase from TSLint to `typescript-eslint`, and they have been big supporters of this project. More details at https://github.com/microsoft/TypeScript/issues/30553
+The TypeScript Team themselves also announced their plans to move the TypeScript codebase from TSLint to `typescript-eslint`, and they have been big supporters of this project. More details at https://github.com/microsoft/TypeScript/issues/30553
 
 Angular ESLint support comes from the https://github.com/angular-eslint/angular-eslint[`angular-eslint`] tooling package. Angular documentation also links to this repository as you can check in the https://angular.io/cli/lint[`ng lint` section] of the `Angular CLI` documentation.
 

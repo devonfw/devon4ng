@@ -26,7 +26,7 @@ image::images/angular-primeng-layout/Screenshot_0.png[]
 
 == Let's begin
 
-We start with opening the console(in the Devon distribution folder) and running the following command to start a project named AngularZorroLayout.
+We start with opening the console(in the Devon distribution folder) and running the following command to start a project named `AngularZorroLayout`.
 
 `devon ng new AngularPrimeNgLayout`
 
@@ -101,7 +101,7 @@ How we see the menu has some properties from the library.
 
 The `[model]=items` means that the menu is looking for the `"items"` to print.
 
-The `items` is a array but his type come from the ` PrimeNG`. So we just need to import the `MenuItem`.
+The `items` is a array but his type come from the PrimeNG. So we just need to import the `MenuItem`.
 
 ```
 import { MenuItem } from 'primeng/api';`

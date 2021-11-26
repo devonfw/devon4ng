@@ -68,7 +68,7 @@ myorg/
 └── tsconfig.base.json
 ----
 
-Nx creates such a folder structure because it strongly supports the concept of monorepo, wherein all the inter-related applications and libraries are put together in the same repository for better maintainence, code-sharing and avoiding duplication of codes. 
+Nx creates such a folder structure because it strongly supports the concept of monorepo, wherein all the inter-related applications and libraries are put together in the same repository for better maintenance, code-sharing and avoiding duplication of codes. 
 
 As per the structure, all runnable applications should belong in the *apps/* directory. Supporting applications and libraries can be put in the *libs/* folder, with each library defining its own external API to differentiate between them. *tools/* folder can contain scripts which act on your code like database scripts, for example. The JSON files contain various information and configuration settings about the workspace and the projects within them.
 

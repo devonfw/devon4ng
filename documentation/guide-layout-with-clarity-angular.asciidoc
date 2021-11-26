@@ -26,11 +26,11 @@ image::images/angular-clarity-layout/1.png[]
 
 == Let's begin
 
-We start with opening the console(in the Devon distribution folder) and running the following command to start a project named AngularZorroLayout.
+We start with opening the console(in the Devon distribution folder) and running the following command to start a project named `AngularZorroLayout`.
 
 `devon ng new AngularClarityLayout`
 
-Select `y` when it asks whether it would like to add Angular routing and select `SCSS` when it asks for the stylesheet format. You can also use the devonfw-ide CLI to create a new devon4ng application.
+Select `y` when it asks whether it would like to add Angular routing and select `SCSS` when it asks for the style sheet format. You can also use the devonfw-ide CLI to create a new devon4ng application.
 
 Once the creation process is complete, open your newly created application in Visual Studio Code. Try running the empty application by running the following command in the integrated terminal:
 
@@ -309,5 +309,5 @@ The class to create the body of the modal, it's just to create a div with the cl
 And to create the footer 
 `<div class="modal-footer">`
 We can see that the footer has 2 buttons, with different style coming from the framework and with 2 methods with different values
-`(click)="basic = true"` on Okk button, this button won't change the variable value so woudnt do anything.
+`(click)="basic = true"` on Ok button, this button won't change the variable value so would not do anything.
 `(click)="basic = false"` on Cancel button. This button will change the value of the variable and will leave the modal.

@@ -22,4 +22,5 @@ This repository contains the following assets:
 ** **IonicBasicPWA:** Project sample that contains an Ionic progressive web app
 ** **MyLibrary:** Project sample that build into a `Library`
 ** **MyLibraryTest:**  Project sample created to use the `Library`
+** **BlobStreaming:**  Project sample created to upload a file.(Download not implemented yet).
 * **Documentation:** Folder containing the documentation of the different samples and other guides related with devon4ng.

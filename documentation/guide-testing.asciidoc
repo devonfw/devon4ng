@@ -17,12 +17,12 @@ toc::[]
 
 = Testing
 
-This guide will cover the basics of testing logic inside your code with UnitTests.
+This guide will cover the basics of testing logic inside your code with UnitTest cases.
 The guide assumes that you are familiar with Angular CLI (link:guide-working-with-angular-cli[see the guide])
 
-For testing your Angular application with UnitTests there are two main strategies:
+For testing your Angular application with UnitTest cases there are two main strategies:
 
-1. Isolated UnitTests +
+1. Isolated UnitTest cases +
 Isolated unit tests examine an instance of a class all by itself without any dependence on Angular or any injected values.
 The amount of code and effort needed to create such tests in minimal.
 
@@ -44,7 +44,7 @@ Smart Components need to be tested because they contain view logic.
 Also the interaction with 3rd party components needs to be tested.
 When a 3rd party component changes with an upgrade a test will be failing and warn you, that there is something wrong with the new version.
 Most of the time Dumb Components do not need to be teste because they mainly display data and do not contain any logic.
-Smart Components are alway tested with *Angular Testing Utilities*.
+Smart Components are always tested with *Angular Testing Utilities*.
 For example selectors, which select data from the store and transform it further, need to be tested.
 
 2. Stores: +
@@ -289,14 +289,14 @@ beforeEach(() => {
 
 When using TestBed, it is important
 
-* to import HttpClientTestingModule for stubbing the backend
-* to import RouterTestingModule for stubbing the Angular router
+* to import `HttpClientTestingModule` for stubbing the backend
+* to import `RouterTestingModule` for stubbing the Angular router
 * not to stub stores, adapters and business services
-* to stub services from libraries like FlightCalculationService - the correct implementation of libraries should not be tested by these tests. 
+* to stub services from libraries like `FlightCalculationService` - the correct implementation of libraries should not be tested by these tests. 
 
 Testing backend communication looks like this:
 
-.Testing backend communication with Angular HttpTestingController
+.Testing backend communication with `Angular HttpTestingController`
 [source,ts]
 ----
 it('loads flight if not present in store', fakeAsync(() => {

@@ -42,14 +42,14 @@ image::images/angular/angular-theming/scss-map.png["SCSS map", width=600 link="i
 
 TIP: Some components can be forced to use primary, accent or warn palettes using the attribute *color*, for example: <mat-toolbar color="primary">.
 
-== Prebuilt themes
+== Pre-built themes
 
-Available prebuilt themes:
+Available pre-built themes:
 
 * `deeppurple-amber.css`
 
 .`deeppurple-amber` theme.
-image::images/angular/angular-theming/deeppurple-amber.png["deeppurple-amber theme", width=600 link="images/angular/angular-theming/deeppurple-amber.png"]
+image::images/angular/angular-theming/deeppurple-amber.png[`deeppurple-amber theme`, width=600 link="images/angular/angular-theming/deeppurple-amber.png"]
 
 * indigo-pink.css
 
@@ -66,7 +66,7 @@ image::images/angular/angular-theming/pink-bluegrey.png["pink-bluegrey theme", w
 .purple-green theme.
 image::images/angular/angular-theming/purple-green.png["purple-green theme", width=600 link="images/angular/angular-theming/purple-green.png"]
 
-The prebuilt themes can be added using *@import*.
+The pre-built themes can be added using *@import*.
 
 [source, css]
 ----
@@ -75,7 +75,7 @@ The prebuilt themes can be added using *@import*.
 
 == Custom themes
 
-Sometimes prebuilt themes do not meet the needs of a project, because color schemas are too specific or do not incorporate branding colors, in those situations custom themes can be built to offer a better solution to the client.
+Sometimes pre-built themes do not meet the needs of a project, because color schemas are too specific or do not incorporate branding colors, in those situations custom themes can be built to offer a better solution to the client.
 
 For this topic, we are going to use a basic layout project that can be found in https://github.com/devonfw/devon4ng/tree/master/samples/AngularMaterialBasicLayout[devon4ng repository].
 
@@ -86,7 +86,7 @@ Before starting writing custom themes, there are some necessary things that have
 
 * Add a default theme: The project mentioned before has just one global SCSS stylesheet `*styles.scss*` that includes `indigo-pink.scss` which will be the default theme. 
 
-* Add _@import '~@angular/material/theming';_ at the beginning of the every stylesheet to be able to use angular material prebuilt color palettes and functions.
+* Add _@import '~@angular/material/theming';_ at the beginning of the every stylesheet to be able to use angular material pre-built color palettes and functions.
 
 * Add _@include mat-core();_ *once* per project, so if you are writing multiple themes in multiple files you could import those files from a 'central' one (for example `styles.scss`). This includes all common styles that are used by multiple components.
 
@@ -151,12 +151,12 @@ Until now, we just have defined primary, accent and warn palettes but what about
 * *mat-light-theme*: Receives as arguments primary, accent and warn palettes and return a theme whose foreground is basically black (texts, icons, ...), the background is white and the other palettes are the received ones.
 
 .Custom light theme.
-image::images/angular/angular-theming/custom-light.png["deeppurple-amber theme", width=600 link="images/angular/angular-theming/custom-light.png"]
+image::images/angular/angular-theming/custom-light.png[`deeppurple-amber theme`, width=600 link="images/angular/angular-theming/custom-light.png"]
 
 * *mat-dark-theme*: Similar to mat-light-theme but returns a theme whose foreground is basically white and background black.
 
 .Custom dark theme.
-image::images/angular/angular-theming/custom-dark.png["deeppurple-amber theme", width=600 link="images/angular/angular-theming/custom-dark.png"]
+image::images/angular/angular-theming/custom-dark.png[`deeppurple-amber theme`, width=600 link="images/angular/angular-theming/custom-dark.png"]
 
 
 For this example we are going to use mat-dark-theme and save its result in $custom-dark-theme.

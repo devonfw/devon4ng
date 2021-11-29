@@ -52,6 +52,7 @@ As you noticed, package.json is a really important file in your project. It cont
 The structure of package.json is divided in blocks, inside the first one you can find essential information of your project such as the name, version, license and optionally some <<Scripts>>.
 
 [source,json]
+----
 {
   "name": "exampleproject",
   "version": "0.0.0",
@@ -64,10 +65,12 @@ The structure of package.json is divided in blocks, inside the first one you can
     "lint": "ng lint",
     "e2e": "ng e2e"
   }
+----
 
 The next block is called _dependencies_ and contains the packages that project needs in order to be developed, compiled and executed. 
 
 [source,json]
+----
 "private": true, 
   "dependencies": { 
     "@angular/animations": "^4.2.4",
@@ -76,10 +79,12 @@ The next block is called _dependencies_ and contains the packages that project n
     ...
     "zone.js": "^0.8.14"
   }
+----
 
-After _dependencies_ we find *_devDependencies_*, another kind of dependencies present in the development of the application but unnecessary for its execution. One example is typescript. Code is written in typescript, and then, _transpiled_ to javascript. This means the application is not using typescript in execution and consequently not included in the deployment of our application.
+After _dependencies_ we find `*_devDependencies_*`, another kind of dependencies present in the development of the application but unnecessary for its execution. One example is typescript. Code is written in typescript, and then, _transpiled_ to javascript. This means the application is not using typescript in execution and consequently not included in the deployment of our application.
 
 [source,json]
+----
 "devDependencies": {
     "@angular/cli": "1.4.9",
     "@angular/compiler-cli": "^4.2.4",
@@ -87,30 +92,36 @@ After _dependencies_ we find *_devDependencies_*, another kind of dependencies p
     "@types/node": "~6.0.60",
     "typescript": "~2.3.3"
   }
+----
 
 Having a peer dependency means that your package needs a dependency that is the same exact dependency as the person installing your package
 
 [source,json]
+----
 "peerDependencies": {
     "package-123": "^2.7.18"
   }
+----
 
 Optional dependencies are just that: optional. If they fail to install, Yarn will still say the install process was successful.
 
 [source,json]
+----
 "optionalDependencies": {
     "package-321": "^2.7.18"
   }
-
+----
 
 Finally you can have bundled dependencies which are packages bundled together when publishing your package in a repository.
 
 [source,json]
+----
 {
   "bundledDependencies": [
     "package-4"
   ]
 }
+----
 
 Here is the link to an in-depth explanation of https://yarnpkg.com/en/docs/dependency-types[dependency types]{zwsp}.
 
@@ -121,6 +132,7 @@ Scripts are a great way of automating tasks related to your package, such as sim
 For example:
 
 [source,json]
+----
 {
   "name": "exampleproject",
   "version": "0.0.0",
@@ -128,7 +140,7 @@ For example:
   "scripts": {
     "build-project": "node hello-world.js",
   }
-
+----
 
 You can run that script by running the command `yarn (run) script` or `npm run script`, check the example below: 
 
@@ -153,7 +165,7 @@ Or you can go back to
 
 In order to manage dependencies we recommend using package managers in your projects.
 
-A big reason is their usability. Adding or removing a package is really easy, and by doing so, packet manager update the package.json and copies (or removes) the package in the needed location, with a single comand.
+A big reason is their usability. Adding or removing a package is really easy, and by doing so, packet manager update the package.json and copies (or removes) the package in the needed location, with a single command.
 
 Another reason, closely related to the first one, is reducing human error by automating the package management process.
 
@@ -167,7 +179,7 @@ As stated on the web, npm comes inside of node.js, and must be updated after ins
 
 *How npm works*
 
-In order to explain how npms works, let's take a command as an example:
+In order to explain how npm works, let's take a command as an example:
 
 [source,bash]
 ----
@@ -176,7 +188,7 @@ $ npm install @angular/material @angular/cdk
 
 This command tells npm to look for the packages @angular/material and @angular/cdk in the npm registry, download and decompress them in the folder node_modules along with their own dependencies. Additionally, npm will update package.json and create a new file called package-lock.json.
 
-After initializating and installing the first package there will be a new folder called node_modules in your project. This folder is where your packages are unzipped and stored, following a tree scheme.
+After initialization and installing the first package there will be a new folder called node_modules in your project. This folder is where your packages are unzipped and stored, following a tree scheme.
 
 Take in consideration both npm and yarn need a package.json in the root of your project in order to work properly. If after creating your project don't have it, download again the package.json from the repository or you'll have to start again.
 
@@ -206,7 +218,7 @@ Earlier versions of npm did *not* add dependencies to package.json unless it was
 $ npm install --save Package
 ----
 
-Npm needs flags in order to know what kind of dependency you want in your project, in npm you need to put the flag `-D` or `--save-dev` to install devdependencies, for more information consult the links at the end of this section.
+Npm needs flags in order to know what kind of dependency you want in your project, in npm you need to put the flag `-D` or `--save-dev` to install `devDependencies`, for more information consult the links at the end of this section.
 
 [source, bash]
 ----
@@ -256,7 +268,7 @@ the new dependencies.
       }
 ----
 
-This lock file is checked everytime the command npm i (or npm install) is used without specifying a package,
+This lock file is checked every time the command npm i (or npm install) is used without specifying a package,
 in the case it exists and it's valid, npm will install the exact tree that was generated, such that subsequent
 installs are able to generate identical dependency trees.
 
@@ -287,10 +299,12 @@ Similarly to npm, yarn creates and maintains his own lock file, called yarn.lock
 Here we have a brief description of yarn's most used commands:
 
 [source, bash]
+----
 $ yarn add Package
 $ yarn add --dev Package
+----
 
-Adds a package *locally* to use in your package. Adding the flags `--dev` or `-D` will add them to devDependencies instead of the default dependencies, if you need more information check the links at the end of the section.
+Adds a package *locally* to use in your package. Adding the flags `--dev` or `-D` will add them to `devDependencies` instead of the default dependencies, if you need more information check the links at the end of the section.
 
 [source, bash]
 ----
@@ -343,7 +357,7 @@ Yarn.lock follows the same structure as package-lock.json, you can find an examp
 ----
 
 [WARNING]
-As with package-lock.json, it's strongly *not* adviced to modify this file. Leave its management to yarn
+As with package-lock.json, it's strongly *not* advised to modify this file. Leave its management to yarn
 
 You can learn more about yarn.lock here: https://yarnpkg.com/en/docs/yarn-lock[yarn.lock]
 

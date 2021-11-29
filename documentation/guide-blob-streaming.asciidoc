@@ -5,9 +5,9 @@ This sample demonstrates how to upload a file to a server. For this, we will nee
 NOTE: The backend implementation for this sample is located here: https://github.com/devonfw-sample/devon4j-blob-streaming[
 devon4j-blob-streaming]
 
-== FormData
+== `FormData`
 
-FormData is an object where you can store key-value pairs that allows you to send through XMLHttpRequest. You can create a FormData object as simply as:
+`FormData` is an object where you can store key-value pairs that allows you to send through `XMLHttpRequest`. You can create a `FormData` object as simply as:
 
 [source, typescript]
 ----
@@ -46,7 +46,8 @@ These are the component I am going to use for our sample, are material HTML comp
 export class CoreModule {}
 ....
 ----
-FormsModule Will allow us data binding through html and component.
+
+`FormsModule` Will allow us data binding through html and component.
 
 The next step will be to create a component to place the uploader:
 `ng generate component uploader`
@@ -144,7 +145,7 @@ And then, the upload() method that the button in html is calling:
 
 The click method at first line will open the file explorer in order to select the desired file to upload, and on change method will be called when a new file is selected, so a change is detected. Then, `uploadFile(...)` method will be called.
 
-Before explain this `uploadFile(...)` mehtod, there is something still missing, a service to communicate with backend through http.
+Before explain this `uploadFile(...)` method, there is something still missing, a service to communicate with backend through http.
 I am going to place the service in a service folder inside our uploader component folder. 
 Execute the following command `ng generate service data` and paste the following code
 
@@ -207,7 +208,7 @@ In uploader.component.ts is missing `uploadFile(...)` method.
 
 Notice that whether we have a correct response, or an error response, we set the variable `this.uploadSuccess` or `this.uploadFail` to show the labels in the html giving feedback.
 Once we call the service to do the http request, we expect two types of response(three if we count the error), the first one is the progress of the upload, and will update the progress bar through `this.fileProgress` variable. The second one is a response when the request is finished.
-That is why the type of the response is checked between HttpEventType or HttpResponse. 
+That is why the type of the response is checked between `HttpEventType` or `HttpResponse`. 
 
 Now, if you have your backend running, you should be able to upload a file, and check in DB that all the process worked fine.
 

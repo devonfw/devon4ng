@@ -45,13 +45,13 @@ When working with package managers it is very important to understand the concep
 |Version name when incrementing |Major (2.0.0)  |Minor (1.3.0)  |Patch (1.2.4)
 |Has breaking changes           |yes            |no             |no
 |Has features                   |yes            |yes            |no
-|Has bugfixes                   |yes            |yes            |yes
+|Has bug fixes                   |yes            |yes            |yes
 |=======
 
 The table gives an overview of the most important parts of semantic versioning.
 In the header version 1.2.3 is displayed.
 The first row shows the name and the resulting version when incrementing a part of the version.
-The next rows show specifics of the resulting version - e.g. a major version can have breaking changes, features and bugfixes.
+The next rows show specifics of the resulting version - e.g. a major version can have breaking changes, features and bug fixes.
 
 Packages from npm and yarn leverage semantic versioning and instead of selecting a fixed version one can specify a selector.
 The most common selectors are:

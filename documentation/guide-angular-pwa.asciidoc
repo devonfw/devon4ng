@@ -286,7 +286,7 @@ To check if an app is a PWA lets compare its normal behaviour against itself but
 
 `npm install http-server` to install an npm module that can serve your built application. Documentation https://www.npmjs.com/package/http-server[here].
 
-Go to the dist/basic-ng-pwa/ folder running `cd dist/basic-ng-pwa`.
+Go to the `dist/basic-ng-pwa/` folder running `cd dist/basic-ng-pwa`.
 
 `http-server -o` to serve your built app.
 

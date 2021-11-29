@@ -84,9 +84,9 @@ For this topic, we are going to use a basic layout project that can be found in 
 
 Before starting writing custom themes, there are some necessary things that have to be mentioned:
 
-* Add a default theme: The project mentioned before has just one global SCSS stylesheet `*styles.scss*` that includes `indigo-pink.scss` which will be the default theme. 
+* Add a default theme: The project mentioned before has just one global SCSS style sheet `*styles.scss*` that includes `indigo-pink.scss` which will be the default theme. 
 
-* Add _@import '~@angular/material/theming';_ at the beginning of the every stylesheet to be able to use angular material pre-built color palettes and functions.
+* Add _@import '~@angular/material/theming';_ at the beginning of the every style sheet to be able to use angular material pre-built color palettes and functions.
 
 * Add _@include mat-core();_ *once* per project, so if you are writing multiple themes in multiple files you could import those files from a 'central' one (for example `styles.scss`). This includes all common styles that are used by multiple components.
 

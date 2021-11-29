@@ -41,7 +41,7 @@ To explain how to build PWAs using angular, a basic application is going to be b
 
 === Step 1: Create a new project and install Angular PWA package
 
-This step can be completed with one simple command: `ng new <name>`, where <names> is the name for the app. In this case, the app is going to be named *basic-ng-pwa*.
+This step can be completed with one simple command: `ng new <name>`, where <names> is the name for the app. In this case, the app is going to be named `*basic-ng-pwa*`.
 
 === Step 2: Create a service
 
@@ -91,7 +91,7 @@ To retrieve data with this service, you have to import the module `HttpClient` a
 
 === Step 3: Use the service
 
-The component `AppComponent` implements the interface `OnInit` and inside its method `ngOnInit()` the suscription to the services is done. When a dish arrives, it is saved and shown (app.component.html).
+The component `AppComponent` implements the interface `OnInit` and inside its method `ngOnInit()` the subscription to the services is done. When a dish arrives, it is saved and shown (app.component.html).
 
 [source,ts]
 ----
@@ -193,7 +193,7 @@ _background_color_: Expected background color of the web application.
 
 _display_: Preferred display mode.
 
-_scope_: Navigation scope of tghis web application's application context.
+_scope_: Navigation scope of this web application's application context.
 
 _start_url_: URL loaded when the user launches the web application.
 
@@ -212,13 +212,13 @@ nsgw-config.json specifies which files and data URLs have to be cached and updat
 ** `_assetGroups_`: Resources that are part of the app version that update along with the app.
 *** _name_: Identifies the group.
 *** `_installMode_`: How the resources are cached (prefetch or lazy).
-*** _updateMode_: Caching behaviour when a new version of the app is found (prefetch or lazy).
+*** `_updateMode_`: Caching behaviour when a new version of the app is found (prefetch or lazy).
 *** _resources_: Resources to cache. There are three groups.
 **** _files_: Lists patterns that match files in the distribution directory.
-**** _urls_:  URL patterns matched at runtime.
+**** `_urls_`:  URL patterns matched at runtime.
 ** `_dataGroups_`: `UsefulIdentifies` the group. for API requests.
 *** _name_: Identifies the group.
-*** _urls_: URL patterns matched at runtime.
+*** `_urls_`: URL patterns matched at runtime.
 *** _version_:  Indicates that the resources being cached have been updated in a backwards-incompatible way.
 *** `_cacheConfig_`: Policy by which matching requests will be cached
 **** `_maxSize_`: The maximum number of entries, or responses, in the cache.
@@ -247,17 +247,20 @@ Default configuration.
 
 `*ngsw-config.json*`
 
-At _assetGroups -> resources -> urls_: In this field the google fonts api is added in order to use Montserrat font even without network.
+At `_assetGroups -> resources -> urls_`: In this field the google fonts api is added in order to use Montserrat font even without network.
 
 [source]
+----
   "urls": [
           "https://fonts.googleapis.com/**"
         ]
+----
 
 
 At the root of the json: A data group to cache API calls.
 
 [source]
+----
   {
     ...
     "dataGroups": [{
@@ -273,6 +276,7 @@ At the root of the json: A data group to cache API calls.
       }
     }]
   }
+----
 
 === Step 7: Check that your app is a PWA
 

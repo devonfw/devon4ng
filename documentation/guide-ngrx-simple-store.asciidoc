@@ -24,15 +24,15 @@ In the following pages we use the example of an online streaming service. We wil
 
 If you're starting fresh, you first have to initialize NgRx and create a root state. The fastest way to do this is using the schematic:
 
- ng generate @ngrx/schematics:store State --root --module app.module.ts
+ `ng generate @ngrx/schematics:store State --root --module app.module.ts`
  
 This will automatically generate a root store and register it in the app module. Next we generate a feature module for the watchlist:
 
- ng generate module watchlist
+` ng generate module watchlist`
  
 and create a corresponding feature store:
 
- ng generate store watchlist/Watchlist -m watchlist.module.ts
+` ng generate store watchlist/Watchlist -m watchlist.module.ts`
  
 This generates a file `watchlist/reducers/index.ts` with the reducer function, and registers the store in the watchlist module declaration.
  
@@ -41,7 +41,7 @@ This generates a file `watchlist/reducers/index.ts` with the reducer function, a
 If you're getting an error _Schematic "store" not found in collection "@schematics/angular"_, this means you forgot to register the NgRx schematics as default.
 =====
 
-Next, add the WatchlistModule to the AppModule imports so the feature store is registered when the application starts. We also added the *store devtools* which we will use later, resulting in the following file:
+Next, add the `WatchlistModule` to the `AppModule` imports so the feature store is registered when the application starts. We also added the *store devtools* which we will use later, resulting in the following file:
 
 *app.module.ts*
 [source, typescript]
@@ -111,10 +111,12 @@ Later we will learn how to retrieve data from the backend using effects. For now
 
 State is defined and transforms by a reducer function. Let's create a watchlist reducer:
 
+ ```
  cd watchlist/reducers
  ng g reducer WatchlistData --reducers index.ts
+ ```
  
-Open the generated file `watchlist-data.reducer.ts`. You see three exports: The *State* interface defines the shape of the state. There is only one instance of a feature state in the store at all times. The *initialState* constant is the state at application creation time. The *reducer* function will later be called by the store to produce the next state instance based on the current state and an action object.
+Open the generated file `watchlist-data.reducer.ts`. You see three exports: The *State* interface defines the shape of the state. There is only one instance of a feature state in the store at all times. The `*initialState*` constant is the state at application creation time. The *reducer* function will later be called by the store to produce the next state instance based on the current state and an action object.
 
 Let's put a movie into the user's watchlist:
 
@@ -150,9 +152,9 @@ State slices can be retrieved from the store using selectors.
 
 Create a watchlist component:
 
- ng g c watchlist/Watchlist
+ `ng g c watchlist/Watchlist`
  
-and add it to the exports of WatchlistModule. Also, replace `app.component.html` with
+and add it to the exports of `WatchlistModule`. Also, replace `app.component.html` with
 
  <app-watchlist></app-watchlist>
  
@@ -160,7 +162,7 @@ State observables are obtained using selectors. They are memoized by default, me
 
 Add a selector to `watchlist-data.reducer.ts`:
 
- export const getAllItems = (state: State) => state.items;
+ `export const getAllItems = (state: State) => state.items;`
  
 Next, we have to re-export the selector for this substate in the feature reducer. Modify the `watchlist/reducers/index.ts` like this:
 
@@ -209,7 +211,7 @@ export const getAllItems = createSelector( <6>
 <2> Feature states are registered by the `forFeature` method. This interface provides a typesafe path from root to feature state.
 <3> Tie substates of a feature state to the corresponding reducers
 <4> Create a selector to access the 'watchlist' feature state
-<5> select the watchlistData sub state
+<5> select the `watchlistData` sub state
 <6> re-export the selector
 
 Note how `createSelector` allows to chain selectors. This is a powerful tool that also allows for selecting from multiple states.
@@ -265,12 +267,12 @@ First we specify the type, followed by a call to the payload definition function
 
 [TIP]
 =====
-Action types should follow the naming convention `[Source] Event`, e.g. `[Recommended List] Hide Recommendation` or `[Auth API] Login Success`. Think of actions rather as events than commands. You should never use the same action at two different places (you can still handle multiple actions the same way). This faciliates tracing the source of an action. For details see https://www.youtube.com/watch?v=JmnsEvoy-gY[Good Action Hygiene with NgRx] by Mike Ryan (video).
+Action types should follow the naming convention `[Source] Event`, e.g. `[Recommended List] Hide Recommendation` or `[Auth API] Login Success`. Think of actions rather as events than commands. You should never use the same action at two different places (you can still handle multiple actions the same way). This facilitate tracing the source of an action. For details see https://www.youtube.com/watch?v=JmnsEvoy-gY[Good Action Hygiene with NgRx] by Mike Ryan (video).
 =====
 
 ==== Dispatch
 
-We skip the implementation of an actual video playback page and simulate wathcing a movie in 10 minute segments by adding a link in the template:
+We skip the implementation of an actual video playback page and simulate watching a movie in 10 minute segments by adding a link in the template:
 
 *watchlist-component.html*
 [source,typescript]
@@ -290,7 +292,7 @@ import * as playbackActions from 'src/app/playback/actions';
 
 ==== State reduction
 
-Next, we handle the action inside the watchlistData reducer. Note that actions can be handled by multiple reducers and effects at the same time to update different states, for example if we'd like to show a rating modal after playback has finished.
+Next, we handle the action inside the `watchlistData` reducer. Note that actions can be handled by multiple reducers and effects at the same time to update different states, for example if we'd like to show a rating modal after playback has finished.
 
 *watchlist-data.reducer.ts*
 [source,typescript]
@@ -329,10 +331,10 @@ Note how we changed the reducer's function signature to reference the actions un
 Selectors rely on object identity to decide whether the value has to be recalculated. Do not clone objects that are not on the path to the change you want to make. This is why `updatePlaybackMinutesMapper` returns the same item if the movie id does not match.
 =====
 
-==== Alternative state mapping with immer
-It can be hard to think in immutable changes, especially if your team has a strong background in imperative programming. In this case, you may find the https://github.com/immerjs/immer[immer] library convenient, which allows to produce immutable objects by manipulating a proxied draft. The same reducer can then be written as:
+==== Alternative state mapping with Immer
+It can be hard to think in immutable changes, especially if your team has a strong background in imperative programming. In this case, you may find the https://github.com/immerjs/immer[Immer] library convenient, which allows to produce immutable objects by manipulating a proxied draft. The same reducer can then be written as:
 
-*watchlist-data.reducer.ts* with immer
+*watchlist-data.reducer.ts* with Immer
 [source,typescript]
 ----
 import { produce } from 'immer';

@@ -33,7 +33,7 @@ If you're creating custom element directives, Web Components or HTML in general,
 
 HTML tags have attributes that providers extra context on what's being displayed on the browser. For example, the  img  tag's  alt  attribute lets the reader know what is being shown using a short description.However, native tags don't cover all cases. This is where ARIA fits in. ARIA attributes can provide context on what roles specific elements have in the application or on how elements within the document relate to each other.
 
-A modal component can be given the  role  of dialog or alertdialog to let the browser know that that component is acting as a modal. The modal component template can use the ARIA attributes  aria-labelledby  and  aria-described  to describe to readers what the title and purpose of the modal is.
+A modal component can be given the  role  of dialog or alertdialog to let the browser know that that component is acting as a modal. The modal component template can use the ARIA attributes  `aria-labelledby`  and  aria-described  to describe to readers what the title and purpose of the modal is.
 
 [source, TypeScript]
 ----
@@ -90,13 +90,13 @@ Keyboard accessibility is the ability of your application to be interacted with 
 
 ==== Focus 
 
-Keyboard interaction is driven by something called focus. In web applications, only one element on a document has focus at a time, and keypresses will activate whatever function is bound to that element.
+Keyboard interaction is driven by something called focus. In web applications, only one element on a document has focus at a time, and keypress will activate whatever function is bound to that element.
 Focus element border can be styled with CSS using the  outline  property, but it should not be removed. Elements can also be styled using the  :focus  psuedo-selector.
 
 ==== Tabbing
 
 The most common way of moving focus along the page is through the  tab  key. Elements will be traversed in the order they appear in the document outline - so that order must be carefully considered during development. 
-There is way change the default behaviour or tab order. This can be done through the  tabindex  attribute. The  tabindex  can be given the values:
+There is way change the default behaviour or tab order. This can be done through the  `tabindex`  attribute. The  `tabindex`  can be given the values:
 * less than zero - to let readers know that an element should be focusable but not keyboard accessible
 * 0 - to let readers know that that element should be accessible by keyboard
 * greater than zero - to let readers know the order in which the focusable element should be reached using the keyboard. Order is calculated from lowest to highest.
@@ -162,9 +162,9 @@ The `a11y` package provides a number of tools to improve accessibility. Import
 import { A11yModule } from '@angular/cdk/a11y';
 ----
 
-=== ListKeyManager
+=== `ListKeyManager`
 
-`ListKeyManager` manages the active option in a list of items based on keyboard interaction. Intended to be used with components that correspond to a `role="menu"` or `role="listbox"` pattern . Any component that uses a ListKeyManager will generally do three things:
+`ListKeyManager` manages the active option in a list of items based on keyboard interaction. Intended to be used with components that correspond to a `role="menu"` or `role="listbox"` pattern . Any component that uses a `ListKeyManager` will generally do three things:
 
 * Create a `@ViewChildren` query for the options being managed.
 * Initialize the `ListKeyManager`, passing in the options.
@@ -184,8 +184,8 @@ interface ListKeyManagerOption {
 
 There are two varieties of `ListKeyManager`, `FocusKeyManager` and `ActiveDescendantKeyManager`.
 
-=== FocusKeyManager
-Used when options will directly receive browser focus. Each item managed must implement the FocusableOption interface:
+=== `FocusKeyManager`
+Used when options will directly receive browser focus. Each item managed must implement the `FocusableOption` interface:
 [source, TypeScript]
 ----
 interface FocusableOption extends ListKeyManagerOption {
@@ -193,9 +193,9 @@ interface FocusableOption extends ListKeyManagerOption {
 }
 ----
 
-=== ActiveDescendantKeyManager
+=== `ActiveDescendantKeyManager`
 
-Used when options will be marked as active via aria-activedescendant. Each item managed must implement the Highlightable interface:
+Used when options will be marked as active via `aria-activedescendant`. Each item managed must implement the `Highlightable` interface:
 
 [source, TypeScript]
 ----
@@ -205,9 +205,9 @@ interface Highlightable extends ListKeyManagerOption {
 }
 ----
 
-Each item must also have an ID bound to the listbox's or menu's aria-activedescendant.
+Each item must also have an ID bound to the listbox's or menu's `aria-activedescendant`.
 
-=== FocusTrap
+=== `FocusTrap`
 
 The `cdkTrapFocus` directive traps Tab key focus within an element. This is intended to be used to create accessible experience for components like modal dialogs, where focus must be constrained. This directive is declared in `A11yModule`.
 
@@ -234,11 +234,11 @@ For example:
 <a mat-list-item routerLink cdkFocusRegionEnd>Focus region end</a>
 ----
 
-=== InteractivityChecker
+=== `InteractivityChecker`
 
 `InteractivityChecker` is used to check the interactivity of an element, capturing disabled, visible, tabbable, and focusable states for accessibility purposes.
 
-=== LiveAnnouncer
+=== `LiveAnnouncer`
 
 `LiveAnnouncer` is used to announce messages for screen-reader users using an aria-live region.
 

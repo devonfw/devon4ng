@@ -19,7 +19,6 @@ toc::[]
 
 == Introduction
 
-// Font Sapiña, Carlos <carlos.font-sapina@capgemini.com>
 // v1.0, 2017-11,
 
 This document aims to provide you the necessary documentation and sources in order to help you understand the importance of dependencies between packages.
@@ -142,7 +141,7 @@ $ npm run build-project
 There are special reserved words for scripts, like preinstall, which will execute the script automatically
 before the package you install are installed.
 
-Chech different uses for scripts in the following links:
+Check different uses for scripts in the following links:
 
 * https://yarnpkg.com/en/docs/package-json#toc-scripts[Yarn scripts documentation]
 * https://docs.npmjs.com/misc/scripts[npm scripts documentation]
@@ -247,6 +246,7 @@ Whenever you update, add or remove a package, package-lock.json is deleted and r
 the new dependencies.
 
 [source,json]
+----
  "@angular/animations": {
       "version": "4.4.6",
       "resolved": "https://registry.npmjs.org/@angular/animations/-/animations-4.4.6.tgz",
@@ -254,6 +254,7 @@ the new dependencies.
       "requires": {
         "tslib": "1.8.0"
       }
+----
 
 This lock file is checked everytime the command npm i (or npm install) is used without specifying a package,
 in the case it exists and it's valid, npm will install the exact tree that was generated, such that subsequent
@@ -292,22 +293,30 @@ $ yarn add --dev Package
 Adds a package *locally* to use in your package. Adding the flags `--dev` or `-D` will add them to devDependencies instead of the default dependencies, if you need more information check the links at the end of the section.
 
 [source, bash]
+----
 $ yarn init
+----
 
 Initializes the development of a package.
 
 [source, bash]
+----
 $ yarn install
+----
 
 Installs all the dependencies defined in a package.json file, you can also write "yarn" to achieve the same effect.
 
 [source, bash]
+----
 $ yarn remove Package 
+----
 
 You use it when you wish to remove a package from your project.
 
 [source, bash]
+----
 $ yarn global add Package
+----
 
 Installs the <<Global package>>.
 
@@ -325,12 +334,13 @@ source of errors if programmers do not use the same manager.
 Yarn.lock follows the same structure as package-lock.json, you can find an example of dependency below:
 
 [source,json]
+----
 "@angular/animations@^4.2.4":
   version "4.4.6"
   resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-4.4.6.tgz#fa661899a8a4e38cb7c583c7a5c97ce65d592a35"
   dependencies:
     tslib "^1.7.1"
-
+----
 
 [WARNING]
 As with package-lock.json, it's strongly *not* adviced to modify this file. Leave its management to yarn
@@ -368,11 +378,14 @@ This happens because package.json also contains the range of versions we allow y
 install or update to, example:
 
 [source, json]
+----
 "@angular/animations": "^4.2.4"
+----
 
 And here the installed one:
 
 [source,json]
+----
  "@angular/animations": {
       "version": "4.4.6",
       "resolved": "https://registry.npmjs.org/@angular/animations/-/animations-4.4.6.tgz",
@@ -380,6 +393,7 @@ And here the installed one:
       "requires": {
         "tslib": "1.8.0"
       }
+----
 
 As you can see, the version we initially added is 4.2.4, and the version finally installed after 
 a global installation of all packages, 4.4.6.

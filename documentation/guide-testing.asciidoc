@@ -17,12 +17,12 @@ toc::[]
 
 = Testing
 
-This guide will cover the basics of testing logic inside your code with UnitTest cases.
+This guide will cover the basics of testing logic inside your code with unit test cases.
 The guide assumes that you are familiar with Angular CLI (link:guide-working-with-angular-cli[see the guide])
 
-For testing your Angular application with UnitTest cases there are two main strategies:
+For testing your Angular application with unit test cases there are two main strategies:
 
-1. Isolated UnitTest cases +
+1. Isolated unit test cases +
 Isolated unit tests examine an instance of a class all by itself without any dependence on Angular or any injected values.
 The amount of code and effort needed to create such tests in minimal.
 
@@ -50,14 +50,14 @@ For example selectors, which select data from the store and transform it further
 2. Stores: +
 A store contains methods representing state transitions.
 If these methods contain logic, they need to be tested.
-Stores are always tested using *Isolated UnitTests*.
+Stores are always tested using *Isolated unit tests*.
 
 3. Services: +
 Services contain Business Logic, which needs to be tested.
 UseCase Services represent a whole business use case.
 For instance this could be initializing a store with all the data that is needed for a dialog - loading, transforming, storing.
 Often *Angular Testing Utilities* are the optimal solution for testing UseCase Services, because they allow for an easy stubbing of the backend.
-All other services should be tested with *Isolated UnitTests* as they are much easier to write and maintain.
+All other services should be tested with *Isolated unit tests* as they are much easier to write and maintain.
 
 == Testing Smart Components
 
@@ -175,7 +175,7 @@ The examples show the basic testing method
 
 == Testing state transitions performed by stores
 
-Stores are always tested with *Isolated UnitTests*.
+Stores are always tested with *Isolated unit tests*.
 
 Actions triggered by `dispatchAction()` calls are asynchronously performed to alter the state.
 A good solution to test such a state transition is to use the done callback from Jasmine.
@@ -216,7 +216,7 @@ it('toggleRowChecked adds flight with given id to selectedValues Property', (don
 
 == Testing services
 
-When testing services both strategies - *Isolated UnitTests* and *Angular Testing Utilities* - are valid options.
+When testing services both strategies - *Isolated unit tests* and *Angular Testing Utilities* - are valid options.
 
 The goal of such tests are
 
@@ -226,12 +226,12 @@ The goal of such tests are
 * save performing refactoring
 * thinking about edge case behavior while testing
 
-For simple services *Isolated UnitTests* can be written.
+For simple services *Isolated unit tests* can be written.
 Writing these tests takes lesser effort and they can be written very fast.
 
 The following listing gives an example of such tests.
 
-.Testing a simple services with *Isolated UnitTests*
+.Testing a simple services with *Isolated unit tests*
 [source,ts]
 ----
 let sut: IsyDatePipe;

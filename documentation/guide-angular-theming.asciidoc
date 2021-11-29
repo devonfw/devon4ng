@@ -59,7 +59,7 @@ image::images/angular/angular-theming/indigo-pink.png["indigo-pink theme", width
 * `pink-bluegrey.css`
 
 .`ink-bluegrey theme`.
-image::images/angular/angular-theming/pink-bluegrey.png["pink-bluegrey theme", width=600 link="images/angular/angular-theming/pink-bluegrey.png"]
+image::images/angular/angular-theming/pink-bluegrey.png["` pink-bluegrey theme`", width=600 link="images/angular/angular-theming/pink-bluegrey.png"]
 
 * purple-green.css
 

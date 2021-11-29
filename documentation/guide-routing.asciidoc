@@ -23,9 +23,9 @@ This guide will show common tasks and best practices.
 
 == Defining Routes
 
-For each feature module and the app module all routes should be defined in a seperate module with the suffix `RoutingModule`.
+For each feature module and the app module all routes should be defined in a separate module with the suffix `RoutingModule`.
 This way the routing modules are the only place where routes are defined.
-This pattern achieves a clear seperation of concernes.
+This pattern achieves a clear separation of concerns.
 The following figure illustrates this.
 
 .Routing module declaration
@@ -40,9 +40,9 @@ In this example two modules need to be configured with routes - `AppModule` and 
 The following routes will be configured
 
 * `/` will redirect to `/search`
-* `/search` displays FlightSearchComponent (`FlightModule`)
-* `/search/print/:flightId/:date` displays FlightPrintComponent (`FlightModule`)
-* `/search/details/:flightId/:date` displays FlightDetailsComponent (`FlightModule`)
+* `/search` displays `FlightSearchComponent` (`FlightModule`)
+* `/search/print/:flightId/:date` displays `FlightPrintComponent` (`FlightModule`)
+* `/search/details/:flightId/:date` displays `FlightDetailsComponent` (`FlightModule`)
 * All other routes will display `ErrorPage404` (`AppModule`)
 
 [source,ts]
@@ -81,7 +81,7 @@ export class FlightSearchRoutingModule { }
 ----
 
 TIP: The import order inside `AppModule` is important.
-AppRoutingModule needs to be imported *after* `FlightModule`.
+`AppRoutingModule` needs to be imported *after* `FlightModule`.
 
 === Example 2 - Lazy Loading
 
@@ -134,7 +134,7 @@ With Angular you have two ways of triggering route changes.
 
 On the one hand, architecture-wise it is a much cleaner solution to trigger route changes in _Smart Components_.
 This way you have every `UI` event that should trigger a navigation handled in one place - in a _Smart Component_. 
-It becomes very easy to look inside the code for every navigation, that can occure.
+It becomes very easy to look inside the code for every navigation, that can occur.
 Refactoring is also much easier, as there are no navigation events "hidden" in the `HTML` templates
 
 On the other hand, in terms of accessibility and `SEO` it is a better solution to rely on bindings in the view - e.g. by using Angular router-link directive.
@@ -148,11 +148,11 @@ image::images/triggering-navigation.svg["Triggering navigation", link="images/tr
 
 == Guards
 
-Guards are Angular services implemented on routes which determines whether a user can naviagate to/from the route. There are examples below which will explain things better. We have the following types of Guards:
+Guards are Angular services implemented on routes which determines whether a user can navigate to/from the route. There are examples below which will explain things better. We have the following types of Guards:
 
 * *`CanActivate`*: It is used to determine whether a user can visit a route. The most common scenario for this guard is to check if the user is authenticated. For example, if we want only logged in users to be able to go to a particular route, we will implement the `CanActivate` guard on this route.
-* *CanActivateChild*: Same as above, only implemented on child routes.
-* *`CanDeactivate`*: It is used to determine if a user can naviagate away from a route. Most common example is when a user tries to go to a different page after filling up a form and does not save/submit the changes, we can use this guard to confirm whether the user really wants to leave the page without saving/submiting.
+* `*CanActivateChild*`: Same as above, only implemented on child routes.
+* *`CanDeactivate`*: It is used to determine if a user can navigate away from a route. Most common example is when a user tries to go to a different page after filling up a form and does not save/submit the changes, we can use this guard to confirm whether the user really wants to leave the page without saving/submitting.
 * *Resolve*: For resolving dynamic data.
 * *`CanLoad`*: It is used to determine whether an _Angular module_ can be loaded lazily. Example below will be helpful to understand it.
 
@@ -186,9 +186,9 @@ class ExampleAuthGuard implements CanActivate {
 ----
 
 In the above example, let's assume we have a `AuthService` which has a `isLoggedIn()` method which returns a boolean value depending on whether the user is logged in. We use it to return `true` or `false` from the `canActivate` function.
-The `canActivate` function accepts two parameters (provided by Angular). The first parameter of type `ActivatedRouterSnapshot` is the snapshot of the route the user is trying to naviagate to (where the guard is implemented); we can extract the route parameters from this instance. The second parameter of type `RouterStateSnapshot` is a snapshot of the router state the user is trying to naviagate to; we can fetch the `URL` from it's `url` property.
+The `canActivate` function accepts two parameters (provided by Angular). The first parameter of type `ActivatedRouterSnapshot` is the snapshot of the route the user is trying to navigate to (where the guard is implemented); we can extract the route parameters from this instance. The second parameter of type `RouterStateSnapshot` is a snapshot of the router state the user is trying to navigate to; we can fetch the `URL` from it's `url` property.
 
-TIP: We can also redirect the user to another page (maybe a login page) if the `authService` returns false. To do that, inject `Router` and use it's `naviagate` function to redirect to the appropriate page.
+TIP: We can also redirect the user to another page (maybe a login page) if the `authService` returns false. To do that, inject `Router` and use it's `navigate` function to redirect to the appropriate page.
 
 Since it is a service, it needs to be provided in our module:
 
@@ -219,7 +219,7 @@ const routes: Routes = [
 
 As you can see, the `canActivate` property accepts an array of guards. So we can implement more than one guard on a route.
 
-==== CanActivateChild guard
+==== `CanActivateChild` guard
 
 To use the guard on nested (children) routes, we add it to the `canActivateChild` property like so:
 
@@ -237,7 +237,7 @@ const routes: Routes = [
 ];
 ----
 
-=== Example 2 - CanLoad guard
+=== Example 2 - `CanLoad` guard
 
 Similar to `CanActivate`, to use this guard we implement the `CanLoad` interface and overwrite it's `canLoad` function. Again, this function returns either a boolean value or an `Observable` or a `Promise` which resolves to a boolean value. The fundamental difference between `CanActivate` and `CanLoad` is that `CanLoad` is used to determine whether an entire module can be lazily loaded or not. If the guard returns `false` for a module protected by `CanLoad`, the entire module is not loaded.
 

@@ -150,7 +150,7 @@ $ yarn (run) build-project    # run is optional
 $ npm run build-project
 -----
 
-There are special reserved words for scripts, like preinstall, which will execute the script automatically
+There are special reserved words for scripts, like pre-install, which will execute the script automatically
 before the package you install are installed.
 
 Check different uses for scripts in the following links:
@@ -194,7 +194,7 @@ Take in consideration both npm and yarn need a package.json in the root of your 
 
 *Brief overview of commands*
 
-If we need to create a package.json from scratch, we can use the comand *init*. This command asks the user for basic information about the project and creates a brand new package.json.
+If we need to create a package.json from scratch, we can use the command *init*. This command asks the user for basic information about the project and creates a brand new package.json.
 
 [source, bash]
 ----

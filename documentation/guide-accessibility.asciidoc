@@ -180,7 +180,7 @@ interface ListKeyManagerOption {
 }
 ----
 
-==== Types of ListKeyManager
+==== Types of `ListKeyManager`
 
 There are two varieties of `ListKeyManager`, `FocusKeyManager` and `ActiveDescendantKeyManager`.
 

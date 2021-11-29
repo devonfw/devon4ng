@@ -32,7 +32,7 @@ The amount of code and effort needed to create such tests is a little higher.
 
 == Testing Concept
 
-The following figure shows you an overview of the application architecture devided in testing areas.
+The following figure shows you an overview of the application architecture divided in testing areas.
 
 .Testing Areas
 image::images/testing-areas.svg["Testing Areas", width="450", link="images/testing-areas.svg"]
@@ -43,14 +43,14 @@ There are three areas, which need to be covered by different testing strategies.
 Smart Components need to be tested because they contain view logic.
 Also the interaction with 3rd party components needs to be tested.
 When a 3rd party component changes with an upgrade a test will be failing and warn you, that there is something wrong with the new version.
-Most of the time Dumb Components do not need to be teste because they mainly display data and do not contain any logic.
+Most of the time Dumb Components do not need to be tested because they mainly display data and do not contain any logic.
 Smart Components are always tested with *Angular Testing Utilities*.
 For example selectors, which select data from the store and transform it further, need to be tested.
 
 2. Stores: +
 A store contains methods representing state transitions.
 If these methods contain logic, they need to be tested.
-Stores are always testet using *Isolated UnitTests*.
+Stores are always tested using *Isolated UnitTests*.
 
 3. Services: +
 Services contain Business Logic, which needs to be tested.
@@ -129,9 +129,9 @@ If you need a complex test setup, just use the regular methods defined on the st
 These are mostly UseCase services.
 They should not be tested by these tests.
 Only the correct call to their functions should be assured.
-The logic inside the UseCase services is tested with seperate tests.
+The logic inside the UseCase services is tested with separate tests.
 * `detectChanges()` performance an Angular Change Detection cycle (Angular refreshes all the bindings present in the view)
-* `tick()` performance a virtual marco task, `tick(1000)` is equal to the virtual passing of 1s.
+* `tick()` performance a virtual macro task, `tick(1000)` is equal to the virtual passing of 1s.
 
 The following test cases show the testing strategy in action.
 
@@ -223,7 +223,7 @@ The goal of such tests are
 * assuring the behavior for valid data.
 * assuring the behavior for invalid data.
 * documenting functionality
-* savely performing refactorings
+* save performing refactoring
 * thinking about edge case behavior while testing
 
 For simple services *Isolated UnitTests* can be written.
@@ -319,7 +319,7 @@ it('does not load flight if present in store', fakeAsync(() => {
 ----
 
 The first test assures a correct XHR request is performed if `initializePrintDialog()` is called and no data is in the store.
-The second test assures no XHR request ist performed if the needed data is already in the store. 
+The second test assures no XHR request IST performed if the needed data is already in the store. 
 
 The next steps are checks for the correct implementation of logic.
 

@@ -15,7 +15,7 @@ toc::[]
 :source-highlighter: rouge
 :listing-caption: Listing
 
-= Prime NG Layout
+= PrimeNG Layout
 
 The purpose of this guide is to get a basic understanding of creating layouts of PrimeNG in a devon4ng application. https://www.primefaces.org/primeng/[PrimeNG] is a HTML/CSS framework.
 
@@ -46,7 +46,7 @@ image::images/angular-primeng-layout/Screenshot_1.png[]
 Next we will add Angular Material to our application. In the integrated terminal, press Ctrl + C to terminate the running application and run the following command:
 
 
-Run the ng add command for PrimeNg:
+Run the ng add command for PrimeNG:
 ```
 npm install primeng
 npm install primeicons --save

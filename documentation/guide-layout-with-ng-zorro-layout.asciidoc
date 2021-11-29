@@ -31,7 +31,7 @@ Starts with opening the console(in the Devon distribution folder) and running th
 
 ** `devon ng new AngularZorroLayout`
 
-Select `y` when it asks whether it would like to add Angular routing and select `scss` when it asks for the stylesheet format. 
+Select `y` when it asks whether it would like to add Angular routing and select `scss` when it asks for the style sheet format. 
 
 Once the creation process is complete, open your newly created application in Visual Studio Code. Try running the empty application by running the following command in the integrated terminal:
 

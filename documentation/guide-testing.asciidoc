@@ -119,7 +119,7 @@ describe('PrintFlightComponent', () => {
 
 It is important:
 
-* Use `RouterTestingModule`` instead of `RouterModule`
+* Use `RouterTestingModule` instead of `RouterModule`
 * Use `TranslateModule.forRoot()` without translations
 This way you can test language-neutral without translation marks.
 * Do not add a whole module from your application - in declarations add the tested Smart Component with all its Dumb Components

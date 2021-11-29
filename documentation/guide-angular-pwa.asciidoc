@@ -17,12 +17,12 @@ toc::[]
 
 = Angular Progressive Web App
 
-Progressive web applications (PWAs) are web application that offer better user experience than the traditional ones. In general, they solve problems related with reliability and speed:
+Progressive web applications (PWA) are web application that offer better user experience than the traditional ones. In general, they solve problems related with reliability and speed:
 
-* _Reliability_:  PWAs are stable. In this context stability means than even with slow connections or even with no network at all, the application still works. To achieve this, some basic resources like styles, fonts, requests, ... are stored; due to this caching, it is not possible to assure that the content is always up-to-date.
+* _Reliability_:  PWA are stable. In this context stability means than even with slow connections or even with no network at all, the application still works. To achieve this, some basic resources like styles, fonts, requests, ... are stored; due to this caching, it is not possible to assure that the content is always up-to-date.
 * _Speed_: When an users opens an application, he or she will expect it to load almost immediately (almost 53% of users abandon sites that take longer that 3 seconds, source: https://developers.google.com/web/progressive-web-apps/#fast).
 
-PWAs uses a script called https://developers.google.com/web/fundamentals/primers/service-workers/[service worker], which runs in background and essentially act as proxy between web app and network, intercepting requests and acting depending on the network conditions.
+PWA uses a script called https://developers.google.com/web/fundamentals/primers/service-workers/[service worker], which runs in background and essentially act as proxy between web app and network, intercepting requests and acting depending on the network conditions.
 
 == Assumptions
 
@@ -37,7 +37,7 @@ This guide assumes that you already have installed:
 .Basic angular PWA.
 image::images/angular/angular-pwa/mts-pwa-rec.png["My thai star recommendation", width=800 link="images/angular/angular-pwa/mts-pwa-rec.png"]
 
-To explain how to build PWAs using angular, a basic application is going to be built. This app will be able to ask for resources and save in the cache in order to work even offline.
+To explain how to build PWA using angular, a basic application is going to be built. This app will be able to ask for resources and save in the cache in order to work even offline.
 
 === Step 1: Create a new project and install Angular PWA package
 

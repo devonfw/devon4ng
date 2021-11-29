@@ -30,7 +30,7 @@ image::images/angular/angular-lazy/levels-app.png["Levels app structure", width=
 
 This graphic shows that modules acts as gates to access components "inside" them.
 
-Because the objective of this guide is related mainly with logic, the html structure and scss styles are less relevant, but the complete code can be found as a sample https://github.com/devonfw/devon4ng/tree/master/samples/AngularLazyLoading[here].
+Because the objective of this guide is related mainly with logic, the html structure and SCSS styles are less relevant, but the complete code can be found as a sample https://github.com/devonfw/devon4ng/tree/master/samples/AngularLazyLoading[here].
 
 
 === Implementation
@@ -61,7 +61,7 @@ run `ng generate module first --routing`  to generate a module named _first_.
 
 To move between components we have to configure the routes used:
 
-In *app-routing.module.ts* add a path *'first'* to FirstComponent and a redirection from *''* to *'first'*.
+In *app-routing.module.ts* add a path *'first'* to `FirstComponent` and a redirection from *''* to *'first'*.
 
 .File app-routing.module.ts.
 [source, ts]
@@ -88,7 +88,7 @@ const routes: Routes = [
 export class AppRoutingModule {}
 ----
 
-In *app.module.ts* import the module which includes FirstComponent.
+In *app.module.ts* import the module which includes `FirstComponent`.
 
 .File app.module.ts
 [source, ts]
@@ -107,7 +107,7 @@ import { FirstModule } from './first/first.module';
 export class AppModule { }
 ----
 
-In *first-routing.module.ts* add routes that direct to the content of SecondRightModule and SecondLeftModule. The content of both modules have the same name so, in order to avoid conflicts the name of the components are going to be changed using *as* ( original-name as new-name).
+In *first-routing.module.ts* add routes that direct to the content of `SecondRightModule` and `SecondLeftModule`. The content of both modules have the same name so, in order to avoid conflicts the name of the components are going to be changed using *as* ( original-name as new-name).
 
 .File first-routing.module.ts
 [source, ts]
@@ -139,7 +139,7 @@ const routes: Routes = [
 export class FirstRoutingModule { }
 ----
 
-In first.module.ts import SecondLeftModule and SecondRightModule.
+In first.module.ts import `SecondLeftModule` and `SecondRightModule`.
 
 .File first.module.ts
 [source, ts]
@@ -181,7 +181,7 @@ But, typing the url directly will load 'second-right' but no 'first', even if we
 .Second level right eager direct url.
 image::images/angular/angular-lazy/second-lvl-right-eager-d.png["Second level right eager", width=800 link="images/angular/angular-lazy/second-lvl-right-eager-d.png"]
 
-Modifying an angular application to load its modules lazily is easy, you have to change the routing configuration of the desired module (for example FirstModule).
+Modifying an angular application to load its modules lazily is easy, you have to change the routing configuration of the desired module (for example `FirstModule`).
 
 .File app-routing.module.ts.
 [source, ts]
@@ -205,14 +205,14 @@ const routes: Routes = [
 export class AppRoutingModule {}
 ----
 
-Notice that instead of loading a component, you dynamically import it in a _loadChildren_ attribute because modules acts as gates to access components "inside" them. Updating the app to load lazily has four consequences:
+Notice that instead of loading a component, you dynamically import it in a `_loadChildren_` attribute because modules acts as gates to access components "inside" them. Updating the app to load lazily has four consequences:
 
 1. No component attribute.
-2. No import of FirstComponent.
-3. FirstModule import has to be removed from the imports array at app.module.ts.
+2. No import of `FirstComponent`.
+3. `FirstModule` import has to be removed from the imports array at app.module.ts.
 4. Change of context.
 
-If we check *first-routing.module.ts* again, the can see that the path for ContentLeft and ContentRight is set to 'first/second-left' and 'first/second-right' respectively, so writing 'http//localhost:4200/first/second-left' will redirect us to ContentLeft. However, after loading a module with loadChildren setting the path to '_second-left_' and '_second-right_' is enough because it acquires the context set by AppRoutingModule.
+If we check *first-routing.module.ts* again, the can see that the path for `ContentLeft` and ContentRight is set to 'first/second-left' and 'first/second-right' respectively, so writing 'http//localhost:4200/first/second-left' will redirect us to `ContentLeft`. However, after loading a module with `loadChildren` setting the path to '_second-left_' and '_second-right_' is enough because it acquires the context set by `AppRoutingModule`.
 
 .File first-routing.module.ts
 [source, ts]
@@ -233,7 +233,7 @@ const routes: Routes = [
 ];
 ----
 
-If we go to '_first_' then FirstModule is situated in '_/first_' but also its children ContentLeft and ContentRight, so it is not necessary to write in their path '_first/second-left_' and '_first/second-right_', because that will situate the components on '_first/first/second-left_' and  '_first/first/second-right_'.
+If we go to '_first_' then `FirstModule` is situated in '_/first_' but also its children `ContentLeft` and `ContentRight`, so it is not necessary to write in their path '_first/second-left_' and '_first/second-right_', because that will situate the components on '_first/first/second-left_' and  '_first/first/second-right_'.
 
 .First level lazy wrong path.
 image::images/angular/angular-lazy/first-lvl-wrong-path.png["First level wrong path", width=800 link="images/angular/angular-lazy/first-lvl-wrong-path.png"]
@@ -248,9 +248,9 @@ And if we go to _developer tools -> network_, we can find those modules loaded (
 .First level lazy.
 image::images/angular/angular-lazy/first-lvl-lazy.png["First level lazy", width=800 link="images/angular/angular-lazy/first-lvl-lazy.png"]
 
-To load the component ContentComponent of SecondLeftModule lazily, we have to load SecondLeftModule as a children of FirstModule:
+To load the component `ContentComponent` of `SecondLeftModule` lazily, we have to load `SecondLeftModule` as a children of `FirstModule`:
 
-* Change *component* to *loadChildren* and reference SecondLeftModule.
+* Change *component* to `*loadChildren*` and reference `SecondLeftModule`.
 
 .File first-routing.module.ts.
 [source, ts]
@@ -271,8 +271,8 @@ const routes: Routes = [
 ];
 ----
 
-* Remove SecondLeftModule at first.component.ts
-* Route the components inside SecondLeftModule. Without this step nothing would be displayed. 
+* Remove `SecondLeftModule` at first.component.ts
+* Route the components inside `SecondLeftModule`. Without this step nothing would be displayed. 
 
 .File second-left-routing.module.ts.
 [source, ts]
@@ -299,7 +299,7 @@ export class SecondLeftRoutingModule { }
 .Second level lazy loading compilation.
 image::images/angular/angular-lazy/second-lvl-lazy.png["Second level lazy", width=800 link="images/angular/angular-lazy/second-lvl-lazy.png"]
 
-Clicking on *[Go to left module]* triggers the load of SecondLeftModule.
+Clicking on *[Go to left module]* triggers the load of `SecondLeftModule`.
 
 .Second level lazy loading network.
 image::images/angular/angular-lazy/second-lvl-left-lazy.png["Second level lazy network", width=800 link="images/angular/angular-lazy/second-lvl-left-lazy.png"]

@@ -212,7 +212,7 @@ Notice that instead of loading a component, you dynamically import it in a `_loa
 3. `FirstModule` import has to be removed from the imports array at app.module.ts.
 4. Change of context.
 
-If we check *first-routing.module.ts* again, the can see that the path for `ContentLeft` and ContentRight is set to 'first/second-left' and 'first/second-right' respectively, so writing 'http//localhost:4200/first/second-left' will redirect us to `ContentLeft`. However, after loading a module with `loadChildren` setting the path to '_second-left_' and '_second-right_' is enough because it acquires the context set by `AppRoutingModule`.
+If we check *first-routing.module.ts* again, the can see that the path for `ContentLeft` and `ContentRight` is set to 'first/second-left' and 'first/second-right' respectively, so writing 'http//localhost:4200/first/second-left' will redirect us to `ContentLeft`. However, after loading a module with `loadChildren` setting the path to '_second-left_' and '_second-right_' is enough because it acquires the context set by `AppRoutingModule`.
 
 .File first-routing.module.ts
 [source, ts]

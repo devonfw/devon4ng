@@ -35,7 +35,7 @@ As stated in the link:home[introduction], devon4ng does not stipulate a particul
 
 Nonetheless, you should always compare different approaches to state management and pick the best one suiting your use case. Here's a (non-exhaustive) list of competing state management libraries:
 
-* Plain RxJs using the simple store described in link:cookbook-abstract-class-store[Abstract Class Store]
+* Plain RxJS using the simple store described in link:cookbook-abstract-class-store[Abstract Class Store]
 * https://github.com/ngxs[NgXS] reduces some boilerplate of NgRx by leveraging the power of decorators and moving side effects to the store
 * https://github.com/mobxjs/mobx[MobX] follows a more imperative approach in contrast to the functional Redux pattern
 * https://github.com/datorama/akita[Akita] also uses an imperative approach with direct setters in the store, but keeps the concept of immutable state transitions

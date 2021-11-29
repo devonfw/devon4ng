@@ -204,7 +204,7 @@ Additional information can be found https://developers.google.com/web/fundamenta
 
 ==== `ngsw-config.json`
 
-nsgw-config.json specifies which files and data URLs have to be cached and updated by the Angular service worker.
+ngsw-config.json specifies which files and data URLs have to be cached and updated by the Angular service worker.
 
 *Fields*
 

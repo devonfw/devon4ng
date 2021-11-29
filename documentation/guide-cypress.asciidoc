@@ -187,7 +187,7 @@ cy.fixture('box.json').as('fruitBox')
 ----
 
 `cy.fixture('box.json')` we get access to `box.json`
-`.as(fruitBox)` is used to create an alias (fruitBox) to the fixture.
+`.as(fruitBox)` is used to create an alias `(fruitBox)` to the fixture.
 
 For more info check link:https://docs.cypress.io/api/commands/fixture.html#Syntax[Fixtures documentation]
 
@@ -255,7 +255,7 @@ cy.fixture('box')
 ----
 
 We get `boxFruit` data from the box fixture and then we mock the api call with it so now the response of the call is `boxFruit` object.
-When the button is clicked, it waits to receive the response of the call and then checks if the list contains one of the elements of the fruitBox.
+When the button is clicked, it waits to receive the response of the call and then checks if the list contains one of the elements of the `fruitBox`.
 
 === Request
 Make a HTTP request.
@@ -374,7 +374,7 @@ https://docs.cypress.io/guides/guides/cross-browser-testing.html#Continuous-Inte
 
 == Viewport
 
-Cypress allow us to create tests depending on the viewport, so we can test responsiveness.
+Cypress allow us to create tests depending on the Viewport, so we can test responsiveness.
 
 There are different ways to use it:
 
@@ -418,7 +418,7 @@ https://docs.cypress.io/api/commands/viewport.html#Syntax[Viewport documentation
 
 == Test retries
 
-We can get false negatives intermittently due external issues that can affect our tests, because of that we can add, in the configuration, a retries entry so cypres can run again a certain failed test the selected number of times to verify that the error is real.
+We can get false negatives intermittently due external issues that can affect our tests, because of that we can add, in the configuration, a retries entry so Cypress can run again a certain failed test the selected number of times to verify that the error is real.
 
 We can set retries for run or open mode.
 

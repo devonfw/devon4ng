@@ -40,7 +40,7 @@ To explain how to build progressive web apps (PWA) using Ionic, a basic applicat
 
 === Step 1: Create a new project
 
-This step can be completed with one simple command: `ionic start <name> <template>`, where <name> is the name and <template> a model for the app. In this case, the app is going to be named *basic-ion-pwa*.
+This step can be completed with one simple command: `ionic start <name> <template>`, where <name> is the name and <template> a model for the app. In this case, the app is going to be named `*basic-ion-pwa*`.
 
 === Step 2: Structures and styles
 
@@ -51,9 +51,9 @@ The styles (scss) and structures (html) do not have anything specially relevant,
 After this step, the app will allow users take photos and display them in the main screen. 
 First we have to import three important elements:
 
-* DomSanitizer: Sanitizes values to be safe to use.
+* `DomSanitizer`: Sanitizes values to be safe to use.
 
-* SafeResourceUrl: Interface for values that are safe to use as URL.
+* `SafeResourceUrl`: Interface for values that are safe to use as URL.
 
 * Plugins: Capacitor constant value used to access to the device's camera and toast dialogs.
 
@@ -140,7 +140,7 @@ To check if an app is a PWA lets compare its normal behaviour against itself but
 
 `npm install http-server` to install an npm module that can serve your built application. Documentation https://www.npmjs.com/package/http-server[here]. A good alternative is also `npm install serve`. It can be checked https://github.com/zeit/serve[here]. 
 
-Go to the *www* folder running `cd www`.
+Go to the `*www*` folder running `cd www`.
 
 `http-server -o` or `serve` to serve your built app.
 

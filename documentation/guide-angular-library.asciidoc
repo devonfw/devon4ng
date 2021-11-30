@@ -87,7 +87,7 @@ yarn pack
 
 === Publishing to npm repository (optional)
 
-* Add a _README.md_ and _LICENSE_ file. The text inside _README.md_ will be used in you npm package web page as documentation.
+* Add a `_README.md_` and _LICENSE_ file. The text inside `_README.md_` will be used in you npm package web page as documentation.
 
 * run `npm adduser` if you do not have a npm account to create it, otherwise run `npm login` and introduce your credentials.
 

@@ -19,15 +19,15 @@ toc::[]
 
 Angular allows us to set up a custom error handler that can be used to control the different errors and them in a correct way. Using a global error handler will avoid mistakes and provide a use friendly interface allowing us to indicate the user what problem is happening.
 
-== What is ErrorHandler
+== What is `ErrorHandler`
 
 `ErrorHandler` is the class that `Angular` uses by default to control the errors. This means that, even if the application doesn't have a `ErrorHandler` it is going to use the one setup by default in `Angular`. This can be tested by trying to find a page not existing in any app, instantly `Angular` will print the error in the console.
 
-== Creating your custom ErrorHandler step by step
+== Creating your custom `ErrorHandler` step by step
 
 In order to create a custom `ErrorHandler` three steps are going to be needed:
 
-=== Creating the custom ErrorHandler class
+=== Creating the custom `ErrorHandler` class
 
 In this first step the custom `ErrorHandler` class is going to be created inside the folder `/app/core/errors/errors-handler.ts`:
 
@@ -66,7 +66,7 @@ export class ErrorsHandler implements ErrorHandler {
 
 This class can be used to control the different type of errors. If wanted, the `classname` variable could be used to add more switch cases. This would allow control of more specific situations.
 
-=== Creating a ErrorInterceptor
+=== Creating a `ErrorInterceptor`
 
 Inside the same folder created in the last step we are going to create the `ErrorInterceptor`(`errors-handler-interceptor.ts`). This `ErrorInterceptor` is going to retry any failed calls to the server to make sure it is not being found before showing the error:
 
@@ -148,7 +148,7 @@ This module simply is providing the services that are implemented by our custom 
 
 == Handling Errors
 
-As a final step, handling these errors is necessary. Theres different ways that can be used to control the errors, here are a few:
+As a final step, handling these errors is necessary. There are different ways that can be used to control the errors, here are a few:
 
     - Creating a custom page and using with `Router` to redirect to a page showing an error.
     - Creating a service in the server side or `Backend` to create a log with the error and calling it with `HttpClient`.
@@ -188,4 +188,4 @@ export class ErrorsHandler implements ErrorHandler {
 }
 ----
 
-Using `Injector` the `MatSnackBar` is obtained, then the correct message is obtained inside the switch. Finally, using `NgZone` and `run()`, we open the `SnackBar` passing the message, and the paremeters wanted.
+Using `Injector` the `MatSnackBar` is obtained, then the correct message is obtained inside the switch. Finally, using `NgZone` and `run()`, we open the `SnackBar` passing the message, and the parameters wanted.

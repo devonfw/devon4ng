@@ -17,7 +17,7 @@ toc::[]
 
 = Architecture
 
-The following principles and guidelines are based on Angular Styleguide - especially Angular modules (see https://angular.io/guide/ngmodule[Angular Docs]).
+The following principles and guidelines are based on Angular Style Guide - especially Angular modules (see https://angular.io/guide/ngmodule[Angular Docs]).
 It extends those where additional guidance is needed to define an architecture which is:
 
 * maintainable across applications and teams
@@ -38,8 +38,8 @@ To clarify this:
 * A _module_ describes an applications feature area. The application flight-app may have a module called booking.
 
 An application developed using Angular consists of multiple modules.
-There are feature modules and special modules described by the Angular Styleguide - https://angular.io/guide/ngmodule#the-core-module[_core_] and https://angular.io/guide/ngmodule#shared-module[_shared_].
-Angular or Angular Styleguide give no guidance on how to structure a module internally.
+There are feature modules and special modules described by the Angular Style Guide - https://angular.io/guide/ngmodule#the-core-module[_core_] and https://angular.io/guide/ngmodule#shared-module[_shared_].
+Angular or Angular Style Guide give no guidance on how to structure a module internally.
 This is where this architecture comes in.
 
 === Layers
@@ -56,7 +56,7 @@ The only logic present is view logic inside _Smart Components_.
 * link:services-layer[*Services Layer*] is more or less what we call 'business logic layer' on the server side.
 The layer defines the applications state, the transitions between state and classic business logic.
 Stores contain application state over time to which _Smart Components_ subscribe to.
-Adapters are used to perform XHRs, WebSocket connections, etc.
+Adapters are used to perform XHR, `WebSocket` connections, etc.
 The business model is described inside the module.
 Use case services perform business logic needed for use cases.
 A use case services interacts with the store and adapters.
@@ -66,7 +66,7 @@ Those methods are _Actions_ in reactive terminology.
 === Modules
 
 Angular requires a module called _app_ which is the main entrance to an application at runtime - this module gets bootstrapped.
-Angular Styleguide defines feature modules and two special modules - https://angular.io/guide/ngmodule#the-core-module[_core_] and https://angular.io/guide/ngmodule#shared-module[_shared_]. 
+Angular Style Guide defines feature modules and two special modules - https://angular.io/guide/ngmodule#the-core-module[_core_] and https://angular.io/guide/ngmodule#shared-module[_shared_]. 
 
 .Modules
 image::images/architecture-modules.svg["Architecture - Modules", width="450", link="images/architecture-modules.svg"]

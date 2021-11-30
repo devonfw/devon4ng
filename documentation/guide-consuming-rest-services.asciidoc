@@ -17,9 +17,9 @@ toc::[]
 
 = Consuming REST services
 
-A good introduction to working with Angular HttpClient can be found in https://angular.io/guide/http[Angular Docs]
+A good introduction to working with `Angular HttpClient` can be found in https://angular.io/guide/http[Angular Docs]
 
-This guide will cover, how to embed Angular HttpClient in the application architecture.
+This guide will cover, how to embed `Angular HttpClient` in the application architecture.
 For backend request a special service with the suffix `Adapter` needs to be defined.
 
 == Defining Adapters
@@ -30,7 +30,7 @@ Those services need to have the suffix `Adapter` to make them easy to recognize.
 .Adapters handle backend communication
 image::images/rest-adapter.svg["Adapters handle backend communication", width="450", link="images/rest-adapter.svg"]
 
-As illustrated in the figure a Use Case service does not use Angular HttpClient directly but uses an adapter.
+As illustrated in the figure a Use Case service does not use `Angular HttpClient` directly but uses an adapter.
 A basic adapter could look like this:
 
 [source,ts]
@@ -104,7 +104,7 @@ export class FlightsAdapter {
 
 == Token management
 
-In most cases the access to backend API is secured using well known mechanisms as **CSRF**, **JWT** or both. In these cases the frontend application must manage the tokens that are generated when the user authenticates. More concretely it must store them to include them in every request automatically. Obviously, when user logs out these tokens must be removed from localStorage, memory, etc.
+In most cases the access to backend API is secured using well known mechanisms as **CSRF**, **JWT** or both. In these cases the front-end application must manage the tokens that are generated when the user authenticates. More concretely it must store them to include them in every request automatically. Obviously, when user logs out these tokens must be removed from `localStorage`, memory, etc.
 
 === Store security token
 
@@ -142,7 +142,7 @@ export class AuthService {
 }
 ----
 
-Using the previous service we will be able to store the token obtained in the login request using the method `setToken(token)`. Please consider that, if you want a more sophisticated approach using localStorage API, you will need to modify this service accordingly.
+Using the previous service we will be able to store the token obtained in the login request using the method `setToken(token)`. Please consider that, if you want a more sophisticated approach using `localStorage` API, you will need to modify this service accordingly.
 
 === Include token in every request
 

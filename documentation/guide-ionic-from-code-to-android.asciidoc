@@ -30,7 +30,7 @@ This document assumes that the reader has already:
 
 == From Ionic to Android project
 
-When a native application is being dessigned, sometimes, functionalities that uses camera, geolocation, push notification, ... are requested. To resolve these requests, Capacitor can be used.
+When a native application is being designed, sometimes, functionalities that uses camera, geolocation, push notification, ... are requested. To resolve these requests, Capacitor can be used.
 
 In general terms, Capacitor wraps apps made with Ionic (HTML, SCSS, Typescript) into WebViews that can be displayed in native applications (Android, IOS) and allows the developer to access native functionalities like the ones said before.
 
@@ -45,7 +45,7 @@ Then, it is necessary to initialize capacitor with some information: app id, nam
 
 === Modifications
 
-Throughout the development process, usually back-end and front-end are on a local computer, so it's a common practice to have diferent configuration files for each environment (commonly production and development). Ionic uses an angular.json file to store those configurations and some rules to be applied.
+Throughout the development process, usually back-end and front-end are on a local computer, so it's a common practice to have different configuration files for each environment (commonly production and development). Ionic uses an angular.json file to store those configurations and some rules to be applied.
 
 If a back-end is hosted on http://localhost:8081, and that direction is used in every environment, the application built for android will not work because computer and device do not have the same localhost. Fortunately, different configurations can be defined.
 
@@ -53,6 +53,8 @@ Android Studio uses 10.0.0.2 as alias for 127.0.0.1 (computer's localhost) so ad
 
 image::images/ionic-to-android/environments.png["Android environment and angular.json", link="images/ionic-to-android/environments.png"]
 
+[source]
+----
     "build": {
     ...
         "configurations": {
@@ -67,6 +69,7 @@ image::images/ionic-to-android/environments.png["Android environment and angular
             },
         }
     }
+----
 
 === Build
 
@@ -124,11 +127,11 @@ image::images/ionic-to-android/new-phone-created.png["New created device",width=
 
 == From Android project to real device
 
-To test on a real android device, an easy aproach to comunicate a smartphone (front-end) and computer (back-end) is to configure a Wi-fi hotspot and connect the computer to it. A guide about this process can be found at https://support.google.com/nexus/answer/9059108?hl=en
+To test on a real android device, an easy approach to communicate a smartphone (front-end) and computer (back-end) is to configure a WiFi hotspot and connect the computer to it. A guide about this process can be found at https://support.google.com/nexus/answer/9059108?hl=en
 
-Once connected, run `ipconfig` on a console if you are using windows or `ifconfig` on a linux machine to get the IP address of your machine's Wireless LAN adapter Wi-fi.
+Once connected, run `ipconfig` on a console if you are using windows or `ifconfig` on a linux machine to get the IP address of your machine's Wireless LAN adapter WiFi.
 
-image::images/ionic-to-android/ipconfig-short.png["Result of ipconfig command on Windows 10" ,width="700"link="images/ionic-to-android/ipconfig-short.png"]
+image::images/ionic-to-android/ipconfig-short.png["Result of `ipconfig` command on Windows 10" ,width="700"link="images/ionic-to-android/ipconfig-short.png"]
 
 This obtained IP must be used instead of "localhost" or "10.0.2.2" at environment.android.ts.
 
@@ -155,7 +158,7 @@ image::images/ionic-to-android/enable-developer-options4_5_6.png["Steps to enabl
 
 After this, do the step four in "From Android project to emulated device" and choose the connected smartphone.
 
-=== Send APK to Android throught email
+=== Send APK to Android through email
 
 When you build an APK, a dialog gives two options: locate or analyze. If the first one is chosen, Windows file explorer will be opened showing an APK that can be send using email. Download the APK on your phone and click it to install.
 

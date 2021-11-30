@@ -37,7 +37,7 @@ There are two APIs for the components layer to interact with the services layer:
 * A store can be subscribed to for receiving state updates over time
 * A use case service can be called to trigger an action
 
-To illustrate the fact the follwing figure shows an abstract overview.
+To illustrate the fact the following figure shows an abstract overview.
 
 .Boundaries to components layer
 image::images/components-layer-service-layer-boundaries.svg["Smart and Dumb Components Interaction", width="450", link="images/components-layer-service-layer-boundaries.svg"]
@@ -46,11 +46,11 @@ image::images/components-layer-service-layer-boundaries.svg["Smart and Dumb Comp
 
 A store is a class which defines and handles application state with its transitions over time.
 Interaction with a store is always synchronous.
-A basic implementation using `rxjs` can look like this.
+A basic implementation using RxJS can look like this.
 
 TIP: A more profound implementation taken from a real-life project can be found here (link:cookbook-abstract-class-store[Abstract Class Store]).
 
-.Store defined using rxjs
+.Store defined using RxJS
 [source,ts]
 ----
 @Injectable()
@@ -80,7 +80,7 @@ The store does not use any services.
 Subscribing to the `state$` observable leads to the subscribers receiving every new state.
 
 This is basically the _Observer Pattern_: +
-The store consumer registeres itself to the observable via `state$.subscribe()` method call.
+The store consumer registers itself to the observable via `state$.subscribe()` method call.
 The first parameter of `subscribe()` is a callback function to be called when the subject changes.
 This way the consumer - the observer - is registered.
 When next() is called with a new state inside the store, all callback functions are called with the new value.
@@ -100,7 +100,7 @@ image::images/use-case-service.svg["Use Case Service", width="450", link="images
 
 A use case services method - an action - interacts with adapters, business services and stores.
 So use case services orchestrate whole use cases.
-For an example see <<usecaseservice-example,use case service example>>.
+For an example see `<<usecaseservice-example,use case service example>>`.
 
 == Adapter
 
@@ -151,9 +151,9 @@ To handle this interaction in a scalable way we apply the following pattern.
 .Smart Component interaction
 image::images/smart-component-interaction-via-services-layer.svg["Interaction of Smart Components via services layer", width="450", link="images/smart-component-interaction-via-services-layer.svg"]
 
-The state of interest is encapsualted inside a store. All _Smart Components_ interested in the state have to subscibe to the store's API served by the public observable. Thus, with every update to the store the subscribed components receive the new value. The components basically react to state changes. Altering a store can be done directly if the desired change is synchronous. Most actions are of asynchronous nature so the `UseCaseService` comes into play. Its actions are `void` methods, which implement a use case, i.e., adding a new item to the basket. It calls asynchronous actions and can perform multiple store updates over time.
+The state of interest is encapsulated inside a store. All _Smart Components_ interested in the state have to subscribe to the store's API served by the public observable. Thus, with every update to the store the subscribed components receive the new value. The components basically react to state changes. Altering a store can be done directly if the desired change is synchronous. Most actions are of asynchronous nature so the `UseCaseService` comes into play. Its actions are `void` methods, which implement a use case, i.e., adding a new item to the basket. It calls asynchronous actions and can perform multiple store updates over time.
 
-To put this pattern into perspective the `UseCaseService` is a programmatic alternative to `redux-thunk` or `@ngrx/effects`. The main motivation here is to use the full power of TypeScript's `--strictNullChecks` and to let the learning curve not to become as steep as it would be when learning a new state management framework. This way actions are just `void` method calls.
+To put this pattern into perspective the `UseCaseService` is a programmatic alternative to `redux-thunk` or `@ngrx/effects`. The main motivation here is to use the full power of TypeScript `--strictNullChecks` and to let the learning curve not to become as steep as it would be when learning a new state management framework. This way actions are just `void` method calls.
 
 === Example
 
@@ -162,10 +162,10 @@ image::images/smart-smart-components-example.svg["Smart component interaction ex
 
 The example shows two _Smart Components_ sharing the `FlightSearchState` by using the `FlightSearchStore`.
 The use case shown is started by an event in the _Smart Component_ `FlightSearchComponent`. The action `loadFlight()` is called. This could be submitting a search form.
-The UseCaseService is `FlightSearchService`, which handles the use case _Load Flights_.
+The `UseCaseService` is `FlightSearchService`, which handles the use case _Load Flights_.
 
-.UseCaseService example
-anchor:usecaseservice-example[]
+.`UseCaseService` example
+`anchor:usecaseservice-example[]`
 [source,ts]
 ----
 export class FlightSearchService {
@@ -191,4 +191,4 @@ export class FlightSearchService {
 }
 ----
 
-First the loading flag is set to `true` and the current flights are cleared. This leads the _Smart Component_ showing a spinner indicating the loading action. Then the asynchronous XHR is triggert by calling the adapter. After completion the loading flag is set to `false` causing the loading indication no longer to be shown. If the XHR was successful, the data would be put into the store. If the XHR was not successful, this would be the place to handle a custom error. All general network issues should be handled in a dedicated class, i.e., an interceptor. So for example the basic handling of 404 errors is not done here.
+First the loading flag is set to `true` and the current flights are cleared. This leads the _Smart Component_ showing a spinner indicating the loading action. Then the asynchronous XHR is triggered by calling the adapter. After completion the loading flag is set to `false` causing the loading indication no longer to be shown. If the XHR was successful, the data would be put into the store. If the XHR was not successful, this would be the place to handle a custom error. All general network issues should be handled in a dedicated class, i.e., an interceptor. So for example the basic handling of 404 errors is not done here.

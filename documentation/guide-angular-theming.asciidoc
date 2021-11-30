@@ -17,14 +17,14 @@ toc::[]
 
 = Angular Material Theming
 
-Angular Material library offers UI components for developers, those components follows Google Material desing baselines but characteristics like colors can be modified in order to adapt them to the needs of the client: corporative colors, corporative identity, dark themes, ...
+Angular Material library offers UI components for developers, those components follows Google Material design baselines but characteristics like colors can be modified in order to adapt them to the needs of the client: corporative colors, corporative identity, dark themes, ...
 
 
 == Theming basics
 
 In Angular Material, a theme is created mixing multiple colors. Colors and its light and dark variants conform a *palette*. In general, a theme consists of the following palettes:
 
-* *primary*: Most used across screens and componets. 
+* *primary*: Most used across screens and components. 
 * *accent*: Floating action button and interactive elements.
 * *warn*: Error state.
 * *foreground*: Text and icons.
@@ -34,39 +34,39 @@ In Angular Material, a theme is created mixing multiple colors. Colors and its l
 .Palettes and variants.
 image::images/angular/angular-theming/palette.PNG["Theme palette", width=600 link="images/angular/angular-theming/palette.PNG"]
 
-In angular material, a palette is represented as a scss map.
+In angular material, a palette is represented as a SCSS map.
 
-[[id_scss_map]]
-.Scss map and palettes.
-image::images/angular/angular-theming/scss-map.png["Scss map", width=600 link="images/angular/angular-theming/scss-map.png"]
+[[`id_scss_map`]]
+.SCSS map and palettes.
+image::images/angular/angular-theming/scss-map.png["SCSS map", width=600 link="images/angular/angular-theming/scss-map.png"]
 
 TIP: Some components can be forced to use primary, accent or warn palettes using the attribute *color*, for example: <mat-toolbar color="primary">.
 
-== Prebuilt themes
+== Pre-built themes
 
-Available prebuilt themes:
+Available pre-built themes:
 
-* deeppurple-amber.css
+* `deeppurple-amber.css`
 
-.deeppurple-amber theme.
-image::images/angular/angular-theming/deeppurple-amber.png["deeppurple-amber theme", width=600 link="images/angular/angular-theming/deeppurple-amber.png"]
+.`deeppurple-amber` theme.
+image::images/angular/angular-theming/deeppurple-amber.png[`deeppurple-amber theme`, width=600 link="images/angular/angular-theming/deeppurple-amber.png"]
 
 * indigo-pink.css
 
 .indigo-pink theme.
 image::images/angular/angular-theming/indigo-pink.png["indigo-pink theme", width=600 link="images/angular/angular-theming/indigo-pink.png"]
 
-* pink-bluegrey.css
+* `pink-bluegrey.css`
 
-.ink-bluegrey theme.
-image::images/angular/angular-theming/pink-bluegrey.png["pink-bluegrey theme", width=600 link="images/angular/angular-theming/pink-bluegrey.png"]
+.`ink-bluegrey theme`.
+image::images/angular/angular-theming/pink-bluegrey.png["` pink-bluegrey theme`", width=600 link="images/angular/angular-theming/pink-bluegrey.png"]
 
 * purple-green.css
 
 .purple-green theme.
 image::images/angular/angular-theming/purple-green.png["purple-green theme", width=600 link="images/angular/angular-theming/purple-green.png"]
 
-The prebuilt themes can be added using *@import*.
+The pre-built themes can be added using *@import*.
 
 [source, css]
 ----
@@ -75,7 +75,7 @@ The prebuilt themes can be added using *@import*.
 
 == Custom themes
 
-Somethimes prebuild themes do not meet the needs of a project, because color schemas are too specific or do not incorporate branding colors, in those situations custom themes can be built to offer a better solution to the client.
+Sometimes pre-built themes do not meet the needs of a project, because color schemas are too specific or do not incorporate branding colors, in those situations custom themes can be built to offer a better solution to the client.
 
 For this topic, we are going to use a basic layout project that can be found in https://github.com/devonfw/devon4ng/tree/master/samples/AngularMaterialBasicLayout[devon4ng repository].
 
@@ -84,24 +84,24 @@ For this topic, we are going to use a basic layout project that can be found in 
 
 Before starting writing custom themes, there are some necessary things that have to be mentioned:
 
-* Add a default theme: The project mentioned before has just one global scss stylesheet *styles.scss* that includes indigo-pink.scss which will be the default theme. 
+* Add a default theme: The project mentioned before has just one global SCSS style sheet `*styles.scss*` that includes `indigo-pink.scss` which will be the default theme. 
 
-* Add _@import '~@angular/material/theming';_ at the begining of the every stylesheet to be able to use angular material prebuilt color palettes and functions.
+* Add _@import '~@angular/material/theming';_ at the beginning of the every style sheet to be able to use angular material pre-built color palettes and functions.
 
-* Add _@include mat-core();_ *once* per project, so if you are writing multiple themes in multiple files you could import those files from a 'central' one (for example styles.scss). This includes all common styles that are used by multiple components.
+* Add _@include mat-core();_ *once* per project, so if you are writing multiple themes in multiple files you could import those files from a 'central' one (for example `styles.scss`). This includes all common styles that are used by multiple components.
 
 .Theme files structure.
 image::images/angular/angular-theming/theme-files-structure.png["Theme files structure", width=600 link="images/angular/angular-theming/theme-files-structure.png"]
 
 === Basic custom theme
 
-To create a new custom theme, the .scss file containing it has to have imported the angular _theming.scss file (angular/material/theming) file and mat-core included. _theming.scss includes multiple color palettes and some functions that we are going to see below. The file for this basic theme is going to be named *styles-custom-dark.scss*.
+To create a new custom theme, the `.scss` file containing it has to have imported the angular `_theming.scss` file (angular/material/theming) file and mat-core included. `_theming.scss` includes multiple color palettes and some functions that we are going to see below. The file for this basic theme is going to be named `*styles-custom-dark.scss*`.
 
 First, declare new variables for primary, accent and warn palettes. Those variables are going to store the result of the function *mat-palette*.
 
-*mat-palette* accepts four arguments: base color palette, main, lighter and darker variants (See <<id_palette_variants>>) and returns a new palette including some additional map values: default, lighter and darker (<<id_scss_map>>). Only the first argument is mandatory.
+*mat-palette* accepts four arguments: base color palette, main, lighter and darker variants (See <<id_palette_variants>>) and returns a new palette including some additional map values: default, lighter and darker (`<<id_scss_map>>`). Only the first argument is mandatory.
 
-.File styles-custom-dark.scss.
+.`File styles-custom-dark.scss`.
 [source, scss]
 ----
 $custom-dark-theme-primary: mat-palette($mat-pink);
@@ -110,9 +110,9 @@ $custom-dark-theme-warn: mat-palette($mat-red);
 );
 ----
 
-In this example we are using colors available in _theming.scss: mat-pink, mat-blue, mat-red. If you want to use a custom color you need to define a new map, for instance:
+In this example we are using colors available in `_theming.scss`: mat-pink, mat-blue, mat-red. If you want to use a custom color you need to define a new map, for instance:
 
-.File styles-custom-dark.scss custom pink.
+.File `styles-custom-dark.scss` custom pink.
 [source, scss]
 ----
 $my-pink: (
@@ -151,17 +151,17 @@ Until now, we just have defined primary, accent and warn palettes but what about
 * *mat-light-theme*: Receives as arguments primary, accent and warn palettes and return a theme whose foreground is basically black (texts, icons, ...), the background is white and the other palettes are the received ones.
 
 .Custom light theme.
-image::images/angular/angular-theming/custom-light.png["deeppurple-amber theme", width=600 link="images/angular/angular-theming/custom-light.png"]
+image::images/angular/angular-theming/custom-light.png[`deeppurple-amber theme`, width=600 link="images/angular/angular-theming/custom-light.png"]
 
 * *mat-dark-theme*: Similar to mat-light-theme but returns a theme whose foreground is basically white and background black.
 
 .Custom dark theme.
-image::images/angular/angular-theming/custom-dark.png["deeppurple-amber theme", width=600 link="images/angular/angular-theming/custom-dark.png"]
+image::images/angular/angular-theming/custom-dark.png[`deeppurple-amber theme`, width=600 link="images/angular/angular-theming/custom-dark.png"]
 
 
 For this example we are going to use mat-dark-theme and save its result in $custom-dark-theme.
 
-.File styles-custom-dark.scss updated with mat-dark-theme.
+.File `styles-custom-dark.scss` updated with mat-dark-theme.
 [source, scss]
 ----
 ...
@@ -173,9 +173,9 @@ $custom-dark-theme: mat-dark-theme(
 );
 ----
 
-To apply the saved theme, we have to go to *styles.scss* and import our *styles-custom-dark.scss* and include a function called *angular-material-theme* using the theme variable as argument.
+To apply the saved theme, we have to go to `*styles.scss*` and import our `*styles-custom-dark.scss*` and include a function called *angular-material-theme* using the theme variable as argument.
 
-.File styles.scss.
+.File `styles.scss`.
 [source, scss]
 ----
 ...
@@ -186,7 +186,7 @@ To apply the saved theme, we have to go to *styles.scss* and import our *styles-
 If we have multiple themes it is necessary to add the include statement inside a css class and use it in *src/index.html -> app-root component*.
 
 
-.File styles.scss updated with custom-dark-theme class.
+.File `styles.scss` updated with custom-dark-theme class.
 [source, scss]
 ----
 ...
@@ -209,7 +209,7 @@ This will apply *$custom-dark-theme* theme for the entire application.
 
 === Full custom theme
 
-Sometimes it is needed to custom different elementsw from background and foreground, in those situations we have to create a new function similar to _mat-light-theme_ and _mat-dark-theme_. Let's focus con mat-light-theme:
+Sometimes it is needed to custom different elements from background and foreground, in those situations we have to create a new function similar to _mat-light-theme_ and _mat-dark-theme_. Let's focus con mat-light-theme:
 
 [[source-mat-light]]
 .Source code of mat-light-theme
@@ -227,7 +227,7 @@ Sometimes it is needed to custom different elementsw from background and foregro
 }
 ----
 
-As we can se, _mat-light-theme_ takes three arguments and returs a map including them as primary, accent and warn color; but there are three more keys in that map: is-dark, foreground and background.
+As we can see, _mat-light-theme_ takes three arguments and returns a map including them as primary, accent and warn color; but there are three more keys in that map: is-dark, foreground and background.
 
 * *is-dark*: Boolean true if it is a dark theme, false otherwise.
 
@@ -235,9 +235,9 @@ As we can se, _mat-light-theme_ takes three arguments and returs a map including
 
 * *foreground*: Map that stores the color for multiple foreground elements.
 
-To show which elements can be colored lets create a new theme in a file *styles-custom-cap.scss*:
+To show which elements can be colored lets create a new theme in a file `*styles-custom-cap.scss*`:
 
-.File styles-custom-cap.scss: Background and foreground variables.
+.File `styles-custom-cap.scss`: Background and foreground variables.
 [source, scss]
 ----
 @import '~@angular/material/theming';
@@ -281,7 +281,7 @@ $my-cap-theme-foreground: (
 
 Function which uses the variables defined before to create a new theme:
 
-.File styles-custom-cap.scss: Creating a new theme function.
+.File `styles-custom-cap.scss`: Creating a new theme function.
 [source, scss]
 ----
 // instead of creating a theme with mat-light-theme or mat-dark-theme,
@@ -301,7 +301,7 @@ Function which uses the variables defined before to create a new theme:
 
 Calling the new function and storing its value in *$custom-cap-theme*.
 
-.File styles-custom-cap.scss: Storing the new theme.
+.File `styles-custom-cap.scss`: Storing the new theme.
 [source, scss]
 ----
 // We use create-my-cap-theme instead of mat-light-theme or mat-dark-theme
@@ -316,9 +316,9 @@ $custom-cap-theme: create-my-cap-theme(
 );
 ----
 
-After defining our new theme, we can import it from styles.scss.
+After defining our new theme, we can import it from `styles.scss`.
 
-.File styles.scss updated with custom-cap-theme class.
+.File `styles.scss` updated with custom-cap-theme class.
 [source, scss]
 ----
 ...
@@ -350,9 +350,9 @@ export class AppModule {
 
 == Useful resources
 
-* https://material.angular.io/guide/theming[Angular Material's oficial theming guide]
+* https://material.angular.io/guide/theming[Angular Material's official theming guide]
 
-* https://material.io/design/color/#color-theme-creation[Material Desing: Color theme creation]
+* https://material.io/design/color/#color-theme-creation[Material Design: Color theme creation]
 
 * http://mcg.mbitson.com[Palette generator]
 

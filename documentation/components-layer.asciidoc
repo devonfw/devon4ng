@@ -26,12 +26,12 @@ The main challenges are:
 * decompose components into maintainable chunks (see link:guide-component-decomposition[Component Decomposition Guide])
 * handle component interaction
 * manage calls to the services layer
-* apply a maintainable data and eventflow throughout the component tree
+* apply a maintainable data and event flow throughout the component tree
 
 == Smart and Dumb Components
 
 The architecture applies the concept of _Smart_ and _Dumb Components_ (syn. _Containers_ and _Presenters_).
-The concept means that components are devided into _Smart_ and _Dumb Components_.
+The concept means that components are divided into _Smart_ and _Dumb Components_.
 
 A _Smart Component_ typically is a toplevel dialog inside the component tree.
 
@@ -62,7 +62,7 @@ To clarify this distinction further the following table shows the main differenc
 |contain the current view state
 |show data via binding (`@Input`) and contain no view state
 
-|handle events emited by _Dumb Components_
+|handle events emitted by _Dumb Components_
 |pass events up the component tree to be handled by _Smart Components_ (`@Output`)
 
 |call the services layer

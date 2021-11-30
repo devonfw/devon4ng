@@ -17,12 +17,12 @@ toc::[]
 
 = Testing
 
-This guide will cover the basics of testing logic inside your code with UnitTests.
+This guide will cover the basics of testing logic inside your code with unit test cases.
 The guide assumes that you are familiar with Angular CLI (link:guide-working-with-angular-cli[see the guide])
 
-For testing your Angular application with UnitTests there are two main strategies:
+For testing your Angular application with unit test cases there are two main strategies:
 
-1. Isolated UnitTests +
+1. Isolated unit test cases +
 Isolated unit tests examine an instance of a class all by itself without any dependence on Angular or any injected values.
 The amount of code and effort needed to create such tests in minimal.
 
@@ -32,7 +32,7 @@ The amount of code and effort needed to create such tests is a little higher.
 
 == Testing Concept
 
-The following figure shows you an overview of the application architecture devided in testing areas.
+The following figure shows you an overview of the application architecture divided in testing areas.
 
 .Testing Areas
 image::images/testing-areas.svg["Testing Areas", width="450", link="images/testing-areas.svg"]
@@ -43,21 +43,21 @@ There are three areas, which need to be covered by different testing strategies.
 Smart Components need to be tested because they contain view logic.
 Also the interaction with 3rd party components needs to be tested.
 When a 3rd party component changes with an upgrade a test will be failing and warn you, that there is something wrong with the new version.
-Most of the time Dumb Components do not need to be teste because they mainly display data and do not contain any logic.
-Smart Components are alway tested with *Angular Testing Utilities*.
+Most of the time Dumb Components do not need to be tested because they mainly display data and do not contain any logic.
+Smart Components are always tested with *Angular Testing Utilities*.
 For example selectors, which select data from the store and transform it further, need to be tested.
 
 2. Stores: +
 A store contains methods representing state transitions.
 If these methods contain logic, they need to be tested.
-Stores are always testet using *Isolated UnitTests*.
+Stores are always tested using *Isolated unit tests*.
 
 3. Services: +
 Services contain Business Logic, which needs to be tested.
 UseCase Services represent a whole business use case.
 For instance this could be initializing a store with all the data that is needed for a dialog - loading, transforming, storing.
 Often *Angular Testing Utilities* are the optimal solution for testing UseCase Services, because they allow for an easy stubbing of the backend.
-All other services should be tested with *Isolated UnitTests* as they are much easier to write and maintain.
+All other services should be tested with *Isolated unit tests* as they are much easier to write and maintain.
 
 == Testing Smart Components
 
@@ -119,7 +119,7 @@ describe('PrintFlightComponent', () => {
 
 It is important:
 
-* Use `RouterTestingModule`` instead of `RouterModule`
+* Use `RouterTestingModule` instead of `RouterModule`
 * Use `TranslateModule.forRoot()` without translations
 This way you can test language-neutral without translation marks.
 * Do not add a whole module from your application - in declarations add the tested Smart Component with all its Dumb Components
@@ -129,9 +129,9 @@ If you need a complex test setup, just use the regular methods defined on the st
 These are mostly UseCase services.
 They should not be tested by these tests.
 Only the correct call to their functions should be assured.
-The logic inside the UseCase services is tested with seperate tests.
+The logic inside the UseCase services is tested with separate tests.
 * `detectChanges()` performance an Angular Change Detection cycle (Angular refreshes all the bindings present in the view)
-* `tick()` performance a virtual marco task, `tick(1000)` is equal to the virtual passing of 1s.
+* `tick()` performance a virtual macro task, `tick(1000)` is equal to the virtual passing of 1s.
 
 The following test cases show the testing strategy in action.
 
@@ -175,7 +175,7 @@ The examples show the basic testing method
 
 == Testing state transitions performed by stores
 
-Stores are always tested with *Isolated UnitTests*.
+Stores are always tested with *Isolated unit tests*.
 
 Actions triggered by `dispatchAction()` calls are asynchronously performed to alter the state.
 A good solution to test such a state transition is to use the done callback from Jasmine.
@@ -216,22 +216,22 @@ it('toggleRowChecked adds flight with given id to selectedValues Property', (don
 
 == Testing services
 
-When testing services both strategies - *Isolated UnitTests* and *Angular Testing Utilities* - are valid options.
+When testing services both strategies - *Isolated unit tests* and *Angular Testing Utilities* - are valid options.
 
 The goal of such tests are
 
 * assuring the behavior for valid data.
 * assuring the behavior for invalid data.
 * documenting functionality
-* savely performing refactorings
+* save performing refactoring
 * thinking about edge case behavior while testing
 
-For simple services *Isolated UnitTests* can be written.
+For simple services *Isolated unit tests* can be written.
 Writing these tests takes lesser effort and they can be written very fast.
 
 The following listing gives an example of such tests.
 
-.Testing a simple services with *Isolated UnitTests*
+.Testing a simple services with *Isolated unit tests*
 [source,ts]
 ----
 let sut: IsyDatePipe;
@@ -289,14 +289,14 @@ beforeEach(() => {
 
 When using TestBed, it is important
 
-* to import HttpClientTestingModule for stubbing the backend
-* to import RouterTestingModule for stubbing the Angular router
+* to import `HttpClientTestingModule` for stubbing the backend
+* to import `RouterTestingModule` for stubbing the Angular router
 * not to stub stores, adapters and business services
-* to stub services from libraries like FlightCalculationService - the correct implementation of libraries should not be tested by these tests. 
+* to stub services from libraries like `FlightCalculationService` - the correct implementation of libraries should not be tested by these tests. 
 
 Testing backend communication looks like this:
 
-.Testing backend communication with Angular HttpTestingController
+.Testing backend communication with `Angular HttpTestingController`
 [source,ts]
 ----
 it('loads flight if not present in store', fakeAsync(() => {
@@ -319,7 +319,7 @@ it('does not load flight if present in store', fakeAsync(() => {
 ----
 
 The first test assures a correct XHR request is performed if `initializePrintDialog()` is called and no data is in the store.
-The second test assures no XHR request ist performed if the needed data is already in the store. 
+The second test assures no XHR request IST performed if the needed data is already in the store. 
 
 The next steps are checks for the correct implementation of logic.
 

@@ -60,7 +60,7 @@ $ yarn add -D electron electron-builder
 
 In order to initiate electron in an angular app we need to modify the `tsconfig.json` file and create a `tsconfig.serve.json` and a `tsconfig.base.json` in the root folder.
 
-==== tsconfig.json
+==== `tsconfig.json`
 
 This file needs to be modified to create references to `./src/tsconfig.app.json` and `./src/tsconfig.spec.json` to support different configurations.
 
@@ -79,7 +79,7 @@ This file needs to be modified to create references to `./src/tsconfig.app.json`
 }
 ----
 
-==== tsconfig.app.json
+==== `tsconfig.app.json`
 
 [source,json]
 ----
@@ -105,7 +105,7 @@ This file needs to be modified to create references to `./src/tsconfig.app.json`
 }
 ----
 
-==== tsconfig.spec.json
+==== `tsconfig.spec.json`
 
 [source,json]
 ----
@@ -134,9 +134,9 @@ This file needs to be modified to create references to `./src/tsconfig.app.json`
 }
 ----
 
-==== tsconfig.base.json
+==== `tsconfig.base.json`
 
-This is shared betwen tsconfig.app.json and tsconfig.spec.json and it will be extended on each config file.
+This is shared between `tsconfig.app.json` and `tsconfig.spec.json` and it will be extended on each config file.
 
 [source, json]
 ----
@@ -173,7 +173,7 @@ This is shared betwen tsconfig.app.json and tsconfig.spec.json and it will be ex
 }
 ----
 
-==== tsconfig.serve.json
+==== `tsconfig.serve.json`
 
 In the root, `tsconfig.serve.json` needs to be created. This typescript config file is going to be used when we serve electron:
 
@@ -240,11 +240,11 @@ The contents of the file will be something similar to the following:
 }
 ----
 
-Theres two important things in this files:
+There are two important things in this files:
   
   1. "output": this is where electron builder is going to build our application
 
-  2. "icon": in every OS possible theres an icon parameter, the route to the icon folder that will be created after building with angular needs to be used here. This will make it so the electron builder can find the icons and build.
+  2. "icon": in every OS possible there is an icon parameter, the route to the icon folder that will be created after building with angular needs to be used here. This will make it so the electron builder can find the icons and build.
 
 === Modify angular.json
 

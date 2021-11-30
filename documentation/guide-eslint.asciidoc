@@ -17,13 +17,13 @@ toc::[]
 
 = Angular ESLint support
 
-IMPORTANT: ESLint is supported in Angular 10.1.0 onwards. 
+IMPORTANT: ESLint is supported in Angular 10.1.0 onward. 
 
 == What about TSLint?
 
-TSLint is a fantastic tool. It is a linter that was written specifically to work based on the TypeScript AST format. This has advantages and disadvantages, as with most decisions we are faced with in software engineering!
+TSLint is a fantastic tool. It is a linter that was written specifically to work based on the TypeScript `AST` format. This has advantages and disadvantages, as with most decisions we are faced with in software engineering!
 
-One advantage is there is no tooling required to reconcile differences between ESLint and TypeScript AST formats, but the major disadvantage is that the tool is therefore unable to reuse any of the previous work which has been done in the JavaScript ecosystem around linting, and it has to reimplement everything from scratch. Everything from rules to auto-fixing capabilities and more.
+One advantage is there is no tooling required to reconcile differences between ESLint and TypeScript `AST` formats, but the major disadvantage is that the tool is therefore unable to reuse any of the previous work which has been done in the JavaScript ecosystem around linting, and it has to reimplement everything from scratch. Everything from rules to auto-fixing capabilities and more.
 
 However, the backers behind TSLint announced in 2019 that **they would be deprecating TSLint in favor of supporting** `typescript-eslint` in order to benefit the community. You can read more about that here: https://medium.com/palantir/tslint-in-2019-1a144c2317a9
 
@@ -57,7 +57,7 @@ The first step is to run the schematic to add `@angular-eslint` to your project:
 $ ng add @angular-eslint/schematics
 ----
 
-This will handle installing the latest version of all the relevant packages for you and adding them to the devDependencies of your package.json.
+This will handle installing the latest version of all the relevant packages for you and adding them to the `devDependencies` of your package.json.
 
 === 2 - Run the convert-tslint-to-eslint schematic on a project
 

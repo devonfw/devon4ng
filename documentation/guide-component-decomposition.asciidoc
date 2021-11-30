@@ -30,7 +30,7 @@ image::images/component-tree-highlighted-subtree.svg["Component Tree With Highli
 == Defining Components
 
 The following gives an example for component decomposition.
-Shown is a screenshot from a styleguide to be implemented.
+Shown is a screenshot from a style guide to be implemented.
 It is a widget called `Listpicker`.
 
 The basic function is an `input` field accepting direct input.
@@ -99,7 +99,7 @@ For instance a single _Dumb Component_ could only need a single string.
 
 The state model for the previous `Listpicker` example is shown in the following listing.
 
-.Listpicker state model
+.`Listpicker` state model
 [source,ts]
 ----
 export class ListpickerState {
@@ -125,7 +125,7 @@ Events emitted by children - _Dumb Components_ - create a new instance of `Listp
 So a state transition is just setting a new instance of `ListpickerState`.
 Angular Bindings propagate the value down the tree after exchanging the state.
 
-.Listpicker State transition
+.`Listpicker` State transition
 [source,ts]
 ----
 export class ListpickerComponent {
@@ -159,11 +159,11 @@ If the state should be shared between _Smart Components_ a store is to be used.
 
 Sometimes it is not necessary to perform a full decomposition. The architecture does not enforce it generally. What you should keep in mind is, that there is always a point when it becomes recommendable.
 
-For example a template with 800 loc is:
+For example a template with 800 line of code is:
 
 * not understandable
-* not maintanable
+* not maintainable
 * not testable
 * not reusable
 
-So when implementing a template with more than 50 loc you should think about decomposition.
+So when implementing a template with more than 50 line of code you should think about decomposition.

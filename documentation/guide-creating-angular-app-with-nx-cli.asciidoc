@@ -19,9 +19,9 @@ toc::[]
 
 Nx CLI provides a wrapper around Angular CLI and makes it faster, in addition to other benefits. Its computational cache significantly speeds up building and serving applications successively.
 
-With Nx CLI you always get the latest tools to develop your angular applications. By default it is integrated with tools like Jest, Cypress, ESLlint and many more. Though you can always configure to use other tools as per your preference.
+With Nx CLI you always get the latest tools to develop your angular applications. By default it is integrated with tools like Jest, Cypress, ESLint and many more. Though you can always configure to use other tools as per your preference.
 
-One difference you will find while working with Nx CLI is that an Nx workspace follows a certain folder structure. That is because Nx strongly supports monorepo architeture, wherein you place all the different components that make up your entire application (front-end, back-end, libraries, models) into one single repository. Nx also provides the tooling between these different components, so that you can share your code across your different applications in the same repo and avoid re-writing. We will go through the folder structure later in this guide. But we might not always want to follow a monorepo architecture and it is possible to create a single application with Nx CLI.
+One difference you will find while working with Nx CLI is that an Nx workspace follows a certain folder structure. That is because Nx strongly supports monorepo architecture, wherein you place all the different components that make up your entire application (front-end, back-end, libraries, models) into one single repository. Nx also provides the tooling between these different components, so that you can share your code across your different applications in the same repo and avoid re-writing. We will go through the folder structure later in this guide. But we might not always want to follow a monorepo architecture and it is possible to create a single application with Nx CLI.
 
 In this guide we are going to learn how to create an angular app with Nx CLI. But first, let us start by installing Nx
 
@@ -68,9 +68,9 @@ myorg/
 └── tsconfig.base.json
 ----
 
-Nx creates such a folder structure because it strongly supports the concept of monorepos, wherein all the inter-related applications and libraries are put together in the same repository for better maintanace, code-sharing and avoiding duplication of codes. 
+Nx creates such a folder structure because it strongly supports the concept of monorepo, wherein all the inter-related applications and libraries are put together in the same repository for better maintenance, code-sharing and avoiding duplication of codes. 
 
-As per the structure, all runable applications should belong in the *apps/* directory. Supporting applications and libraries can be put in the *libs/* folder, with each library defining its own external API to differentiate between them. *tools/* folder can contain scripts which act on your code like database scripts, for example. The JSON files contain various information and configuration settings about the workspace and the projects within them.
+As per the structure, all runnable applications should belong in the *apps/* directory. Supporting applications and libraries can be put in the *libs/* folder, with each library defining its own external API to differentiate between them. *tools/* folder can contain scripts which act on your code like database scripts, for example. The JSON files contain various information and configuration settings about the workspace and the projects within them.
 
 You will find your angular app named *nx-ng-app* in the *apps/* folder. The folder structure within your app is similar to any Angular app created with Angular CLI.
 

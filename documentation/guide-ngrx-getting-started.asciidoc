@@ -27,15 +27,15 @@ You may wonder why you should bother with state management. Usually data resides
 * sever side data should not be retrieved every time it is needed, either because multiple components consume it, or because it should be cached, e.g. the personal watchlist in an online streaming app
 * the app provides a rich experience with offline functionality, e.g. a native app built with link:guilde-ionic-getting-started[Ionic]
 
-Saving global states inside the services they originates from results in a data flow that is hard to follow and state becoming inconsistent due to unordered state mutations. Following the _single source of truth_ principle, there should be a central location holding all your application's state, just like a server side database does. State managament libraries for Angular provide tools for storing, retrieving, and updating client-side state.
+Saving global states inside the services they originates from results in a data flow that is hard to follow and state becoming inconsistent due to unordered state mutations. Following the _single source of truth_ principle, there should be a central location holding all your application's state, just like a server side database does. State management libraries for Angular provide tools for storing, retrieving, and updating client-side state.
 
 == Why NgRx?
 
-As stated in the link:home[introduction], devon4ng does not stipulate a particular state library, or require using one at all. However, NgRx has proven to be a robust, mature solution for this task, with good tooling and 3rd-party library support. Albeit introducing a level of indirection that requires additional effort even for simple features, the redux concept enforces a clear separation of concerns leading to a cleaner architecture.
+As stated in the link:home[introduction], devon4ng does not stipulate a particular state library, or require using one at all. However, NgRx has proven to be a robust, mature solution for this task, with good tooling and 3rd-party library support. Albeit introducing a level of indirection that requires additional effort even for simple features, the Redux concept enforces a clear separation of concerns leading to a cleaner architecture.
 
 Nonetheless, you should always compare different approaches to state management and pick the best one suiting your use case. Here's a (non-exhaustive) list of competing state management libraries:
 
-* Plain Rxjs using the simple store described in link:cookbook-abstract-class-store[Abstract Class Store]
+* Plain RxJS using the simple store described in link:cookbook-abstract-class-store[Abstract Class Store]
 * https://github.com/ngxs[NgXS] reduces some boilerplate of NgRx by leveraging the power of decorators and moving side effects to the store
 * https://github.com/mobxjs/mobx[MobX] follows a more imperative approach in contrast to the functional Redux pattern
 * https://github.com/datorama/akita[Akita] also uses an imperative approach with direct setters in the store, but keeps the concept of immutable state transitions
@@ -48,25 +48,25 @@ To manually install the core store package together with a set of useful extensi
 
 NPM:
 
- npm install @ngrx/store @ngrx/effects @ngrx/entity @ngrx/store-devtools --save
+ `npm install @ngrx/store @ngrx/effects @ngrx/entity @ngrx/store-devtools --save`
  
 Yarn:
 
- yarn add @ngrx/store @ngrx/effects @ngrx/entity @ngrx/store-devtools
+ `yarn add @ngrx/store @ngrx/effects @ngrx/entity @ngrx/store-devtools`
  
 We recommend to add the NgRx schematics to your project so you can create code artifacts from the command line:
 
 NPM:
 
- npm install @ngrx/schematics --save-dev
+ `npm install @ngrx/schematics --save-dev`
  
 Yarn:
 
- yarn add @ngrx/schematics --dev
+ `yarn add @ngrx/schematics --dev`
  
 Afterwards, make NgRx your default schematics provider, so you don't have to type the qualified package name every time:
 
- ng config cli.defaultCollection @ngrx/schematics
+ `ng config cli.defaultCollection @ngrx/schematics`
  
 If you have custom settings for Angular schematics, you have to https://ngrx.io/guide/schematics[configure them as described here].
 
@@ -75,6 +75,6 @@ If you have custom settings for Angular schematics, you have to https://ngrx.io/
 .NgRx architecture overview
 image::images/ngrx-concept.svg["NgRx Architecture", link="images/ngrx-concept.svg", align="center"]
 
-Figure 1 gives an overview of the NgRx data flow. The single source of truth is managed as an immutable state object by the store. Components dispatch actions to trigger state changes. Actions are handed over to reducers, which take the current state and action data to compute the next state. Actions are also consumed byeffects, which perform side-effects such as retrieving data from the backend, and may dispatch new actions as a result. Components subscribe to state changes using selectors.
+Figure 1 gives an overview of the NgRx data flow. The single source of truth is managed as an immutable state object by the store. Components dispatch actions to trigger state changes. Actions are handed over to reducers, which take the current state and action data to compute the next state. Actions are also consumed by-effects, which perform side-effects such as retrieving data from the backend, and may dispatch new actions as a result. Components subscribe to state changes using selectors.
 
 Continue with link:guide-ngrx-simple-store[Creating a Simple Store].

@@ -1585,15 +1585,10 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/jasmine@*":
-  version "3.8.1"
-  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.8.1.tgz#8feebf4035d1e4c6a6ed4d27f3bbd285d8d0da91"
-  integrity sha512-ioRNoJvv0eXL1c9BZKpnywZWb5YflhaSiF3IOp9deyoh30MOwkB3bNuzi4UW76EFEhcmqpoEpdWhcUAAilomTw==
-
-"@types/jasmine@~3.6.0":
-  version "3.6.11"
-  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.6.11.tgz#4b1d77aa9dfc757407cb9e277216d8e83553f09d"
-  integrity sha512-S6pvzQDvMZHrkBz2Mcn/8Du7cpr76PlRJBAoHnSDNbulULsH5dp0Gns+WRyNX5LHejz/ljxK4/vIHK/caHt6SQ==
+"@types/jasmine@*", "@types/jasmine@~3.10.2":
+  version "3.10.2"
+  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.10.2.tgz#1b9f9ba9ad7bfd7d322f7ed9d8753220b1c84b52"
+  integrity sha512-qs4xjVm4V/XjM6owGm/x6TNmhGl5iKX8dkTdsgdgl9oFnqgzxLepnS7rN9Tdo7kDmnFD/VEqKrW57cGD2odbEg==
 
 "@types/jasminewd2@~2.0.3":
   version "2.0.10"
@@ -4329,10 +4324,10 @@ eslint-visitor-keys@^2.0.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-2.1.0.tgz#f65328259305927392c938ed44eb0a5c9b2bd303"
   integrity sha512-0rSmRBzXgDzIsD6mGdJgevzgezI534Cer5L/vyMX0kHzT/jiB43jRhd9YUlMGYLQy2zprNmoT8qasCGtY+QaKw==
 
-eslint@^7.6.0:
-  version "7.31.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.31.0.tgz#f972b539424bf2604907a970860732c5d99d3aca"
-  integrity sha512-vafgJpSh2ia8tnTkNUkwxGmnumgckLh5aAbLa1xRmIn9+owi8qBNGKL+B881kNKNTy7FFqTEkpNkUvmw0n6PkA==
+eslint@^7.32.0:
+  version "7.32.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.32.0.tgz#c6d328a14be3fb08c8d1d21e12c02fdb7a2a812d"
+  integrity sha512-VHZ8gX+EDfz+97jGcgyGCyRia/dPOd6Xh9yPv8Bl1+SoaIwD+a/vlrOmGRUyOYu7MwUhc7CxqeaDZU13S4+EpA==
   dependencies:
     "@babel/code-frame" "7.12.11"
     "@eslint/eslintrc" "^0.4.3"
@@ -6013,20 +6008,15 @@ jake@^10.6.1:
     filelist "^1.0.1"
     minimatch "^3.0.4"
 
-jasmine-core@^3.6.0:
-  version "3.8.0"
-  resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-3.8.0.tgz#815399aae5aa5d9beeb1262805f981b99ffc9bf0"
-  integrity sha512-zl0nZWDrmbCiKns0NcjkFGYkVTGCPUgoHypTaj+G2AzaWus7QGoXARSlYsSle2VRpSdfJmM+hzmFKzQNhF2kHg==
+jasmine-core@^3.6.0, jasmine-core@~3.10.1:
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-3.10.1.tgz#7aa6fa2b834a522315c651a128d940eca553989a"
+  integrity sha512-ooZWSDVAdh79Rrj4/nnfklL3NQVra0BcuhcuWoAwwi+znLDoUeH87AFfeX8s+YeYi6xlv5nveRyaA1v7CintfA==
 
 jasmine-core@~2.8.0:
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-2.8.0.tgz#bcc979ae1f9fd05701e45e52e65d3a5d63f1a24e"
   integrity sha1-vMl5rh+f0FcB5F5S5l06XWPxok4=
-
-jasmine-core@~3.6.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-3.6.0.tgz#491f3bb23941799c353ceb7a45b38a950ebc5a20"
-  integrity sha512-8uQYa7zJN8hq9z+g8z1bqCfdC8eoDAeVnM5sfqs7KHv9/ifoJ500m018fpFc7RDaO6SWCLCXwo/wPSNcdYTgcw==
 
 jasmine-spec-reporter@~5.0.0:
   version "5.0.2"

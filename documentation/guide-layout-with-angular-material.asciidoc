@@ -203,7 +203,7 @@ We will use the `ng generate component` (or `ng g c` command for short) to creat
 
 ** `ng g c pages/data';`
 
-Let us set up the routing such that when we visit `http://localhost:4200/` root url we see the `HomeComponent` and when we visit `http://localhost:4200/data` url we see the  `DataComponent`.
+Let us set up the routing such that when we visit `http://localhost:4200/` root url we see the `HomeComponent` and when we visit `http://localhost:4200/data` url we see the  `DataComponent1`.
 We had opted for routing while creating the application, so we have the routing module `app-routing.module.ts` setup for us. In this file, we have the empty `routes` array where we set up our routes.
 
 .app-routing.module.ts:

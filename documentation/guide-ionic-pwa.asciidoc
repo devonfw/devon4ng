@@ -57,14 +57,14 @@ First we have to import three important elements:
 
 * Plugins: Capacitor constant value used to access to the device's camera and toast dialogs.
 
-[source,ts]
+[source, ts]
   import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   import { Plugins, CameraResultType } from '@capacitor/core';
   const { Camera, Toast } = Plugins;
 
 The process of taking a picture is enclosed in a *takePicture* method. takePicture calls the Camera's _getPhoto_ function which returns an URL or an exception. If a photo is taken then the image displayed in the main page will be changed for the new picture, else, if the app is closed without changing it, a toast message will be displayed.
 
-[source,ts]
+[source, ts]
 ----
   export class HomePage {
     image: SafeResourceUrl;
@@ -130,7 +130,9 @@ Default configuration.
 At _assetGroups -> resources_ add a urls field and a pattern to match PWA Elements scripts and other resources (images, styles, ...):
 
 [source]
+----
   "urls": ["https://unpkg.com/@ionic/pwa-elements@1.0.2/dist/**"]
+----
 
 === Step 7: Check that your app is a PWA
 

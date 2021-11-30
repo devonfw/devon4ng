@@ -141,7 +141,7 @@ On the other hand, in terms of accessibility and `SEO` it is a better solution t
 This way screen readers and the Google crawler can move through the page easily.
 
 TIP: If you do not have to support accessibility (screen readers, etc.) and to care about `SEO` (Google rank, etc.),
-then you should aim for triggering navigations only in _Smart Components_.
+then you should aim for triggering navigation only in _Smart Components_.
 
 .Triggering navigation
 image::images/triggering-navigation.svg["Triggering navigation", link="images/triggering-navigation.svg", width=350,height=200]

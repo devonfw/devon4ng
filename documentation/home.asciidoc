@@ -21,7 +21,7 @@ This guide describes an application architecture for web client development with
 
 == Motivation
 
-`Frontend` development is a very difficult task since there are a lot of different frameworks, patterns and practices nowadays. For that reason, in devonfw we decided to make use of Angular since it is a full `frontend` framework that includes almost all the different patterns and features that any SPA may need and provides a well defined architecture to development, build and deploy. 
+Front-end development is a very difficult task since there are a lot of different frameworks, patterns and practices nowadays. For that reason, in devonfw we decided to make use of Angular since it is a full front-end framework that includes almost all the different patterns and features that any SPA may need and provides a well defined architecture to development, build and deploy. 
 
 The idea with *devon4ng* is to define an architecture which is a compromise between, on the one hand, leveraging the best practices and latest trends like reactive style development, on the other hand, providing a short onboarding time while still using an architecture that helps us scale and be productive at the same time.
 
@@ -31,7 +31,7 @@ At the same time *devon4ng* aims to help developers to solve common problems tha
 
 * link:architecture[Architecture Overview]
   
-This section introduces in an easy way the main principles and guidelines based on `Angular Styleguide`.
+This section introduces in an easy way the main principles and guidelines based on Angular Style Guide.
 
 * link:meta-architecture[Client Meta Architecture]
 
@@ -92,7 +92,7 @@ Any SPA application must have a layout. So, the purpose of this section is to ex
 
 === NgRx
 
-State Management is a big topic in big `frontend` application. This section explains the fundamentals of the industry standard library NgRx, showing its main components.
+State Management is a big topic in big front-end application. This section explains the fundamentals of the industry standard library NgRx, showing its main components.
 
 * link:guide-ngrx-getting-started[Introduction]
 * link:guide-ngrx-simple-store[State, Selection and Reducers]

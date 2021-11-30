@@ -46,7 +46,7 @@ This section provides a condensed explanation about the different layers a good 
 
 === Guides
 
-This section introduces concepts to help develops with the tooling and package managers.
+This section introduces concepts to help developers with the tooling and package managers.
 
 * link:guide-package-managers[Package Managers]
 * link:guide-npm-yarn-workflow[Package Managers Workflow]

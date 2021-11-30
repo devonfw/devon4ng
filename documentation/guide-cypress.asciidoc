@@ -24,7 +24,7 @@ Cypress is a framework “all in one” that provides the necessary libraries to
 Why Cypress?
 
 * Uses javascript
-* It works directly with the browser so the compatibility with the `frontend` framework the project uses (in this case Angular) is not a problem.
+* It works directly with the browser so the compatibility with the front-end framework the project uses (in this case Angular) is not a problem.
 * Easy cross browser testing
 
 == Setup

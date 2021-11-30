@@ -26,7 +26,7 @@ Let's say you have a simple boilerplate code, with your favorite styling library
 == The Components
 Components - are the building blocks of our application. Their main role is to enable fragments of user interfaces. They will either display data (a list, a table, a chart, etc.), or 'collect' user interaction (e.g: a form, a menu, etc.)
 
-Components stay at the forefront of the application. They should also be reusable (as much as possible). Reusability is key for what we are trying to achieve - a stable, maintainable frontend where multiple people can contribute and collaborate. 
+Components stay at the forefront of the application. They should also be reusable (as much as possible). Reusability is key for what we are trying to achieve - a stable, maintainable front end where multiple people can contribute and collaborate. 
 
 In our project, we are at the beginning. That means we may have more ideas than plans. We are exploring possibilities. In order to code efficiently: +
 1) We will not store mock data in the components. +

@@ -53,8 +53,7 @@ You can also use Yarn to install the dependencies if you prefer that:
 Once the dependencies are installed, we need to import the `BrowserAnimationsModule` in our `AppModule` for animations support.
 
 .Importing `BrowserAnimationsModule` in `AppModule`
-[source,ts]
-----
+```
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -63,13 +62,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
   ...
 })
 export class AppModule { }
-----
+```
 
 Angular Material provides a host of components for designing our application. All the components are well structured into `NgModules`. For each component from the Angular Material library that we want to use, we have to import the respective `NgModule`.
 
 .We will be using the following components in our application:
-[source,ts]
-----
+```
 import { MatIconModule, MatButtonModule, MatMenuModule, MatListModule, MatToolbarModule, MatSidenavModule } from '@angular/material';
 
 @NgModule({
@@ -87,7 +85,7 @@ import { MatIconModule, MatButtonModule, MatMenuModule, MatListModule, MatToolba
   ...
 })
 export class AppModule { }
-----
+```
 
 A better approach is to import and then export all the required components in a shared  module. But for the sake of simplicity, we are importing all the required components in the `AppModule` itself.
 
@@ -95,10 +93,9 @@ Next, we include a theme in our application. Angular Material comes with four in
 We will include the indigo-pink theme in our application by importing the `indigo-pink.css` file in our `src/styles.scss`:
 
 .In `src/styles.scss`:
-[source,css]
-----
+```
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-----
+```
 
 Some Angular Material components depend on HammerJs for gestures. So it is a good idea to install HammerJs as a dependency in our application. To do so, run the following command in the terminal:
 
@@ -111,23 +108,21 @@ Then import it in the `src/main.ts` file
 To use https://material.io/icons/[Material Design Icons] along with the `mat-icon` component, we will load the Material Icons library in our `src/index.html` file
 
 .In src/index.html:
-[source,html]
-----
+```
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-----
+```
 
 == Development
 
 Now that we have all the Angular Material related dependencies set up in our project, we can start coding. Let's begin by adding a suitable `margin` and `font` to the `body` element of our single page application. We will add it in the `src/styles.scss` file to apply it globally:
 
 .In `src/styles.scss`:
-[source,css]
-----
+```
 body {
   margin: 0;
   font-family: "Segoe UI", Roboto, sans-serif;
 }
-----
+```
 
 At this point, if we run our application with `ng serve`, this is how it will look like:
 
@@ -137,8 +132,7 @@ image::images/layout-angular-material/3-material-added.png["Angular Material add
 We will clear the `app.component.html` file and setup a header with a menu button and some navigational links. We will use `mat-toolbar`, `mat-button`, `mat-menu`, `mat-icon` and `mat-icon-button` for this:
 
 .app.component.html:
-[source,html]
-----
+```
 <mat-toolbar color="primary">
   <button mat-icon-button aria-label="menu">
     <mat-icon>menu</mat-icon>
@@ -159,7 +153,7 @@ We will clear the `app.component.html` file and setup a header with a menu butto
   </mat-menu>
 
 </mat-toolbar>
-----
+```
 
 The color attribute on the `mat-toolbar` element will give it the primary (indigo) color as defined by our theme. The color attribute works with most Angular Material components; the possible values are 'primary', 'accent' and 'warn'.
 The mat-toolbar is a suitable component to represent a header. It serves as a placeholder for elements we want in our header.
@@ -172,24 +166,22 @@ image::images/layout-angular-material/4-header.png["Header added to the applicat
 We want to keep the sidenav toggling menu button on the left and move the rest to the right to make it look better. To do this we add a class to the menu icon button:
 
 .app.component.html:
-[source,html]
-----
+```
 ...
   <button mat-icon-button aria-label="menu" class="menu">
     <mat-icon>menu</mat-icon>
   </button>
 ...
-----
+```
 
 And in the `app.component.scss` file, we add the following style:
 
 .`app.component.scss`:
-[source,css]
-----
+```
 .menu {
     margin-right: auto;
 }
-----
+```
 
 The mat-toolbar element already has it's display property set to `flex`. Setting the menu icon button's `margin-right` property to `auto` keeps itself on the left and pushes the other elements to the right.
 
@@ -221,46 +213,41 @@ import { DataComponent } from './pages/data/data.component';
 We need to provide a hook where the components will be loaded when their respective URLs are loaded. We do that by using the `router-outlet` directive in the `app.component.html`.
 
 .app.component.html:
-[source,html]
-----
+```
 ...
 	</mat-toolbar>
 	<router-outlet></router-outlet>
-----
+```
 
 Now when we visit the defined URLs we see the appropriate components rendered on screen.
 
 Lets change the contents of the components to have something better.
 
 .home.component.html:
-[source,html]
-----
+```
 <h2>Home Page</h2>
-----
+```
 
 .`home.component.scss`:
-[source,css]
-----
+```
 h2 {
     text-align: center;
     margin-top: 50px;
 }
-----
+```
 
 .data.component.html:
-[source,html]
-----
+```
 <h2>Data Page</h2>
-----
+```
 
 .`data.component.scss`:
-[source,css]
-----
+```
 h2 {
     text-align: center;
     margin-top: 50px;
 }
-----
+```
 
 The pages look somewhat better now:
 
@@ -274,8 +261,7 @@ Let us finally create the sidenav. To implement the sidenav we need to use 3 Ang
 The `mat-sidenav-container`, as the name suggests, acts as a container for the sidenav and the associated content. So it is the parent element, and `mat-sidenav` and `mat-sidenav-content` are the children sibling elements. `mat-sidenav` represents the sidenav. We can put any content we want, though it is usually used to contain a list of navigational links. The `mat-sidenav-content` element is for containing our main page content. Since we need the sidenav application-wide, we will put it in the `app.component.html`.
 
 .app.component.html:
-[source,html]
-----
+```
 ...
 </mat-toolbar>
 
@@ -287,21 +273,20 @@ The `mat-sidenav-container`, as the name suggests, acts as a container for the s
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
-----
+```
 
 The `mat-sidenav` has a `mode` property, which accepts one of the 3 values: `over`, `push` and `side`. It decides the behavior of the sidenav. `mat-sidenav` also has a `disableClose` property which accents a boolean value. It toggles the behavior where we click on the backdrop or press the `Esc` key to close the sidenav. There are other properties which we can use to customize the appearance, behavior and position of the sidenav. You can find the properties documented online at https://material.angular.io/components/sidenav/api 
 We moved the `router-outlet` directive inside the `mat-sidenav-content` where it will render the routed component.
 But if you check the running application in the browser, we don't see the sidenav yet. That is because it is closed. We want to have the sidenav opened/closed at the click of the menu icon button on the left side of the header we implemented earlier. Notice we have set a local reference `#sidenav` on the `mat-sidenav` element. We can access this element and call its `toggle()` function to toggle open or close the sidenav.
 
 .app.component.html:
-[source,html]
-----
+```
 ...
   <button mat-icon-button aria-label="menu" class="menu" (click)="sidenav.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
 ...
-----
+```
 
 .Sidenav is implemented
 image::images/layout-angular-material/8-sidenav-started.png["Sidenav works", width="700", link="images/layout-angular-material/8-sidenav-started.png", align="center"]
@@ -310,8 +295,7 @@ We can now open the sidenav by clicking the menu icon button. But it does not lo
 Let's add the following styles to make the page fill the viewport:
 
 .app.component.scss:
-[source,css]
-----
+```
 ...
 mat-sidenav-container {
     position: absolute;
@@ -320,13 +304,12 @@ mat-sidenav-container {
     right: 0;
     bottom: 0;
 }
-----
+```
 
 The sidenav width will be corrected when we add the navigational links to it. That is the only thing remaining to be done. Lets implement it now:
 
 .app.component.html:
-[source,html]
-----
+```
 ...
   <mat-sidenav [disableClose]="false" mode="over" #sidenav>
 	<mat-nav-list>
@@ -356,13 +339,12 @@ The sidenav width will be corrected when we add the navigational links to it. Th
     </mat-nav-list>
   </mat-sidenav>
 ...
-----
+```
 
 We use the `mat-nav-list` element to set a list of navigational links. We use the `a` tags with `mat-list-item` directive. We implement a `click` listener on each link to close the sidenav when it is clicked. The `routerLink` directive is used to provide the URLs to navigate to. The `routerLinkActive` directive is used to provide the class name which will be added to the link when it's URL is visited. Here we name the class`active`. To style it, let' modify the `app.component.scss` file:
 
 .`app.component.scss`:
-[source,css]
-----
+```
 ...
 mat-sidenav-container {
 ...
@@ -375,7 +357,7 @@ mat-sidenav-container {
         }
     }
 }
-----
+```
 
 Now we have a working application with a basic layout: a header with some menu and a sidenav with some navigational links.
 

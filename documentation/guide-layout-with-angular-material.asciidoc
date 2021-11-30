@@ -207,7 +207,8 @@ Let us set up the routing such that when we visit `http://localhost:4200/` root 
 We had opted for routing while creating the application, so we have the routing module `app-routing.module.ts` setup for us. In this file, we have the empty `routes` array where we set up our routes.
 
 .app-routing.module.ts:
-[source,ts]
+
+[source]
 ----
 import { HomeComponent } from './pages/home/home.component';
 import { DataComponent } from './pages/data/data.component';

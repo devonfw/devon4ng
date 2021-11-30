@@ -104,7 +104,7 @@ export class FlightsAdapter {
 
 == Token management
 
-In most cases the access to backend API is secured using well known mechanisms as **CSRF**, **JWT** or both. In these cases the `frontend` application must manage the tokens that are generated when the user authenticates. More concretely it must store them to include them in every request automatically. Obviously, when user logs out these tokens must be removed from `localStorage`, memory, etc.
+In most cases the access to backend API is secured using well known mechanisms as **CSRF**, **JWT** or both. In these cases the front-end application must manage the tokens that are generated when the user authenticates. More concretely it must store them to include them in every request automatically. Obviously, when user logs out these tokens must be removed from `localStorage`, memory, etc.
 
 === Store security token
 

@@ -71,7 +71,7 @@ nodeLinker: node-modules
 
 NOTE: For more advanced migration topics please refer to https://yarnpkg.com/advanced/migration 
 
-== Which files should be gitignored?
+== Which files should be added to gitignore file?
 If you're using Zero-Installs:
 
 [source, gitignore]

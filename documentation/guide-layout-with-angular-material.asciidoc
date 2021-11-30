@@ -209,7 +209,6 @@ We had opted for routing while creating the application, so we have the routing 
 .app-routing.module.ts:
 [source,ts]
 ----
-...
 import { HomeComponent } from './pages/home/home.component';
 import { DataComponent } from './pages/data/data.component';
 
@@ -217,7 +216,6 @@ import { DataComponent } from './pages/data/data.component';
 	  { path: '', component: HomeComponent },
 	  { path: 'data', component: DataComponent }
 	];
-...
 ----
 
 We need to provide a hook where the components will be loaded when their respective URLs are loaded. We do that by using the `router-outlet` directive in the `app.component.html`.

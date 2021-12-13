@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SwUpdate } from '@angular/service-worker';
+import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { DataService } from './data.service';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +11,16 @@ import { DataService } from './data.service';
 export class AppComponent implements OnInit {
   title = 'basic-ng-pwa';
   update = false;
-  dish: { name: string; description: string } = { name: '', description: ''};
+  dish: { name: string; description: string } = { name: '', description: '' };
 
   constructor(updates: SwUpdate, private data: DataService) {
-    updates.available.subscribe((event) => {
-      updates.activateUpdate().then(() => document.location.reload());
-    });
+    updates.versionUpdates
+      .pipe(
+        filter((evt): evt is VersionReadyEvent => evt.type === 'VERSION_READY')
+      )
+      .subscribe((event) => {
+        updates.activateUpdate().then(() => document.location.reload());
+      });
   }
 
   ngOnInit() {
@@ -27,7 +32,7 @@ export class AppComponent implements OnInit {
             name: dishToday.dish.name,
             description: dishToday.dish.description,
           };
-        },
+        }
       );
   }
 }

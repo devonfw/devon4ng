@@ -2,7 +2,7 @@ matrix:
 - name: asciidoc source py spell check configuration
   aspell:
     lang: en
-    d: en_GB
+    d: en_US
   sources:
   - documentation/*.asciidoc 
   dictionary:

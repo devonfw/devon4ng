@@ -4,6 +4,6 @@ on:
   workflow_dispatch:
 jobs:
   spellchecker:
-    uses: devonfw/.github/workflows/devonfw-spellchecker.yml@develop
+    uses: devonfw/.github/workflows/devonfw-spellchecker.yml@master
     with:
       RESUSABLE_GH_ACTION_TOKEN: ${{ secrets.RESUSABLE_GH_ACTION_TOKEN }}

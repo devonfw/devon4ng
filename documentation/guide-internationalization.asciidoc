@@ -225,4 +225,4 @@ translocoService.selectTranslate('HELLO', { value: 'world' }).subscribe(res => {
 
 IMPORTANT: You can find a complete example at https://github.com/devonfw/devon4ng-application-template. 
 
-Please, visit https://netbasal.gitbook.io/transloco for more info.
+Please, visit https://github.com/ngneat/transloco/ for more info.

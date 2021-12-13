@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Plugins, CameraResultType } from '@capacitor/core';
 
-const { camera, toast } = Plugins;
 
 @Component({
   selector: 'app-home',
@@ -20,7 +19,7 @@ export class HomePageComponent {
 
   async takePicture() {
     try {
-      const image = await camera.getPhoto({
+      const image = await Plugins.Camera.getPhoto({
         quality: 90,
         allowEditing: true,
         resultType: CameraResultType.Uri,
@@ -34,7 +33,7 @@ export class HomePageComponent {
   }
 
   async show(message: string) {
-    await toast.show({
+    await Plugins.Toast.show({
       text: message,
     });
   }

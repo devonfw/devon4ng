@@ -78,7 +78,7 @@ To retrieve data with this service, you have to import the module `HttpClient` a
 [source,ts]
   ...
   export const MY_THAI_STAR_DISH =
-  'http://de-mucdevondepl01:8090/api/services/rest/dishmanagement/v1/dish/1';
+  'https://mts-devonfw-core.cloud.okteto.net/api/services/rest/dishmanagement/v1/dish/1';
   ...
 
 *environments.prod.ts*
@@ -86,7 +86,7 @@ To retrieve data with this service, you have to import the module `HttpClient` a
 [source,ts]
   ...
   export const MY_THAI_STAR_DISH =
-  'http://de-mucdevondepl01:8090/api/services/rest/dishmanagement/v1/dish/1';
+  'https://mts-devonfw-core.cloud.okteto.net/api/services/rest/dishmanagement/v1/dish/1';
   ...
 
 === Step 3: Use the service
@@ -266,7 +266,7 @@ At the root of the json: A data group to cache API calls.
     "dataGroups": [{
       "name": "mythaistar-dishes",
       "urls": [
-        "http://de-mucdevondepl01:8090/api/services/rest/dishmanagement/v1/dish/1"
+        "https://mts-devonfw-core.cloud.okteto.net/api/services/rest/dishmanagement/v1/dish/1"
       ],
       "cacheConfig": {
         "maxSize": 100,

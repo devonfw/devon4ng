@@ -14,13 +14,17 @@ jobs:
     # Set job outputs to values from filter step
     outputs:
       AngularBasicPWA: ${{ steps.filter.outputs.AngularBasicPWA }}
+      AngularClarityLayout: ${{ steps.filter.outputs.AngularClarityLayout }}
       AngularElements: ${{ steps.filter.outputs.AngularElements }}
       AngularElementsTest: ${{ steps.filter.outputs.AngularElementsTest }}
       AngularLazyLoading: ${{ steps.filter.outputs.AngularLazyLoading }}
       AngularMaterialBasicLayout: ${{ steps.filter.outputs.AngularMaterialBasicLayout }}
       AngularMaterialTheming: ${{ steps.filter.outputs.AngularMaterialTheming }}
       AngularMockService: ${{ steps.filter.outputs.AngularMockService }}
+      AngularPrimeNGLayout: ${{ steps.filter.outputs.AngularPrimeNGLayout }}
+      AngularZorroLayout: ${{ steps.filter.outputs.AngularZorroLayout }}
       AppInitializer: ${{ steps.filter.outputs.AppInitializer }}
+      BlobStreaming: ${{ steps.filter.outputs.BlobStreaming }}
       CypressTest: ${{ steps.filter.outputs.CypressTest }}
       ElectronTest: ${{ steps.filter.outputs.ElectronTest }}
       ErrorHandler: ${{ steps.filter.outputs.ErrorHandler }}
@@ -35,6 +39,8 @@ jobs:
         filters: |
           AngularBasicPWA:
             - 'samples/AngularBasicPWA/**'
+          AngularClarityLayout:
+            - 'samples/AngularClarityLayout/**'
           AngularElements:
             - 'samples/AngularElements/**'
           AngularElementsTest:
@@ -47,8 +53,14 @@ jobs:
             - 'samples/AngularMaterialTheming/**'
           AngularMockService:
             - 'samples/AngularMockService/**'
+          AngularPrimeNGLayout:
+            - 'samples/AngularPrimeNGLayout/**'
+          AngularZorroLayout:
+            - 'samples/AngularZorroLayout/**'
           AppInitializer:
             - 'samples/AppInitializer/**'
+          BlobStreaming:
+            - 'samples/BlobStreaming/**'
           CypressTest:
             - 'samples/CypressTest/**'
           ElectronTest:
@@ -74,7 +86,21 @@ jobs:
         run: |
           cd samples/AngularBasicPWA
           yarn install
-          npm run build
+          yarn run build
+
+  # JOB to build AngularClarityLayout code
+  AngularClarityLayout:
+    needs: changes
+    if: ${{ needs.changes.outputs.AngularClarityLayout == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: build
+        run: |
+          cd samples/AngularClarityLayout
+          yarn install
+          yarn run build
 
   # JOB to build AngularElements code
   AngularElements:
@@ -88,7 +114,7 @@ jobs:
         run: |
           cd samples/AngularElements
           yarn install
-          npm run build
+          yarn run build
 
   # JOB to build AngularElementsTest code
   AngularElementsTest:
@@ -102,7 +128,7 @@ jobs:
         run: |
           cd samples/AngularElementsTest
           yarn install
-          npm run build
+          yarn run build
 
   # JOB to build AngularLazyLoading code
   AngularLazyLoading:
@@ -116,7 +142,7 @@ jobs:
         run: |
           cd samples/AngularLazyLoading
           yarn install
-          npm run build
+          yarn run build
 
   # JOB to build AngularMaterialBasicLayout code
   AngularMaterialBasicLayout:
@@ -130,7 +156,7 @@ jobs:
         run: |
           cd samples/AngularMaterialBasicLayout
           yarn install
-          npm run build
+          yarn run build
 
   # JOB to build AngularMaterialTheming code
   AngularMaterialTheming:
@@ -144,7 +170,7 @@ jobs:
         run: |
           cd samples/AngularMaterialTheming
           yarn install
-          npm run build
+          yarn run build
 
   # JOB to build AngularMockService code
   AngularMockService:
@@ -158,7 +184,35 @@ jobs:
         run: |
           cd samples/AngularMockService
           yarn install
-          npm run build
+          yarn run build
+
+  # JOB to build AngularPrimeNGLayout code
+  AngularPrimeNGLayout:
+    needs: changes
+    if: ${{ needs.changes.outputs.AngularPrimeNGLayout == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: build
+        run: |
+          cd samples/AngularPrimeNGLayout
+          yarn install
+          yarn run build
+
+  # JOB to build AngularZorroLayout code
+  AngularZorroLayout:
+    needs: changes
+    if: ${{ needs.changes.outputs.AngularZorroLayout == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: build
+        run: |
+          cd samples/AngularZorroLayout
+          yarn install
+          yarn run build
 
   # JOB to build AppInitializer code
   AppInitializer:
@@ -172,7 +226,21 @@ jobs:
         run: |
           cd samples/AppInitializer
           yarn install
-          npm run build
+          yarn run build
+
+  # JOB to build BlobStreaming code
+  BlobStreaming:
+    needs: changes
+    if: ${{ needs.changes.outputs.BlobStreaming == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: build
+        run: |
+          cd samples/BlobStreaming
+          yarn install
+          yarn run build
 
   # JOB to build CypressTest code
   CypressTest:
@@ -186,7 +254,7 @@ jobs:
         run: |
           cd samples/CypressTest
           yarn install
-          npm run build
+          yarn run build
 
   # JOB to build ElectronTest code
   ElectronTest:
@@ -200,7 +268,7 @@ jobs:
         run: |
           cd samples/ElectronTest
           yarn install
-          npm run build
+          yarn run build
 
   # JOB to build ErrorHandler code
   ErrorHandler:
@@ -214,7 +282,7 @@ jobs:
         run: |
           cd samples/ErrorHandler
           yarn install
-          npm run build
+          yarn run build
 
   # JOB to build IonicBasicPWA code
   IonicBasicPWA:
@@ -233,7 +301,7 @@ jobs:
       - name: Build the app
         run: |
           cd samples/IonicBasicPWA
-          npm run build
+          yarn run build
 
   # JOB to build MyLibrary code
   MyLibrary:
@@ -247,7 +315,7 @@ jobs:
         run: |
           cd samples/MyLibrary
           yarn install
-          npm run build
+          yarn run build
 
   # JOB to build MyLibraryTest code
   MyLibraryTest:
@@ -261,4 +329,4 @@ jobs:
         run: |
           cd samples/MyLibraryTest
           yarn install
-          npm run build
+          yarn run build

@@ -41,7 +41,7 @@
     "codelyzer": "^6.0.0",
     "cypress": "^6.4.0",
     "eslint": "^7.32.0",
-    "eslint-plugin-import": "2.25.2",
+    "eslint-plugin-import": "2.25.3",
     "eslint-plugin-jsdoc": "37.0.3",
     "eslint-plugin-prefer-arrow": "1.2.3",
     "mochawesome": "^6.1.1",

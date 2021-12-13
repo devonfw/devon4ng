@@ -3,5 +3,7 @@ on:
   push:
   workflow_dispatch:
 jobs:
-  spellcheck:
+  spellchecker:
     uses: devonfw/.github/workflows/devonfw-spellchecker.yml@develop
+    with:
+      token: ${{ secrets.RESUSABLE_GH_ACTION_TOKEN }}

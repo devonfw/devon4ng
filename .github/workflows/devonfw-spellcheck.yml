@@ -5,5 +5,5 @@ on:
 jobs:
   spellchecker:
     uses: devonfw/.github/.github/workflows/devonfw-spellchecker.yml@master
-    with:
+    secrets:
       RESUSABLE_GH_ACTION_TOKEN: ${{ secrets.RESUSABLE_GH_ACTION_TOKEN }}

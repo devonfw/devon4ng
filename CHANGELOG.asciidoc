@@ -2,6 +2,15 @@
 
 This file documents all notable changes to https://github.com/devonfw/devon4ng[devon4ng].
 
+== 2021.12.001
+
+In this release we have introduced some new samples to serve as a reference for integrating some popular 3rd-party component libraries like PrimeNG, NG-ZORRO and more with devon4ng. Also, all samples and templates are updated to the latest Angular 13:
+
+* https://github.com/devonfw/devon4ng/tree/develop/samples/AngularClarityLayout[AngularClarityLayout]: A sample front-end built with https://clarity.design[Clarity Design System].
+* https://github.com/devonfw/devon4ng/tree/develop/samples/AngularPrimeNGLayout[AngularPrimeNGLayout]: A front-end reference app for demoing the https://primefaces.org/primeng/showcase/#/[PrimeNG] library. 
+* https://github.com/devonfw/devon4ng/tree/develop/samples/AngularZorroLayout[AngularZorroLayout]: A front-end integrated with the https://ng.ant.design/docs/introduce/en[NG-ZORRO] library.
+* https://github.com/devonfw/devon4ng/tree/v13[v13]: Updated all samples and templates to Angular 13.
+
 == 2020.08.001
 
 This release is focused mainly on the **Angular 10 upgrade**:

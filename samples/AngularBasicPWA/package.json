@@ -23,7 +23,7 @@
     "@angular/router": "~13.0.3",
     "@angular/service-worker": "~13.0.3",
     "core-js": "^3.19.1",
-    "rxjs": "~6.5.3",
+    "rxjs": "~7.5.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
   },

@@ -30,7 +30,7 @@ This guide assumes that you already have installed:
 
 * Node.js
 * npm package manager
-* Angular CLI
+* Angular CLI / Nx CLI
 
 == Sample Application
 
@@ -39,16 +39,16 @@ image::images/angular/angular-pwa/mts-pwa-rec.png["My thai star recommendation",
 
 To explain how to build PWA using angular, a basic application is going to be built. This app will be able to ask for resources and save in the cache in order to work even offline.
 
-=== Step 1: Create a new project and install Angular PWA package
+=== Step 1: Create a new project
 
-This step can be completed with one simple command: `ng new <name>`, where <names> is the name for the app. In this case, the app is going to be named `*basic-ng-pwa*`.
+This step can be completed with one simple command using the Angular CLI: `ng new <name>`, where `<name>` is the name for the app. In this case, the app is going to be named `*basic-ng-pwa*`. If you are using Nx CLI, you can use the command `nx generate @nrwl/angular:app <name>` in your Nx workspace. You can follow https://github.com/devonfw/devon4ng/wiki/guide-creating-angular-app-with-nx-cli[this guide] if you want to get started with Nx workspace.
 
 === Step 2: Create a service
 
 Web applications usually uses external resources, making necessary the addition of services which can get those resources. This application gets a dish from My Thai Star's back-end and shows it. To do so, a new service is going to be created.
 
-* go to project folder: `cd basic-ng-pwa`
-* run `ng generate service data`
+* go to project folder: `cd basic-ng-pwa`. If using Nx, go to the root folder of the workspace.
+* run `ng generate service data`. For Nx CLI, specify the project name with `--project` flag. So the command becomes `ng generate service data --project=basic-ng-pwa`
 * Modify *data.service.ts*, *environment.ts*, *environment.prod.ts*
 
 To retrieve data with this service, you have to import the module `HttpClient` and add it to the service's constructor. Once added, use it to create a function `*getDishes()*` that sends http request to My Thai Start's back-end. The URL of the back-end can be stored as an environment variable *MY_THAI_STAR_DISH*.
@@ -117,11 +117,11 @@ The component `AppComponent` implements the interface `OnInit` and inside its me
 ----
 
 === Step 4: Structures, styles and updates
-This step shows code interesting inside the sample app. The complete content can be found in https://github.com/devonfw/devon4ng/tree/master/samples/AngularBasicPWA[devon4ng samples].
+This step shows code interesting inside the sample app. The complete content can be found in https://github.com/devonfw-sample/devon4ts-samples/tree/master/apps/angular-basic-pwa[devon4ts-samples].
 
 *index.html*
 
-To use the Montserrat font add the following link inside the tag header.
+To use the Montserrat font add the following link inside the `head` tag of the app's index.html file.
 
 [source,html]
 ----
@@ -137,11 +137,11 @@ To use the Montserrat font add the following link inside the tag header.
     font-family: 'Montserrat', sans-serif;
   }
 ----
-*app.component.ts*
+`*app.component.ts*`
 
 This file is also used to reload the app if there are any changes.
 
-* `_SwUpdate_`: This object comes inside the `@angular/pwa` package and it is used to detect changes and reload the page if needed.
+* `SwUpdate`: This object comes inside the `@angular/pwa` package and it is used to detect changes and reload the page if needed.
 
 [source,ts]
 ----
@@ -162,7 +162,7 @@ This file is also used to reload the app if there are any changes.
 
 === Step 5: Make it Progressive.
 
-Install Angular PWA package with `ng add @angular/pwa --project <name>`. As before substitute `name` with `**basic-ng-pwa**`.
+Install Angular PWA package with `ng add @angular/pwa --project=<name>`. As before substitute `name` with `**basic-ng-pwa**`.
 
 The above command completes the following actions:
 
@@ -177,7 +177,7 @@ The above command completes the following actions:
   - Creates the service worker configuration file called `ngsw-config.json`, which specifies the caching behaviors and other settings.
 
 
-==== manifest.json
+==== `manifest.json`
 
 manifest.json is a file that allows to control how the app is displayed in places where native apps are displayed.
 
@@ -282,11 +282,11 @@ At the root of the json: A data group to cache API calls.
 
 To check if an app is a PWA lets compare its normal behaviour against itself but built for production. Run in the project's root folder the commands below:
 
-`ng build --prod` to build the app using production settings.
+`ng build --prod` to build the app using production settings.(`nx build <name> --prod` in Nx CLI)
 
 `npm install http-server` to install an npm module that can serve your built application. Documentation https://www.npmjs.com/package/http-server[here].
 
-Go to the `dist/basic-ng-pwa/` folder running `cd dist/basic-ng-pwa`.
+Go to the `dist/basic-ng-pwa/` folder running `cd dist/basic-ng-pwa`. In an Nx workspace, the path will be `dist/apps/basic-ng-pwa`
 
 `http-server -o` to serve your built app.
 
@@ -295,7 +295,7 @@ image::images/angular/angular-pwa/http-serve.png["Http server running", width=60
 
 {nbsp}
 
-In another console instance run `ng serve` to open the common app (not built).
+In another console instance run `ng serve` (or `nx serve basic-ng-pwa` for Nx) to open the common app (not built).
 
 .Angular server running on localhost:4200.
 image::images/angular/angular-pwa/ng-serve.png[".Angular server running", width=600 link="images/angular/angular-pwa/ng-serve.png"]

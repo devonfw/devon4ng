@@ -29,7 +29,7 @@ Angular Elements allows Angular to work with different frameworks by using input
 
 == Negative points about Elements
 
-Angular Elements is really powerful but since, the transition between views between views is going to be handled by another framework or html/javascript, using Angular `Router` is not possible. the view transitions have to be handled manually. This fact also eliminates the possibility of just porting an application completely.
+Angular Elements is really powerful but since, the transition between views is going to be handled by another framework or html/javascript, using Angular `Router` is not possible. the view transitions have to be handled manually. This fact also eliminates the possibility of just porting an application completely.
 
 == How to use Angular Elements?
 
@@ -212,10 +212,10 @@ First, before building the `Angular Element`, every element inside that app comp
 
 [source]
 ----
-ng build "projectName" --prod --output-hashing=none && cat dist/"projectName"/runtime.js dist/"projectName"/polyfills.js dist/"projectName"/scripts.js dist/"projectName"/main.js > ./dist/"projectName"/"nameWantedAngularElement".js
+ng build "projectName" --configuration production --output-hashing=none && cat dist/"projectName"/runtime.js dist/"projectName"/polyfills.js dist/"projectName"/scripts.js dist/"projectName"/main.js > ./dist/"projectName"/"nameWantedAngularElement".js
 ----
 
-After executing the bash script, it will generate inside the path `dist/"projectName"` a js file named `"nameWantedAngularElement".js` and a css file.
+After executing the bash script, it will generate inside the path `dist/"projectName"` (or `dist/apps/projectname` in a Nx workspace) a js file named `"nameWantedAngularElement".js` and a css file.
 
 ===== Building with `ngx-build-plus` (Recommended)
 
@@ -244,7 +244,7 @@ Using this library and the following command, an isolated `Angular Element` whic
 
 [source]
 ----
-ng build "projectName" --output-hashing none --single-bundle true --prod --bundle-styles false
+ng build "projectName" --output-hashing none --single-bundle true --configuration production --bundle-styles false
 ----
 
 This command will generate three things:
@@ -446,6 +446,11 @@ Inside `angular.json` both of the files that were copied in the last step are go
 ----
 
 By declaring the files in the `angular.json` angular will take care of including them in a proper way.
+
+[NOTE]
+====
+  If you are using Nx, the configuration file `angular.json` might be named as `workspace.json`, depending on how you had setup the workspace. The structure of the file remains similar though.
+====
 
 === Using Angular Element
 

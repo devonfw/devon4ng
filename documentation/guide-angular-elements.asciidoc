@@ -512,3 +512,5 @@ This is going to allow the use of the `Angular Element` in the templates directl
   <dish-form></dish-form>
 </div>
 ----
+
+You can find a working example of Angular Elements in our https://github.com/devonfw-sample/devon4ts-samples[devon4ts-samples] repo by referring the samples named angular-elements and angular-elements-test.

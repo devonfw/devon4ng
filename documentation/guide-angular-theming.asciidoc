@@ -36,7 +36,6 @@ image::images/angular/angular-theming/palette.PNG["Theme palette", width=600 lin
 
 In angular material, a palette is represented as a SCSS map.
 
-[[`id_scss_map`]]
 .SCSS map and palettes.
 image::images/angular/angular-theming/scss-map.png["SCSS map", width=600 link="images/angular/angular-theming/scss-map.png"]
 
@@ -77,7 +76,7 @@ The pre-built themes can be added using *@import*.
 
 Sometimes pre-built themes do not meet the needs of a project, because color schemas are too specific or do not incorporate branding colors, in those situations custom themes can be built to offer a better solution to the client.
 
-For this topic, we are going to use a basic layout project that can be found in https://github.com/devonfw/devon4ng/tree/master/samples/AngularMaterialBasicLayout[devon4ng repository].
+For this topic, we are going to use a basic layout project that can be found in https://github.com/devonfw-sample/devon4ts-samples/tree/master/apps/angular-material-basic-layout[devon4ts-samples repository].
 
 
 === Basics

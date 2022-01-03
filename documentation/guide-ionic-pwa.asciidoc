@@ -25,7 +25,7 @@ This guide assumes that you already have installed:
 
 * Node.js
 * npm package manager
-* Angular CLI
+* Angular CLI / Nx CLI
 * Ionic 5 CLI
 * Capacitor
 
@@ -40,15 +40,17 @@ To explain how to build progressive web apps (PWA) using Ionic, a basic applicat
 
 === Step 1: Create a new project
 
-This step can be completed with one simple command: `ionic start <name> <template>`, where <name> is the name and <template> a model for the app. In this case, the app is going to be named `*basic-ion-pwa*`.
+This step can be completed with one simple command: `ionic start <name> <template>`, where `<name>` is the name and `<template>` a model for the app. In this case, the app is going to be named `*basic-ion-pwa*`.
+
+If you are using Nx, there is a pre-requisite to this step. And that is, you have to add the `@nxtend/ionic-angular` plugin to your Nx workspace. The command for that is `npm install --save-dev @nxtend/ionic-angular`. Once you have the plugin installed, you can generate an ionic app in your Nx workspace with the command `nx generate @nxtend/ionic-angular:app basic-ion-pwa`. (You can refer https://github.com/devonfw/devon4ng/wiki/guide-creating-angular-app-with-nx-cli[this guide] if you want to get started with Nx).
 
 === Step 2: Structures and styles
 
-The styles (scss) and structures (html) do not have anything specially relevant, just colors and ionic web components. The code can be found in https://github.com/devonfw/devon4ng/tree/master/samples/IonicBasicPWA[devon4ng samples].
+The styles (scss) and structures (html) do not have anything specially relevant, just colors and ionic web components. The code can be found in https://github.com/devonfw-sample/devon4ts-samples/tree/master/apps/ionic-basic-pwa[devon4ts-samples].
 
 === Step 3: Add functionality
 
-After this step, the app will allow users take photos and display them in the main screen. 
+After this step, the app will allow users to take photos and display them in the main screen. 
 First we have to import three important elements:
 
 * `DomSanitizer`: Sanitizes values to be safe to use.
@@ -60,10 +62,9 @@ First we have to import three important elements:
 ```
   import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   import { Plugins, CameraResultType } from '@capacitor/core';
-  const { Camera, Toast } = Plugins;
 ```
 
-The process of taking a picture is enclosed in a *takePicture* method. takePicture calls the Camera's _getPhoto_ function which returns an URL or an exception. If a photo is taken then the image displayed in the main page will be changed for the new picture, else, if the app is closed without changing it, a toast message will be displayed.
+The process of taking a picture is enclosed in a `takePicture()` method. `takePicture()` calls the Camera's `getPhoto()` function which returns an URL or an exception. If a photo is taken then the image displayed in the main page will be changed for the new picture, else, if the app is closed without changing it, a toast message will be displayed.
 
 ```
   export class HomePage {
@@ -72,7 +73,7 @@ The process of taking a picture is enclosed in a *takePicture* method. takePictu
 
     async takePicture() {
       try {
-        const image = await Camera.getPhoto({
+        const image = await Plugins.Camera.getPhoto({
           quality: 90,
           allowEditing: true,
           resultType: CameraResultType.Uri,
@@ -86,7 +87,7 @@ The process of taking a picture is enclosed in a *takePicture* method. takePictu
     }
 
     async show(message: string) {
-      await Toast.show({
+      await Plugins.Toast.show({
         text: message,
       });
     }
@@ -116,7 +117,7 @@ defineCustomElements(window);
 
 === Step 5: Make it Progressive.
 
-Turning an Ionic 5 app into a PWA is pretty easy, the same module used to turn Angular apps into PWAs has to be added, to do so, run: `ng add @angular/pwa`. This command also creates an *icons* folder inside *src/assets* and contains angular icons for multiple resolutions. If you want use other images, be sure that they have the same resolution, the names can be different but the file *manifest.json* has to be changed accordingly. 
+Turning an Ionic 5 app into a PWA is pretty easy. The same module used to turn Angular apps into PWAs has to be added. To do so, run: `ng add @angular/pwa`. This command also creates an *icons* folder inside *src/assets* and contains angular icons for multiple resolutions. (Note: In an Nx workspace, you have to add it like a normal package using `npm install @angular/pwa`, and you have to manually add the icons). If you want to use other images, be sure that they have the same resolution, the names can be different but the file *manifest.json* has to be changed accordingly. 
 
 === Step 6: Configure the app
 
@@ -126,7 +127,7 @@ Default configuration.
 
 *ngsw-config.json*
 
-At _assetGroups -> resources_ add a URLs field and a pattern to match PWA Elements scripts and other resources (images, styles, ...):
+At `assetGroups` -> `resources` add a URLs field and a pattern to match PWA Elements scripts and other resources (images, styles, ...):
 
 ```
   "urls": ["https://unpkg.com/@ionic/pwa-elements@1.0.2/dist/**"]
@@ -136,7 +137,7 @@ At _assetGroups -> resources_ add a URLs field and a pattern to match PWA Elemen
 
 To check if an app is a PWA lets compare its normal behaviour against itself but built for production. Run in the project's root folder the commands below:
 
-`ionic build --prod` to build the app using production settings.
+`ionic build --configuration production` to build the app using production settings. (`nx build basic-ion-pwa --configuration production` in your Nx workspace root).
 
 `npm install http-server` to install an npm module that can serve your built application. Documentation https://www.npmjs.com/package/http-server[here]. A good alternative is also `npm install serve`. It can be checked https://github.com/zeit/serve[here]. 
 
@@ -150,7 +151,7 @@ NOTE: In order not to install anything not necessary `npx` can be used directly 
 image::images/ionic/ionic-pwa/http-server.png["Http server running", width=600 link="images/ionic/ionic-pwa/http-server.png"]
 
 {nbsp} +
-In another console instance run `ionic serve` to open the common app (not built).
+In another console instance run `ionic serve` (`nx serve basic-ion-pwa` if using Nx CLI) to open the common app (not built).
 
 .Ionic server running on localhost:8100.
 image::images/ionic/ionic-pwa/ionic-serve.png["Ionic serve on Visual Studio Code console", width=600 link="images/ionic/ionic-pwa/ionic-serve.png"]

@@ -592,3 +592,5 @@ Check the link:https://www.npmjs.com/package/mochawesome-merge[`mochawesome-merg
 
 On link:https://github.com/cypress-io/cypress-example-kitchensink[kitchensink]
 you can find an official cypress demo with all the commands being used.
+
+As nx provides the e2e tests folders by default, we do not need to create a sample for cypress test using nx.

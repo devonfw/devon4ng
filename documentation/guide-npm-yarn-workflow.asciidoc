@@ -23,7 +23,7 @@ toc::[]
 
 This document aims to provide you the necessary documentation and sources in order to help you understand the importance of dependencies between packages.
 
-Projects in node.js make use of modules, chunks of reusable code made by other people or teams. These small chunks of reusable code are called packages footnote:[A package is a file or directory that is described by a package.json. .]. Packages are used to solve specific problems or tasks. These relations between your project and the external packages are called dependencies.
+Projects in NodeJS make use of modules, chunks of reusable code made by other people or teams. These small chunks of reusable code are called packages footnote:[A package is a file or directory that is described by a package.json. .]. Packages are used to solve specific problems or tasks. These relations between your project and the external packages are called dependencies.
 
 For example, imagine we are doing a small program that takes your birthday as an input and tells you how many days are left until your birthday. We search in the repository if someone has published a package to retrieve the actual date and manage date types, and maybe we could search for another package to show a calendar, because we want to optimize our time, and we wish the user to click a calendar button and choose the day in the calendar instead of typing it.
 
@@ -81,7 +81,7 @@ The next block is called _dependencies_ and contains the packages that project n
   }
 ----
 
-After _dependencies_ we find `*_devDependencies_*`, another kind of dependencies present in the development of the application but unnecessary for its execution. One example is typescript. Code is written in typescript, and then, _transpiled_ to javascript. This means the application is not using typescript in execution and consequently not included in the deployment of our application.
+After _dependencies_ we find `*_devDependencies_*`, another kind of dependencies present in the development of the application but unnecessary for its execution. One example is typescript. Code is written in typescript, and then, _transpiled_ to JavaScript. This means the application is not using typescript in execution and consequently not included in the deployment of our application.
 
 [source,json]
 ----
@@ -169,13 +169,13 @@ A big reason is their usability. Adding or removing a package is really easy, an
 
 Another reason, closely related to the first one, is reducing human error by automating the package management process.
 
-Two of the package managers you can use in node.js projects are "yarn" and "npm". While you can use both, we encourage you to use only one of them while working on projects. Using both may lead to different dependencies between members of the team.
+Two of the package managers you can use in NodeJS projects are "yarn" and "npm". While you can use both, we encourage you to use only one of them while working on projects. Using both may lead to different dependencies between members of the team.
 
 ==== npm
 
 We'll start by installing npm following this small guide https://docs.npmjs.com/getting-started/installing-node[here].
 
-As stated on the web, npm comes inside of node.js, and must be updated after installing node.js, in the same guide you used earlier are written the instructions to update npm.
+As stated on the web, npm comes inside of NodeJS, and must be updated after installing NodeJS, in the same guide you used earlier are written the instructions to update npm.
 
 *How npm works*
 
@@ -186,7 +186,7 @@ In order to explain how npm works, let's take a command as an example:
 $ npm install @angular/material @angular/cdk
 ----
 
-This command tells npm to look for the packages @angular/material and @angular/cdk in the npm registry, download and decompress them in the folder node_modules along with their own dependencies. Additionally, npm will update package.json and create a new file called package-lock.json.
+This command tells npm to look for the packages `@angular/material` and `@angular/cdk` in the npm registry, download and decompress them in the folder node_modules along with their own dependencies. Additionally, npm will update package.json and create a new file called package-lock.json.
 
 After initialization and installing the first package there will be a new folder called node_modules in your project. This folder is where your packages are unzipped and stored, following a tree scheme.
 
@@ -249,7 +249,7 @@ npm@@VERSION@ /path/to/npm
 ----------------------------
 .example tree
 
-We recommend you to learn more about npm commands in the following https://docs.npmjs.com/[link], navigating to the section cli commands.
+We recommend you to learn more about npm commands in the following https://docs.npmjs.com/[link], navigating to the section CLI commands.
 
 *About Package-lock.json*
 
@@ -279,7 +279,7 @@ More information is provided by the npm team at https://docs.npmjs.com/files/pac
 
 ==== Yarn
 
-Yarn is an alternative to npm, if you wish to install yarn follow the guide https://yarnpkg.com/en/docs/install[getting started with yarn] and download the correct version for your operative system. Node.js is also needed you can find it https://nodejs.org/en/[here].
+Yarn is an alternative to npm, if you wish to install yarn follow the guide https://yarnpkg.com/en/docs/install[getting started with yarn] and download the correct version for your operative system. NodeJS is also needed you can find it https://nodejs.org/en/[here].
 
 *Working with yarn*
 
@@ -366,7 +366,7 @@ You can learn more about yarn.lock here: https://yarnpkg.com/en/docs/yarn-lock[y
 Global packages are packages installed in your operative system instead of your local project, 
 global packages useful for developer tooling that is not part of any individual project but instead is used for local commands.
 
-A good example of global package is angular/cli, a command line interface for angular used in our projects. You can install
+A good example of global package is `@angular/cli`, a command line interface for angular used in our projects. You can install
 a global package in npm with "npm install -g package" and "yarn global add package" with yarn, you have a npm example below:
 
 .npm global package

@@ -17,7 +17,7 @@ toc::[]
 
 = Package Managers
 
-There are two major package managers currently used for JavaScript / TypeScript projects which leverage node.js as a build platform.
+There are two major package managers currently used for JavaScript / TypeScript projects which leverage NodeJS as a build platform.
 
 1. https://www.npmjs.com/[npm]
 2. https://yarnpkg.com[yarn]

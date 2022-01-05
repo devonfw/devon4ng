@@ -33,7 +33,7 @@ The main challenges are:
 The architecture applies the concept of _Smart_ and _Dumb Components_ (syn. _Containers_ and _Presenters_).
 The concept means that components are divided into _Smart_ and _Dumb Components_.
 
-A _Smart Component_ typically is a toplevel dialog inside the component tree.
+A _Smart Component_ typically is a top-level dialog inside the component tree.
 
 * a component, that can be routed to
 * a modal dialog
@@ -52,7 +52,7 @@ The figure shows _Smart Components_ in blue and _Dumb Components_ in green.
 Inside the template of `AppComponent` placed components are static components inside the component tree.
 So they are always displayed.
 In the example `OverviewComponent` and `DetailsComponent` are rendered by Angular compiler depending on current URL the application displays.
-So `OverviewComponents` subtree is displayed if the URL is `/overview` and `DetailsComponents` subtree is displayed if the URL is `/details`.
+So `OverviewComponents` sub-tree is displayed if the URL is `/overview` and `DetailsComponents` sub-tree is displayed if the URL is `/details`.
 To clarify this distinction further the following table shows the main differences.
 
 .Smart vs Dumb Components

@@ -29,7 +29,7 @@ Angular Elements allows Angular to work with different frameworks by using input
 
 == Negative points about Elements
 
-Angular Elements is really powerful but since, the transition between views between views is going to be handled by another framework or html/javascript, using Angular `Router` is not possible. the view transitions have to be handled manually. This fact also eliminates the possibility of just porting an application completely.
+Angular Elements is really powerful but since, the transition between views is going to be handled by another framework or HTML/JavaScript, using Angular `Router` is not possible. the view transitions have to be handled manually. This fact also eliminates the possibility of just porting an application completely.
 
 == How to use Angular Elements?
 
@@ -102,7 +102,7 @@ export class AppModule {
 
 === A component example
 
-In order to be able to use a component, `@Input()` and `@Output()` variables are used. These variables are going to be the ones that will allow the Angular Element to communicate with the framework/javascript:
+In order to be able to use a component, `@Input()` and `@Output()` variables are used. These variables are going to be the ones that will allow the Angular Element to communicate with the framework/JavaScript:
 
 Component html
 [source, html]
@@ -177,7 +177,7 @@ One solution is to change the target in `tsconfig.json` to `es2015`. This might 
 
 ===== Installing Polyfaces
 
-Another solution is to use AutoPollyfill. In order to do so, the library is going to be installed with a packet manager:
+Another solution is to use `AutoPollyfill`. In order to do so, the library is going to be installed with a packet manager:
 
 Yarn
 [source]
@@ -191,7 +191,7 @@ Npm
 npm install @webcomponents/webcomponentsjs
 ----
 
-After the packet manager has finished, inside the src folder a new file `polyfills.ts` is found. To solve the error, importing the corresponding adapter (`custom-elements-es5-adapter.js`) is necessary:
+After the packet manager has finished, inside the `src` folder a new file `polyfills.ts` is found. To solve the error, importing the corresponding adapter (`custom-elements-es5-adapter.js`) is necessary:
 
 [source, typescript]
 ----
@@ -208,14 +208,14 @@ If you want to learn more about polyfills in angular you can do it https://angul
 
 === Building the Angular Element
 
-First, before building the `Angular Element`, every element inside that app component except the module need to be removed. After that, a bash script is created in the root folder,. This script will allow to put every necessary file into a js.
+First, before building the `Angular Element`, every element inside that app component except the module need to be removed. After that, a bash script is created in the root folder,. This script will allow to put every necessary file into a JS.
 
 [source]
 ----
-ng build "projectName" --prod --output-hashing=none && cat dist/"projectName"/runtime.js dist/"projectName"/polyfills.js dist/"projectName"/scripts.js dist/"projectName"/main.js > ./dist/"projectName"/"nameWantedAngularElement".js
+ng build "projectName" --configuration production --output-hashing=none && cat dist/"projectName"/runtime.js dist/"projectName"/polyfills.js dist/"projectName"/scripts.js dist/"projectName"/main.js > ./dist/"projectName"/"nameWantedAngularElement".js
 ----
 
-After executing the bash script, it will generate inside the path `dist/"projectName"` a js file named `"nameWantedAngularElement".js` and a css file.
+After executing the bash script, it will generate inside the path `dist/"projectName"` (or `dist/apps/projectname` in a Nx workspace) a JS file named `"nameWantedAngularElement".js` and a css file.
 
 ===== Building with `ngx-build-plus` (Recommended)
 
@@ -244,25 +244,25 @@ Using this library and the following command, an isolated `Angular Element` whic
 
 [source]
 ----
-ng build "projectName" --output-hashing none --single-bundle true --prod --bundle-styles false
+ng build "projectName" --output-hashing none --single-bundle true --configuration production --bundle-styles false
 ----
 
 This command will generate three things:
 
-  1. The main js bundle
-  2. The script js
+  1. The main JS bundle
+  2. The script JS
   3. The css
 
-These files will be used later instead of the single js generated in the last step. 
+These files will be used later instead of the single JS generated in the last step. 
 
 ====== Extra parameters
 
 Here are some extra useful parameters that `ngx-build-plus` provides:
 
   - `--keep-polyfills`: This parameter is going to allow us to keep the polyfills. This needs to be used with caution, avoiding using multiple different polyfills that could cause an error is necessary.
-  - `--extraWebpackConfig webpack.extra.js`: This parameter allows us to create a javascript file inside our `Angular Elements` project with the name of different libraries. Using `webpack` these libraries will not be included in the `Angular Element`. This is useful to lower the size of our `Angular Element` by removing libraries shared. Example:
+  - `--extraWebpackConfig webpack.extra.js`: This parameter allows us to create a JavaScript file inside our `Angular Elements` project with the name of different libraries. Using `webpack` these libraries will not be included in the `Angular Element`. This is useful to lower the size of our `Angular Element` by removing libraries shared. Example:
 
-[source, javascript]
+[source, JavaScript]
 ----
 const webpack = require('webpack');
 
@@ -354,7 +354,7 @@ The `Angular Element` that got generated in the last step can be used in almost 
 </html>
 ----
 
-In this html, the css generated in the last step is going to be imported inside the `<head>` and then, the javascript element is going to be imported at the end of the body. After that is done, There is two uses of `Angular Elements` in the html, one directly with use of the `@input()` variables as parameters commented in the html:
+In this html, the css generated in the last step is going to be imported inside the `<head>` and then, the JavaScript element is going to be imported at the end of the body. After that is done, There is two uses of `Angular Elements` in the html, one directly with use of the `@input()` variables as parameters commented in the html:
 
 [source, html]
 ----
@@ -383,7 +383,7 @@ and one dynamically inside the script:
 ....
 ----
 
-This javascript is an example of how to create dynamically an `Angular Element` inserting attributed to fill our `@Input()` variables and listen to the `@Output()` that was defined earlier. This is done with:
+This JavaScript is an example of how to create dynamically an `Angular Element` inserting attributed to fill our `@Input()` variables and listen to the `@Output()` that was defined earlier. This is done with:
 
 [source, html]
 ----
@@ -394,7 +394,7 @@ This javascript is an example of how to create dynamically an `Angular Element` 
                 });
 ----
 
-This allows javascript to hook with the `@Output()` event emitter that was defined. When this event gets called, another component that was defined gets inserted dynamically.
+This allows JavaScript to hook with the `@Output()` event emitter that was defined. When this event gets called, another component that was defined gets inserted dynamically.
 
 == Angular Element within another Angular project
 
@@ -446,6 +446,11 @@ Inside `angular.json` both of the files that were copied in the last step are go
 ----
 
 By declaring the files in the `angular.json` angular will take care of including them in a proper way.
+
+[NOTE]
+====
+  If you are using Nx, the configuration file `angular.json` might be named as `workspace.json`, depending on how you had setup the workspace. The structure of the file remains similar though.
+====
 
 === Using Angular Element
 
@@ -507,3 +512,5 @@ This is going to allow the use of the `Angular Element` in the templates directl
   <dish-form></dish-form>
 </div>
 ----
+
+You can find a working example of Angular Elements in our https://github.com/devonfw-sample/devon4ts-samples[devon4ts-samples] repo by referring the samples named angular-elements and angular-elements-test.

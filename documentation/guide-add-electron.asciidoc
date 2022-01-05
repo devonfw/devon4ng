@@ -15,7 +15,7 @@ toc::[]
 :source-highlighter: rouge
 :listing-caption: Listing
 
-== Add Electron to an Angular application
+== Add Electron to an Angular application using Angular CLI
 This cookbook recipe explains how to integrate Electron in an Angular 10+ application. https://electronjs.org/[Electron] is a framework for creating native applications with web technologies like JavaScript, HTML, and CSS. As an example, very well known applications as Visual Studio Code, Atom, Slack or Skype (and many more) are using Electron too. 
 
 NOTE: At the moment of this writing Angular 11.2.0, Electron 11.2.3 and Electron-builder 22.9.1 were the versions available. 
@@ -381,3 +381,56 @@ The `electron:` scripts do the following:
 - `electron:serve`: Serves electron with an already running angular app (i.e. a `ng serve` command running on another terminal).
 - `electron:pack`: Packs electron app.
 - `electron:build`: Builds electron app.
+
+== Add Electron to an Angular application using Nx CLI
+
+Creating an Electron app is very easy and straight-forward if you are using Nx CLI. As a pre-requisite, you should already have an application in your Nx workspace which you want to run as a front-end in your Electron app. (You can follow https://github.com/devonfw/devon4ng/wiki/guide-creating-angular-app-with-nx-cli[this guide] if you want to get started with Nx).
+
+Follow the steps below to develop an Electron app in your Nx workspace:
+
+=== Install `nx-electron`
+
+Install `nx-electron` using the command:
+```
+  npm install -D nx-electron
+```
+This will add the packages `electron` and `nx-electron` as dev dependencies to your Nx workspace. This will help us generate our Electron app in the next step.
+
+=== Generate your Electron app
+
+Once you have installed `nx-electron`, you can generate your electron app using the command:
+```
+  nx g nx-electron:app <electron-app-name> --frontendProject=<frontend-app-name>
+```
+
+And that is it! You have generated your Electron app already. All the configuration files (`tsconfig.*`) are generated for you under <electron-app-name> in your Nx workspace.
+
+=== Serving your app
+
+You can use this command to serve your Electron app:
+
+```
+  nx run-many --target=serve --projects=<frontend-app-name>,<electron-app-name> --parallel
+```
+
+If you see a blank application, it is because the Electron app was served before the front-end was served. To avoid this, you can serve the front-end and back-end separately, (that is, serve the back-end only after the front-end is served).
+
+=== Building your app
+
+The command for building your Electron app in Nx is similar to the `serve` command above, you only change the target from `serve` to `build`:
+
+```
+  nx run-many --target=build --projects=<frontend-app-name>,<electron-app-name> --parallel
+```
+
+=== Packaging your app
+
+Make sure you have build your app before you try to package it using the following command:
+
+```
+  nx run <electron-app-name>:package [--options]
+```
+The options that can be passed can be found https://github.com/bennymeg/nx-electron/blob/master/src/builders/package/schema.json[here].
+
+
+You can find a working example of an Electron app in https://github.com/devonfw-sample/devon4ts-samples/tree/master/apps/angular-electron-test[devon4ts-samples].

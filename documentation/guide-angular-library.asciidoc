@@ -17,7 +17,7 @@ toc::[]
 
 = Angular Library
 
-`Angular CLI` provides us with methods that allow the creation of a library. After that, using either packet manager (`npm` or `yarn`) the library can be build and packed which will allow later to install/publish it.
+`Angular CLI` provides us with methods that allow the creation of a library. After that, using a packet manager (either `npm` or `yarn`) the library can be build and packed which will allow later to install/publish it.
 
 == Whats a library?
 
@@ -25,9 +25,9 @@ From link:https://en.wikipedia.org/wiki/Library_(computing)[wikipedia]: a librar
 
 == How to build a library
 
-In this section, a library is going to be build step by step. 
+In this section, a library is going to be build step by step. Please note, we will be explaining the steps using both Angular CLI and Nx CLI. You are free to choose either one for your development.
 
-=== Creating an empty application
+=== 1. Creating an empty application
 
 First, using `Angular CLI` we are going to generate a empty application which will be later filled with the generated library. In order to do so, `Angular CLI` allows us to add to `ng new "application-name"` an option (`--create-application`). This option is going to tell `Angular CLI` not to create the initial `app` project. This is convenient since a library is going to be generated in later steps. Using this command `ng new "application-name" --create-application=false` an empty project with the name wanted is created.
 
@@ -37,7 +37,10 @@ First, using `Angular CLI` we are going to generate a empty application which wi
 ng new "application-name" --create-application=false
 ----
 
-=== Generating a library
+This step is much more easier and straight-forward when using Nx. Nx allows us to work in a monorepo workspace, where you can develop a project as an application, or a library, or a tool. You can follow https://github.com/devonfw/devon4ng/wiki/guide-creating-angular-app-with-nx-cli[this guide] to get started with Nx.
+The command for generating a library in Nx is `nx generate @nrwl/angular:library library-name --publishable --importPath=library-name`. This will create an empty angular application which we can modify and publish as a library. 
+
+=== 2. Generating a library
 
 After generating an empty application, a library is going to be generated. Inside the folder of the project, the `Angular CLI` command `ng generate library "library-name"` is going to generate the library as a project (`projects/"library-name"`). As an addition, the option `--prefix="library-prefix-wanted"` allows us to switch the default prefix that Angular generated with (`lib`). Using the option to change the prefix the command will look like this `ng generate library "library-name" --prefix="library-prefix-wanted"`.
 
@@ -46,32 +49,38 @@ After generating an empty application, a library is going to be generated. Insid
 ng generate library "library-name" --prefix="library-prefix-wanted"
 ----
 
-=== Generating/Modifying in our library
+If you are using Nx, this step is not needed as it is already covered in step 1. In this case, the library project will be generated in the `libs` folder of a Nx workspace.
 
-In the last step we generated a library. This generates automatically a `module`,`service` and `component` inside (`projects/"library-name"`) that we can modify adding new methods, components etc that we want to use in other projects. We can generate other elements, using the usual `Angular CLI` generate commands adding the option `--project="library-name"` is going to allow to generate elements within our project . An example of this is: `ng generate service "name" --project="library-name"`.
+=== 3. Modifying our library
+
+In the last step we generated a library. This automatically generates a `module`,`service` and a `component` inside `projects/"library-name"` that we can modify adding new methods, components etc that we want to use in other projects. We can generate other elements, using the usual `Angular CLI` generate commands adding the option `--project="library-name"`, this will allow to generate elements within our project . An example of this is: `ng generate service "name" --project="library-name"`.
 
 [source]
 ----
 ng generate "element" "name" --project="library-name"
 ----
 
-=== Exporting the generated things
+You can use the same command as above in a Nx workspace.
 
-Inside the library (`projects/"library-name`) there's a `public_api.ts` which is the file that exports the elements inside the library. In case we generated other things, that file needs to be modified adding the extra exports with the generated elements. In addition, changing the library version is possible in the file `package.json`.
+=== 4. Exporting the generated things
 
-=== Building our library
+Inside the library (`projects/"library-name`) there's a `public_api.ts` which is the file that exports the elements inside the library. (The file is named as `index.ts` in an Nx workspace). In case we generated other things, this file needs to be modified adding the extra exports with the generated elements. In addition, changing the library version is possible in the file `package.json`.
 
-Once we added the necessary exports, in order to use the library in other applications, we need to build the library. The command `ng build "library-name"` is going to build the library, generating in `"project-name"/dist/"library-name"` the necessary files.
+=== 5. Building our library
+
+Once we added the necessary exports, in order to use the library in other applications, we need to build the library. The command `ng build "library-name"` is going to build the library, generating the necessary files in `"project-name"/dist/"library-name"`.
 
 [source]
 ----
 ng build "library-name"
 ----
 
-[[id-packing-library]]
-=== Packing the library
+You can use the same command in Nx as well. Only the path for the generated files will be slightly different: `"project-name"/dist/libs/"library-name"`
 
-In this step we are going to pack the build library. In order to do so, we need to go inside `dist/"library-name"` and then run either `npm pack` or `yarn pack` to generate a `"library-name-version.tgz"` file.
+[[id-packing-library]]
+=== 6. Packing the library
+
+In this step we are going to pack the build library. In order to do so, we need to go inside `dist/"library-name"` (or `dist/libs/"library-name"`) and then run either `npm pack` or `yarn pack` to generate a `"library-name-version.tgz"` file.
 
 .Packing using npm
 [source]
@@ -85,7 +94,7 @@ npm pack
 yarn pack
 ----
 
-=== Publishing to npm repository (optional)
+=== 7. Publishing to npm repository (optional)
 
 * Add a `_README.md_` and _LICENSE_ file. The text inside `_README.md_` will be used in you npm package web page as documentation.
 
@@ -96,7 +105,7 @@ yarn pack
 * Check that the library is published: https://npmjs.com/package/library-name
 
 
-=== Installing our library in other projects
+=== 8. Installing our library in other projects
 
 In this step we are going to install/add the library on other projects.
 
@@ -116,7 +125,7 @@ To add the package using yarn:
 
     * *Option 2*: run `yarn add "library-name"` to install it from npm repository.
 
-=== Using the library
+=== 9. Using the library
 
 Finally, once the library was installed with either packet manager, you can start using the elements from inside like they would be used in a normal element inside the application. Example `app.component.ts`:
 

@@ -97,7 +97,7 @@ export const isLoading = (state: State) => state.loading;
 
 We need an API service to talk to the server. For demonstration purposes, we simulate an answer delayed by one second:
 
-*recommendation/services/recommendation-api.service.ts*
+`recommendation/services/recommendation-api.service.ts`
 [source, typescript]
 ----
 @Injectable({
@@ -130,7 +130,7 @@ export class RecommendationApiService {
 
 Here are the effects:
 
-*recommendation/services/recommendation-api.service.ts*
+`recommendation/services/recommendation-api.service.ts`
 [source, typescript]
 ----
 @Injectable()

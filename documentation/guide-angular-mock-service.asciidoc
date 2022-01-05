@@ -16,17 +16,17 @@ toc::[]
 :listing-caption: Listing
 
 = Angular Mock Service
-We've all been there: A new idea comes, let's quickly prototype it. But wait, there's no backend. What can we do? 
+We've all been there: A new idea comes, let's quickly prototype it. But wait, there's no back-end. What can we do? 
 
-Below you will find o solution that will get your started quick and easy. The idea is to write a simple mock service that helps us by feeding data into our components.
+Below you will find a solution that will get your started quick and easy. The idea is to write a simple mock service that helps us by feeding data into our components.
 
 == The app we start with
-Let's say you have a simple boilerplate code, with your favorite styling library hooked up and you're ready to go. The https://github.com/devonfw/devon4ng/tree/develop/samples/AngularMaterialBasicLayout[Angular Material] sample is a good starting place. 
+Let's say you have a simple boilerplate code, with your favorite styling library hooked up and you're ready to go. The https://github.com/devonfw-sample/devon4ts-samples/tree/master/apps/angular-material-basic-layout[angular-material-basic-layout] sample is a good starting place. 
 
 == The Components
 Components - are the building blocks of our application. Their main role is to enable fragments of user interfaces. They will either display data (a list, a table, a chart, etc.), or 'collect' user interaction (e.g: a form, a menu, etc.)
 
-Components stay at the forefront of the application. They should also be reusable (as much as possible). Reusability is key for what we are trying to achieve - a stable, maintainable front end where multiple people can contribute and collaborate. 
+Components stay at the forefront of the application. They should also be reusable (as much as possible). Reusability is key for what we are trying to achieve - a stable, maintainable front-end where multiple people can contribute and collaborate. 
 
 In our project, we are at the beginning. That means we may have more ideas than plans. We are exploring possibilities. In order to code efficiently: +
 1) We will not store mock data in the components. +
@@ -80,6 +80,6 @@ There are a lot of business cases which have these requirements:
  * A leader board can be understood as "the most popular items in a set", "the latest updated items", "you favorite items" etc.
  * A data table with CRUD operations is very useful (in our case we only view details or delete an item, but they illustrate two important things: the details view shows how to navigate and consume a parametric route, the delete action shows how to invoke service operations over the loaded data - this means that the component is reusable and when the data comes with and API, only the service will need it's implementation changed)
 
-Check out the https://github.com/devonfw/devon4ng/tree/develop/samples/AngularMockService[Angular Mock Service] sample from the samples folder and easily get started with front end development using dummy data.
+Check out the https://github.com/devonfw-sample/devon4ts-samples/tree/master/apps/angular-mock-service[angular-mock-service] sample from the apps folder and easily get started with front-end development using dummy data.
 
 

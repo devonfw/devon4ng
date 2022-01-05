@@ -48,7 +48,7 @@ _Figure 1 Overview_
 
 === Client Architecture
 
-On the highest level of abstraction we see the need to differentiate between dialog components and their container they are managed in, as well as the access to the application server being the backend for the client (e.g. an devon4j instance). This section gives a summary of these components and how they relate to each other. Detailed architectures for each component will be supplied in subsequent sections
+On the highest level of abstraction we see the need to differentiate between dialog components and their container they are managed in, as well as the access to the application server being the back-end for the client (e.g. an devon4j instance). This section gives a summary of these components and how they relate to each other. Detailed architectures for each component will be supplied in subsequent sections
  
 image::images/devonfw-methodology/OASP_ClientArchitecture_Overview.png[Client Architecture Overview, width="450", link="images/devonfw-methodology/OASP_ClientArchitecture_Overview.png"]
 _Figure 2 Overview of Client Architecture_
@@ -62,13 +62,13 @@ A dialog component is a logical, self-contained part of the user interface. It a
 
 ==== Dialog Container
 
-Dialog components need to be managed in their lifecycle and how they can be coupled to each other. The dialog container is responsible for this along with the following:
+Dialog components need to be managed in their life-cycle and how they can be coupled to each other. The dialog container is responsible for this along with the following:
 
 * Bootstrapping the client application and environment
 ** Configuration of the client
 ** Initialization of the application server access component
 * Dialog Component Management
-** Controlling the lifecycle
+** Controlling the life-cycle
 ** Controlling the dialog flow
 ** Providing means of interaction between the dialogs 
 ** Providing application server access
@@ -78,7 +78,7 @@ Dialog components need to be managed in their lifecycle and how they can be coup
 
 ==== Application Server Access
 
-Dialogs will require a backend application server in order to execute their business logic. Typically in an devonfw application the service layer will provide interfaces for the functionality exposed to the client. These business oriented interfaces should also be present on the client backed by a proxy handling the concrete call of the server over the network. This component provides the set of interfaces as well as the proxy.
+Dialogs will require a back-end application server in order to execute their business logic. Typically in an devonfw application the service layer will provide interfaces for the functionality exposed to the client. These business oriented interfaces should also be present on the client backed by a proxy handling the concrete call of the server over the network. This component provides the set of interfaces as well as the proxy.
 
 === Dialog Container Architecture
 
@@ -97,7 +97,7 @@ The configuration management manages the configuration of the client, so the cli
 
 ==== Dialog Management
 
-The Dialog Management component provides the means to define, create and destroy dialog components. It therefore offers basic lifecycle capabilities for a component. In addition it also allows composition of dialog components in a hierarchy. The lifecycle is then managed along the hierarchy, meaning when creating/destroying a parent dialog, this affects all child components, which are created/destroyed as well. 
+The Dialog Management component provides the means to define, create and destroy dialog components. It therefore offers basic life-cycle capabilities for a component. In addition it also allows composition of dialog components in a hierarchy. The life-cycle is then managed along the hierarchy, meaning when creating/destroying a parent dialog, this affects all child components, which are created/destroyed as well. 
 
 ==== Service Registry
 
@@ -159,7 +159,7 @@ Dialog components can interact in the following ways:
 image::images/devonfw-methodology/OASP_ClientArchitecture_DialogInteractions.png[Dialog Interactions, width="450", link="images/devonfw-methodology/OASP_ClientArchitecture_DialogInteractions.png"]
 
 * *Embedding of dialog components* +
-As already said dialog components can be hierarchically composed. This composition works by embedding on dialog component within the other. Apart from the lifecycle managed by the dialog container, the embedding needs to cope for the visual embedding of the presentation and core layer.
+As already said dialog components can be hierarchically composed. This composition works by embedding on dialog component within the other. Apart from the life-cycle managed by the dialog container, the embedding needs to cope for the visual embedding of the presentation and core layer.
 ** *Embedding dialog presentation* +
 The parent dialog needs to either integrate the embedded dialog in its layout or open it in an own model window.
 ** *Embedding dialog core* +

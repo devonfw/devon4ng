@@ -23,7 +23,7 @@ Cypress is a framework “all in one” that provides the necessary libraries to
 
 Why Cypress?
 
-* Uses javascript
+* Uses JavaScript
 * It works directly with the browser so the compatibility with the front-end framework the project uses (in this case Angular) is not a problem.
 * Easy cross browser testing
 
@@ -70,7 +70,7 @@ $ . /node_modules/.bin/cypress open
 
 **`BaseUrl`**
 
-Let's setup the base url so when we run the tests cypress will "navigate" to the right place, go to `cypress.json` on the root of the project.
+Let's setup the base URL so when we run the tests cypress will "navigate" to the right place, go to `cypress.json` on the root of the project.
 
 .cypress.json
 [source,json]
@@ -101,7 +101,7 @@ Let's setup the base url so when we run the tests cypress will "navigate" to the
 
 `tsconfig.json` for typescript configuration.
 
-`fixtures` to store our mock data or files (img, mp3...) to use on our tests.
+`fixtures` to store our mock data or files (images, mp3...) to use on our tests.
 
 `integration` is where our tests go, by default it comes with an examples folder with tested samples.
 
@@ -113,7 +113,7 @@ Let's setup the base url so when we run the tests cypress will "navigate" to the
 
 =====
 
-If you are using Nx, it automatically generates a e2e cypress project for every project that you generate. So you already get the configuration files like `tsconfig.json` and `cypress.json` and also get the folder stucture described above. This helps you focus more on writing your tests rather than setting up Cypress.
+If you are using Nx, it automatically generates a e2e cypress project for every project that you generate. So you already get the configuration files like `tsconfig.json` and `cypress.json` and also get the folder structure described above. This helps you focus more on writing your tests rather than setting up Cypress.
 
 =====
 
@@ -157,7 +157,7 @@ you can find an official cypress demo with all the commands being used.
 
 == Fixtures
 
-We use fixtures to mock data, it can be a json, an img, video...
+We use fixtures to mock data, it can be a json, an image, video...
 
 [source, json]
 ----
@@ -226,13 +226,13 @@ cy.route(
 
 .`cy.route(options)` intercepts a `XMLHttpRequests`
 * method `GET`
-* url `/apiUrl/list'`
+* URL `/apiUrl/list'`
 * response `[{"name":"apple", "units":3},{"name":"kiwi", "units":2}]`
 
 
 *Waits*
 
-Every cypress action has a default await time to avoid asynchronous issues, but this time can be short for some particular actions like api calls, for those cases we can use `cy.wait()`.
+Every cypress action has a default await time to avoid asynchronous issues, but this time can be short for some particular actions like API calls, for those cases we can use `cy.wait()`.
 
 [source, TypeScript]
 ----
@@ -261,7 +261,7 @@ cy.fixture('box')
   })
 ----
 
-We get `boxFruit` data from the box fixture and then we mock the api call with it so now the response of the call is `boxFruit` object.
+We get `boxFruit` data from the box fixture and then we mock the API call with it so now the response of the call is `boxFruit` object.
 When the button is clicked, it waits to receive the response of the call and then checks if the list contains one of the elements of the `fruitBox`.
 
 === Request
@@ -367,8 +367,9 @@ Only if we use the `cypress run` command.
 
 Or we can change the script file.
 
-* cypress/script.js
-[source, Javascript]
+* `cypress/script.js`
+
+[source, javascript]
 ----
 const runTests= async ()=>{
   ...
@@ -490,7 +491,7 @@ To run the reporter:
 cypress run --reporter mochawesome
 ----
 
-Mochawesome saves by default the generated files on __`./mochawesome-report/`__ but we can add options to change this behaviour.
+Mochawesome saves by default the generated files on __`./mochawesome-report/`__ but we can add options to change this behavior.
 
 Options can be passed to the reporter in two ways
 

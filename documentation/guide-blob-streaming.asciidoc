@@ -2,7 +2,7 @@
 
 This sample demonstrates how to upload a file to a server. For this, we will need to use an Angular form. In this case we have chosen a simple template-driven form, as the goal of this sample is just to show the process to upload a file. You can learn more about Forms in Angular in the https://angular.io/guide/forms-overview[official documentation].
 
-NOTE: The backend implementation for this sample is located here: https://github.com/devonfw-sample/devon4j-blob-streaming[
+NOTE: The back-end implementation for this sample is located here: https://github.com/devonfw-sample/devon4j-blob-streaming[
 devon4j-blob-streaming]
 
 == `FormData`
@@ -49,7 +49,7 @@ export class CoreModule {}
 
 `FormsModule` Will allow us data binding through html and component.
 
-The next step will be to create a component to place the uploader:
+The next step will be to create a component to place the uploading component:
 `ng generate component uploader`
 
 So this will be our project structure so far:
@@ -76,11 +76,11 @@ Then, in the app.component.html we need to add the selector for our new componen
 ....
 ----
 
-Now, our new component uploader will be loaded in the root page. Let's add some code to it.
+Now, our new component `uploader` will be loaded in the root page. Let's add some code to it.
 
 == Uploader component
 
-I will begin editing the html file. First thing we need is an input component, which will allow us to select the file to upload. Furthermore, I added a button which will be the responsible of calling the upload file window. Apart from this, there is also two labels and a progress bar. Labels will give feedback about file upload request, both with an if clause with `uploadSuccess` and `uploadFail` global variables that will be in uploader.component.ts. The progress bar will show the progress of the file being uploaded.
+I will begin editing the html file. First thing we need is an input component, which will allow us to select the file to upload. Furthermore, I added a button which will be the responsible of calling the upload file window. Apart from this, there is also two labels and a progress bar. Labels will give feedback about file upload request, both with an `if` clause with `uploadSuccess` and `uploadFail` global variables that will be in `uploader.component.ts`. The progress bar will show the progress of the file being uploaded.
 
 [source, html]
 ----
@@ -111,7 +111,7 @@ I will begin editing the html file. First thing we need is an input component, w
 ....
 ----
 
-The button will call the upload() method in our uploader.component.ts, and as we can see, I assigned an identifier for the input, `#fileUpload`, so we can reference it from uploader.component.ts. It accepts any file, and the display none style is because it will be called when we click the button, so it is no necessary to be present in the view. 
+The button will call the upload() method in our `uploader.component.ts`, and as we can see, I assigned an identifier for the input, `#fileUpload`, so we can reference it from `uploader.component.ts`. It accepts any file, and the display none style is because it will be called when we click the button, so it is no necessary to be present in the view. 
 
 Our html view should look something similar to this:
 
@@ -145,8 +145,8 @@ And then, the upload() method that the button in html is calling:
 
 The click method at first line will open the file explorer in order to select the desired file to upload, and on change method will be called when a new file is selected, so a change is detected. Then, `uploadFile(...)` method will be called.
 
-Before explain this `uploadFile(...)` method, there is something still missing, a service to communicate with backend through http.
-I am going to place the service in a service folder inside our uploader component folder. 
+Before explain this `uploadFile(...)` method, there is something still missing, a service to communicate with back-end through HTTP.
+I am going to place the service in a service folder inside our `uploader` component folder. 
 Execute the following command `ng generate service data` and paste the following code
 
 [source, typescript]
@@ -176,12 +176,12 @@ export class DataService {
 ....
 ----
 
-We have declared the url as a global variable. Also is necessary to set the content-type as multipart/form-data in the headers sections, that will be the body of the request. There is also two options to talk about:
+We have declared the URL as a global variable. Also is necessary to set the content-type as multipart/form-data in the headers sections, that will be the body of the request. There is also two options to talk about:
 
   * `reportProgress`: to have a feedback about the file upload so we can show percentage on the view.
   * observe: ' events' in order to receive this type of events information.
 
-In uploader.component.ts is missing `uploadFile(...)` method.
+In `uploader.component.ts` is missing `uploadFile(...)` method.
 
 [source, typescript]
 ----
@@ -207,10 +207,10 @@ In uploader.component.ts is missing `uploadFile(...)` method.
 ----
 
 Notice that whether we have a correct response, or an error response, we set the variable `this.uploadSuccess` or `this.uploadFail` to show the labels in the html giving feedback.
-Once we call the service to do the http request, we expect two types of response(three if we count the error), the first one is the progress of the upload, and will update the progress bar through `this.fileProgress` variable. The second one is a response when the request is finished.
+Once we call the service to do the HTTP request, we expect two types of response(three if we count the error), the first one is the progress of the upload, and will update the progress bar through `this.fileProgress` variable. The second one is a response when the request is finished.
 That is why the type of the response is checked between `HttpEventType` or `HttpResponse`. 
 
-Now, if you have your backend running, you should be able to upload a file, and check in DB that all the process worked fine.
+Now, if you have your back-end running, you should be able to upload a file, and check in DB that all the process worked fine.
 
 NOTE: Download method is not implemented yet.
 

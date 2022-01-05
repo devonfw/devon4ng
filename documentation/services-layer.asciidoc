@@ -23,7 +23,7 @@ The main challenges are:
 
 * Define application state and an API for the components layer to use it
 * Handle application state transitions
-* Perform backend interaction (XHR, WebSocket, etc.)
+* Perform back-end interaction (XHR, WebSocket, etc.)
 * Handle business logic in a maintainable way
 * Configuration management
 
@@ -104,15 +104,15 @@ For an example see `<<usecaseservice-example,use case service example>>`.
 
 == Adapter
 
-An adapter is used to communicate with the backend.
+An adapter is used to communicate with the back-end.
 This could be a simple XHR request, a WebSocket connection, etc.
 An adapter is simple in the way that it does not add anything other than the pure network call.
 So there is no caching or logging performed here.
 The following listing shows an example.
 
-For further information on backend interaction see link:guide-consuming-rest-services[Consuming REST Services]
+For further information on back-end interaction see link:guide-consuming-rest-services[Consuming REST Services]
 
-.Calling the backend via an adapter
+.Calling the back-end via an adapter
 [source,ts]
 ----
 @Injectable()

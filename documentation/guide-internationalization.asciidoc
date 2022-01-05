@@ -120,7 +120,7 @@ export class AppComponent {
 }
 ----
 
-The translations will be included in the `en.json`, `es.json`, `de.json`, etc. files inside the `/assets/i18n` folder. For example `en.json` would be (using the previous param):
+The translations will be included in the `en.json`, `es.json`, `de.json`, etc. files inside the `/assets/i18n` folder. For example `en.json` would be (using the previous parameter):
 
 [source,json]
 ----
@@ -129,7 +129,7 @@ The translations will be included in the `en.json`, `es.json`, `de.json`, etc. f
 }
 ----
 
-Or with an **optional param**:
+Or with an **optional parameter**:
 
 [source,json]
 ----

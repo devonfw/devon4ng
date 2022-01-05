@@ -21,7 +21,7 @@ https://github.com/ngrx[NgRx] is a state management framework for Angular based 
 
 == The need for client side state management
 
-You may wonder why you should bother with state management. Usually data resides in a backend storage system, e.g. a database, and is retrieved by the client on a per-need basis. To add, update, or delete entities from this store, clients have to invoke API endpoints at the backend. Mimicking database-like transactions on the client side may seem redundant. However, there are many use cases for which a global client-side state is appropriate:
+You may wonder why you should bother with state management. Usually data resides in a back-end storage system, e.g. a database, and is retrieved by the client on a per-need basis. To add, update, or delete entities from this store, clients have to invoke API endpoints at the back-end. Mimicking database-like transactions on the client side may seem redundant. However, there are many use cases for which a global client-side state is appropriate:
 
 * the client has some kind of global state which should survive the destruction of a component, but does not warrant server side persistence, for example: volume level of media, expansion status of menus
 * sever side data should not be retrieved every time it is needed, either because multiple components consume it, or because it should be cached, e.g. the personal watchlist in an online streaming app
@@ -75,6 +75,6 @@ If you have custom settings for Angular schematics, you have to https://ngrx.io/
 .NgRx architecture overview
 image::images/ngrx-concept.svg["NgRx Architecture", link="images/ngrx-concept.svg", align="center"]
 
-Figure 1 gives an overview of the NgRx data flow. The single source of truth is managed as an immutable state object by the store. Components dispatch actions to trigger state changes. Actions are handed over to reducers, which take the current state and action data to compute the next state. Actions are also consumed by-effects, which perform side-effects such as retrieving data from the backend, and may dispatch new actions as a result. Components subscribe to state changes using selectors.
+Figure 1 gives an overview of the NgRx data flow. The single source of truth is managed as an immutable state object by the store. Components dispatch actions to trigger state changes. Actions are handed over to reducers, which take the current state and action data to compute the next state. Actions are also consumed by-effects, which perform side-effects such as retrieving data from the back-end, and may dispatch new actions as a result. Components subscribe to state changes using selectors.
 
 Continue with link:guide-ngrx-simple-store[Creating a Simple Store].

@@ -17,11 +17,11 @@ toc::[]
 
 = File Structure
 
-== Toplevel
+== Top-level
 
-The toplevel file structure is defined by Angular CLI. You might put this "toplevel file structure" into a subdirectory to facilitate your build, but this is not relevant for this guide. So the applications file structure relevant to this guide is the folder `/src/app` inside the part managed by Angular CLI.
+The top-level file structure is defined by Angular CLI. You might put this "top-level file structure" into a sub-directory to facilitate your build, but this is not relevant for this guide. So the applications file structure relevant to this guide is the folder `/src/app` inside the part managed by Angular CLI.
 
-.Toplevel file structure shows feature modules
+.Top-level file structure shows feature modules
 [source]
 ----
     /src
@@ -39,7 +39,7 @@ The toplevel file structure is defined by Angular CLI. You might put this "tople
         └── app.routing-module.ts
 ----
 
-Besides the definition of app module the `app` folder has feature modules on toplevel.
+Besides the definition of app module the `app` folder has feature modules on top-level.
 The special modules _shared_ and _core_ are present as well.
 
 == Feature Modules
@@ -70,7 +70,7 @@ Otherwise, the module's routes would be defined _Component-less_
 
 The component layer reflects the distinction between _Smart Components_ and _Dumb Components_.
 
-.Components layer file structure shows Smart Components on toplevel
+.Components layer file structure shows Smart Components on top-level
 [source]
 ----
     /src

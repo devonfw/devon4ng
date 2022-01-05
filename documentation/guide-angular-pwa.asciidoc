@@ -187,21 +187,21 @@ manifest.json is a file that allows to control how the app is displayed in place
 
 *Fields*
 
-_name_: Name of the web application.
+`name`: Name of the web application.
 
-_short_name_: Short version of name.
+`short_name`: Short version of name.
 
-_theme_color_: Default theme color for an application context.
+`theme_color`: Default theme color for an application context.
 
-_background_color_: Expected background color of the web application.
+`background_color`: Expected background color of the web application.
 
-_display_: Preferred display mode.
+`display`: Preferred display mode.
 
-_scope_: Navigation scope of this web application's application context.
+`scope`: Navigation scope of this web application's application context.
 
-_start_url_: URL loaded when the user launches the web application.
+`start_url`: URL loaded when the user launches the web application.
 
-_icons_: Array of icons that serve as representations of the web app.
+`icons`: Array of icons that serve as representations of the web app.
 
 Additional information can be found https://developers.google.com/web/fundamentals/web-app-manifest/[here].
 

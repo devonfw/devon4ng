@@ -262,7 +262,7 @@ Here are some extra useful parameters that `ngx-build-plus` provides:
   - `--keep-polyfills`: This parameter is going to allow us to keep the polyfills. This needs to be used with caution, avoiding using multiple different polyfills that could cause an error is necessary.
   - `--extraWebpackConfig webpack.extra.js`: This parameter allows us to create a JavaScript file inside our `Angular Elements` project with the name of different libraries. Using `webpack` these libraries will not be included in the `Angular Element`. This is useful to lower the size of our `Angular Element` by removing libraries shared. Example:
 
-[source, javascript]
+[source, JavaScript]
 ----
 const webpack = require('webpack');
 

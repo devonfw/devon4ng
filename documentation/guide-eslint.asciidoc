@@ -29,7 +29,7 @@ However, the backers behind TSLint announced in 2019 that **they would be deprec
 
 The TypeScript Team themselves also announced their plans to move the TypeScript codebase from TSLint to `typescript-eslint`, and they have been big supporters of this project. More details at https://github.com/microsoft/TypeScript/issues/30553
 
-Angular ESLint support comes from the https://github.com/angular-eslint/angular-eslint[`angular-eslint`] tooling package. Angular documentation also links to this repository as you can check in the https://angular.io/cli/lint[`ng lint` section] of the Angular CLI documentation.
+Angular ESLint support comes from the https://github.com/angular-eslint/angular-eslint[angular-eslint] tooling package. Angular documentation also links to this repository as you can check in the https://angular.io/cli/lint[`ng lint` section] of the Angular CLI documentation.
 
 == Quick start with Angular and ESLint
 

@@ -15,15 +15,17 @@ toc::[]
 :source-highlighter: rouge
 :listing-caption: Listing
 
-= Error Handler in angular
+= Error Handler in angular/nx
 
-Angular allows us to set up a custom error handler that can be used to control the different errors and them in a correct way. Using a global error handler will avoid mistakes and provide a use friendly interface allowing us to indicate the user what problem is happening.
+Angular/Nx allows us to set up a custom error handler that can be used to control the different errors and them in a correct way. Using a global error handler will avoid mistakes and provide a use friendly interface allowing us to indicate the user what problem is happening.
 
 == What is `ErrorHandler`
 
 `ErrorHandler` is the class that `Angular` uses by default to control the errors. This means that, even if the application doesn't have a `ErrorHandler` it is going to use the one setup by default in `Angular`. This can be tested by trying to find a page not existing in any app, instantly `Angular` will print the error in the console.
 
 == Creating your custom `ErrorHandler` step by step
+
+Please note, we will be explaining the steps using both Angular CLI and Nx CLI. You are free to choose either one for your development.
 
 In order to create a custom `ErrorHandler` three steps are going to be needed:
 

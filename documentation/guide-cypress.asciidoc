@@ -109,6 +109,13 @@ Let's setup the base url so when we run the tests cypress will "navigate" to the
 
 `support` to add custom commands.
 
+[NOTE]
+
+=====
+
+If you are using Nx, it automatically generates a e2e cypress project for every project that you generate. So you already get the configuration files like `tsconfig.json` and `cypress.json` and also get the folder stucture described above. This helps you focus more on writing your tests rather than setting up Cypress.
+
+=====
 
 == Tests
 
@@ -593,4 +600,4 @@ Check the link:https://www.npmjs.com/package/mochawesome-merge[`mochawesome-merg
 On link:https://github.com/cypress-io/cypress-example-kitchensink[kitchensink]
 you can find an official cypress demo with all the commands being used.
 
-As nx provides the e2e tests folders by default, we do not need to create a sample for cypress test using nx.
+

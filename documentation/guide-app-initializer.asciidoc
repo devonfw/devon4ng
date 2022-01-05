@@ -210,7 +210,7 @@ COPY docker-external-config.json /usr/share/nginx/html/docker-external-config.js
 }
 ----
 
-2.- The file named `/angular.json` (`/workspace.json` if using nx) located at the root is going to be modified to add the file `external-config.json` that was just created to both `"assets"` inside `Build` and `Test`:
+2.- The file named `/angular.json` (`/workspace.json` if using Nx) located at the root is going to be modified to add the file `external-config.json` that was just created to both `"assets"` inside `Build` and `Test`:
 
 [source, json]
 ----
@@ -281,7 +281,7 @@ This step is going to setup two proxies. This is going to allow to load the conf
 ....
 ----
 
-If using nx, you need to run the command manually:app-name: 
+If using Nx, you need to run the command manually: 
 
 `nx run angular-app-initializer:serve:development --proxyConfig=proxy.conf.json --o`
 

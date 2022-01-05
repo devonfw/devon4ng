@@ -15,7 +15,7 @@ toc::[]
 :source-highlighter: rouge
 :listing-caption: Listing
 
-= Error Handler in angular/nx
+= Error Handler in angular/Nx
 
 Angular/Nx allows us to set up a custom error handler that can be used to control the different errors and them in a correct way. Using a global error handler will avoid mistakes and provide a use friendly interface allowing us to indicate the user what problem is happening.
 

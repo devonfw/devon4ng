@@ -177,7 +177,7 @@ One solution is to change the target in `tsconfig.json` to `es2015`. This might 
 
 ===== Installing Polyfaces
 
-Another solution is to use Auto Pollyfill. In order to do so, the library is going to be installed with a packet manager:
+Another solution is to use `AutoPollyfill`. In order to do so, the library is going to be installed with a packet manager:
 
 Yarn
 [source]

@@ -24,7 +24,7 @@ image::images/layout-angular-material/1-finished-application.png["Finished appli
 
 == Create a new angular application
 
-We start with opening the devonfw-ide(right-click anywhere in your workspace and click "Open devonfw CMD shell here") and running the following command to start a project named devon4ng-mat-layout
+We start with opening the devonfw IDE(right-click anywhere in your workspace and click "Open devonfw CMD shell here") and running the following command to start a project named devon4ng-mat-layout
 
 ** `ng new devon4ng-mat-layout --routing --style=scss`. If you are using Nx, the command would be `nx generate @nrwl/angular:app devon4ng-mat-layout --routing --style=scss` in your Nx workspace. https://github.com/devonfw/devon4ng/wiki/guide-creating-angular-app-with-nx-cli[Click here] to get started with using Nx.
 

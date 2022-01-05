@@ -173,6 +173,7 @@ export const environment: {
 == Creating a `APP_INITIALIZER` configuration
 
 This section is going to be used to create a new `APP_INITIALIZER` basic example. For this, a basic app with angular is going to be generated using `ng new "appname"` substituting `appname` for the name of the app opted.
+If you are using Nx, the command would be `nx generate @nrwl/angular:app "appname"` in your Nx workspace. https://github.com/devonfw/devon4ng/wiki/guide-creating-angular-app-with-nx-cli[Click here] to get started with using Nx.
 
 == Setting up the config files
 
@@ -209,7 +210,7 @@ COPY docker-external-config.json /usr/share/nginx/html/docker-external-config.js
 }
 ----
 
-2.- The file named `/angular.json` located at the root is going to be modified to add the file `external-config.json` that was just created to both `"assets"` inside `Build` and `Test`:
+2.- The file named `/angular.json` (`/workspace.json` if using Nx) located at the root is going to be modified to add the file `external-config.json` that was just created to both `"assets"` inside `Build` and `Test`:
 
 [source, json]
 ----
@@ -270,7 +271,7 @@ This step is going to setup two proxies. This is going to allow to load the conf
 ....
 ----
 
-2.- The file `package.json` found in the root of the application is gonna use the start script to load the proxy config that was just created:
+2.- The file `package.json` found in the root of the application is gonna use the start script to load the proxy config that was just created :
 
 [source, json]
 ----
@@ -279,6 +280,10 @@ This step is going to setup two proxies. This is going to allow to load the conf
     "start": "ng serve --proxy-config proxy.conf.json -o",
 ....
 ----
+
+If using Nx, you need to run the command manually: 
+
+`nx run angular-app-initializer:serve:development --proxyConfig=proxy.conf.json --o`
 
 == Adding the `loadExternalConfig` boolean to the environments
 

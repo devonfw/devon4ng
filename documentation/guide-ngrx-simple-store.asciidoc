@@ -107,7 +107,7 @@ export interface WatchlistItem {
 We discourage putting several types into the same file and do this only for the sake of keeping this tutorial brief.
 =====
 
-Later we will learn how to retrieve data from the backend using effects. For now we will create an initial state for the user with a default movie.
+Later we will learn how to retrieve data from the back-end using effects. For now we will create an initial state for the user with a default movie.
 
 State is defined and transforms by a reducer function. Let's create a watchlist reducer:
 
@@ -164,7 +164,7 @@ Add a selector to `watchlist-data.reducer.ts`:
 
  `export const getAllItems = (state: State) => state.items;`
  
-Next, we have to re-export the selector for this substate in the feature reducer. Modify the `watchlist/reducers/index.ts` like this:
+Next, we have to re-export the selector for this sub-state in the feature reducer. Modify the `watchlist/reducers/index.ts` like this:
 
 *watchlist/reducers/index.ts*
 [source,typescript]
@@ -209,7 +209,7 @@ export const getAllItems = createSelector( <6>
 ----
 <1> The feature state, each member is managed by a different reducer
 <2> Feature states are registered by the `forFeature` method. This interface provides a typesafe path from root to feature state.
-<3> Tie substates of a feature state to the corresponding reducers
+<3> Tie sub-states of a feature state to the corresponding reducers
 <4> Create a selector to access the 'watchlist' feature state
 <5> select the `watchlistData` sub state
 <6> re-export the selector

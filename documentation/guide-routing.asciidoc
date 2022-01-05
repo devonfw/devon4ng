@@ -162,7 +162,7 @@ Let's have a look at some examples.
 
 ==== `CanActivate` guard
 
-As mentioned earlier, a guard is an Angular service and services are simply `TypeScript` classes. So we begin by creating a class. This class has to implement the `CanActivate` interface (imported from `angular/router`), and therefore, must have a `canActivate` function. The logic of this function determines whether the requested route can be navigated to or not. It returns either a `boolean` value or an `Observable` or a `Promise` which resolves to a `boolean` value. If it is true, the route is loaded, else not.
+As mentioned earlier, a guard is an Angular service and services are simply `TypeScript` classes. So we begin by creating a class. This class has to implement the `CanActivate` interface (imported from `angular/router`), and therefore, must have a `canActivate` function. The logic of this function determines whether the requested route can be navigated to or not. It returns either a Boolean value or an `Observable` or a `Promise` which resolves to a Boolean value. If it is true, the route is loaded, else not.
 
 .`CanActivate` example
 [source,ts]
@@ -185,7 +185,7 @@ class ExampleAuthGuard implements CanActivate {
 }
 ----
 
-In the above example, let's assume we have a `AuthService` which has a `isLoggedIn()` method which returns a boolean value depending on whether the user is logged in. We use it to return `true` or `false` from the `canActivate` function.
+In the above example, let's assume we have a `AuthService` which has a `isLoggedIn()` method which returns a Boolean value depending on whether the user is logged in. We use it to return `true` or `false` from the `canActivate` function.
 The `canActivate` function accepts two parameters (provided by Angular). The first parameter of type `ActivatedRouterSnapshot` is the snapshot of the route the user is trying to navigate to (where the guard is implemented); we can extract the route parameters from this instance. The second parameter of type `RouterStateSnapshot` is a snapshot of the router state the user is trying to navigate to; we can fetch the `URL` from it's `url` property.
 
 TIP: We can also redirect the user to another page (maybe a login page) if the `authService` returns false. To do that, inject `Router` and use it's `navigate` function to redirect to the appropriate page.
@@ -239,7 +239,7 @@ const routes: Routes = [
 
 === Example 2 - `CanLoad` guard
 
-Similar to `CanActivate`, to use this guard we implement the `CanLoad` interface and overwrite it's `canLoad` function. Again, this function returns either a boolean value or an `Observable` or a `Promise` which resolves to a boolean value. The fundamental difference between `CanActivate` and `CanLoad` is that `CanLoad` is used to determine whether an entire module can be lazily loaded or not. If the guard returns `false` for a module protected by `CanLoad`, the entire module is not loaded.
+Similar to `CanActivate`, to use this guard we implement the `CanLoad` interface and overwrite it's `canLoad` function. Again, this function returns either a Boolean value or an `Observable` or a `Promise` which resolves to a Boolean value. The fundamental difference between `CanActivate` and `CanLoad` is that `CanLoad` is used to determine whether an entire module can be lazily loaded or not. If the guard returns `false` for a module protected by `CanLoad`, the entire module is not loaded.
 
 
 .`CanLoad` example
@@ -263,7 +263,7 @@ class ExampleCanLoadGuard implements CanLoad {
 }
 ----
 
-Again, let's assume we have a `AuthService` which has a `isLoggedIn()` method which returns a boolean value depending on whether the user is logged in. The `canLoad` function accepts a parameter of type Route which we can use to fetch the path a user is trying to navigate to (using the `path` property of `Route`). 
+Again, let's assume we have a `AuthService` which has a `isLoggedIn()` method which returns a Boolean value depending on whether the user is logged in. The `canLoad` function accepts a parameter of type Route which we can use to fetch the path a user is trying to navigate to (using the `path` property of `Route`). 
 
 This guard needs to be provided in our module like any other service.
 

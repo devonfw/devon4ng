@@ -23,7 +23,7 @@ This guide is a continuation of the guide link:guide-angular-pwa[Angular PWAs], 
 
 This guide assumes that you already have installed:
 
-* Node.js
+* NodeJS
 * npm package manager
 * Angular CLI / Nx CLI
 * Ionic 5 CLI
@@ -135,7 +135,7 @@ At `assetGroups` -> `resources` add a URLs field and a pattern to match PWA Elem
 
 === Step 7: Check that your app is a PWA
 
-To check if an app is a PWA lets compare its normal behaviour against itself but built for production. Run in the project's root folder the commands below:
+To check if an app is a PWA lets compare its normal behavior against itself but built for production. Run in the project's root folder the commands below:
 
 `ionic build --configuration production` to build the app using production settings. (`nx build basic-ion-pwa --configuration production` in your Nx workspace root).
 

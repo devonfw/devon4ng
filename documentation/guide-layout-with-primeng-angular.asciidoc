@@ -43,7 +43,7 @@ image::images/angular-primeng-layout/Screenshot_1.png[]
 
 ==  Adding PrimeNG to the project
 
-Next we will add Angular Material to our application. In the integrated terminal, press Ctrl + C to terminate the running application and run the following command:
+Next we will add Angular Material to our application. In the integrated terminal, press CTRL + C to terminate the running application and run the following command:
 
 
 Run the ng add command for PrimeNG:

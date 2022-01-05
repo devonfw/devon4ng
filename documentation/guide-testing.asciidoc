@@ -56,7 +56,7 @@ Stores are always tested using *Isolated unit tests*.
 Services contain Business Logic, which needs to be tested.
 UseCase Services represent a whole business use case.
 For instance this could be initializing a store with all the data that is needed for a dialog - loading, transforming, storing.
-Often *Angular Testing Utilities* are the optimal solution for testing UseCase Services, because they allow for an easy stubbing of the backend.
+Often *Angular Testing Utilities* are the optimal solution for testing UseCase Services, because they allow for an easy stubbing of the back-end.
 All other services should be tested with *Isolated unit tests* as they are much easier to write and maintain.
 
 == Testing Smart Components
@@ -289,14 +289,14 @@ beforeEach(() => {
 
 When using TestBed, it is important
 
-* to import `HttpClientTestingModule` for stubbing the backend
+* to import `HttpClientTestingModule` for stubbing the back-end
 * to import `RouterTestingModule` for stubbing the Angular router
 * not to stub stores, adapters and business services
 * to stub services from libraries like `FlightCalculationService` - the correct implementation of libraries should not be tested by these tests. 
 
-Testing backend communication looks like this:
+Testing back-end communication looks like this:
 
-.Testing backend communication with `Angular HttpTestingController`
+.Testing back-end communication with `Angular HttpTestingController`
 [source,ts]
 ----
 it('loads flight if not present in store', fakeAsync(() => {

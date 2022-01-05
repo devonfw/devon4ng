@@ -171,7 +171,7 @@ First, during the compilation we can see that just a main file is built.
 .Compile eager.
 image::images/angular/angular-lazy/compile-eager.png["Compile eager", width=800 link="images/angular/angular-lazy/compile-eager.png"]
 
-If we go to http//localhost:4200/first and open developer options (F12 on Chrome), it is found that a document named "first" is loaded.
+If we go to `http://localhost:4200/first` and open developer options (F12 on Chrome), it is found that a document named "first" is loaded.
 
 .First level eager.
 image::images/angular/angular-lazy/first-lvl-eager.png["First level eager", width=800 link="images/angular/angular-lazy/first-lvl-eager.png"]
@@ -181,9 +181,9 @@ If we click on *[Go to right module]* a second level module opens, but there is 
 .Second level right eager.
 image::images/angular/angular-lazy/second-lvl-right-eager.png["Second level right eager", width=800 link="images/angular/angular-lazy/second-lvl-right-eager.png"]
 
-But, typing the url directly will load 'second-right' but no 'first', even if we click on *[Go back]*
+But, typing the URL directly will load 'second-right' but no 'first', even if we click on *[Go back]*
 
-.Second level right eager direct url.
+.Second level right eager direct URL.
 image::images/angular/angular-lazy/second-lvl-right-eager-d.png["Second level right eager", width=800 link="images/angular/angular-lazy/second-lvl-right-eager-d.png"]
 
 Modifying an angular application to load its modules lazily is easy, you have to change the routing configuration of the desired module (for example `FirstModule`).
@@ -217,7 +217,7 @@ Notice that instead of loading a component, you dynamically import it in a `_loa
 3. `FirstModule` import has to be removed from the imports array at app.module.ts.
 4. Change of context.
 
-If we check *first-routing.module.ts* again, we can see that the path for `ContentLeft` and `ContentRight` is set to 'first/second-left' and 'first/second-right' respectively, so writing 'http//localhost:4200/first/second-left' will redirect us to `ContentLeft`. However, after loading a module with `loadChildren` setting the path to '_second-left_' and '_second-right_' is enough because it acquires the context set by `AppRoutingModule`.
+If we check *first-routing.module.ts* again, we can see that the path for `ContentLeft` and `ContentRight` is set to 'first/second-left' and 'first/second-right' respectively, so writing `http://localhost:4200/first/second-left` will redirect us to `ContentLeft`. However, after loading a module with `loadChildren` setting the path to '_second-left_' and '_second-right_' is enough because it acquires the context set by `AppRoutingModule`.
 
 .File first-routing.module.ts
 [source, ts]

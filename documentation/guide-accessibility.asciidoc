@@ -31,9 +31,9 @@ Some people are unable to use the mouse, view a screen, see low contrast text, H
 
 If you're creating custom element directives, Web Components or HTML in general, use native elements wherever possible to utilize built-in events and properties. Alternatively, use ARIA to communicate semantic meaning.
 
-HTML tags have attributes that providers extra context on what's being displayed on the browser. For example, the  img  tag's  alt  attribute lets the reader know what is being shown using a short description.However, native tags don't cover all cases. This is where ARIA fits in. ARIA attributes can provide context on what roles specific elements have in the application or on how elements within the document relate to each other.
+HTML tags have attributes that providers extra context on what's being displayed on the browser. For example, the  `<img>`  tag's  alt  attribute lets the reader know what is being shown using a short description.However, native tags don't cover all cases. This is where ARIA fits in. ARIA attributes can provide context on what roles specific elements have in the application or on how elements within the document relate to each other.
 
-A modal component can be given the  role  of dialog or alertdialog to let the browser know that that component is acting as a modal. The modal component template can use the ARIA attributes  `aria-labelledby`  and  aria-described  to describe to readers what the title and purpose of the modal is.
+A modal component can be given the role of `dialog` or `alertdialog` to let the browser know that that component is acting as a modal. The modal component template can use the ARIA attributes  `aria-labelledby` and aria-described to describe to readers what the title and purpose of the modal is.
 
 [source, TypeScript]
 ----
@@ -96,7 +96,7 @@ Focus element border can be styled with CSS using the  outline  property, but it
 ==== Tabbing
 
 The most common way of moving focus along the page is through the  tab  key. Elements will be traversed in the order they appear in the document outline - so that order must be carefully considered during development. 
-There is way change the default behaviour or tab order. This can be done through the  `tabindex`  attribute. The  `tabindex`  can be given the values:
+There is way change the default behavior or tab order. This can be done through the  `tabindex`  attribute. The  `tabindex`  can be given the values:
 * less than zero - to let readers know that an element should be focusable but not keyboard accessible
 * 0 - to let readers know that that element should be accessible by keyboard
 * greater than zero - to let readers know the order in which the focusable element should be reached using the keyboard. Order is calculated from lowest to highest.
@@ -150,7 +150,7 @@ Color can help a user's understanding of information, but it should never be the
 
 === Audiovisual Media
 
-Audiovisual elements in the application such as video, sound effects or audio (ie. podcasts) need related textual representations such as transcripts, captions or descriptions. They also should never auto-play and playback controls should be provided to the user.
+Audiovisual elements in the application such as video, sound effects or audio (that is, podcasts) need related textual representations such as transcripts, captions or descriptions. They also should never auto-play and playback controls should be provided to the user.
 
 
 == Accessibility with Angular Material

@@ -22,9 +22,9 @@ A decomposition in _Smart_ and _Dumb Components_ should be done first.
 This includes the definition of state and responsibilities.
 Implementing a new dialog will most likely be done by defining a new _Smart Component_ with multiple _Dumb Component_ children.
 
-In the component tree this would translate to the definition of a new subtree.
+In the component tree this would translate to the definition of a new sub-tree.
 
-.Component Tree with highlighted subtree
+.Component Tree with highlighted sub-tree
 image::images/component-tree-highlighted-subtree.svg["Component Tree With Highlighted Sub Tree", width="450", link="images/component-tree-highlighted-subtree.svg"]
 
 == Defining Components
@@ -72,7 +72,7 @@ There are different kinds of state, for example
 
 * View State: e.g. is a panel open, a css transition pending, etc.
 * Application State: e.g. is a payment pending, current URL, user info, etc.
-* Business Data: e.g. products loaded from backend
+* Business Data: e.g. products loaded from back-end
 
 It is good practice to base the component decomposition on the state handled by a component and to define a simplified state model beforehand.
 Starting with the parent - the _Smart Component_:

@@ -16,7 +16,7 @@ toc::[]
 :listing-caption: Listing
 
 = Angular Mock Service
-We've all been there: A new idea comes, let's quickly prototype it. But wait, there's no backend. What can we do? 
+We've all been there: A new idea comes, let's quickly prototype it. But wait, there's no back-end. What can we do? 
 
 Below you will find a solution that will get your started quick and easy. The idea is to write a simple mock service that helps us by feeding data into our components.
 

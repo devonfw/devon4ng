@@ -43,11 +43,11 @@ Angular will spin up a server and you can check your application by visiting htt
 
 == Adding Angular ZORRO library to the project
 
-Next we will add Angular Material to our application. In the integrated terminal, press Ctrl + C to terminate the running application and run the following command:
+Next we will add Angular Material to our application. In the integrated terminal, press CTRL + C to terminate the running application and run the following command:
 
 ** `ng add ng-zorro-antd`
 
-.Cli Angular ZORRO Layout
+.CLI Angular ZORRO Layout
 image::images/angular-zorro-layout/figure3.png[]
 
 Or if we would like to customize our workflow we can install it with:

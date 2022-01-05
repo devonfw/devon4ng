@@ -182,7 +182,7 @@ To apply the saved theme, we have to go to `*styles.scss*` and import our `*styl
 @include angular-material-theme($custom-dark-theme);
 ----
 
-If we have multiple themes it is necessary to add the include statement inside a css class and use it in *src/index.html -> app-root component*.
+If we have multiple themes it is necessary to add the include statement inside a css class and use it in `src/index.html -> app-root component`.
 
 
 .File `styles.scss` updated with custom-dark-theme class.
@@ -196,7 +196,7 @@ If we have multiple themes it is necessary to add the include statement inside a
 }
 ----
 
-.File src/index.html.
+.File `src/index.html`.
 [source, html]
 ----
 ...

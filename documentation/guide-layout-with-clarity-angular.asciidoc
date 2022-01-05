@@ -43,7 +43,7 @@ image::images/angular-clarity-layout/2.png[]
 
 ==  Adding Angular Clarity framework to the project
 
-Next we will add Angular Clarity to our application. In the integrated terminal, press Ctrl + C to terminate the running application and run the following command:
+Next we will add Angular Clarity to our application. In the integrated terminal, press CTRL + C to terminate the running application and run the following command:
 
 Generate a new Angular application (if you haven't already):
 `ng new my-app`
@@ -300,7 +300,7 @@ After this we need to create the body of the modal, to do it we will use a div w
             <p>But not much to say...</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" (click)="basic = true">Ok</button>
+            <button type="button" class="btn btn-primary" (click)="basic = true">OK</button>
             <button type="button" class="btn btn-outline" (click)="basic = false">Cancel</button>          </div>
         </clr-modal>
 ```
@@ -309,5 +309,5 @@ The class to create the body of the modal, it's just to create a div with the cl
 And to create the footer 
 `<div class="modal-footer">`
 We can see that the footer has 2 buttons, with different style coming from the framework and with 2 methods with different values
-`(click)="basic = true"` on Ok button, this button won't change the variable value so would not do anything.
+`(click)="basic = true"` on OK button, this button won't change the variable value so would not do anything.
 `(click)="basic = false"` on Cancel button. This button will change the value of the variable and will leave the modal.

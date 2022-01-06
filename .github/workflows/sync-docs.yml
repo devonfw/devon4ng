@@ -6,6 +6,7 @@ on:
       - '**.md'      
     branches:
       - develop
+  workflow_dispatch:
 jobs:
   spellchecker:
     uses: devonfw/.github/.github/workflows/devonfw-sync-docs.yml@master

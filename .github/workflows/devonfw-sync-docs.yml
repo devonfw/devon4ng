@@ -1,4 +1,4 @@
-name: spellcheck 
+name: Sync Docs 
 on:
   push:
     paths:

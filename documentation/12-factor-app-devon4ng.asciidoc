@@ -13,7 +13,7 @@ This document mainly focuses on how can you create a 12 factor app with devon4ng
 |Factor |Action
 
 |Codebase
-|1 codebase = 1 repo = 1 app. If there are multiple codebases then it is a distributed system, and each codebase can conform to a 12-factor app. +
+|1 codebase = 1 repo = 1 app. If there are multiple codebases then it is a distributed system, and each codebase can conform to a 12-factor app. You can have a micro-front-ends approach for a distributed system. Learn more about micro-front-ends https://www.tomsoderlund.com/programming/micro-frontends-a-microservice-approach-to-front-end-web-development[here]. +
 
 To share code, factor them into libraries and include them using a dependency manager. You can create libraries in devon4ng by following https://github.com/devonfw/devon4ng/wiki/guide-angular-library[this guide] +
 
@@ -44,7 +44,9 @@ They should be maintained in config. You should be able to swap out resources wi
 
 *Release*: config data is generated from the environment variables and packaged with build output. Usually this is versioned. +
 
-*Run*: build output and config data is deployed and available for use.
+*Run*: build output and config data is deployed and available for use. +
+
+You can read more about this factor https://github.com/devonfw/devon4j/blob/master/documentation/build-release-run-12factor.asciidoc[here].
 
 |Processes
 |The app should be executed as one or more stateless processes. +

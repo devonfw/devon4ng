@@ -31,7 +31,9 @@ The idea is to use the same build for each environment. (Avoid re-compilation fo
 
 The usual practise of holding config data in `environment.*.ts` files violates 12-factor app. +
 
-Store config in environment variables and use `APP_INITIALIZER` to load them. You can generate a config file from the enviroment variables as part of the pipeline and have the `APP_INITIALIZER` function to read from the file. Learn more about `APP_INITIALIZER` by following https://github.com/devonfw/devon4ng/wiki/guide-app-initializer[this guide].
+Store config in environment variables and use `APP_INITIALIZER` to load them. You can generate a config file from the enviroment variables as part of the pipeline and have the `APP_INITIALIZER` function to read from the file. Learn more about `APP_INITIALIZER` by following https://github.com/devonfw/devon4ng/wiki/guide-app-initializer[this guide]. +
+
+Another approach is to dynamically set the environment variables using Docker. You can follow https://pumpingco.de/blog/environment-variables-angular-docker[this guide] for the same.
 
 |Backing services
 |Backing services (REST APIs to back-end, 3rd party services, etc.) are to be treated as attached resource. +

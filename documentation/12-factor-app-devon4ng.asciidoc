@@ -1,0 +1,87 @@
+:toc: macro
+toc::[]
+:idprefix:
+:idseparator: -
+
+= 12-factor-app with devon4ng
+
+This document mainly focuses on how can you create a 12 factor app with devon4ng. To know more about this 12 factors you can refer https://12factor.net/[here] . These are guidelines on what you need to do to accomplish each factor.
+
+
+
+|===
+|Factor |Action
+
+|Codebase
+|1 codebase = 1 repo = 1 app. If there are multiple codebases then it is a distributed system, and each codebase can conform to a 12-factor app. You can have a micro-front-ends approach for a distributed system. Learn more about micro-front-ends https://www.tomsoderlund.com/programming/micro-frontends-a-microservice-approach-to-front-end-web-development[here]. +
+
+To share code, factor them into libraries and include them using a dependency manager. You can create libraries in devon4ng by following https://github.com/devonfw/devon4ng/wiki/guide-angular-library[this guide] +
+
+There can be multiple deployments per codebase. +
+
+|Dependencies
+|A devon4ng app explicitly declares every dependencies in `package.json` file. +
+
+NPM and Yarn are the most widely used package managers. You can follow https://github.com/devonfw/devon4ng/wiki/guide-package-managers[this guide] to know more about them.
+
+|Config
+|Config holds values which change for each deployment (staging, production, developement environments, etc). Config should be maintained separate from code. +
+
+The idea is to use the same build for each environment. (Avoid re-compilation for each environment). +
+
+The usual practise of holding config data in `environment.*.ts` files violates 12-factor app. +
+
+Store config in environment variables and use `APP_INITIALIZER` to load them. You can generate a config file from the enviroment variables as part of the pipeline and have the `APP_INITIALIZER` function to read from the file. Learn more about `APP_INITIALIZER` by following https://github.com/devonfw/devon4ng/wiki/guide-app-initializer[this guide]. +
+
+Another approach is to dynamically set the environment variables using Docker. You can follow https://pumpingco.de/blog/environment-variables-angular-docker[this guide] for the same.
+
+|Backing services
+|Backing services (REST APIs to back-end, 3rd party services, etc.) are to be treated as attached resource. +
+
+They should be maintained in config. You should be able to swap out resources without touching the code or the deployment.
+
+|Build, release, run
+|The 3 stages should be separate from each other: +
+*Build*: the stage where angular code is compiled and distributable files are generated +
+
+*Release*: config data is generated from the environment variables and packaged with build output. Usually this is versioned. +
+
+*Run*: build output and config data is deployed and available for use. +
+
+You can read more about this factor https://github.com/devonfw/devon4j/blob/master/documentation/build-release-run-12factor.asciidoc[here].
+
+|Processes
+|The app should be executed as one or more stateless processes. +
+
+A devon4ng application, running in the browser are executed in an isolated process by default. No additional effort is required to accomplish this factor.
+
+|Port binding
+|Maintain consistency in ports for the various micro-front-end apps in each environment rather than relying on DNS. For example, a micro-front-end app called app-1 should always be exposed on port 3000, whether it is in staging, testing or production environment.
+
+|Concurrency
+|You can achieve scaling out using containerization. +
+
+You can improve it further by breaking down your app into micro-front-ends and containerize each micro-front-end.
+
+|Disposability
+|This factor guides to have fast start up and graceful shutdown, achievable through docker. +
+
+Another approach is to serve your distributable files through a CDN, like edge locations in AWS. +
+
+From a code perspective, you can implement lazy-loading in your devon4ng app to minimize your initial load time in the browser. You can refer https://github.com/devonfw/devon4ng/wiki/guide-angular-lazy-loading[this guide] to implement lazy loading.
+
+|Dev/prod parity
+|Dev and production environments should be as similar as possible. +
+
+It will be easier to achieve this using Docker. +
+
+Have dev and ops  run by same people.
+
+|Logs
+|This factor guides logging to the standard output, the idea being to let the environment handle the log stream. +
+
+In your devon4ng app, you can integrate 3rd party services like Google analytics to collects logs, errors and other analytics.
+
+|Admin processes
+|Automate admin-jobs using scripts which are part of the code base (committed to the repository).
+|===

@@ -3395,10 +3395,10 @@ cordova-plugin-splashscreen@^6.0.0:
   resolved "https://registry.yarnpkg.com/cordova-plugin-splashscreen/-/cordova-plugin-splashscreen-6.0.0.tgz#674718f87894cd75615da2b55905eb4cc719cf01"
   integrity sha512-pm4ZtJKQY4bCGXVeIInbGrXilryTevYSKgfvoQJpW9UClOWKAxSsYf2/4G2u1vcn492svOSL42OSa2MhujBWEQ==
 
-cordova-plugin-statusbar@^2.4.3:
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/cordova-plugin-statusbar/-/cordova-plugin-statusbar-2.4.3.tgz#cc557aef66c27484e0f7f045004040d03321f82d"
-  integrity sha512-ThmXzl6QIKWFXf4wWw7Q/zpB+VKkz3VM958+5A0sXD4jmR++u7KnGttLksXshVwWr6lvGwUebLYtIyXwS4Ovcg==
+cordova-plugin-statusbar@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-statusbar/-/cordova-plugin-statusbar-3.0.0.tgz#371b54cef2594550118ef51c1d677c8adb3bc668"
+  integrity sha512-nzkeWeyLA6+1FryzO0aeB6NS8MZ45gnBYeq2VZqfdNbddZEgtpI4XPYdBVxvm9NhcVoJ3tdA1OBnQD9JryoV0Q==
 
 core-js-compat@^3.18.0, core-js-compat@^3.19.1:
   version "3.19.3"

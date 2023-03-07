@@ -29,7 +29,7 @@
     "@ionic/pwa-elements": "^3.0.2",
     "ajv": "^6.10.2",
     "cordova-plugin-splashscreen": "^6.0.0",
-    "cordova-plugin-statusbar": "^2.4.3",
+    "cordova-plugin-statusbar": "^3.0.0",
     "core-js": "^2.5.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
